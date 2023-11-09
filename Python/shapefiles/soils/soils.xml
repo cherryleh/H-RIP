@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <title>Soils (MU) - State of Hawaii</title>
+                <onlink>https://geodata.hawaii.gov/arcgis/rest/services/Terrestrial/MapServer/42</onlink>
+                <onlink>https://files.hawaii.gov/dbedt/op/gis/data/soils.pdf</onlink>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>[Metadata] This dataset (MU) is called the Gridded SSURGO (gSSURGO) Database and is derived from the Soil Survey Geographic (SSURGO) Database. Source:  U.S. Department of Agriculture, Natural Resources Conservation Service.For more information, please see metadata at: https://files.hawaii.gov/dbedt/op/gis/data/soils.pdfNote:	 Downloaded from https://datagateway.nrcs.usda.gov, 2016For additional tables and more information, visit the following pages:https://websoilsurvey.sc.egov.usda.gov/App/WebSoilSurvey.aspx (choose Download Soils Data tab, State = Hawaii - from here, you can download all shapefiles and tabular data for each county).Tables and columns metadata:https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/soils/?cid=nrcs142p2_053631For additional information, please contact the Hawaii Statewide GIS Program at gis@hawaii.gov.</abstract>
+            <purpose>This dataset (MU) is called the Gridded SSURGO (gSSURGO) Database and is derived from the Soil Survey Geographic (SSURGO) Database.</purpose>
+        </descript>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>Terrestrial</themekey>
+                <themekey>HawaiiStateGIS</themekey>
+                <themekey>State of Hawaii</themekey>
+                <themekey>Kauai</themekey>
+                <themekey>Oahu</themekey>
+                <themekey>Molokai</themekey>
+                <themekey>Lanai</themekey>
+                <themekey>Kahoolawe</themekey>
+                <themekey>Maui</themekey>
+                <themekey>Hawaii</themekey>
+                <themekey>Soils</themekey>
+                <themekey>SSURGO</themekey>
+                <themekey>gSSURGO</themekey>
+                <themekey>Gridded SSURGO</themekey>
+                <themekey>Soil Survey Geographic Database</themekey>
+                <themekey>NRCS</themekey>
+            </theme>
+        </keywords>
+        <accconst>None</accconst>
+        <useconst>State of Hawaii Terms of UseThe
+ contents of this web page are public domain and to the extent indicated
+ otherwise in the Terms of Use, are exempt from Terms of Use policy 
+restrictions. There are no expressed warranties associated with the 
+release of this data or product. Specifically, no warranty is made that 
+the GIS data or any subsequent updates will be error free and no 
+warranty is made regarding the positional or thematic accuracy of the 
+GIS data. The GIS data and any features depicted do not represent or 
+confer any legal rights, privileges, benefits, boundaries or claims of 
+any kind. The Office of Planning and Sustainable Development encourages 
+users to report any discrepancies or errors found.  Contact:   Hawaii 
+Statewide GIS Program, Office of Planning and Sustainable Development, 
+State of Hawaii; PO Box 2359, Honolulu, Hi. 96804; (808) 587-2846; 
+email: gis@hawaii.gov; Website:  https://planning.hawaii.gov/gis.</useconst>
+        <datacred>HawaiiStateGIS, Hawaii Statewide GIS Program, USDA NRCS</datacred>
+    </idinfo>
+    <metainfo>
+        <metd>20201031</metd>
+        <metc>
+            <cntinfo>
+                <!--no contact person or organization name available-->
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>
