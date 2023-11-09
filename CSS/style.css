@@ -1,0 +1,385 @@
+/*
+    DEMO STYLE
+*/
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+    max-width: 100%;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    line-height: 1.3em;
+
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #5fa8d3;
+    color: #fff;
+    transition: all 0.3s;
+    position: sticky;
+    top: 0;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #5fa8d3;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #5fa8d3;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #5fa8d3;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+
+
+/*Content*/
+.containerA {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    justify-content: center;
+    width: 100%;
+
+}
+
+.map{
+  width: 40%
+
+}
+
+
+.name{
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+
+/*Historical Data*/
+.box{
+    background-color: white;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: black solid 1px;
+  }
+  
+  #rainHist #droughtHist #rainTrend p{
+    text-align: center;
+  }
+  
+  #rainHist img{
+    width: 100%;
+  }
+  
+  #rainHist{
+    width: 30vw;
+  }
+  
+  #droughtHist{
+    width: 40vw;
+  }
+  
+  #droughtHist img{
+    width: 100%;
+  }
+  
+  #rainTrend{
+    margin-top: 40px;
+    width: 40vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #rainTrend img{
+    width: 100%;
+    
+  }
+  
+  .wrapperHist{
+    display: flex;
+    justify-content: center;
+  }
+
+  #data p {
+      font-size: 1vw;
+  }
+
+  /* Climate Conditions*/
+.graph12m{
+    margin-bottom: 2%;
+    border: black solid 1px;
+    background-color: white;
+    width: 60%;
+    padding: 1%;
+}
+
+.graphText{
+    text-align: center;
+}
+
+.subtitle{
+    font-size: 20px;
+    text-align: center;
+    padding-top: 1%;
+}
+
+.definition{
+    font-size: 16px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.definition p{
+    text-align: justify;
+}
+
+.definition a{
+    color: blue;
+    text-decoration: underline;
+}
+
+.histPlotly{
+    background-color: white;
+    width: 100%;
+    border: black solid 1px;
+    padding: 1%;
+}
+
+/* Header */
+.logos{
+    display: inline;
+    float: left;
+    margin-left: 1%;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+
+.logos img {
+    width: 50px;
+    height: auto;
+    vertical-align: middle;
+}
+
+.name {
+    display: inline;
+    float: left;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: center;
+    padding: 17px 0px 17px 10px;
+  }
+
+/* Rainfall Forecast */
+
+
+
+#rainProj img{
+    width: 60%;
+    background-color: white;
+}
+
+#rainProj{
+    text-align: center;
+    padding-top: 2%;
+}
+
+#submenu{
+    text-align: center;
+    color: blue;
+    text-decoration: underline;
+    display: none;
+    
+}
+
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+  }
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 150px;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+    #submenu{
+        display: inline;
+    }
+    .wrapperHist{
+        display: block;
+    }
+
+    .box{
+        width: 70% !important;
+        margin: 5% auto 5% auto !important;
+        
+    }
+
+    #data p {
+        font-size: 2vw;
+    }
+    form{
+        width: 80%;
+    }
+
+    table{
+        width: 95%;
+    }
+    #gauge{
+        width: 60% !important;
+    }
+    #rainProj img{
+        width: 90%;
+    }
+
+}
+  
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    *, ::after, ::before {
+        box-sizing: content-box;
+    }
+    .map{
+        width: 80%;
+    }
+    .graph12m{
+        width: 90%;
+    }
+    
+  }

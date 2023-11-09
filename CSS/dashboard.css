@@ -1,0 +1,334 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Lato';
+    background-color: #F5F5F5;
+}
+
+p {
+
+    margin-block-start: 0;
+    margin-block-end: 0;
+    vertical-align: middle;
+}
+
+/*Grid*/
+#dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "card1 card1 card1 card1 card2 card2 card2 card2"
+        "card1 card1 card1 card1 card2 card2 card2 card2"
+        "card3 card3 card3 card3 card3 card3 card4 card4"
+        "card3 card3 card3 card3 card3 card3 card5 card5"
+        "card3 card3 card3 card3 card3 card3 card5 card5"
+        "card3 card3 card3 card3 card3 card3 card5 card5"
+        "card3 card3 card3 card3 card3 card3 card5 card5";
+    grid-gap: 20px;
+}
+
+.dashboardCard {
+    padding: 10px;
+    /*border: 1px solid black;*/
+    box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);
+    border-radius: 5px;
+    background-color: white;
+
+}
+
+.dashboardCard:first-child {
+    grid-area: card1;
+}
+
+.dashboardCard:nth-child(2) {
+    grid-area: card2;
+}
+
+.dashboardCard:nth-child(3) {
+    grid-area: card3;
+}
+
+.dashboardCard:nth-child(4) {
+    grid-area: card4;
+}
+
+.dashboardCard:nth-child(5) {
+    grid-area: card5;
+}
+
+
+/*Toggle button*/
+
+.switchButton {
+    max-width: 600px;
+    font-weight: normal;
+    margin: 20px auto 0px auto;
+    width: fit-content;
+    position: relative;
+    z-index: 0;
+}
+
+.switch-field {
+    display: flex;
+    overflow: hidden;
+}
+
+.switch-field input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
+
+.switch-field label {
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    padding: 8px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.1s ease-in-out;
+}
+
+.switch-field label:hover {
+    cursor: pointer;
+}
+
+.switch-field input:checked+label {
+    background: rgba(242, 249, 252, 255);
+    box-shadow: none;
+    color: #57a1d2;
+    border: #57a1d2 solid 1px;
+    z-index: 2;
+    font-weight: bold;
+
+}
+
+.switch-field label:first-of-type {
+    border-radius: 4px 0 0 4px;
+    margin-right: -1px;
+}
+
+.switch-field label:last-of-type {
+    border-radius: 0 4px 4px 0;
+}
+
+/*General styling*/
+.table {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.rel {
+    position: relative;
+}
+
+/*Top cards*/
+
+.data:nth-child(2) {
+    margin-top: 2px;
+  }
+  
+#monthly_r,
+#monthly_t {
+    display: none
+}
+
+.box-left {
+    width: 50%;
+    float: left;
+    text-align: center;
+    display: table;
+    height: 100%
+}
+
+.box-right {
+    width: 50%;
+    float: right;
+}
+
+.bi-cloud-rain,
+.bi-thermometer-half {
+    font-size: 2rem;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    height: fit-content
+}
+
+.date {
+    text-align: center;
+    position: relative;
+}
+
+.box {
+    height: 7em;
+    margin-top: 2%;
+    width: 100%;
+}
+
+.data {
+    background-color: #F5F5F5;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.index {
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.index1 {
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+.box.big {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.diff{
+    margin-left:3px;
+}
+
+/*Bottom cards*/
+.spi:first-child {
+    text-align: center;
+    color: #404040;
+    margin-bottom: 2%;
+    font-size: 1.1em;
+}
+
+.spi:last-child {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+td:first-child {
+    font-weight: bold;
+    padding-right: 0.5%;
+  }
+
+#droughtTable{
+    font-size: 1em;
+}
+
+#droughtTable td{
+    padding:2px;
+}
+
+#droughtTable tr td:first-child {
+    text-align: right;
+}
+
+#oni-table{
+    margin-left:auto;
+    margin-right:auto;
+    border-spacing: 0.3em;
+    width: 100%;
+}
+
+#oni-table td{
+    padding:5px;
+}
+
+#oni-table tr td:first-child {
+    text-align: right;
+    padding-right: 10px;
+}
+
+
+
+/*Tooltip*/
+i{
+    font-style: normal;
+}
+
+.tool {
+    position: relative;
+    z-index: 1;
+}
+
+.pos {
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+.tooltip,.tooltipRight {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    display: block;
+    position: absolute;
+    width: 300px;
+    margin-top: 20px;
+    visibility: hidden;
+    transform: translateX(-50%);
+    left: 50%;
+    z-index: 10;
+}
+
+
+.tooltip:before,.tooltipRight:before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    /*bottom: 50px;*/
+    left: 50%;
+    margin-left: -25px;
+    background: #fff;
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+
+.tooltip-content {
+    background: #fff;
+    padding: 15px 20px;
+    position: relative;
+}
+
+
+.tool:hover .tooltip {
+    visibility: visible;
+}
+
+.tooltipRight {
+    transform: translateX(-80%);
+}
+
+.tooltipRight:before {
+    left: 80%;
+
+}
+
+
+.tool:hover .tooltipRight {
+    visibility: visible;
+}
+
+
+.tooltip-content .bold {
+    font-weight: bold;
+}
+
+.tooltip-content p:not(:last-child){
+    margin:0 0 0.5em 0;
+}
+
+.tooltip-header{
+    font-size: 1.1em
+}

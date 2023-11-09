@@ -1,0 +1,67 @@
+
+
+body {
+    margin: 0; 
+    padding: 0;
+    
+}
+
+.footer {
+    position: relative;
+    width: 100%;
+    height: 45%;
+    bottom: 0;
+    margin-top: auto;
+    background-color: #e7ecef;
+    text-align: center;
+
+}
+
+.footercontent a {
+    width: 100%;
+    height: 30%;
+    text-decoration: none;
+    color: #000;
+}
+
+.footercontent hr{
+    margin-top: 1%;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footercontent p{
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 12px;
+    padding-bottom: 1%;
+}
+
+
+@media (max-width: 600px){
+    .footer p{
+        left:100px;
+    }
+}
+
+#NOAA, #NIDIS, #PDKE {
+    width: 5%;
+    height: auto;
+}
+
+
+#main {
+    padding-top: 2%;
+}
+
+#partners{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+#partners p{
+    font-size: 16px;
+}
+

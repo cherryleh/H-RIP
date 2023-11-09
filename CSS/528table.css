@@ -1,0 +1,171 @@
+#output{
+    width: 50em;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    color: black;
+    padding-top: 2%;
+}
+
+.pure-table td, .pure-table th{
+    padding:0.5em 0.3em !important;
+
+}
+
+#output-table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#csv{
+    text-align: center;
+}
+
+/**
+   * Tabs
+   */
+   .tabs {
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.tabs label {
+    order: 1; 
+    display: block;
+    padding: 1rem 2rem;
+    margin-right: 0.2rem;
+    cursor: pointer;
+    background: #90CAF9;
+    font-weight: bold;
+    transition: background ease 0.2s;
+}
+
+.tabs .tab {
+    order: 99; 
+    flex-grow: 1;
+    width: 100%;
+    display: none;
+    padding: 1rem;
+    background: #fff;
+}
+
+.tab{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tabs input[type="radio"] {
+    display: none;
+}
+
+.tabs input[type="radio"]:checked+label {
+    background: #fff;
+}
+
+.tabs input[type="radio"]:checked+label+.tab {
+    display: block;
+}
+
+@media (max-width: 45em) {
+
+    .tabs .tab,
+    .tabs label {
+        order: initial;
+    }
+
+    .tabs label {
+        width: 100%;
+        margin-right: 0;
+        margin-top: 0.2rem;
+    }
+}
+
+table {
+    border-collapse: collapse;
+}
+
+#three-month table{
+    margin-right:25px;
+}
+
+.output-table td {
+    padding: 10px;
+}
+.outlined-3 {
+    border: 1px solid black;
+    border-radius: 10px;
+    width:12%
+}
+
+.outlined-6 {
+    border: 1px solid black;
+    border-radius: 10px;
+    width:15%
+}
+
+#three-month td:not(:first-child) {
+    font-size: 3em;
+    text-align: center;
+}
+
+.six-month td:not(:first-child) {
+    font-size: 2.5em;
+    text-align: center;
+    width:10%
+}
+
+tr:first-child th:not(:first-child){
+    border-bottom: 1px black solid;
+}
+
+.output-table tr td:first-child {
+    text-align: right;
+    padding-right: 10px;
+    font-size:1em;
+}
+
+.change {
+    font-size: 0.4em;
+    color:black
+}
+
+.inline{
+    display: inline-block;
+}
+
+.scroll{
+    overflow-x: scroll;
+}
+
+/*
+#output-table,th{
+    font-size: 16px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    color: black;
+}
+
+th{
+    height: 5%;
+    padding:0;
+}
+
+td{
+    height:5%;
+    border: 1px solid #ddd;
+}
+
+
+
+#output-table{
+    width: 80%;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td{
+    text-align: center;
+}
+
+*/
