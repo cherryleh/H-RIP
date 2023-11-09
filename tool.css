@@ -1,0 +1,89 @@
+html, body {
+    min-height: 100%;
+}
+/*
+.testbox form input select { 
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 22px;
+}
+h4 {
+    margin: 20px 0 4px;
+    font-weight: 400;
+    font-size: 16px;
+    display: inline-block;
+}
+
+
+.testbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    padding: 3px;
+}
+
+.testbox form {
+    width: 50%;
+    padding: 20px;
+    background: #fff;
+    box-sizing: border-box;
+    border: 1px solid black;
+
+}
+
+.testbox input {
+    width:50%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+.testbox input:hover, textarea:hover, select:hover {
+    outline: none;
+    border: 1px solid #095484;
+    background: #e6eef7;
+}*/
+
+#grass select{
+    width: 50%;
+}
+.row{
+    padding: 5px;
+}
+/*
+.testbox select, table {
+    width: 100%;
+}
+
+.testbox option {
+    background: #fff;
+}
+
+.testbox button {
+    width: auto;
+    padding: 10px;
+    border: none;
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px; 
+    background-color: #095484;
+    font-size: 16px;
+    cursor: pointer;
+}
+    
+.testbox button:hover {
+    background-color: #0666a3;
+}
+
+.testbox .btn-block {
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    }
+*/
