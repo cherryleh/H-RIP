@@ -17,7 +17,7 @@ from standard_precip import spi
 lastMonth = (datetime.today() + relativedelta(months=-1)).strftime("%m")
 lastMonthYr = (datetime.today() + relativedelta(months=-1)).strftime("%Y")
 import os
-os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/Python')
+os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
 path = os.getcwd()
 
 

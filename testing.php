@@ -1,5 +1,5 @@
 <?php
-$RID = "RID085";
+$RID = "RID003";
 $file_rf = file('./RID/' . $RID . '/' . $RID . '_rf.csv');
 // Get last row of monthly rainfall file
 //Monthly Rainfall
@@ -64,7 +64,6 @@ $min_t_d = round($file_t_d[2], 0);
 $year_t = $file_t_d[3];
 $monthNum_t = intval($file_t_d[4]);
 
-echo $mean_t_d;
 //Read monthly temp avg file
 $file_t = file('./RID/' . $RID . '/' . $RID . '_temp.csv');
 if (!empty($file_t)) {
@@ -112,10 +111,12 @@ $date_t = $monthName_t_d . ' ' . $file_t_d[5] . ', ' . $file_t_d[3];
 //Temperature monthly averages
 $csv_t = fopen('./RID/' . $RID . '/' . $RID . '_t_month.csv', 'r');
 while ($row_t = fgetcsv($csv_t)) {
-    if ($row_t[2] == $monthName_t_d) {
+    if ($row_t[3] == $monthName_t_d) {
         $avg_t = (round($row_t[count($row_t) - 1], 2));
     }
 }
+
+
 
 fclose($csv_t);
 
