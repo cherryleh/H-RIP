@@ -1,6 +1,6 @@
 import sys
 import os
-os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/Python')
+os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
 
 import pandas as pd
 import collections
@@ -531,7 +531,7 @@ f'''
         <label for="tabone">3-Month Outlook</label>
         <div class="tab" id="three-month">
             <h3 class="" style="margin:0"> Estimated Forage Production: 3-Month Outlook</h3> 
-            <div class="" style="margin-left:40px"><b>Grasstype:</b> {grasstype}<span style="margin-left:20px"></span><b>Conditions:</b> {condition}<span style="margin-left:20px"><b>ENSO Phase:</b> {phase_name}</div>
+            <div class="" style="margin-left:40px"><b>Grass Type:</b> {grasstype}<span style="margin-left:20px"></span><b>Conditions:</b> {condition}<span style="margin-left:20px"><b>ENSO Phase:</b> {phase_name}</div>
             <br>
             <table class="output-table">
                 <colgroup>
@@ -575,7 +575,7 @@ f'''
         <label for="tabtwo">6-Month Outlook</label>
         <div class="tab six-month">
             <h3 style="margin:0"> Estimated Forage Production: 6-Month Outlook</h3>
-            <div class="" style="margin-left:40px"><b>Grasstype:</b> {grasstype}<span style="margin-left:20px"></span><b>Conditions:</b> {condition}<span style="margin-left:20px"><b>ENSO Phase:</b>{phase_name}</div>
+            <div class="" style="margin-left:40px"><b>Grass Type:</b> {grasstype}<span style="margin-left:20px"></span><b>Conditions:</b> {condition}<span style="margin-left:20px"><b>ENSO Phase:</b>{phase_name}</div>
             <br>
             <div class="scroll">
                 <table class="output-table">
@@ -636,7 +636,7 @@ f'''
         <label for="tabthree">Prior Months</label>
         <div class="tab six-month">
             <h3 style="margin:0"> Estimated Forage Production: Prior Months</h3>
-            <div class="" style="margin-left:40px"><b>Grasstype:</b> {grasstype}<span style="margin-left:20px"></span><b>Conditions:</b> {condition}<span style="margin-left:20px"><b>ENSO Phase:</b>{phase_name}</div>
+            <div class="" style="margin-left:40px"><b>Grass Type:</b> {grasstype}<span style="margin-left:20px"></span><b>Conditions:</b> {condition}<span style="margin-left:20px"><b>ENSO Phase:</b>{phase_name}</div>
             <br>
             <div class="scroll">
                 <table class="output-table">

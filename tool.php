@@ -64,7 +64,7 @@ if ($oni > 1.1) {
 
 $arg = [$ranch, $grasstype, $condition];
 
-$command = escapeshellcmd('/Users/cherryleheu/opt/anaconda3/bin/python3 /Users/cherryleheu/Codes/NIDIS-Codes/528.py '.$ranch.' '.$grasstype.' '.$condition );
+$command = escapeshellcmd('/Users/cherryleheu/opt/anaconda3/bin/python3 /Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python/528.py '.$ranch.' '.$grasstype.' '.$condition );
 
 $a = shell_exec($command);
 

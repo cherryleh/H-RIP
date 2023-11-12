@@ -13,7 +13,7 @@ from dateutil.relativedelta import *
 import calendar
 
 import os
-os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/Python')
+os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
 path = os.getcwd()
 
 #get today's date

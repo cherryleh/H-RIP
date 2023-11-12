@@ -791,11 +791,12 @@
                         </p>
 
                     </div>
+                    <div> 29 total dry days</div>
                     <div style="text-align: center;margin-top:2%; ">
-                        <p>Monthly Rainfall</p>
                         <p style="font-style:italic; color: #696969">
                             <?php echo $thisMonth_rf ?>
-                        </p>
+                        </p>    
+                        <p style="font-size:12px;color: #696969">Monthly Rainfall</p>
                     </div>
                 </div>
                 <div class="card center">
@@ -816,11 +817,13 @@
                         </p>
 
                     </div>
+                    <div> 14 consec. dry days</div>
                     <div style="text-align: center;margin-top:2%;">
-                        <p>Daily Rainfall</p>
+                        
                         <p style="font-style:italic; color: #696969">
                             <?php echo $date ?>
                         </p>
+                        <p style="font-size:12px;color: #696969">Daily Rainfall</p> 
                     </div>
                 </div>
                 <div class="card">
