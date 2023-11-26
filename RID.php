@@ -727,7 +727,7 @@
             </div>
             <div class="anchor" id="tool"></div>
             <div id="tool-content">
-                <p class="subtitleB">Animal Management and Decision Support Tool</p>
+                <p class="subtitleB">Forage Production Decision Support Tool</p>
                 <div id="input">
 
                     <form id="toolForm" method="post">
