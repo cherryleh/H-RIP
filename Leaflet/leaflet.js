@@ -14,7 +14,8 @@ var ranches = L.geoJSON(ranchSquares, {
 
     onEachFeature: function (feature, layer) {
         var ranchName = feature.properties.Polygon;
-        var url = 'http://localhost/RID.php?ranch=' + ranchName;
+        var currentPath = window.location.pathname;
+        var url = currentPath + 'RID.php?ranch=' + ranchName;
         layer.bindPopup('<a href="' + url+'" target="_blank">'+ranchName+'</a>');
         layer.on('click', function () { layer.openPopup(); });
                 
