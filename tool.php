@@ -20,7 +20,7 @@ $thisdate = ($date->format('d'));
 $numberdays = cal_days_in_month(CAL_GREGORIAN, $thismonthnum, $thisyear);
 
 $currentmonth = date('F');
-$lastmonth = Date('F', strtotime($currentMonth . " last month"));
+$lastmonth = date('F', strtotime($currentmonth . " last month"));
 
 
 if ($thisdate < 8){
