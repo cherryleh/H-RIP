@@ -119,7 +119,8 @@ def rf_12m(arr):
     return rf12m
 
 for r in ranches:
-    rf = pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/RID/RID{r:03d}/RID{r:03d}_rf.csv",index_col=0)
+    #rf = pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/RID/RID{r:03d}/RID{r:03d}_rf.csv",index_col=0)
+    rf = pd.read_csv(f"../RID/RID{r:03d}/RID{r:03d}_rf.csv",index_col=0)    
     rfdf=rf_avg(rf)
     rfdf=rfdf.drop(['Year','RF_mm'],axis=1)
     rf12m=rf_12m(rf)

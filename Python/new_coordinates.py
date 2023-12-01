@@ -252,7 +252,8 @@ def rf_12m(arr):
 # In[234]:
 
 
-rf = pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/RID/RID{r:03d}/RID{r:03d}_rf.csv",index_col=0)
+#rf = pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/RID/RID{r:03d}/RID{r:03d}_rf.csv",index_col=0)
+rf = pd.read_csv(f"../RID/RID{r:03d}/RID{r:03d}_rf.csv",index_col=0)
 rfdf=rf_avg(rf)
 rfdf=rfdf.drop(['Year','RF_mm'],axis=1)
 rf12m=rf_12m(rf)
@@ -789,7 +790,8 @@ b = int((now+relativedelta(months=+2)).strftime("%m"))
 # In[260]:
 
 
-table=pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/RID/RID{r:03d}/RID{r:03d}_query.csv",index_col=0)
+#table=pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/RID/RID{r:03d}/RID{r:03d}_query.csv",index_col=0)
+table=pd.read_csv(f"../RID/RID{r:03d}/RID{r:03d}_query.csv",index_col=0)
 rf_df=pd.DataFrame({'A' : []})
 now = datetime.now()
 thisMonth = (now).strftime("%B")

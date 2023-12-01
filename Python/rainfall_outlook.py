@@ -83,7 +83,8 @@ def filter(rf_df,mode):
         return ENSO, title
 
 for r in np.arange(1,count):
-    table=pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/RID/RID{r:03d}/RID{r:03d}_query.csv",index_col=0)
+    #table=pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/RID/RID{r:03d}/RID{r:03d}_query.csv",index_col=0)
+    table=pd.read_csv(f"../RID/RID{r:03d}/RID{r:03d}_query.csv",index_col=0)
     rf_df=pd.DataFrame({'A' : []})
     
     if a == 11 or a == 12:
