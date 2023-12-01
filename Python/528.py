@@ -201,7 +201,9 @@ for column in ecoCropTable.columns:
         continue
     a[column] = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'lbs/acre/year', column].iloc[0])*soilOMYieldFactor
         
-ecoCropTable = ecoCropTable.append(a, ignore_index=True)
+#ecoCropTable = ecoCropTable.append(a, ignore_index=True)
+df_a = pd.DataFrame([a])
+ecoCropTable = pd.concat([ecoCropTable, df_a], ignore_index=True)
 
 #Index if grasstype = ceci
 ceci = [0.058,0.064,0.076,0.091,0.104,0.115,0.119,0.112,0.093,0.058,0.075,0.038]
@@ -461,8 +463,8 @@ forage_avg['Average'] = forage_avg.iloc[:, 1:len(forage_avg.columns)+1].mean(axi
 forage_phase['Average'] = forage_phase.iloc[:, 1:len(forage_phase.columns)+1].mean(axis=1)
 forage_min['Average'] = forage_min.iloc[:, 1:len(forage_min.columns)+1].mean(axis=1)
 
-forage_phase['Percent Change'] = 0.0
-forage_phase['Difference'] = 0.0
+forage_phase['Percent Change'] = ''
+forage_phase['Difference'] = ''
 forage_phase['Color'] = ''
 forage_phase['Arrow'] = ''
 for i in range(len(forage_avg)):
@@ -487,8 +489,8 @@ for i in range(len(forage_avg)):
     forage_phase.loc[i,'Color'] = color
     forage_phase.loc[i,'Arrow'] = arrow
 
-forage_min['Percent Change'] = 0.0
-forage_min['Difference'] = 0.0
+forage_min['Percent Change'] = ''
+forage_min['Difference'] = ''
 forage_min['Color'] = ''
 forage_min['Arrow'] = ''
 for i in range(len(forage_avg)):
