@@ -1,6 +1,8 @@
 import sys
 import os
-os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
+print("path before: " + os.getcwd())
+os.chdir('./Python')
+print("path after: " + os.getcwd())
 
 import pandas as pd
 import collections

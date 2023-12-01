@@ -1,4 +1,4 @@
-#!/Users/cherryleheu/opt/anaconda3/bin/python3
+#!python3
 # coding: utf-8
 
 # In[1]:

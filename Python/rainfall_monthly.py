@@ -1,4 +1,4 @@
-#!/Users/cherryleheu/opt/anaconda3/bin/python3
+#!python3
 
 #Processing monthly averages of rainfall
 
