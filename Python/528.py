@@ -1,8 +1,8 @@
 import sys
 import os
-print("path before: " + os.getcwd())
+#print("path before: " + os.getcwd())
 os.chdir('./Python')
-print("path after: " + os.getcwd())
+#print("path after: " + os.getcwd())
 
 import pandas as pd
 import collections

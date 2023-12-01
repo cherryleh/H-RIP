@@ -9,7 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import calendar
 import os
-os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
+#os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
+os.chdir('./Python')
 path = os.getcwd()
 
 from datetime import datetime

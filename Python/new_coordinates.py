@@ -6,8 +6,8 @@
 
 import os
 #Directory here
-os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
-
+#os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
+os.chdir('./Python')
 
 import ee
 service_account = 'my-service-account@...gserviceaccount.com'
