@@ -232,6 +232,7 @@
     $csv_ndvi = fopen('./RID/' . $RID . '/' . $RID . '_ndvi_month.csv', 'r');
 
     // Keep looping as long as we get a new $row
+    $avg_ndvi = 0;
     while ($row_ndvi = fgetcsv($csv_ndvi)) {
         if ($row_ndvi[2] == $monthName_ndvi) {
             $avg_ndvi = (round($row_ndvi[count($row_ndvi) - 1], 2));
