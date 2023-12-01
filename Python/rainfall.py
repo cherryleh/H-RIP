@@ -40,8 +40,6 @@ count = 0
 for path in os.listdir(dir_path):
     if os.path.isdir(os.path.join(dir_path, path)):
         count += 1
-
-
 ranches = np.arange(1,count+1)
 
 for r in ranches:
@@ -79,14 +77,6 @@ import calendar
 now = datetime.now()
 today = now.strftime("%Y-%m-%d") 
 thisMonth = now.strftime("%Y-%m")
-
-#Get the number of ranches in HRIP
-dir_path = '../RID'
-count = 0
-for path in os.listdir(dir_path):
-    if os.path.isdir(os.path.join(dir_path, path)):
-        count += 1
-ranches = np.arange(1,count+1)
 
 
 #ago12m = datetime.today() + relativedelta(months=-12)
