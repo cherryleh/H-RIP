@@ -20,7 +20,7 @@ $thisdate = ($date->format('d'));
 $numberdays = cal_days_in_month(CAL_GREGORIAN, $thismonthnum, $thisyear);
 
 $currentmonth = date('F');
-$lastmonth = Date('F', strtotime($currentMonth . " last month"));
+$lastmonth = date('F', strtotime($currentmonth . " last month"));
 
 
 if ($thisdate < 8){
@@ -64,7 +64,7 @@ if ($oni > 1.1) {
 
 $arg = [$ranch, $grasstype, $condition];
 
-$command = escapeshellcmd('/Users/cherryleheu/opt/anaconda3/bin/python3 /Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python/528.py '.$ranch.' '.$grasstype.' '.$condition );
+$command = escapeshellcmd('python3 Python/528.py '.$ranch.' '.$grasstype.' '.$condition );
 
 $a = shell_exec($command);
 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./CSS/index.css">
+  <link rel="stylesheet" type="text/css" href="./CSS/header.css">
+  <link rel="stylesheet" type="text/css" href="./CSS/footer.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script>
+    $(function () {
+      $("#header").load("./header.html");
+      $("#footer").load("./footer.html");
+    });
+
+  </script>
+</head>
+<body>
+  <div id="header">Header</div>
+
+  <div class="content">
+    <div class="flex-container">
+
+      <div class="flex-child" id="comingsoon">
+      
+        <h1 style="font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;">
+              Coming Soon</h1>
+      </div>
+
+      <!--<h1 align="center">Coming Soon</h1>-->
+    <!--<p>We're working on something exciting. Stay tuned!</p>-->
+    <!-- Add a countdown or any additional information here -->
+
+    </div>
+  </div>
+  <div id="footer">Footer</div>
+
+</body>
+</html>

@@ -3,8 +3,8 @@
 
 
 import os
-os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
-
+#os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
+os.chdir('./Python')
 
 import requests
 from datetime import datetime

@@ -1,4 +1,4 @@
-#!/Users/cherryleheu/opt/anaconda3/bin/python3
+#!python3
 # coding: utf-8
 
 # In[1]:
@@ -17,7 +17,8 @@ from standard_precip import spi
 lastMonth = (datetime.today() + relativedelta(months=-1)).strftime("%m")
 lastMonthYr = (datetime.today() + relativedelta(months=-1)).strftime("%Y")
 import os
-os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
+#os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
+os.chdir('./Python')
 path = os.getcwd()
 
 
@@ -39,8 +40,6 @@ count = 0
 for path in os.listdir(dir_path):
     if os.path.isdir(os.path.join(dir_path, path)):
         count += 1
-
-
 ranches = np.arange(1,count+1)
 
 for r in ranches:
@@ -79,14 +78,6 @@ now = datetime.now()
 today = now.strftime("%Y-%m-%d") 
 thisMonth = now.strftime("%Y-%m")
 
-#Get the number of ranches in HRIP
-dir_path = '../RID'
-count = 0
-for path in os.listdir(dir_path):
-    if os.path.isdir(os.path.join(dir_path, path)):
-        count += 1
-ranches = np.arange(1,count+1)
-
 
 #ago12m = datetime.today() + relativedelta(months=-12)
     
@@ -118,7 +109,8 @@ def rf_12m(arr):
     return rf12m
 
 for r in ranches:
-    rf = pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/RID/RID{r:03d}/RID{r:03d}_rf.csv",index_col=0)
+    #rf = pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/RID/RID{r:03d}/RID{r:03d}_rf.csv",index_col=0)
+    rf = pd.read_csv(f"../RID/RID{r:03d}/RID{r:03d}_rf.csv",index_col=0)    
     rfdf=rf_avg(rf)
     rfdf=rfdf.drop(['Year','RF_mm'],axis=1)
     rf12m=rf_12m(rf)

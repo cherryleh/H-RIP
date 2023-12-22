@@ -1,4 +1,4 @@
-#!/Users/cherryleheu/opt/anaconda3/bin/python3
+#!python3
 
 #Processing monthly averages of rainfall
 
@@ -13,7 +13,8 @@ from dateutil.relativedelta import *
 import calendar
 
 import os
-os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
+#os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
+os.chdir('./Python')
 path = os.getcwd()
 
 #get today's date
@@ -65,7 +66,8 @@ def rf_12m(arr):
 
 for i in ranches:
     print(i)
-    rf = pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/RID/RID{i:03d}/RID{i:03d}_rf.csv",index_col=0)
+    #rf = pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/RID/RID{i:03d}/RID{i:03d}_rf.csv",index_col=0)
+    rf = pd.read_csv(f"../RID/RID{i:03d}/RID{i:03d}_rf.csv",index_col=0)
     rfdf=rf_avg(rf)
     rfdf=rfdf.drop(['Year','RF_mm'],axis=1)
     rf12m=rf_12m(rf)
