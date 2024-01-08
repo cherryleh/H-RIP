@@ -278,6 +278,7 @@ spi_3.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_spi.csv')
 
 ranchshp = gpd.read_file('./shapefiles/RID.shp')
 ranch = ranchshp.loc[ranchshp['Polygon']==f"RID{r:03d}"]
+
 temp = pd.DataFrame({'Year': [],'Month':[],'Temp': []})
 for i in np.arange(1990,int(thisYear)+1):
     for j in months:
@@ -287,9 +288,41 @@ for i in np.arange(1990,int(thisYear)+1):
             affine = src.transform
             array = src.read(1)
             df_zonal_stats = pd.DataFrame(zonal_stats(ranch, array, affine=affine,nodata=-9999,stats = ['mean']))
-        t = 9/5*df_zonal_stats['mean'].iloc[0]+32
-        temp=temp.append({'Year':i,'Month':j,'Temp':t},ignore_index=True)
+        temp_f = 9/5*df_zonal_stats['mean'].iloc[0]+32
+        new_row = pd.DataFrame({'Year':i,'Month':j,'Temp':temp_f},index=[0])
+        temp=pd.concat([temp, new_row],ignore_index=True)
+
 temp.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_temp.csv')
+
+temp_min = pd.DataFrame({'Year': [],'Month':[],'Temp': []})
+for i in np.arange(1990,int(thisYear)+1):
+    for j in months:
+        if int(i) == int(thisYear) and int(j)>(int(thisMonth)):
+            break
+        with rasterio.open(f'./temp_monthly_maps/min/{i}_{j:02d}_t_month_min.tif') as src:
+            affine = src.transform
+            array = src.read(1)
+            df_zonal_stats = pd.DataFrame(zonal_stats(ranch, array, affine=affine,nodata=-9999,stats = ['mean']))
+        temp_f = 9/5*df_zonal_stats['mean'].iloc[0]+32
+        new_row = pd.DataFrame({'Year':i,'Month':j,'Temp':temp_f},index=[0])
+        temp_min=pd.concat([temp_min, new_row],ignore_index=True)
+
+temp_min.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_temp_min.csv')
+
+temp_max = pd.DataFrame({'Year': [],'Month':[],'Temp': []})
+for i in np.arange(1990,int(thisYear)+1):
+    for j in months:
+        if int(i) == int(thisYear) and int(j)>(int(thisMonth)-4):
+            break
+        with rasterio.open(f'./temp_monthly_maps/max/{i}_{j:02d}_t_month_max.tif') as src:
+            affine = src.transform
+            array = src.read(1)
+            df_zonal_stats = pd.DataFrame(zonal_stats(ranch, array, affine=affine,nodata=-9999,stats = ['mean']))
+        temp_f = 9/5*df_zonal_stats['mean'].iloc[0]+32
+        new_row = pd.DataFrame({'Year':i,'Month':j,'Temp':temp_f},index=[0])
+        temp_max=pd.concat([temp_max, new_row],ignore_index=True)
+
+temp_max.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_temp_max.csv')
 
 
 # In[237]:
