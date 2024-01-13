@@ -46,7 +46,7 @@ body {
     }
 }
 
-#NOAA, #NIDIS, #PDKE {
+#NOAA, #NIDIS{
     width: 5%;
     height: auto;
 }

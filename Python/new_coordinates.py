@@ -456,7 +456,6 @@ et12m.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_et_12m.csv',index=False)
 # In[244]:
 
 
-lastM='9/1/2023'
 ranchshp = gpd.read_file('./shapefiles/RID.shp')
 ranch = ranchshp.loc[ranchshp['Polygon']==f"RID{r:03d}"]
 ndvi = pd.DataFrame({'Year': [],'Month':[],'NDVI': []})
@@ -668,7 +667,6 @@ plt.show()
 # In[253]:
 
 
-lastMonth = '07'
 with rasterio.open('./temp_monthly_maps/mean/'+lastMonthYr+'_'+lastMonth+'_t_month_mean.tif') as src:
     temp_c = src.read(1, masked=True)
 
