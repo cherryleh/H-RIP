@@ -30,10 +30,6 @@ r = requests.get(url)
 file=f"./rainmaps/2020-/rainfall_{lastMonthYr}_{lastMonth}.tif"
 open(file, 'wb').write(r.content)
 
-
-# In[7]:
-
-
 #Get the number of ranches in HRIP
 dir_path = '../RID'
 count = 0
@@ -52,7 +48,8 @@ for r in ranches:
         array = src.read(1)
         df_zonal_stats = pd.DataFrame(zonal_stats(ranchshp, array, affine=affine,nodata=-3.3999999521443642e+38,stats = ['mean']))
     RF= df_zonal_stats['mean'].iloc[0]
-    csv=csv.append({'Year':int(lastMonthYr),'Month':lastMonth,'RF_mm':RF,'RF_in':RF/25.4},ignore_index=True)
+    new_row = pd.DataFrame({'Year':int(lastMonthYr),'Month':lastMonth,'RF_mm':RF,'RF_in':RF/25.4},index=[0])
+    csv=pd.concat([csv, new_row],ignore_index=True)
     csv['datetime']=pd.date_range('1/1/1920',lastMonth+'/01/'+lastMonthYr,freq='MS')
     csv.to_csv('../RID/'+ranch+'/'+ranch+'_rf.csv')
 
@@ -78,21 +75,13 @@ now = datetime.now()
 today = now.strftime("%Y-%m-%d") 
 thisMonth = now.strftime("%Y-%m")
 
-
-#ago12m = datetime.today() + relativedelta(months=-12)
-    
-#last12m = datetime.today() + relativedelta(months=-11)
 datem = datetime.today().strftime("%m")
 monthInd = -int(datem)+1
-#thisMonthN = int(now.strftime("%m"))
-#thisMonthL = now.strftime("%B")
-#ago13m = datetime.today() + relativedelta(months=-12)
-#last13m = ago13m.strftime("%Y-%m")
-#ago1m = datetime.today() + relativedelta(months=-1)
-#lastM = ago1m.strftime("%m/1/%Y")
+
 
 #average monthly
 def rf_avg(arr):
+    arr = arr.drop(['datetime'], axis=1)
     rfdf = arr.groupby(['Month'],as_index=False).mean()
     rfdf['Month'] = rfdf['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x])
     rfdf['rolledMonth'] = np.roll(rfdf.Month, monthInd)
@@ -102,7 +91,7 @@ def rf_avg(arr):
 
 #last 12 months
 def rf_12m(arr):
-    rf12m = arr
+    rf12m = arr.copy()
     rf12m['Month'] = rf12m['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x])
     rf12m = rf12m.tail(12)
     rf12m['RF'] = rf12m['RF_in'] 
@@ -115,7 +104,5 @@ for r in ranches:
     rfdf=rfdf.drop(['Year','RF_mm'],axis=1)
     rf12m=rf_12m(rf)
     rf12m=rf12m.drop(['Year','datetime','RF_mm','RF_in'],axis=1)
-    #rf['datetime']=pd.date_range('1/1/1920',lastM,freq='MS')
     rfdf.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_rf_month.csv') 
     rf12m.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_rf_12m.csv')
-    #rf.to_csv(f'../ranches/RS{i:02d}/RS{i:02d}_rf_hist.csv')   

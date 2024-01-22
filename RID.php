@@ -81,7 +81,7 @@
     if ($rf_m > $avg_rf) {
         $status_rf_m = 'Above Average';
         $icon_rf_m = 'class="bi bi-check-circle-fill fs-3" style="color:green; display:inline-block;vertical-align: middle"';
-        $stat_rf_m = '+';
+        //$stat_rf_m = '+';
         $color_rf_m = 'green';
     } else {
         $status_rf_m = 'Below Average';
@@ -108,9 +108,9 @@
     $file_t = file('./RID/' . $RID . '/' . $RID . '_temp.csv');
     if (!empty($file_t)) {
         $fields_t = str_getcsv($file_t[count($file_t) - 1]); // Parse csv string into an array, get fields from last line
-        $mean_t_m = (round(floatval($fields_t[count($fields_t) - 1]))); //RF value from last row of csv file
-        $monthNum_t_m = $fields_t[count($fields_t) - 2]; //Month of last row (should be last month)
-        $year_t_m = (round($fields_t[count($fields_t) - 3], 0)); //Year of last row
+        $mean_t_m = (round(floatval($fields_t[count($fields_t) - 2]))); 
+        $monthNum_t_m = $fields_t[count($fields_t) - 3]; 
+        $year_t_m = (round($fields_t[count($fields_t) - 4], 0)); 
     
     } else {
         echo "Error";
@@ -125,7 +125,7 @@
     $file_t_max = file('./RID/' . $RID . '/' . $RID . '_temp_max.csv');
     if (!empty($file_t_max)) {
         $fields_t_max = str_getcsv($file_t_max[count($file_t_max) - 1]); // Parse csv string into an array, get fields from last line
-        $max_t_m = (round(floatval($fields_t_max[count($fields_t_max) - 1]))); //RF value from last row of csv file
+        $max_t_m = (round(floatval($fields_t_max[count($fields_t_max) - 3]))); //RF value from last row of csv file
     
     } else {
         echo "Error";
@@ -135,7 +135,7 @@
     $file_t_min = file('./RID/' . $RID . '/' . $RID . '_temp_min.csv');
     if (!empty($file_t_min)) {
         $fields_t_min = str_getcsv($file_t_min[count($file_t_min) - 1]); // Parse csv string into an array, get fields from last line
-        $min_t_m = (round(floatval($fields_t_min[count($fields_t_min) - 1]))); //RF value from last row of csv file
+        $min_t_m = (round(floatval($fields_t_min[count($fields_t_min) - 3]))); //RF value from last row of csv file
     
     } else {
         echo "Error";
@@ -469,8 +469,7 @@
                                         <?php echo $rf_m ?> in
                                     </span>
                                     <span class="diff" style="color:<?php echo $color_rf_m ?>">
-                                        <?php echo $stat_rf_m;
-                                        printf("%+.1f", $dif_m); ?>%
+                                        <?php printf("%+.1f", $dif_m); ?>%
                                         </p>
                                     </span>
                                 </div>
@@ -779,7 +778,7 @@
                             <?php echo $rf_m ?> in
                         </span>
                         <span class="diff" style="color:<?php echo $color_rf_m ?>">
-                            <?php echo $stat_rf_m;
+                            <?php //echo $stat_rf_m;
                             printf("%+.1f", $dif_m) ?>%
                             </p>
                         </span>
