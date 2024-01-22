@@ -64,7 +64,7 @@ for r in np.arange(1,count+1):
             MnT = (dft[(dft['Month']==i)]).Temp.min()
             MeAnom = MeRF - MRF
             MnAnom = MnRF - MRF
-            df2 = {'Month':i,'MRF': MRF, 'Phase':j,'Count':count,'MeRF':MeRF,'MnRF':MnRF,'MeAnom':MeAnom,'MnAnom':MnAnom,'MT':MT,'MeT':MeT,'MnT':MnT}
-            query = query.append(df2,ignore_index=True)
+            new_row = pd.DataFrame({'Month':i,'MRF': MRF, 'Phase':j,'Count':count,'MeRF':MeRF,'MnRF':MnRF,'MeAnom':MeAnom,'MnAnom':MnAnom,'MT':MT,'MeT':MeT,'MnT':MnT},index=[0])
+            query=pd.concat([query, new_row],ignore_index=True)
     query.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_query.csv')
 
