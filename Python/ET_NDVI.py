@@ -99,10 +99,6 @@ for path in os.listdir(dir_path):
 
 ranches = np.arange(1,count+1)
 
-
-# In[34]:
-
-
 #Download the monthly data tifs
 for date in dates_et:
     print(dates_et)
@@ -155,7 +151,8 @@ for r in ranches:
         
         et_df = et.loc[(et['Month']==j) & (et['Year'] == i)]
         if et_df.empty:
-            et=et.append({'Year':i,'Month':j,'ET':ET/8},ignore_index=True)
+            new_row = pd.DataFrame({'Year':i,'Month':j,'ET':ET/8},index=[0])
+            et=pd.concat([et, new_row],ignore_index=True)
         else: 
             et['ET'] = np.where((et['Month'] == j) & (et['Year'] == i), ET/8, et['ET'])
     et['datetime']=pd.date_range('1/1/2001',str(j)+'/1/'+str(i),freq='MS')
@@ -163,6 +160,7 @@ for r in ranches:
     
 #average monthly
 def et_avg(arr):
+    arr = arr.drop(['datetime'], axis=1)
     etdf = arr.groupby(['Month'],as_index=False).mean()
     etdf['Month'] = etdf['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x])
     etdf['rolledMonth'] = np.roll(etdf.Month, -a)
@@ -172,8 +170,9 @@ def et_avg(arr):
 
 #last 12 months
 def et_12m(arr):
-    et12m = arr.tail(12)
+    et12m = arr.copy()
     et12m['Month'] = et12m['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x]) 
+    et12m = et12m.tail(12)
     return et12m
 
 for r in ranches:
@@ -182,7 +181,7 @@ for r in ranches:
     etdf=et_avg(et)
     etdf=etdf.drop(['Year'],axis=1)
     et12m=et_12m(et)
-    et12m=et12m.drop(['Year'],axis=1)
+    et12m=et12m.drop(['Year','datetime'],axis=1)
     etdf.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_et_month.csv') 
     et12m.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_et_12m.csv')
     
@@ -215,7 +214,6 @@ for item in test:
         os.remove(os.path.join(dir_name, item))
         
 ranches = np.arange(1,count)
-
 for r in ranches:
     ndvi = pd.read_csv(f"../RID/RID{r:03d}/RID{r:03d}_ndvi.csv",index_col=0)
     ranchshp = gpd.read_file('./shapefiles/RID.shp',rows=slice(r-1, r))
@@ -230,7 +228,8 @@ for r in ranches:
         NDVI= df_zonal_stats['mean'].iloc[0]
         ndvi_df = ndvi.loc[(ndvi['Month']==j) & (ndvi['Year'] == i)]
         if ndvi_df.empty:
-            ndvi=ndvi.append({'Year':i,'Month':j,'NDVI':NDVI},ignore_index=True)
+            new_row = pd.DataFrame({'Year':i,'Month':j,'NDVI':NDVI},index=[0])
+            ndvi=pd.concat([ndvi, new_row],ignore_index=True)
         else: 
             ndvi['NDVI'] = np.where((ndvi['Month'] == j) & (ndvi['Year'] == i), NDVI, ndvi['NDVI'])
     ndvi['datetime']=pd.date_range('2/1/2000',str(j)+'/1/'+str(i),freq='MS')
@@ -238,6 +237,7 @@ for r in ranches:
     
 #average monthly
 def ndvi_avg(arr):
+    arr = arr.drop(['datetime'], axis=1)
     ndvidf = arr.groupby(['Month'],as_index=False).mean()
     ndvidf['Month'] = ndvidf['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x])
     ndvidf['rolledMonth'] = np.roll(ndvidf.Month, -a)
@@ -247,8 +247,9 @@ def ndvi_avg(arr):
 
 #last 12 months
 def ndvi_12m(arr):
-    ndvi12m = arr.tail(12)
+    ndvi12m = arr.copy()
     ndvi12m['Month'] = ndvi12m['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x]) 
+    ndvi12m = ndvi12m.tail(12)
     return ndvi12m
 
 for r in np.arange(1,77):
@@ -257,42 +258,6 @@ for r in np.arange(1,77):
     ndvidf=ndvi_avg(ndvi)
     ndvidf=ndvidf.drop(['Year'],axis=1)
     ndvi12m=ndvi_12m(ndvi)
+    ndvi12m=ndvi12m.drop(['Year','datetime'],axis=1)
     ndvidf.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi_month.csv') 
     ndvi12m.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi_12m.csv')
-
-
-# In[40]:
-
-
-
-
-
-# In[41]:
-
-
-
-
-
-# In[42]:
-
-
-
-
-
-# In[76]:
-
-
-
-
-
-# In[77]:
-
-
-
-
-
-# In[78]:
-
-
-
-

@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[12]:
-
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -108,26 +105,27 @@ for r in np.arange(1,count):
     #phase min
     p_min = ENSO['MnRF'].iloc[0]
     
-    #probability
-    #mean_prob = int(ENSO['A_ProbMe'][0]*100)
-    #p_mean_prob = int(ENSO['E_ProbMe'][0]*100)
-    #p_min_prob = int(ENSO['E_ProbMn'][0]*100)
 
-    fig, ax = plt.subplots()
-    line1 = ENSO.plot(ax=ax,x='MonthName',y=['MRF','MeRF','MnRF'],kind="bar",legend=False,color=['#004c6d','#6996b3','#c1e7ff'])
+    # Create a figure and axis with a larger width
+    fig, ax = plt.subplots(figsize=(10, 6))
 
-    ax.set_ylabel("Monthly rainfall (inches)",fontsize=12)
-    
-    first_legend = ax.legend(['Mean', '%s Mean' % title, '%s Minimum'% title],fontsize=12,bbox_to_anchor=(1,1),edgecolor="black")
-    
-    
-    second_legend = ax.legend([f"Mean                                   {mean:.2f} in\n{title} Mean             {p_mean:.2f} in\n{title} Minimum       {p_min:.2f} in"], loc='center left', 
-                              handlelength=0, handletextpad=0,bbox_to_anchor=(1, 0.6), title=f'RID{r:03d} {thisMonth} Rainfall')
-    
+    # Plot the data
+    line1 = ENSO.plot(ax=ax, x='MonthName', y=['MRF', 'MeRF', 'MnRF'], kind="bar", legend=False, color=['#004c6d', '#6996b3', '#c1e7ff'])
 
-    
-    ax.add_artist(first_legend)
-    ax.add_artist(second_legend)
-    ax.set(xlabel=None)
+    # Create a legend for the first line.
+    first_legend = ax.legend(['Mean', '%s Mean'% title, '%s Minimum' % title], fontsize=12, bbox_to_anchor=(1, 1), edgecolor="black",loc="upper left")
+
+    # Set labels and title
+    ax.set_xlabel('')
+    ax.set_ylabel('Rainfall (in)')
+
+    text = f"Mean                                     {mean:.2f} in\n{title} Mean             {p_mean:.2f} in\n{title} Minimum       {p_min:.2f} in"
+    plt.text(0.73, 0.74, text, fontsize=10, transform=plt.gcf().transFigure,
+            bbox={'facecolor': 'white', 'alpha': 0.5})
+
+    # Use tight_layout to ensure the plot is fully visible
+    plt.tight_layout()
     plt.savefig(f"../RID/RID{r:03d}/RID{r:03d}_rainfall.png",bbox_inches="tight")
+    plt.show()
+    
 

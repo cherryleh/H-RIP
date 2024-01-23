@@ -74,7 +74,7 @@
     fclose($csv_rf);
 
     //CHANGE THIS WHEN DAILY RF IS RELEASED
-    $date = 'October 5, 2023';
+    $date = 'Date';
 
 
 
@@ -286,15 +286,18 @@
 
     //Drought status
     if ($spi <= -2) {
+        $drought_status = "Exceptional Drought";
+        $icon_spi = 'class="bi bi-exclamation-circle-fill fs-3" style="color:red; display:inline-block; vertical-align: middle"';
+    }elseif ($spi <= -1.6 && $spi > -2) {
         $drought_status = "Extreme Drought";
-        $icon_spi = 'class="bi bi-exclamation-circle-fill fs-3" style="color:red; display:inline-block; vertical-align: middle"';
-    } elseif ($spi <= -1.5 && $spi > -2) {
+        $icon_spi = 'class="bi bi-exclamation-circle-fill fs-3" style="color:red; display:inline-block; vertical-align: middle"'; 
+    }elseif ($spi <= -1.3 && $spi > -1.6) {
         $drought_status = "Severe Drought";
-        $icon_spi = 'class="bi bi-exclamation-circle-fill fs-3" style="color:red; display:inline-block; vertical-align: middle"';
-    } elseif ($spi <= -1 && $spi > -1.5) {
+        $icon_spi = 'class="bi bi-exclamation-circle-fill fs-3" style="color:darkorange; display:inline-block; vertical-align: middle"';
+    } elseif ($spi <= -0.8 && $spi > -1.3) {
         $drought_status = "Moderate Drought";
         $icon_spi = 'class="bi bi-exclamation-circle-fill fs-3" style="color:orange; display:inline-block; vertical-align: middle"';
-    } elseif ($spi <= 0 && $spi > -1) {
+    } elseif ($spi <= -0.5 && $spi > -0.8) {
         $drought_status = "Abnormally Dry";
         $icon_spi = 'class="bi bi-exclamation-circle-fill fs-3" style="color:orange; display:inline-block; vertical-align: middle"';
     } else {
@@ -621,20 +624,24 @@
                                         <col span="1" style="width: 55%;">
                                     </colgroup>
                                     <tr>
-                                        <td>Less than 0:</td>
+                                        <td>-0.5 to -0.79:</td>
                                         <td>Abnormally Dry</td>
                                     </tr>
                                     <tr>
-                                        <td>-1 to -1.5:</td>
+                                        <td>-0.8 to -1.29:</td>
                                         <td>Moderate Drought</td>
                                     </tr>
                                     <tr>
-                                        <td>-1.5 to -2:</td>
+                                        <td>-1.3 to -1.59:</td>
                                         <td>Severe Drought</td>
                                     </tr>
                                     <tr>
-                                        <td>Less than -2:</td>
+                                        <td>-1.6 to -1.99:</td>
                                         <td>Extreme Drought</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-2 or less:</td>
+                                        <td>Exceptional Drought</td>
                                     </tr>
                                 </table>
 

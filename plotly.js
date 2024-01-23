@@ -345,7 +345,7 @@ function makeSPI_12m(trace, divName,axis) {
             tickangle: 30,
         },
         yaxis: {
-            title: 'Drought         No Drought',
+            title: 'Drought              No Drought',
             range: [-axis, axis]
         },
         margin: {
@@ -355,6 +355,21 @@ function makeSPI_12m(trace, divName,axis) {
             t: 20,
             pad: 4
         },
+        shapes: [
+          {
+              type: 'rect',
+              xref: 'paper',
+              x0: 0,
+              y0: -0.5,
+              x1: 12,
+              y1: -3,
+              fillcolor: 'red',
+              opacity:0.1,
+              line:{
+                  width:1
+              }
+          }
+          ]
 
     };
 

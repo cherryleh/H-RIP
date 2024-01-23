@@ -81,14 +81,6 @@ for r in np.arange(1, count):
     plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_rf.png',bbox_inches="tight")
     plt.show()
 
-
-# In[8]:
-
-
-lastMonth = '07'
-lastMonthYr = (datetime.today() + relativedelta(months=-1)).strftime("%Y")
-
-
 with rasterio.open('./temp_monthly_maps/mean/'+lastMonthYr+'_'+lastMonth+'_t_month_mean.tif') as src:
     temp_c = src.read(1, masked=True)
     temp = (temp_c * 9/5) + 32
@@ -97,10 +89,6 @@ with rasterio.open('./temp_monthly_maps/mean/'+lastMonthYr+'_'+lastMonth+'_t_mon
         dst.write(temp, 1)
         
 temp = rasterio.open('output_raster_temp.tif',noData=noData)
-
-
-# In[9]:
-
 
 for r in np.arange(1, count):
     y = ranches[ranches.Polygon == f"RID{r:03d}"]
@@ -119,10 +107,6 @@ for r in np.arange(1, count):
     cbar.ax.tick_params(labelsize=20) 
     plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_temp.png',bbox_inches="tight")
     plt.show()
-
-
-# In[10]:
-
 
 et = pd.read_csv(f"../RID/RID001/RID001_et.csv", index_col=0)
 lastMonth = et['Month'].iloc[-1]
