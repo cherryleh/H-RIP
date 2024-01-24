@@ -234,7 +234,7 @@
     // Keep looping as long as we get a new $row
     $avg_ndvi = 0;
     while ($row_ndvi = fgetcsv($csv_ndvi)) {
-        if ($row_ndvi[2] == $monthName_ndvi) {
+        if ($row_ndvi[3] == $monthName_ndvi) {
             $avg_ndvi = (round($row_ndvi[count($row_ndvi) - 1], 2));
         }
     }
