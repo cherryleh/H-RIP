@@ -758,7 +758,7 @@
                                 Guinea Grass</option>
                         </select>
                         <br><br>
-                        Condition: <select class="question" id="condition" name="condition">
+                        Forage Condition: <select class="question" id="condition" name="condition">
                             <option value="Improved" <?php if (isset($_POST['condition']) && $_POST['condition'] == 'Improved')
                                 echo ' selected="selected"'; ?>>
                                 Improved</option>
