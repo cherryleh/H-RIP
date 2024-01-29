@@ -202,17 +202,17 @@ for i in legacyYears:
 csv = pd.read_csv(f'./ranch_rf/legacy/RID{r:03d}_rf.csv',index_col=[0])
 for i in newYears:
     for j in months:
-        with rasterio.open(f"./rainmaps/new/{i}_{j:02d}_statewide_rf_mm_v1.tif") as src:
+        with rasterio.open(f"./rainmaps/1990-2019/{i}_{j:02d}_statewide_rf_mm_v1.tif") as src:
             affine = src.transform
             array = src.read(1)
             df_zonal_stats = pd.DataFrame(zonal_stats(ranchshp, array, affine=affine,nodata=-3.3999999521443642e+38,stats = ['mean']))
         RF= df_zonal_stats['mean'].iloc[0]
         csv = csv.append({'Year':i,'Month':j,'RF_mm':RF,'RF_in':RF/25.4},ignore_index=True)
-        csv.to_csv(f'./ranch_rf/new/RID{r:03d}_rf.csv')
+        csv.to_csv(f'./ranch_rf/1990-2019/RID{r:03d}_rf.csv')
 
 #2020-now
 
-csv = pd.read_csv(f'./ranch_rf/new/RID{r:03d}_rf.csv',index_col=[0])
+csv = pd.read_csv(f'./ranch_rf/1990-2019/RID{r:03d}_rf.csv',index_col=[0])
 for i in recentYears:
     for j in months:
         if int(i) == int(thisYear) and int(j)>(int(thisMonth)-1):
