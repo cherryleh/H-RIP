@@ -862,7 +862,7 @@
 
                     </div>
                     <div style="text-align: center; padding-top: 10px;">
-                        <p>Daily Mean Temperature</p>
+                        <p>Daily Average Temperature</p>
                         <p style="font-style:italic; color: #696969;">
                             <?php echo $date_t ?>
                         </p>

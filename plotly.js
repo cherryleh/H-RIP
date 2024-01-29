@@ -46,22 +46,22 @@ var selectorOptions = {
 
 //Multi = stacked bar+line graph, Single = historical, one-line time series
 function makeplot() {
-  Plotly.d3.csv(url1, function (data) { processData(data, 'trace1', 'Month', 'RF', 'RF-div', 'multi') });
-  Plotly.d3.csv(url2, function (data) { processData(data, 'trace2', 'Month', 'RF', 'RF-div', 'multi') });
-  Plotly.d3.csv(url3, function (data) { processData(data, 'trace3', 'Month', 'NDVI', 'NDVI-div', 'multi') });
-  Plotly.d3.csv(url4, function (data) { processData(data, 'trace4', 'Month', 'NDVI', 'NDVI-div', 'multi') });
-  Plotly.d3.csv(url7, function (data) { processData(data, 'trace5', 'Month', 'ET', 'ET-div', 'multi') });
-  Plotly.d3.csv(url8, function (data) { processData(data, 'trace6', 'Month', 'ET', 'ET-div', 'multi') });
-  Plotly.d3.csv(url5, function (data) { processData(data, 'trace7', 'datetime', 'ET', 'ET-hist', 'single') });
-  Plotly.d3.csv(url6, function (data) { processData(data, 'trace8', 'datetime', 'NDVI', 'NDVI-hist', 'single') });
-  Plotly.d3.csv(url9, function (data) { processData(data, 'trace9', 'datetime', 'RF_in', 'RF-hist', 'single') });
-  Plotly.d3.csv(url11, function (data) { processData(data, 'trace11', 'Month', 'Temp', 'temp-div', 'multi') });
-  Plotly.d3.csv(url12, function (data) { processData(data, 'trace12', 'Month', 'Temp', 'temp-div', 'multi') });
-  Plotly.d3.csv(url13, function (data) { processData(data, 'trace13', 'datetime', 'SPI-3', 'SPI-12m', 'etc') });
-  Plotly.d3.csv(url13, function (data) { processData(data, 'trace10', 'datetime', 'SPI-3', 'SPI-div', 'single') });
+  Plotly.d3.csv(url1, function (data) { processData(data, 'trace1', 'Month', 'RF', 'RF-div', 'multi', 'Rainfall (mm)') });
+  Plotly.d3.csv(url2, function (data) { processData(data, 'trace2', 'Month', 'RF', 'RF-div', 'multi', 'Rainfall (mm)') });
+  Plotly.d3.csv(url3, function (data) { processData(data, 'trace3', 'Month', 'NDVI', 'NDVI-div', 'multi', 'NDVI') });
+  Plotly.d3.csv(url4, function (data) { processData(data, 'trace4', 'Month', 'NDVI', 'NDVI-div', 'multi', 'NDVI') });
+  Plotly.d3.csv(url7, function (data) { processData(data, 'trace5', 'Month', 'ET', 'ET-div', 'multi', 'Evapotranspiration (mm/day)') });
+  Plotly.d3.csv(url8, function (data) { processData(data, 'trace6', 'Month', 'ET', 'ET-div', 'multi','Evapotranspiration (mm/day)') });
+  Plotly.d3.csv(url5, function (data) { processData(data, 'trace7', 'datetime', 'ET', 'ET-hist', 'single','Evapotranspiration (mm/day)') });
+  Plotly.d3.csv(url6, function (data) { processData(data, 'trace8', 'datetime', 'NDVI', 'NDVI-hist', 'single', 'NDVI') });
+  Plotly.d3.csv(url9, function (data) { processData(data, 'trace9', 'datetime', 'RF_in', 'RF-hist', 'single','Rainfall (mm)') });
+  Plotly.d3.csv(url11, function (data) { processData(data, 'trace11', 'Month', 'Temp', 'temp-div', 'multi','Temperature (F)') });
+  Plotly.d3.csv(url12, function (data) { processData(data, 'trace12', 'Month', 'Temp', 'temp-div', 'multi','Temperature (F)') });
+  Plotly.d3.csv(url13, function (data) { processData(data, 'trace13', 'datetime', 'SPI-3', 'SPI-12m', 'etc','SPI') });
+  Plotly.d3.csv(url13, function (data) { processData(data, 'trace10', 'datetime', 'SPI-3', 'SPI-div', 'single','SPI') });
 };
 //Process CSV
-function processData(allRows, traceName, xFieldName, yFieldName, divName, mode) {
+function processData(allRows, traceName, xFieldName, yFieldName, divName, mode, label) {
   let x = [];
   let y = [];
 
@@ -86,7 +86,7 @@ function processData(allRows, traceName, xFieldName, yFieldName, divName, mode) 
 
 
   if (mode == 'single') {
-    makeSinglePlot(x, y, traceName, divName)
+    makeSinglePlot(x, y, traceName, divName, label)
 
   } else if (mode == 'multi' && yFieldName == 'RF') {
     traces_RF[traceName].x = x;
@@ -132,7 +132,7 @@ function processData(allRows, traceName, xFieldName, yFieldName, divName, mode) 
 
 }
 
-function makeSinglePlot(x, y, yTraceName, divName) {
+function makeSinglePlot(x, y, yTraceName, divName, label) {
   var traces = [{
     x: x,
     y: y,
@@ -152,7 +152,7 @@ function makeSinglePlot(x, y, yTraceName, divName) {
       side: 'right'
     },
     margin: {
-      l: 30,
+      l: 50,
       r: 30,
       b: 50,
       t: 50,
@@ -160,7 +160,11 @@ function makeSinglePlot(x, y, yTraceName, divName) {
     },
     yaxis: {
       fixedrange: true,
-      side: 'left'
+      side: 'left',
+      title: {
+          text: label,
+      }
+
     },
     showlegend: false,
 
@@ -179,7 +183,7 @@ function makeNDVIPlotly(trace, divName) {
       range: [0, 0.95]
     },
     margin: {
-      l: 30,
+      l: 50,
       r: 30,
       b: 50,
       t: 50,
@@ -191,6 +195,11 @@ function makeNDVIPlotly(trace, divName) {
       y: 1.02,
       xanchor: "right",
       x: 1
+    },
+    yaxis: {
+      title: {
+        text: 'NDVI',
+      }
     }
   };
 
@@ -206,7 +215,7 @@ function makeRFPlotly(trace, divName) {
   var layout = {
 
     margin: {
-      l: 30,
+      l: 50,
       r: 30,
       b: 50,
       t: 50,
@@ -218,6 +227,11 @@ function makeRFPlotly(trace, divName) {
       y: 1.02,
       xanchor: "right",
       x: 1
+    },
+    yaxis: {
+      title: {
+        text: 'Rainfall (in.)',
+      }
     }
   };
 
@@ -233,7 +247,7 @@ function makeETPlotly(trace, divName) {
   var layout = {
 
     margin: {
-      l: 30,
+      l: 50,
       r: 30,
       b: 50,
       t: 30,
@@ -245,6 +259,11 @@ function makeETPlotly(trace, divName) {
       y: 1.02,
       xanchor: "right",
       x: 1
+    },
+    yaxis: {
+      title: {
+        text: 'Evapotranspiration (mm/day)',
+      }
     }
   };
 
@@ -263,7 +282,7 @@ function makeTempPlotly(trace, divName) {
     },
 
     margin: {
-      l: 30,
+      l: 50,
       r: 30,
       b: 50,
       t: 30,
@@ -275,6 +294,11 @@ function makeTempPlotly(trace, divName) {
       y: 1.02,
       xanchor: "right",
       x: 1
+    },
+    yaxis: {
+      title: {
+        text: 'Average Temperature (F)',
+      }
     }
   };
 

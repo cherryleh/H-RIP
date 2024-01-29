@@ -17,6 +17,10 @@ body {
 
 }
 
+.footercontent{
+    padding-bottom: 20px;
+}
+
 .footercontent a {
     width: 100%;
     height: 30%;
@@ -54,3 +58,11 @@ p{
     margin-bottom: 0;
 }
 
+#email{
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+#email:hover {
+    color:blue;
+}
