@@ -484,7 +484,7 @@
                                     </p>
                                     <br>
 
-                                    <p style="font-size:0.8em"> X total dry days </p>
+                                    <p style="font-size:0.8em"> TBD total dry days </p>
                                 </div>
                             </div>
 

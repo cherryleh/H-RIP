@@ -1,5 +1,5 @@
 <?php
-$RID = "RID003";
+$RID = "RID073";
 $file_ndvi = file('./RID/' . $RID . '/' . $RID . '_ndvi.csv');
 if (!empty($file_ndvi)) {
     $fields_ndvi = str_getcsv($file_ndvi[count($file_ndvi) - 1]); // Parse csv string into an array, get fields from last line
@@ -39,5 +39,5 @@ if ($ndvi >= $avg_ndvi) {
 }
 
 $dif_ndvi = sprintf("%+.2f", ($ndvi - $avg_ndvi), 2);
-echo $ndvi;
+echo $avg_ndvi;
 ?>
