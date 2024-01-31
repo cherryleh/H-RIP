@@ -824,7 +824,7 @@
                         </p>
 
                     </div>
-                    <div> 14 consec. dry days</div>
+                    <div> X consec. dry days</div>
                     <div style="text-align: center;margin-top:2%;">
                         
                         <p style="font-style:italic; color: #696969">

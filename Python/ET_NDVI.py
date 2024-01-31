@@ -252,12 +252,12 @@ def ndvi_12m(arr):
     ndvi12m = ndvi12m.tail(12)
     return ndvi12m
 
-for r in np.arange(1,77):
+for r in ranches:
     ndvi = pd.read_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi.csv',index_col=0)
     a = int(ndvi['Month'].iloc[-1])
     ndvidf=ndvi_avg(ndvi)
-    ndvidf=ndvidf.drop(['Year'],axis=1)
     ndvi12m=ndvi_12m(ndvi)
+    ndvidf=ndvidf.drop(['Year'],axis=1)
     ndvi12m=ndvi12m.drop(['Year','datetime'],axis=1)
     ndvidf.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi_month.csv') 
     ndvi12m.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi_12m.csv')
