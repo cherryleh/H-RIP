@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
-
-
 import requests
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
@@ -41,10 +38,6 @@ for path in os.listdir(dir_path):
     if os.path.isdir(os.path.join(dir_path, path)):
         count += 1
 
-
-# In[6]:
-
-
 #datetime variables
 lastMonth = (datetime.today() + relativedelta(months=-1)).strftime("%m")
 lastMonthYr = (datetime.today() + relativedelta(months=-1)).strftime("%Y")
@@ -81,7 +74,7 @@ for r in np.arange(1, count):
     plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_rf.png',bbox_inches="tight")
     plt.show()
 
-with rasterio.open('./temp_monthly_maps/mean/'+lastMonthYr+'_'+lastMonth+'_t_month_mean.tif') as src:
+with rasterio.open('./temp_monthly_maps/mean/t_month_mean_'+lastMonthYr+'_'+lastMonth+'.tif') as src:
     temp_c = src.read(1, masked=True)
     temp = (temp_c * 9/5) + 32
     noData = src.nodata
