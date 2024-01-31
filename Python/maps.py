@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 #import cartopy.crs as ccrs
 import pandas as pd
 import numpy as np
+import calendar
 
 import os
 #os.environ["PROJ_LIB"]="/Users/cherryleheu/opt/anaconda3/pkgs/proj-8.0.1-h1512c50_0/share/proj/"
@@ -139,12 +140,8 @@ for r in np.arange(1, count):
     cbar = fig.colorbar(im,ax=ax)
     cbar.ax.tick_params(labelsize=20) 
     monthName = calendar.month_name[int(lastMonth)]
-    plt.title(f'Average Evapotranspiration (mm/day) - {monthName}, {lastMonthYr}')
+    plt.title(f'Average Evapotranspiration (mm/day) - {monthName}, {int(lastMonthYr)}')
     plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_et.png',bbox_inches="tight")
-
-
-# In[12]:
-
 
 #datetime variables
 ndvi= pd.read_csv(f"../RID/RID001/RID001_ndvi.csv", index_col=0)
@@ -179,5 +176,5 @@ for r in np.arange(1, count):
     cbar = fig.colorbar(im,ax=ax)
     cbar.ax.tick_params(labelsize=20) 
     monthName = calendar.month_name[int(lastMonth)]
-    plt.title(f'Average NDVI - {monthName}, {lastMonthYr}')
+    plt.title(f'Average NDVI - {monthName}, {int(lastMonthYr)}')
     plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_ndvi.png',bbox_inches="tight")
