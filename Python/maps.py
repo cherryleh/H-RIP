@@ -17,6 +17,7 @@ import os
 
 #os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
 os.chdir('./Python')
+
 coastline = gpd.read_file('./shapefiles/Coastline.shp')
 coastline = coastline.to_crs("epsg:4326")
 ranches = gpd.read_file('./shapefiles/RID.shp')
@@ -27,8 +28,6 @@ island_lats = {'BI': {'xlim': [-156.1, -154.8], 'ylim': [18.9, 20.3]}, 'MA':{'xl
               'KO':{'xlim': [-156.71,-156.52], 'ylim': [20.49, 20.61]}, 'LA':{'xlim': [-157.08,-156.8], 'ylim': [20.7, 20.95]}, 
               'MO':{'xlim': [-157.32,-156.7], 'ylim': [21.03, 21.23]}, } 
 
-
-# In[5]:
 
 
 #Get the number of ranches in HRIP
@@ -53,8 +52,6 @@ with rasterio.open('./rainmaps/2020-/rainfall_'+lastMonthYr+'_'+lastMonth+'.tif'
 rf = rasterio.open('output_raster_rf.tif',noData=noData)
 
 
-# In[7]:
-
 
 for r in np.arange(1, count):
     y = ranches[ranches.Polygon == f"RID{r:03d}"]
@@ -71,8 +68,10 @@ for r in np.arange(1, count):
     im=raster.get_images()[0]
     cbar = fig.colorbar(im,ax=ax)
     cbar.ax.tick_params(labelsize=20) 
+    monthName = calendar.month_name[int(lastMonth)]
+    plt.title(f'Average Rainfall (in.) - {monthName}, {lastMonthYr}')
     plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_rf.png',bbox_inches="tight")
-    plt.show()
+
 
 with rasterio.open('./temp_monthly_maps/mean/t_month_mean_'+lastMonthYr+'_'+lastMonth+'.tif') as src:
     temp_c = src.read(1, masked=True)
@@ -98,8 +97,9 @@ for r in np.arange(1, count):
     im=raster.get_images()[0]
     cbar = fig.colorbar(im,ax=ax)
     cbar.ax.tick_params(labelsize=20) 
+    monthName = calendar.month_name[int(lastMonth)]
+    plt.title(f'Average Temperature (C) - {monthName}, {lastMonthYr}')
     plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_temp.png',bbox_inches="tight")
-    plt.show()
 
 et = pd.read_csv(f"../RID/RID001/RID001_et.csv", index_col=0)
 lastMonth = et['Month'].iloc[-1]
@@ -138,8 +138,9 @@ for r in np.arange(1, count):
     im=raster.get_images()[0]
     cbar = fig.colorbar(im,ax=ax)
     cbar.ax.tick_params(labelsize=20) 
+    monthName = calendar.month_name[int(lastMonth)]
+    plt.title(f'Average Evapotranspiration (mm/day) - {monthName}, {lastMonthYr}')
     plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_et.png',bbox_inches="tight")
-    plt.show()
 
 
 # In[12]:
@@ -159,10 +160,6 @@ with rasterio.open(url) as src:
     
 ndvi = rasterio.open('output_raster_ndvi.tif',noData=noData) 
 
-
-# In[13]:
-
-
 vmin = 0
 vmax = 1
 
@@ -181,12 +178,6 @@ for r in np.arange(1, count):
     im=raster.get_images()[0]
     cbar = fig.colorbar(im,ax=ax)
     cbar.ax.tick_params(labelsize=20) 
+    monthName = calendar.month_name[int(lastMonth)]
+    plt.title(f'Average NDVI - {monthName}, {lastMonthYr}')
     plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_ndvi.png',bbox_inches="tight")
-    plt.show()
-
-
-# In[ ]:
-
-
-
-
