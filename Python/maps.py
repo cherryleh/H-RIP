@@ -43,7 +43,7 @@ lastMonth = (datetime.today() + relativedelta(months=-1)).strftime("%m")
 lastMonthYr = (datetime.today() + relativedelta(months=-1)).strftime("%Y")
 
 
-with rasterio.open('./rainmaps/2020-/rainfall_'+lastMonthYr+'_'+lastMonth+'.tif') as src:
+with rasterio.open('./rain_monthly_maps/2020-/rainfall_'+lastMonthYr+'_'+lastMonth+'.tif') as src:
     rf_mm = src.read(1, masked=True)
     rf_in = rf_mm/25.4
     noData = src.nodata
@@ -54,7 +54,7 @@ rf = rasterio.open('output_raster_rf.tif',noData=noData)
 
 
 
-for r in np.arange(1, count):
+for r in np.arange(1, count+1):
     y = ranches[ranches.Polygon == f"RID{r:03d}"]
     island = y['IS'].values[0]
     fig, ax = plt.subplots(figsize=(15, 10), dpi=80)
@@ -83,7 +83,7 @@ with rasterio.open('./temp_monthly_maps/mean/t_month_mean_'+lastMonthYr+'_'+last
         
 temp = rasterio.open('output_raster_temp.tif',noData=noData)
 
-for r in np.arange(1, count):
+for r in np.arange(1, count+1):
     y = ranches[ranches.Polygon == f"RID{r:03d}"]
     island = y['IS'].values[0]
     fig, ax = plt.subplots(figsize=(15, 10), dpi=80)
@@ -99,7 +99,7 @@ for r in np.arange(1, count):
     cbar = fig.colorbar(im,ax=ax)
     cbar.ax.tick_params(labelsize=20) 
     monthName = calendar.month_name[int(lastMonth)]
-    plt.title(f'Average Temperature (C) - {monthName}, {lastMonthYr}')
+    plt.title(f'Average Temperature (F) - {monthName}, {lastMonthYr}')
     plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_temp.png',bbox_inches="tight")
 
 et = pd.read_csv(f"../RID/RID001/RID001_et.csv", index_col=0)
@@ -123,7 +123,7 @@ et = rasterio.open('output_raster_et.tif',noData=noData)
 vmin = 0  
 vmax = 5
 
-for r in np.arange(1, count):
+for r in np.arange(1, count+1):
     print(f"RID{r:03d}")
     y = ranches[ranches.Polygon == f"RID{r:03d}"]
     island = y['IS'].values[0]
@@ -160,7 +160,7 @@ ndvi = rasterio.open('output_raster_ndvi.tif',noData=noData)
 vmin = 0
 vmax = 1
 
-for r in np.arange(1, count):
+for r in np.arange(1, count+1):
     y = ranches[ranches.Polygon == f"RID{r:03d}"]
     island = y['IS'].values[0]
     fig, ax = plt.subplots(figsize=(15, 10), dpi=80)

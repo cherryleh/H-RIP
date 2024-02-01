@@ -277,10 +277,6 @@ function makeTempPlotly(trace, divName) {
   var data = [trace];
 
   var layout = {
-    yaxis: {
-      range: [50, 85]
-    },
-
     margin: {
       l: 50,
       r: 30,
@@ -298,7 +294,8 @@ function makeTempPlotly(trace, divName) {
     yaxis: {
       title: {
         text: 'Average Temperature (F)',
-      }
+      },
+      range: [50, 85]
     }
   };
 
