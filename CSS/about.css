@@ -1,0 +1,17 @@
+.parent {
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 2rem 2rem;
+    text-align: center;
+}
+
+.about-video {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.about-video h2{
+    text-align: center;
+}
