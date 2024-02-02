@@ -142,7 +142,7 @@ for r in ranches:
     for date in dates_et:
         i = int(date[0:4])
         j = int(date[5:7])
-        with rasterio.open(f'./ETmaps/{i}_{j:02d}_ET.tif') as src:
+        with rasterio.open(f'./ETmaps/{i}_{j:02d}_et.tif') as src:
             affine = src.transform
             array = src.read(1)
             nodata = src.nodata
