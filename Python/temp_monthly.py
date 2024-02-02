@@ -6,6 +6,7 @@ from rasterstats import zonal_stats
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import requests
+import calendar
 
 import os
 #os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
