@@ -66,7 +66,7 @@ def temp_avg(arr):
 
 def temp_12m(arr):
     tdf12m = arr
-    tdf12m['Month'] = t.tail(12)['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x])
+    tdf12m['Month'] = tdf12m.tail(12)['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x])
     tdf12m = arr.tail(12)
     return tdf12m
 
