@@ -202,7 +202,7 @@ for date in dates_ndvi:
     open(f'./NDVImaps/{i}_{j:02d}_ndvi.zip', 'wb').write(r.content)
     with ZipFile(f'./NDVImaps/{i}_{j:02d}_ndvi.zip','r') as zipObj:
        zipObj.extractall('./NDVImaps')
-    old_hi = './NDVImaps/download.ndvi.tif'
+    old_hi = './NDVImaps/download.NDVI.tif'
     new_hi = f'./NDVImaps/{i}_{j:02d}_ndvi.tif'
     os.rename(old_hi, new_hi)
 
