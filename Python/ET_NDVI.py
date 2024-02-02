@@ -22,13 +22,13 @@ from calendar import monthrange
 import calendar
 import requests
 from zipfile import ZipFile
-from tqdm.notebook import trange, tqdm
 from datetime import datetime
 from dateutil.relativedelta import *
 import pandas as pd
 import geopandas as gpd
 import rasterio
 from rasterstats import zonal_stats
+
 
 #Geometric points 
 hi = ee.Geometry.Polygon( [[-160.53524634027852,18.677598565033925],
