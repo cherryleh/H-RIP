@@ -21,6 +21,9 @@ for path in os.listdir(dir_path):
 lastMonth = (datetime.today() + relativedelta(months=-1)).strftime("%m")
 lastMonthYr = (datetime.today() + relativedelta(months=-1)).strftime("%Y")
 
+datem = datetime.today().strftime("%m")
+monthInd = -int(datem)+1
+
 #Mean temperature download
 url = 'https://ikeauth.its.hawaii.edu/files/v2/download/public/system/ikewai-annotated-data/HCDP/production/temperature/mean/month/statewide/data_map/'+lastMonthYr+'/temperature_mean_month_statewide_data_map_'+lastMonthYr+'_'+lastMonth+'.tif'
 

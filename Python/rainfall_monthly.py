@@ -71,9 +71,9 @@ for r in ranches:
 import calendar
 
 #get today's date
-now = datetime.now()
+'''now = datetime.now()
 today = now.strftime("%Y-%m-%d") 
-thisMonth = now.strftime("%Y-%m")
+thisMonth = now.strftime("%Y-%m")'''
 
 datem = datetime.today().strftime("%m")
 monthInd = -int(datem)+1
