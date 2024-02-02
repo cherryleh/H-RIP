@@ -121,8 +121,8 @@ for date in dates_et:
            zipObj.extractall('./ETmaps')
         old_hi = './ETmaps/download.et.tif'
         new_hi = f'./ETmaps/{i}_{j:02d}_et.tif'
+        print(os.getcwd())
         os.rename(old_hi, new_hi)
-        print(new_hi)
     else:
         break
 
