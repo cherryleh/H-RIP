@@ -18,7 +18,7 @@ lastMonth = (datetime.today() + relativedelta(months=-1)).strftime("%m")
 lastMonthYr = (datetime.today() + relativedelta(months=-1)).strftime("%Y")
 import os
 #os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
-os.chdir('./Python')
+#os.chdir('./Python')
 path = os.getcwd()
 
 
