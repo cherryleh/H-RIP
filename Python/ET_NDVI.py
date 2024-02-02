@@ -7,7 +7,7 @@
 import os
 #Directory here
 #os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
-os.chdir('./Python')
+#os.chdir('./Python')
 
 #Cherryle's Google Earth Engine Service Account
 import ee

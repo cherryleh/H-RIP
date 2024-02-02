@@ -8,7 +8,7 @@ from dateutil.relativedelta import relativedelta
 import requests
 
 import os
-os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
+#os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
 
 #Get the number of ranches in HRIP
 dir_path = '../RID'

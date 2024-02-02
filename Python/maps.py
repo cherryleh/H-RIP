@@ -17,7 +17,7 @@ import os
 #os.environ["PROJ_LIB"]="/Users/cherryleheu/opt/anaconda3/pkgs/proj-8.0.1-h1512c50_0/share/proj/"
 
 #os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
-os.chdir('./Python')
+#os.chdir('./Python')
 
 coastline = gpd.read_file('./shapefiles/Coastline.shp')
 coastline = coastline.to_crs("epsg:4326")

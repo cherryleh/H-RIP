@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from numpy import radians, cos, sin, pi
 import os
 #os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
-os.chdir('./Python')
+#os.chdir('./Python')
 import sys
 from subprocess import run
 from PIL import Image, ImageFont, ImageDraw 
