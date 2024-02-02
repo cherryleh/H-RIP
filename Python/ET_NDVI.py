@@ -119,7 +119,7 @@ for date in dates_et:
     if os.path.isfile(f'./ETmaps/{i}_{j:02d}_et.zip') == True:
         with ZipFile(f'./ETmaps/{i}_{j:02d}_et.zip','r') as zipObj:
            zipObj.extractall('./ETmaps')
-        old_hi = './ETmaps/download.et.tif'
+        old_hi = './ETmaps/download.ET.tif'
         new_hi = f'./ETmaps/{i}_{j:02d}_et.tif'
         print(os.getcwd())
         os.rename(old_hi, new_hi)
