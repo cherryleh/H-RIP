@@ -27,7 +27,7 @@ url = 'https://ikeauth.its.hawaii.edu/files/v2/download/public/system/ikewai-ann
 #https:/ikeauth.its.hawaii.edu/files/v2/download/public/system/ikewai-annotated-data/HCDP/production/rainfall/new/month/statewide/data_map/2022/rainfall_new_month_statewide_data_map_2022_03.tif --output-file rf-wget.tif
 
 r = requests.get(url)
-file=f"./rainmaps/2020-/rainfall_{lastMonthYr}_{lastMonth}.tif"
+file=f"./rain_monthly_maps/2020-/rainfall_{lastMonthYr}_{lastMonth}.tif"
 open(file, 'wb').write(r.content)
 
 #Get the number of ranches in HRIP
