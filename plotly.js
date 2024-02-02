@@ -58,7 +58,7 @@ function makeplot() {
   Plotly.d3.csv(url11, function (data) { processData(data, 'trace11', 'Month', 'Temp', 'temp-div', 'multi','Temperature (F)') });
   Plotly.d3.csv(url12, function (data) { processData(data, 'trace12', 'Month', 'Temp', 'temp-div', 'multi','Temperature (F)') });
   Plotly.d3.csv(url13, function (data) { processData(data, 'trace13', 'datetime', 'SPI-3', 'SPI-12m', 'etc','SPI') });
-  Plotly.d3.csv(url13, function (data) { processData(data, 'trace10', 'datetime', 'SPI-3', 'SPI-div', 'single','SPI') });
+  Plotly.d3.csv(url13, function (data) { processData(data, 'trace10', 'datetime', 'SPI-3', 'SPI-div', 'single','Drought Index (SPI-3)') });
 };
 //Process CSV
 function processData(allRows, traceName, xFieldName, yFieldName, divName, mode, label) {
@@ -314,7 +314,7 @@ function makeSPIPlotly(trace, divName) {
     },
     yaxis: {
       fixedrange: true,
-      side: 'right'
+      side: 'right',
     },
     margin: {
       l: 30,

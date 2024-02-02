@@ -393,7 +393,7 @@
             <div id="ranchname">
                 <?php echo $RID ?> - Ranch Page
             </div>
-
+            <div class="subtitleB" style="padding-top: 5px">Dashboard</div>
             <div id="dashboard" class="card-margin">
                 <div class="dashboardCard" id="rain">
                     <div class="box-left">
@@ -773,7 +773,8 @@
                 </div>
 
                 <div class="anchor" id="rf"></div>
-            <div class="name">
+                <p class="subtitleB">Average Climate Conditions</p>
+                <div class="name">
                 <p>Rainfall</p>
             </div>
             <div class="main_cards card-margin">
