@@ -10,7 +10,7 @@ import calendar
 
 import os
 #os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
-
+os.chdir('./Python')
 #Get the number of ranches in HRIP
 dir_path = '../RID'
 count = 0
