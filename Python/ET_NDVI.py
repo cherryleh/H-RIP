@@ -14,7 +14,7 @@ import ee
 service_account = 'my-service-account@...gserviceaccount.com'
 
 #GEE CREDENTIALS GO HERE
-credentials = ee.ServiceAccountCredentials(service_account, '/keys/cheu-361201-8e8573aa9c7a.json')
+credentials = ee.ServiceAccountCredentials(service_account, '../keys/cheu-361201-8e8573aa9c7a.json')
 ee.Initialize(credentials)
 
 import numpy as np
