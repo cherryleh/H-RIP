@@ -1,0 +1,6 @@
+HOME=/home/cherryle
+LOGNAME=cherryle
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+LANG=C.UTF-8
+SHELL=/bin/sh
+PWD=/home/cherryle
