@@ -119,8 +119,8 @@ for r in np.arange(1,count):
     ax.set_xlabel('')
     ax.set_ylabel('Rainfall (in)')
 
-    text = f"Mean                                     {mean:.2f} in\n{title} Mean             {p_mean:.2f} in\n{title} Minimum       {p_min:.2f} in"
-    plt.text(0.73, 0.74, text, fontsize=10, transform=plt.gcf().transFigure,
+    text = f"{thisMonth}\nMean                                     {mean:.2f} in\n{title} Mean             {p_mean:.2f} in\n{title} Minimum       {p_min:.2f} in"
+    plt.text(0.73, 0.72, text, fontsize=10, transform=plt.gcf().transFigure,
             bbox={'facecolor': 'white', 'alpha': 0.5})
 
     # Use tight_layout to ensure the plot is fully visible
