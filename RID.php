@@ -893,7 +893,7 @@
                 <p>Evapotranspiration</p>
             </div>
             <div class="et_cards card-margin">
-                <div class="card1" id="ET-div" style="height: "></div>
+                <div class="card1" id="ET-div"></div>
                 <div class="card1 center">
                     <div class="value">
                         <?php echo $et ?> mm/day
