@@ -170,6 +170,7 @@ function makeSinglePlot(x, y, yTraceName, divName, label) {
 
 
   };
+
   var config = { responsive: true };
 
   Plotly.newPlot(divName, traces, layout, config);
@@ -204,8 +205,6 @@ function makeNDVIPlotly(trace, divName) {
   };
 
   var config = { responsive: true };
-
-
   Plotly.plot(divName, data, layout, config);
 }
 

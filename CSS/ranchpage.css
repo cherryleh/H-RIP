@@ -362,7 +362,6 @@ aside {
 
 .card1 {
     padding: 20px;
-    /*border: 1px solid black;*/
     box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);
     border-radius: 5px;
     background-color: #fff;
@@ -457,4 +456,25 @@ aside {
 .shadow{
     box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%); 
     border-radius: 5px;
+}
+
+
+@media (max-width: 768px) {
+    .et_cards {
+        width: 100%;
+          margin: 0 auto;
+          display: grid;
+          gap: 1rem;
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr;
+          grid-template-areas:
+          'card4'
+          'card2'
+          'card3'
+          'card1';
+      }
+    .card1 {
+
+    }
+  
 }
