@@ -17,6 +17,9 @@ html {
     align-items: stretch;
 }
 
+.siteName{
+    font-size: 3em;
+}
 
 .drought {
     width: 50%;
@@ -93,6 +96,11 @@ html {
     margin-right: 0;
     margin-top: auto;
     margin-bottom: auto;
+    
+}
+
+#windy iframe{
+    display: block; border-style:none;box-shadow:0px 4px 8px 0px rgba(0,0,0,0.2);
 }
 
 #nodataHI img {
@@ -146,6 +154,7 @@ body {
 
 
 .imgtext {
+    width:  60%;
     position: absolute;
     top: 30%;
     left: 50%;
@@ -205,7 +214,44 @@ body {
     color: blue;
 }
 
+#droughtMonitor img{
+    width: 50%; 
+    height: auto; 
+    border: 2px solid; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*Leaflet*/
+#mapDIV {
+    height: 400px;
+    width: 40%;
+    border: solid 1px black;
+    margin: 10px auto 10px auto;
+    z-index: 0;
+}
+
+.leaflet-popup-content {
+    text-align: center;
+    font-size: 18px;
+}
+
 @media (max-width: 768px) {
+    #mapDIV {
+        height: 200px;
+        width: 90%
+    }
+    .imgtext{
+        top:20%;
+    }
+    .siteName{
+        font-size: 1.5em;
+    }
+    .mobile-hide{
+        display: none !important;
+    }
+
+    .headerimg img {
+        height:30vh;
+    }
     .flex-container {
         display: block;
     }
@@ -213,7 +259,12 @@ body {
     #windy {
         margin-left: auto;
         margin-right: auto;
-        width: 70%;
+        width: 90%;
+        height:200px;
+    }
+
+    #droughtMonitor img {
+        width: 90%
     }
 
     #droughtMonitor.flex-child {
@@ -228,20 +279,13 @@ body {
     }
 
     #oni img {
-        width: 70% !important;
+        width: 90% !important;
     }
-}
 
-/*Leaflet*/
-#mapDIV {
-    height: 500px;
-    width: 700px;
-    border: solid 1px black;
-    margin: 10px auto 10px auto;
-    z-index: 0;
-}
-
-.leaflet-popup-content {
-    text-align: center;
-    font-size: 18px;
+    #oni .gauge{
+        width: 100%;
+        text-align: center;
+        border:none;
+        box-shadow: none;
+    }
 }
