@@ -70,4 +70,8 @@ form, input, select {
     #toolForm{
         width: 90%;
     }
+    .for-mobile{
+        display: none;
+    }
 }
+
