@@ -100,7 +100,11 @@ html {
 }
 
 #windy iframe{
-    display: block; border-style:none;box-shadow:0px 4px 8px 0px rgba(0,0,0,0.2);
+    display: block; 
+    border-style:none;
+    box-shadow:0px 4px 8px 0px rgba(0,0,0,0.2);
+    width: 50%;
+    height: 300px;
 }
 
 #nodataHI img {
@@ -216,7 +220,7 @@ body {
 
 #droughtMonitor img{
     width: 50%; 
-    height: auto; 
+    height: 300px; 
     border: 2px solid; 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -243,7 +247,7 @@ body {
         top:20%;
     }
     .siteName{
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
     .mobile-hide{
         display: none !important;
