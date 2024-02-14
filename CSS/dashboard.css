@@ -31,6 +31,13 @@ p {
     grid-gap: 20px;
 }
 
+@media (max-width: 768px) {
+    #dashboard{
+        display: none;
+    }
+}
+
+
 .dashboardCard {
     padding: 10px;
     /*border: 1px solid black;*/
