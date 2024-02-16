@@ -28,7 +28,7 @@ monthInd = -int(datem)+1
 url = 'https://ikeauth.its.hawaii.edu/files/v2/download/public/system/ikewai-annotated-data/HCDP/production/temperature/mean/month/statewide/data_map/'+lastMonthYr+'/temperature_mean_month_statewide_data_map_'+lastMonthYr+'_'+lastMonth+'.tif'
 
 r = requests.get(url)
-file=f"./temp_monthly_maps/mean/{lastMonthYr}_{lastMonth}_t_month_mean.tif"
+file=f"./temp_monthly_maps/mean/t_month_mean_{lastMonthYr}_{lastMonth}_.tif"
 open(file, 'wb').write(r.content)
 
 dir_path = '../RID'
@@ -84,7 +84,7 @@ for r in ranches:
 url = 'https://ikeauth.its.hawaii.edu/files/v2/download/public/system/ikewai-annotated-data/HCDP/production/temperature/min/month/statewide/data_map/'+lastMonthYr+'/temperature_min_month_statewide_data_map_'+lastMonthYr+'_'+lastMonth+'.tif'
 
 r = requests.get(url)
-file_min=f"./temp_monthly_maps/min/{lastMonthYr}_{lastMonth}_t_month_min.tif"
+file_min=f"./temp_monthly_maps/min/t_month_min_{lastMonthYr}_{lastMonth}.tif"
 open(file_min, 'wb').write(r.content)
 
 for r in ranches:
@@ -108,7 +108,7 @@ for r in ranches:
 url = 'https://ikeauth.its.hawaii.edu/files/v2/download/public/system/ikewai-annotated-data/HCDP/production/temperature/max/month/statewide/data_map/'+lastMonthYr+'/temperature_max_month_statewide_data_map_'+lastMonthYr+'_'+lastMonth+'.tif'
 
 r = requests.get(url)
-file_max=f"./temp_monthly_maps/max/{lastMonthYr}_{lastMonth}_t_month_max.tif"
+file_max=f"./temp_monthly_maps/max/t_month_max_{lastMonthYr}_{lastMonth}.tif"
 open(file_max, 'wb').write(r.content)
 
 for r in ranches:
