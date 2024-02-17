@@ -79,11 +79,13 @@ def filter(rf_df,mode):
             print("Error")
         return ENSO, title
 
-for r in np.arange(1,count):
+for r in np.arange(1,count+1):
     #table=pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/RID/RID{r:03d}/RID{r:03d}_query.csv",index_col=0)
     table=pd.read_csv(f"../RID/RID{r:03d}/RID{r:03d}_query.csv",index_col=0)
     rf_df=pd.DataFrame({'A' : []})
-    
+    now = datetime.now()
+    thisMonth = (now).strftime("%B")
+
     if a == 11 or a == 12:
         #creates a table that is from March to Feb
         rf_df=table.append(table.loc[:9])
@@ -97,35 +99,36 @@ for r in np.arange(1,count):
     ENSO = filter(rf_df,mode)[0]
     title=filter(rf_df,mode)[1]
     ENSO['MonthName']= ENSO['Month'].astype(np.uint8).apply(lambda x: calendar.month_abbr[x])
-    
+
     #all mean
     mean=ENSO['MRF'].iloc[0]
     #phase mean
     p_mean = ENSO['MeRF'].iloc[0]
     #phase min
     p_min = ENSO['MnRF'].iloc[0]
-    
 
-    # Create a figure and axis with a larger width
-    fig, ax = plt.subplots(figsize=(10, 6))
+    #probability
+    #mean_prob = int(ENSO['A_ProbMe'][0]*100)
+    #p_mean_prob = int(ENSO['E_ProbMe'][0]*100)
+    #p_min_prob = int(ENSO['E_ProbMn'][0]*100)
 
-    # Plot the data
-    line1 = ENSO.plot(ax=ax, x='MonthName', y=['MRF', 'MeRF', 'MnRF'], kind="bar", legend=False, color=['#004c6d', '#6996b3', '#c1e7ff'])
+    fig, ax = plt.subplots(figsize=(12,10))
+    line1 = ENSO.plot(ax=ax,x='MonthName',y=['MRF','MeRF','MnRF'],kind="bar",legend=False,color=['#004c6d','#6996b3','#c1e7ff'])
 
-    # Create a legend for the first line.
-    first_legend = ax.legend(['Mean', '%s Mean'% title, '%s Minimum' % title], fontsize=12, bbox_to_anchor=(1, 1), edgecolor="black",loc="upper left")
+    ax.set_ylabel("Monthly rainfall (inches)",fontsize=20)
+    plt.tick_params(axis='x', labelsize=20)
+    plt.tick_params(axis='y', labelsize=20)
+    first_legend = ax.legend(['Mean', '%s Mean' % title, '%s Minimum'% title],fontsize=20,bbox_to_anchor=(1,1),edgecolor="black", loc='upper left')
 
-    # Set labels and title
-    ax.set_xlabel('')
-    ax.set_ylabel('Rainfall (in)')
 
-    text = f"{thisMonth}\nMean                                     {mean:.2f} in\n{title} Mean             {p_mean:.2f} in\n{title} Minimum       {p_min:.2f} in"
-    plt.text(0.73, 0.72, text, fontsize=10, transform=plt.gcf().transFigure,
-            bbox={'facecolor': 'white', 'alpha': 0.5})
-
-    # Use tight_layout to ensure the plot is fully visible
-    plt.tight_layout()
-    plt.savefig(f"../RID/RID{r:03d}/RID{r:03d}_rainfall.png",bbox_inches="tight")
+    second_legend = ax.legend([f"Mean                                    {mean:.2f} in\n{title} Mean             {p_mean:.2f} in\n{title} Minimum       {p_min:.2f} in"], loc='center left', 
+                            handlelength=0, handletextpad=0,bbox_to_anchor=(1, 0.7), title=f'RID{r:03d} {thisMonth} Rainfall',fontsize=20)
+    second_legend.get_title().set_fontsize('20') 
+    ax.add_artist(first_legend)
+        
+    #ax.add_artist(second_legend)
+    ax.set(xlabel=None)
+    #plt.savefig(f"../RID/RID{r:03d}/RID{r:03d}_rainfall.png",bbox_inches="tight")
     plt.show()
     
 
