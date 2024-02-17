@@ -128,7 +128,7 @@ for r in np.arange(1,count+1):
         
     #ax.add_artist(second_legend)
     ax.set(xlabel=None)
-    #plt.savefig(f"../RID/RID{r:03d}/RID{r:03d}_rainfall.png",bbox_inches="tight")
-    plt.show()
+    plt.savefig(f"../RID/RID{r:03d}/RID{r:03d}_rainfall.png",bbox_inches="tight")
+    #plt.show()
     
 
