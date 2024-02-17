@@ -236,7 +236,7 @@ body {
 
 @media (max-width: 768px) {
     #mapDIV {
-        height: 200px;
+        height: 300px;
         width: 90%
     }
     .imgtext{
