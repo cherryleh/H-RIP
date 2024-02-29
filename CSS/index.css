@@ -223,7 +223,7 @@ body {
 /*Leaflet*/
 #mapDIV {
     height: 500px;
-    width: 40%;
+    width: 50%;
     border: solid 1px black;
     margin: 10px auto 10px auto;
     z-index: 0;
@@ -236,11 +236,11 @@ body {
 
 @media (max-width: 768px) {
     #mapDIV {
-        height: 200px;
+        height: 300px;
         width: 90%
     }
     .imgtext{
-        top:20%;
+        top:25%;
     }
     .siteName{
         font-size: 1.5em;
@@ -250,7 +250,7 @@ body {
     }
 
     .headerimg img {
-        height:30vh;
+        height:40vh;
     }
     .flex-container {
         display: block;
