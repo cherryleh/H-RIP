@@ -6,13 +6,13 @@
 
 import os
 #Directory here
-#os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
+os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
 #os.chdir('./Python')
 
 import ee
 service_account = 'my-service-account@...gserviceaccount.com'
 #Key goes here
-credentials = ee.ServiceAccountCredentials(service_account, '')
+credentials = ee.ServiceAccountCredentials(service_account, '/Users/cherryleheu/Python/cheu-361201-8e8573aa9c7a.json')
 ee.Initialize(credentials)
 
 
@@ -68,6 +68,7 @@ RID088 -155.679116602317	18.9347910168347
 RID089 -155.915857220744	19.5064142062338
 RID090 -155.933211721583	19.5235631522107
 RID091 -155.946759847527	19.5190590350399
+RID094 -155.390944      19.968048
 '''
 
 
@@ -93,8 +94,8 @@ island='BI'
 #lat=dms2dec('''19°45ʻ17.00"N''') # converts to dec
 #lon=dms2dec('''155°52ʻ12.32"W''') # converts to dec
 
-lat = 19.5190590350399
-lon = -155.946759847527
+lat = 19.968048
+lon = -155.390944
 
 
 # In[225]:
