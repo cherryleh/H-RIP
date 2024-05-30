@@ -23,12 +23,8 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="./CSS/form.css">
-    <!--<link rel="stylesheet" type="text/css" href="table.css">-->
     <link rel="stylesheet" type="text/css" href="./CSS/528table.css">
     <link rel="stylesheet" type="text/css" href="./CSS/header.css">
-
-    <!--<link href="bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">-->
-
     <link rel="stylesheet" type="text/css" href="./CSS/dashboard.css">
     <link rel="stylesheet" href="./CSS/ranchpage.css">
     <script src="plotly-2.24.1.min.js" charset="utf-8"></script>
