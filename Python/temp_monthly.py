@@ -28,7 +28,7 @@ monthInd = -int(datem)+1
 url = 'https://ikeauth.its.hawaii.edu/files/v2/download/public/system/ikewai-annotated-data/HCDP/production/temperature/mean/month/statewide/data_map/'+lastMonthYr+'/temperature_mean_month_statewide_data_map_'+lastMonthYr+'_'+lastMonth+'.tif'
 
 r = requests.get(url)
-file=f"./temp_monthly_maps/mean/t_month_mean_{lastMonthYr}_{lastMonth}_.tif"
+file=f"./temp_monthly_maps/mean/t_month_mean_{lastMonthYr}_{lastMonth}.tif"
 open(file, 'wb').write(r.content)
 
 dir_path = '../RID'
