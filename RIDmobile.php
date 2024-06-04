@@ -1,5 +1,4 @@
 <head>
-
     <title>
         <?php echo $_GET["ranch"]; ?> Ranch Page
     </title>

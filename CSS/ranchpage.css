@@ -459,7 +459,7 @@ aside {
 }
 
 .mobile-msg{
-    display: none;
+    display: grid;
 }
 
 @media (max-width: 768px) {
