@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="./CSS/528table.css">
     <link rel="stylesheet" type="text/css" href="./CSS/header.css">
     <link rel="stylesheet" type="text/css" href="./CSS/dashboard.css">
-    <link rel="stylesheet" href="./CSS/ranchpage.css">
+    <link rel="stylesheet" href="./CSS/ranchpagemobile.css">
     <script src="plotly-2.24.1.min.js" charset="utf-8"></script>
 
 
@@ -737,18 +737,18 @@
                 <div id="rainOutlook-content">
                     <p class="subtitleB">Rainfall Outlook</p>
                     <img id="gauge" src="./gauge/gauge.png"
-                        style="width: 30%; display: block; margin-left: auto;margin-right: auto;">
+                        style="width: 100%; display: flex; margin-left: auto; margin-right: auto;">
                     <div id="rainProj">
                         <p style="font-size: 20px">ENSO Almanac: 3-Month Rainfall Outlook</p>
                         <a href="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_rainfall.png"
                             style="color:inherit" target="_blank">
-                            <img class="shadow" style=""
+                            <img class="shadow" style="display: flex; margin-left: auto; margin-right: auto; width: 90%"
                                 src="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_rainfall.png"></a>
                     </div>
                 </div>
                 <div class="anchor" id="tool"></div>
                 <div id="tool-content">
-                    <p class="subtitleB">Forage Production Decision Support Tool</p>
+                    <p class="subtitleB" style="display: flex; margin-left: auto; margin-right: auto;">Forage Production Decision Support Tool</p>
                     <div id="input">
 
                         <form id="toolForm" method="post">
@@ -792,11 +792,11 @@
                     <div class="name">
                         <p>Rainfall</p>
                     </div>
-                    <div class="main_cards card-margin">
-                        <div class="card" id="RF-div"></div>
+                    <div class="card-margin">
+                        <div id="RF-div"></div>
                         <div class="card center">
-                            <div style="line-height:2em;text-align:center">
-                                <span class="value" style="vertical-align:middle;">
+                            <div style="line-height: 2em; text-align:center">
+                                <span class="value" style="vertical-align: middle;">
                                     <?php echo $rf_m ?> in
                                 </span>
                                 <span class="diff" style="color:<?php echo $color_rf_m ?>">
@@ -864,8 +864,8 @@
                     <div class="name">
                         <p>Temperature</p>
                     </div>
-                    <div class="main_cards card-margin">
-                        <div class="card" id="temp-div"></div>
+                    <div class="card-margin">
+                        <div id="temp-div"></div>
                         <div class="card center">
                             <div style="line-height:2em;text-align:center">
                                 <span class="value" style="vertical-align:middle;">
@@ -911,8 +911,8 @@
                     <div class="name">
                         <p>Evapotranspiration</p>
                     </div>
-                    <div class="et_cards card-margin">
-                        <div class="card1" id="ET-div"></div>
+                    <div class="card-margin">
+                        <div id="ET-div"></div>
                         <div class="card1 center">
                             <div class="value">
                                 <?php echo $et ?> mm/day
@@ -957,8 +957,8 @@
                     <div class="name">
                         <p>Normalized Difference Vegetation Index (NDVI)</p>
                     </div>
-                    <div class="et_cards card-margin">
-                        <div class="card1" id="NDVI-div"></div>
+                    <div class="card-margin">
+                        <div id="NDVI-div"></div>
 
                         <div class="card1 center">
                             <div class="value">
