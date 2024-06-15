@@ -793,27 +793,24 @@
                         <p>Rainfall</p>
                     </div>
                     <div class="card-margin">
-                        <div id="RF-div"></div>
-                        <div class="card center">
-                            <div style="line-height: 2em; text-align:center">
-                                <span class="value" style="vertical-align: middle;">
+                        <div style="margin-bottom: 25px;" id="RF-div"></div>
+                        <div style="margin-bottom: 25px;" class="card">
+                            <div style="line-height: 2em; text-align:center;">
+                                <span style="vertical-align: middle;">
                                     <?php echo $rf_m ?> in
                                 </span>
-                                <span class="diff" style="color:<?php echo $color_rf_m ?>">
+                                <span style="color:<?php echo $color_rf_m ?>">
                                     <?php //echo $stat_rf_m;
                                     printf("%+.1f", $dif_m) ?>%
                                     </p>
                                 </span>
                             </div>
 
-                            <div class="status">
-                                <i <?php echo $icon_rf_m ?>></i>
-                                <p style="">
-                                    <?php echo $status_rf_m ?>
-                                </p>
-
+                            <div style="text-align: center;">
+                                <a <?php echo $icon_rf_m ?>></a>
+                                <p style="display:inline-block; vertical-align:middle"> <?php echo $status_rf_m ?> </p>
                             </div>
-                            <div> 29 total dry days</div>
+                            <div style="text-align: center;"> 29 total dry days</div>
                             <div style="text-align: center;margin-top:2%; ">
                                 <p style="font-style:italic; color: #696969">
                                     <?php echo $thisMonth_rf ?>
@@ -821,12 +818,13 @@
                                 <p style="font-size:12px;color: #696969">Monthly Rainfall</p>
                             </div>
                         </div>
-                        <div class="card center">
-                            <div style="line-height:2em;text-align:center">
-                                <span class="value" style="vertical-align:middle;">
+
+                        <div style="margin-bottom: 25px;" class="card">
+                            <div style="line-height:2em; text-align:center;">
+                                <span style="vertical-align:middle;">
                                     <?php echo $rf_d ?> in
                                 </span>
-                                <span class="diff" style="color:<?php echo $color_rf_m ?>">
+                                <span style="color:<?php echo $color_rf_m ?>">
                                     <!--<?php echo $stat_rf_d;
                                     echo $dif_d ?>%-->
                                     <?php echo $dif_d ?>%
@@ -834,14 +832,14 @@
                                     </p>
                                 </span>
                             </div>
-                            <div class="status">
+                            <div style="text-align: center;">
                                 <i <?php echo $icon_rf_m ?>></i>
                                 <p style="display:inline-block; vertical-align:middle">
                                     <?php echo $status_rf_m ?>
                                 </p>
 
                             </div>
-                            <div> X consec. dry days</div>
+                            <div style="text-align:center"> X consec. dry days</div>
                             <div style="text-align: center;margin-top:2%;">
 
                                 <p style="font-style:italic; color: #696969">
@@ -865,32 +863,28 @@
                         <p>Temperature</p>
                     </div>
                     <div class="card-margin">
-                        <div id="temp-div"></div>
-                        <div class="card center">
-                            <div style="line-height:2em;text-align:center">
-                                <span class="value" style="vertical-align:middle;">
-                                    <?php echo $mean_t_d ?>&degF
-                                </span>
-                                <span class="diff">
-                                    <?php echo $dif_t_d ?> &degF
-                                </span>
-                            </div>
-
+                        <div style="margin-bottom: 25px;" id="temp-div"></div>
+                        <div style="margin-bottom: 25px;" class="card">
                             <div class="diff_temp">
 
                             </div>
                             <div style="text-align: center; padding-top: 10px;">
-                                <p>Daily Average Temperature</p>
+                                <p>Daily Average Temperature: </p>
+                                <span style="vertical-align:middle;">
+                                    <?php echo $mean_t_d ?>&degF
+                                </span>
+                                <span>
+                                    <?php echo $dif_t_d ?> &degF
+                                </span>
                                 <p style="font-style:italic; color: #696969;">
                                     <?php echo $date_t ?>
                                 </p>
                             </div>
-
                         </div>
-                        <div class="card center">
-                            <p style="text-align:center"> Max temperature:<br><span style="font-size: 1.5vw">
+                        <div style="margin-bottom: 25px;" class="card">
+                            <p style="text-align:center"> Max temperature: <span>
                                     <?php echo $max_t_d . '&degF'; ?>
-                                </span><br> Min temperature:<br><span style="font-size: 1.5vw">
+                                </span><br> Min temperature: <span>
                                     <?php echo $min_t_d . '&degF'; ?>
                                 </span><br>
                                 <span style="font-style:italic; color: #696969">
@@ -912,14 +906,14 @@
                         <p>Evapotranspiration</p>
                     </div>
                     <div class="card-margin">
-                        <div id="ET-div"></div>
-                        <div class="card1 center">
-                            <div class="value">
+                        <div style="margin-bottom: 25px;" id="ET-div"></div>
+                        <div style="margin-bottom: 25px;" class="card">
+                            <div style="text-align: center;">
                                 <?php echo $et ?> mm/day
                             </div>
-                            <div class="diff_temp">
+                            <div style="text-align: center;">
                                 <p><span <?php echo $style_et . '>' . $dif_et . '%</span> ' . $status_et ?> monthly
-                                        average</p>
+                                        average </p>
                             </div>
                             <div style="text-align: center; margin-top: 2%;">
                                 <p>Monthly Average Evapotranspiration</p>
@@ -929,7 +923,7 @@
                             </div>
                         </div>
 
-                        <div class="card1">
+                        <div style="margin-bottom: 25px;" class="card">
                             <a class="map-img"
                                 href="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_et.png"
                                 style="color:inherit" target="_blank">
@@ -958,13 +952,14 @@
                         <p>Normalized Difference Vegetation Index (NDVI)</p>
                     </div>
                     <div class="card-margin">
-                        <div id="NDVI-div"></div>
+                        <div style="margin-bottom: 25px;" id="NDVI-div"></div>
 
-                        <div class="card1 center">
-                            <div class="value">
+                        <div style="margin-bottom: 25px;" class="card">
+                        
+                            <div style="text-align: center;">
                                 <?php echo $ndvi ?>
                             </div>
-                            <div class="diff_temp">
+                            <div style="text-align: center;">
                                 <p>
                                     <?php echo '<span ' . $style_ndvi . '>' . $dif_ndvi . '</span> ' . $status_ndvi ?>
                                     monthly
@@ -979,14 +974,14 @@
                             </div>
 
                         </div>
-                        <div class="card1">
+                        <div style="margin-bottom: 25px;" class="card">
                             <a class="map-img"
                                 href="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_ndvi.png"
                                 style="color:inherit" target="_blank">
                                 <img style=""
                                     src="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_ndvi.png"></a>
                         </div>
-                        <div class="card1">
+                        <div style="margin-bottom: 25px;" class="card">
                             <p>Normalized Difference Vegetation Index (NDVI) is a widely used vegetation index that
                                 measures the
                                 density of green in a region and is often used to monitor drought, forecast agricultural
