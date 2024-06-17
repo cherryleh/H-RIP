@@ -737,19 +737,19 @@
                 <div id="rainOutlook-content">
                     <p class="subtitleB">Rainfall Outlook</p>
                     <img id="gauge" src="./gauge/gauge.png"
-                        style="width: 100%; display: flex; margin-left: auto; margin-right: auto;">
+                        style="width: 100%; display: flex; margin-left: auto; margin-right: auto; margin-bottom: 25px; margin-top: 25px;">
                     <div id="rainProj">
-                        <p style="font-size: 20px">ENSO Almanac: 3-Month Rainfall Outlook</p>
+                        <p style="font-size: 20px; margin-bottom: 25px;">ENSO Almanac: 3-Month Rainfall Outlook</p>
                         <a href="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_rainfall.png"
                             style="color:inherit" target="_blank">
-                            <img class="shadow" style="display: flex; margin-left: auto; margin-right: auto; width: 90%"
+                            <img class="shadow" style="display: flex; margin-left: auto; margin-right: auto; width: 90%; margin-bottom: 25px;"
                                 src="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_rainfall.png"></a>
                     </div>
                 </div>
                 <div class="anchor" id="tool"></div>
                 <div id="tool-content">
-                    <p class="subtitleB" style="display: flex; margin-left: auto; margin-right: auto;">Forage Production Decision Support Tool</p>
-                    <div id="input">
+                    <p class="subtitleB" style="display: flex; margin-left: auto; margin-right: auto; text-align: center; margin-bottom: 25px;">Forage Production Decision Support Tool</p>
+                    <div id="input" style="margin-bottom: 25px;">
 
                         <form id="toolForm" method="post">
                             Select the following for your location and click submit:
@@ -795,6 +795,14 @@
                     <div class="card-margin">
                         <div style="margin-bottom: 25px;" id="RF-div"></div>
                         <div style="margin-bottom: 25px;" class="card">
+
+                            <div style="text-align: center;margin-top:2%;">
+                                <p style="font-size: 16px;">Monthly Rainfall</p>
+                                <p style="font-style:italic; color: #696969">
+                                    <?php echo $thisMonth_rf ?>
+                                </p>
+                            </div>
+
                             <div style="line-height: 2em; text-align:center;">
                                 <span style="vertical-align: middle;">
                                     <?php echo $rf_m ?> in
@@ -811,15 +819,17 @@
                                 <p style="display:inline-block; vertical-align:middle"> <?php echo $status_rf_m ?> </p>
                             </div>
                             <div style="text-align: center;"> 29 total dry days</div>
-                            <div style="text-align: center;margin-top:2%; ">
-                                <p style="font-style:italic; color: #696969">
-                                    <?php echo $thisMonth_rf ?>
-                                </p>
-                                <p style="font-size:12px;color: #696969">Monthly Rainfall</p>
-                            </div>
                         </div>
 
                         <div style="margin-bottom: 25px;" class="card">
+
+                             <div style="text-align: center;margin-top:2%;">
+                                <p style="font-size:16px;">Daily Rainfall</p>
+                                <p style="font-style:italic; color: #696969">
+                                    <?php echo $date ?>
+                                </p>
+                            </div>
+
                             <div style="line-height:2em; text-align:center;">
                                 <span style="vertical-align:middle;">
                                     <?php echo $rf_d ?> in
@@ -840,13 +850,8 @@
 
                             </div>
                             <div style="text-align:center"> X consec. dry days</div>
-                            <div style="text-align: center;margin-top:2%;">
 
-                                <p style="font-style:italic; color: #696969">
-                                    <?php echo $date ?>
-                                </p>
-                                <p style="font-size:12px;color: #696969">Daily Rainfall</p>
-                            </div>
+
                         </div>
                         <div class="card">
                             <a class="map-img"
@@ -908,19 +913,20 @@
                     <div class="card-margin">
                         <div style="margin-bottom: 25px;" id="ET-div"></div>
                         <div style="margin-bottom: 25px;" class="card">
-                            <div style="text-align: center;">
-                                <?php echo $et ?> mm/day
-                            </div>
-                            <div style="text-align: center;">
-                                <p><span <?php echo $style_et . '>' . $dif_et . '%</span> ' . $status_et ?> monthly
-                                        average </p>
-                            </div>
                             <div style="text-align: center; margin-top: 2%;">
                                 <p>Monthly Average Evapotranspiration</p>
                                 <p style="font-style:italic; color: #696969">
                                     <?php echo $monthName_et . ', ' . $year_et ?>
                                 </p>
                             </div>
+                            <div style="text-align: center; line-height: 2em;">
+                                <?php echo $et ?> mm/day
+                            </div>
+                            <div style="text-align: center;">
+                                <p><span <?php echo $style_et . '>' . $dif_et . '%</span> ' . $status_et ?> monthly
+                                        average </p>
+                            </div>
+       
                         </div>
 
                         <div style="margin-bottom: 25px;" class="card">
@@ -955,8 +961,13 @@
                         <div style="margin-bottom: 25px;" id="NDVI-div"></div>
 
                         <div style="margin-bottom: 25px;" class="card">
-                        
-                            <div style="text-align: center;">
+                            <div style="text-align: center; margin-top: 2%;">
+                                <p>Monthly Average NDVI</p>
+                                <p style="font-style:italic; color: #696969">
+                                    <?php echo $monthName_ndvi . ', ' . $year_ndvi ?>
+                                </p>
+                            </div>
+                            <div style="text-align: center; line-height:2em;">
                                 <?php echo $ndvi ?>
                             </div>
                             <div style="text-align: center;">
@@ -966,12 +977,7 @@
                                     average
                                 </p>
                             </div>
-                            <div style="text-align: center; margin-top: 2%;">
-                                <p>Monthly Average NDVI</p>
-                                <p style="font-style:italic; color: #696969">
-                                    <?php echo $monthName_ndvi . ', ' . $year_ndvi ?>
-                                </p>
-                            </div>
+
 
                         </div>
                         <div style="margin-bottom: 25px;" class="card">
