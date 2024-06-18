@@ -400,273 +400,23 @@
             </div>-->
 
             <div class="for-mobile">
-                <div class="subtitleB" style="padding-top: 5px">Dashboard</div>
-                <div id="dashboard" class="card-margin">
-                    <div class="dashboardCard" id="rain">
-                        <div class="box-left">
-                            <div class="table" style="text-align: center;">
-                                <p> Rainfall </p>
-                                <br>
-                                <i class="bi bi-cloud-rain" style="background-color: #3d89f7;"></i>
-                                <br>
-                                <div>
-                                    <form class="switchButton">
-                                        <div class="switch-field">
-                                            <input type="radio" id="radio-one" name="switch-one" value="daily_r"
-                                                checked />
-                                            <label for="radio-one">Daily</label>
-                                            <input type="radio" id="radio-two" name="switch-one" value="monthly_r" />
-                                            <label for="radio-two">Monthly</label>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-right">
-
-                            <div class='area' id="daily_r">
-
-                                <i class="bi bi-question-circle tool" style="float:right">
-                                    <div class="tooltip">
-                                        <div class="tooltip-content">
-                                            <p class='tooltip-header'>Daily Rainfall</p>
-                                            <p>Total accumulated rainfall for yesterday.</p>
-                                            <p><span class="bold">Consecutive dry days:</span> Number of days where
-                                                rainfall
-                                                has
-                                                been consecutively under x inches in region</p>
-                                        </div>
-                                    </div>
-                                </i>
-                                <p class="date">
-                                    <?php echo $date ?>
-
-                                </p>
-                                <div class="box rel">
-                                    <div class="data">
-                                        <p class="index1">
-                                            <?php echo $dif_d ?>
-                                        </p>
-                                        <p>Total Rainfall</p>
-                                    </div>
-                                    <div class="data" style="">
-                                        <p class="index1">
-                                            <?php echo $dif_d ?>
-                                        </p>
-                                        <p> Consecutive Dry Days </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='area' id="monthly_r">
-                                <i class="bi bi-question-circle tool" style="float:right">
-                                    <div class="tooltip">
-                                        <div class="tooltip-content">
-                                            <p class='tooltip-header'>Monthly Rainfall</p>
-                                            <p>Total accumulated rainfall for last month.
-                                            <p>Percent difference between rainfall of the last month and the typical
-                                                rainfall expected for that specific month.</p>
-                                            <p><span class="bold">Total dry days: </span> Total days in month where
-                                                rainfall
-                                                was less than x inches in region</p>
-
-                                        </div>
-                                    </div>
-                                </i>
-                                <p class="date">
-                                    <?php echo $thisMonth_rf ?>
-                                </p>
-                                <div class="box data big">
-                                    <div style="line-height:2em;text-align:center">
-                                        <span class="value" style="vertical-align:middle;">
-                                            <?php echo $rf_m ?> in
-                                        </span>
-                                        <span class="diff" style="color:<?php echo $color_rf_m ?>">
-                                            <?php printf("%+.1f", $dif_m); ?>%
-                                            </p>
-                                        </span>
-                                    </div>
-                                    <p>Total Rainfall</p>
-                                    <div class="status" style="text-align:center">
-                                        <i <?php echo $icon_rf_m ?>></i>
-                                        <p style="display:inline-block; vertical-align:middle;">
-                                            <?php echo $status_rf_m ?>
-                                        </p>
-                                        <br>
-
-                                        <p style="font-size:0.8em"> TBD total dry days </p>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                    <div class="dashboardCard" id="temp">
-                        <div>
-                            <div class="box-left">
-                                <div class="table" style="">
-                                    <p> Temperature </p>
-                                    <br>
-
-                                    <i class="bi bi-thermometer-half" style="background-color: #f03737;"></i>
-                                    <br>
-                                    <div>
-                                        <form class="switchButton">
-                                            <div class="switch-field">
-                                                <input type="radio" id="radio-three" name="switch-two" value="daily_t"
-                                                    checked />
-                                                <label for="radio-three">Daily</label>
-                                                <input type="radio" id="radio-four" name="switch-two"
-                                                    value="monthly_t" />
-                                                <label for="radio-four">Monthly</label>
-                                            </div>
-
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-right">
-                                <div class='area1' id="daily_t">
-                                    <i class="bi bi-question-circle tool" style="float:right">
-                                        <div class="tooltipRight">
-                                            <div class="tooltip-content">
-                                                <p class='tooltip-header'>Daily temperature</p>
-                                                <p>Yesterday's average, minimum, and maximum temperature. Difference is
-                                                    in
-                                                    comparison to the average monthly temperature.</p>
-                                            </div>
-                                        </div>
-                                    </i>
-                                    <p class="date">
-                                        <?php echo $date_t; ?>
-                                    </p>
-
-                                    <div class="box data big">
-                                        <div style="line-height:2em;text-align:center">
-                                            <span class="value" style="vertical-align:middle;">
-                                                <?php echo $mean_t_d . '&deg;F ' ?>
-                                            </span>
-                                            <span class="diff">
-                                                <?php echo $dif_t_d . '&deg;F ' ?>
-
-                                            </span>
-                                        </div>
-                                        <p>Daily Temperature</p>
-                                        <div class="status" style="text-align:center">
-                                            <p style="font-size: 0.8em;margin-top: 2%"> Min:
-                                                <?php echo $min_t_d . '&deg;F' ?> Max:
-                                                <?php echo $max_t_d . '&deg;F' ?>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class='area1' id="monthly_t">
-                                    <i class="bi bi-question-circle tool" style="float:right">
-                                        <div class="tooltipRight">
-                                            <div class="tooltip-content">
-                                                <p class='tooltip-header'>Monthly temperature</p>
-                                                <p>Last month's average, minimum, and maximum temperature. Difference is
-                                                    in
-                                                    comparison to the average temperature for that particular month.</p>
-                                            </div>
-                                        </div>
-                                    </i>
-                                    <p class="date">
-                                        <?php echo $thisMonth_t_m ?>
-
-                                    </p>
-                                    <div class="box data big">
-                                        <div style="line-height:2em;text-align:center">
-                                            <span class="value" style="vertical-align:middle;">
-                                                <?php echo $mean_t_m . '&deg;F ' ?>
-                                            </span>
-                                            <span class="diff">
-                                                <?php echo $dif_t_m . '&deg;F ' ?>
-                                                </p>
-                                            </span>
-                                        </div>
-                                        <p>Monthly Temperature</p>
-                                        <div class="status" style="text-align:center">
-                                            <p style="font-size: 0.8em;margin-top: 2%"> Min:
-                                                <?php echo $min_t_m . '&deg;F' ?> Max:
-                                                <?php echo $max_t_m . '&deg;F' ?>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dashboardCard" style="display: table; height:95%">
-                        <div class="table rel">
-                            <p style="font-size:20px;display:inline-block;">12-Month Drought History </p>
-                            <i class="bi bi-question-circle tool pos">
-                                <div class="tooltip">
-                                    <div class="tooltip-content">
-                                        <p>Drought history uses the 3-month Standard Precipitation Index (SPI) to
-                                            determine
-                                            drought.
-                                        </p>
-
-                                        <p>If <span class="bold">SPI&lt; 0</span>, the area is in drought. The lower the
-                                            number, the higher the drought intensity.</p>
-                                        <p>Mouse over the chart to view specific values.</p>
-                                    </div>
-                                </div>
-                            </i>
-                            <p>
-                                <?php echo $d; ?> out of 12 months in drought
+                <div class="subtitleB" style="padding-top: 5px; margin-bottom: 25px;">Dashboard</div>
+                <div>
+                    
+                       
+                        
+                  
+                    <div style="margin-bottom: 25px;">
+                        <div style="font-size:20px; text-align:center;">
+                            <p>12-Month Drought History
+                            <br>
+                                <span style="color: #696969; font-size: 15px;"> <?php echo $d; ?> out of 12 months in drought </span>
                             </p>
-                            <div id="SPI-12m" style="height:80%"></div>
                         </div>
+                        <div id="SPI-12m" style="width: auto; display: flex;margin-left: 15px; margin-right: 15px;"></div>
                     </div>
-                    <div class="dashboardCard">
-                        <i class="bi bi-question-circle tool" style="float:right">
-                            <div class="tooltipRight">
-                                <div class="tooltip-content">
-                                    <p>Drought severity indicator is based on the current Standard Precipitation Index
-                                        (SPI). </p>
-
-                                    <table id="droughtTable">
-                                        <colgroup>
-                                            <col span="1" style="width: 45%;">
-                                            <col span="1" style="width: 55%;">
-                                        </colgroup>
-                                        <tr>
-                                            <td>-0.5 to -0.79:</td>
-                                            <td>Abnormally Dry</td>
-                                        </tr>
-                                        <tr>
-                                            <td>-0.8 to -1.29:</td>
-                                            <td>Moderate Drought</td>
-                                        </tr>
-                                        <tr>
-                                            <td>-1.3 to -1.59:</td>
-                                            <td>Severe Drought</td>
-                                        </tr>
-                                        <tr>
-                                            <td>-1.6 to -1.99:</td>
-                                            <td>Extreme Drought</td>
-                                        </tr>
-                                        <tr>
-                                            <td>-2 or less:</td>
-                                            <td>Exceptional Drought</td>
-                                        </tr>
-                                    </table>
-
-                                    <!--<span class="bold">Less than -2:</span> Extreme Drought<br>
-                                <span class="bold">-1.5 to -2:</span> Severe Drought<br>
-                                <span class="bold">-1 to -1.5:</span> Moderate Drought<br>
-                                <span class="bold">More than -1:</span> Mild Drought-->
-
-                                </div>
-                            </div>
-                        </i>
-
+                    
+                    <div style="margin-bottom: 25px;">
                         <div id="spi">
                             <p class="spi">Current Drought Severity</p>
                             <p class="spi"> <span <?php echo $icon_spi ?>></span>
@@ -674,24 +424,12 @@
                             </p>
                         </div>
                     </div>
-                    <div class="dashboardCard" style="display: table;">
-                        <div class="table rel">
-                            <i class="bi bi-question-circle tool pos" style="z-index:0">
-                                <div class="tooltipRight">
-                                    <div class="tooltip-content">
-                                        <p>Current ENSO Conditions are determined using the ONI Index.</p>
-                                        <p><span class="bold">During an El Niño: </span> Typically wet summers and dry
-                                            winters<br>
-                                        </p>
-                                        <p><span class="bold">During a La Niña: </span>Typically dry summers and wet
-                                            winters
-                                        </p>
-                                    </div>
-                                </div>
-                            </i>
 
+                    <div style="display: flex; margin-bottom: 25px;">
+                        <div class="table rel">
+                           
                             <div style="text-align:center; ">
-                                <img style="width: 80%;height:auto;" src="./gauge/gauge.png">
+                                <img style="width: 80%; height:auto;" src="./gauge/gauge.png">
                                 <p>
                                     <?php echo ($monthName) ?> ENSO Conditions:
                                     <br>
@@ -733,7 +471,9 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="anchor" id="rainOutlook"></div>
+
                 <div id="rainOutlook-content">
                     <p class="subtitleB">Rainfall Outlook</p>
                     <img id="gauge" src="./gauge/gauge.png"
@@ -804,7 +544,7 @@
                             </div>
 
                             <div style="line-height: 2em; text-align:center;">
-                                <span style="vertical-align: middle;">
+                                <span style="vertical-align: middle; font-size: 25px;">
                                     <?php echo $rf_m ?> in
                                 </span>
                                 <span style="color:<?php echo $color_rf_m ?>">
@@ -831,10 +571,10 @@
                             </div>
 
                             <div style="line-height:2em; text-align:center;">
-                                <span style="vertical-align:middle;">
+                                <span style="vertical-align:middle;font-size: 25px;">
                                     <?php echo $rf_d ?> in
                                 </span>
-                                <span style="color:<?php echo $color_rf_m ?>">
+                                <span style="color:<?php echo $color_rf_m ?>;">
                                     <!--<?php echo $stat_rf_d;
                                     echo $dif_d ?>%-->
                                     <?php echo $dif_d ?>%
@@ -875,7 +615,7 @@
                             </div>
                             <div style="text-align: center; padding-top: 10px;">
                                 <p>Daily Average Temperature: </p>
-                                <span style="vertical-align:middle;">
+                                <span style="vertical-align:middle; line-height: 2em; font-size: 25px;">
                                     <?php echo $mean_t_d ?>&degF
                                 </span>
                                 <span>
@@ -887,9 +627,9 @@
                             </div>
                         </div>
                         <div style="margin-bottom: 25px;" class="card">
-                            <p style="text-align:center"> Max temperature: <span>
+                            <p style="text-align:center; line-height: 2em;"> Max temperature: <span style="font-size: 25px;">
                                     <?php echo $max_t_d . '&degF'; ?>
-                                </span><br> Min temperature: <span>
+                                </span><br> Min temperature: <span style="font-size: 25px;">
                                     <?php echo $min_t_d . '&degF'; ?>
                                 </span><br>
                                 <span style="font-style:italic; color: #696969">
@@ -919,7 +659,7 @@
                                     <?php echo $monthName_et . ', ' . $year_et ?>
                                 </p>
                             </div>
-                            <div style="text-align: center; line-height: 2em;">
+                            <div style="text-align: center; line-height: 2em; font-size: 25px;">
                                 <?php echo $et ?> mm/day
                             </div>
                             <div style="text-align: center;">
@@ -967,7 +707,7 @@
                                     <?php echo $monthName_ndvi . ', ' . $year_ndvi ?>
                                 </p>
                             </div>
-                            <div style="text-align: center; line-height:2em;">
+                            <div style="text-align: center; line-height:2em; font-size: 25px;">
                                 <?php echo $ndvi ?>
                             </div>
                             <div style="text-align: center;">
