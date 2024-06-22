@@ -290,8 +290,8 @@ aside {
 }
 
 .card-margin{
-    margin: 10px 8% 20px 8%;
-    grid-gap: 20px;
+    margin-left: 15px; 
+    margin-right: 15px;
 }
 
 /* Layout for main-cards section // below main_overview */
@@ -313,6 +313,14 @@ aside {
     border-radius: 5px;
     background-color: white;
 }
+
+.cardNoPad {
+    /*border: 1px solid black;*/
+    box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);
+    border-radius: 5px;
+    background-color: white;
+}
+
 
 .card:first-child {
     grid-area: card1;
