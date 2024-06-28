@@ -81,6 +81,35 @@
     </div>
   </div>
 
+  <div class="sitespecific" id="ranch">
+    <h3 id="subcategory">Site-specific Conditions</h3>
+
+    <p style="text-align: center;">Select an island from the dropdown below.</p>
+    <p style="text-align: center;">NOTE: If you do not see your area of interest, you can add it by submitting your site using <a target="_blank" href="https://survey123.arcgis.com/share/d76c065bfb3040598096ee2a7f087974">this form.</a></p>
+    <br>
+    <select id='zoombox' onchange="zoomToIsl()">
+
+      <option>Select island</option>
+
+      <option value="Hawaii">Hawai&#x02BB;i</option>
+      <option value="Lanai">L&#x0101;na&#x02BB;i</option>
+      <option value="Kahoolawe">Kaho&#x02BB;olawe</option>
+      <option value="Kauai">Kaua&#x02BB;i</option>
+      <option value="Maui">Maui</option>
+      <option value="Molokai">Moloka&#x02BB;i</option>
+      <option value="Oahu">O&#x02BB;ahu</option>
+      
+      
+      
+      
+
+    </select>
+    <div id='mapDIV'></div>
+    <script src="./Leaflet/leaflet.js"></script>
+    
+
+  </div>
+
   <div>
     <h3 id="subcategory">Statewide Conditions - <span class="month"></span>, <span class="year"></span>
     </h3>
@@ -127,36 +156,6 @@
             target="_blank">National Drought
             Mitigation Center (NDMC)</a></p>
       </div>
-
-    </div>
-
-
-    <div class="sitespecific" id="ranch">
-      <h3 id="subcategory">Site-specific Conditions</h3>
-
-      <p style="text-align: center;">Select an island from the dropdown below.</p>
-      <p style="text-align: center;">NOTE: If you do not see your area of interest, you can add it by submitting your site using <a target="_blank" href="https://survey123.arcgis.com/share/d76c065bfb3040598096ee2a7f087974">this form.</a></p>
-      <br>
-      <select id='zoombox' onchange="zoomToIsl()">
-
-        <option>Select island</option>
-
-        <option value="Hawaii">Hawai&#x02BB;i</option>
-        <option value="Lanai">L&#x0101;na&#x02BB;i</option>
-        <option value="Kahoolawe">Kaho&#x02BB;olawe</option>
-        <option value="Kauai">Kaua&#x02BB;i</option>
-        <option value="Maui">Maui</option>
-        <option value="Molokai">Moloka&#x02BB;i</option>
-        <option value="Oahu">O&#x02BB;ahu</option>
-        
-        
-        
-        
-
-      </select>
-      <div id='mapDIV'></div>
-      <script src="./Leaflet/leaflet.js"></script>
-      
 
     </div>
 
