@@ -652,7 +652,7 @@
                     </div>
                     <div class="hist" id="RF-hist" style="margin-bottom: 15px; margin-left: 15px; margin-right: 15px;"></div>
                     <div class="anchor" id="temperature"></div>
-                    <div class="name">
+                    <div class="name" style="padding: 10px;">
                         <p>Temperature</p>
                     </div>
                     <div style=" margin-left: 15px; margin-right: 15px; height:5%;" id="temp-div" class="card"></div>
@@ -693,7 +693,7 @@
                                     src="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_temp.png"></a>
                         </div>
                     <div class="anchor" id="et"></div>
-                    <div class="name">
+                    <div class="name" style="padding: 10px;">
                         <p>Evapotranspiration</p>
                     </div>
                     <div class="card-margin">
@@ -740,7 +740,7 @@
                     </div>
 
                     <div class="anchor" style="margin-bottom: 15px;" id="ndvi"></div>
-                    <div class="name" style="margin-bottom: 15px; margin-left: 15px; margin-right: 15px;">
+                    <div class="name" style="padding: 10px;">
                         <p>Normalized Difference Vegetation Index (NDVI)</p>
                     </div>
                     <div class="card-margin">
@@ -784,7 +784,7 @@
                     </div>
                     <div class="hist" id="NDVI-hist" style="margin-bottom: 15px; margin-left: 15px; margin-right: 15px;"></div>
                     <div class="anchor" id="drought"></div>
-                    <div class="name">
+                    <div class="name" style="padding: 10px;">
                         <p>Drought History (SPI-3)</p>
                     </div>
                     <div id="SPI-div" class="hist" style="margin-bottom: 25px; margin-left: 15px; margin-right: 15px;"></div>
