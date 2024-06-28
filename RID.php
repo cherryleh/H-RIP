@@ -477,24 +477,24 @@
                                     <?php echo $thisMonth_rf ?>
                                 </p>
                                 <div class="box data big">
-                                    <div style="line-height:2em;text-align:center">
-                                        <span class="value" style="vertical-align:middle;">
+                                    <div style="text-align: center;">
+                                        <span class="value" style="vertical-align:middle; font-size:2vw;">
                                             <?php echo $rf_m ?> in
                                         </span>
-                                        <span class="diff" style="color:<?php echo $color_rf_m ?>">
+                                        <span style="color:<?php echo $color_rf_m ?>">
                                             <?php printf("%+.1f", $dif_m); ?>%
                                             </p>
                                         </span>
                                     </div>
-                                    <p>Total Rainfall</p>
-                                    <div class="status" style="text-align:center">
+                                    <p style="font-size:0.7vw;">Total Rainfall</p>
+                                    <div class="status" style="text-align:center;">
                                         <i <?php echo $icon_rf_m ?>></i>
-                                        <p style="display:inline-block; vertical-align:middle;">
+                                        <p style="display:inline-block; vertical-align:middle;font-size:0.8vw;">
                                             <?php echo $status_rf_m ?>
                                         </p>
                                         <br>
 
-                                        <p style="font-size:0.8em"> TBD total dry days </p>
+                                        <p style="font-size:0.8vw;"> TBD total dry days </p>
                                     </div>
                                 </div>
 
@@ -549,7 +549,7 @@
                                             <span class="value" style="vertical-align:middle;">
                                                 <?php echo $mean_t_d . '&deg;F ' ?>
                                             </span>
-                                            <span class="diff">
+                                            <span>
                                                 <?php echo $dif_t_d . '&deg;F ' ?>
 
                                             </span>
@@ -584,7 +584,7 @@
                                             <span class="value" style="vertical-align:middle;">
                                                 <?php echo $mean_t_m . '&deg;F ' ?>
                                             </span>
-                                            <span class="diff">
+                                            <span>
                                                 <?php echo $dif_t_m . '&deg;F ' ?>
                                                 </p>
                                             </span>
@@ -800,7 +800,7 @@
                                 <span class="value" style="vertical-align:middle;">
                                     <?php echo $rf_m ?> in
                                 </span>
-                                <span class="diff" style="color:<?php echo $color_rf_m ?>">
+                                <span style="color:<?php echo $color_rf_m ?>">
                                     <?php //echo $stat_rf_m;
                                     printf("%+.1f", $dif_m) ?>%
                                     </p>
@@ -827,7 +827,7 @@
                                 <span class="value" style="vertical-align:middle;">
                                     <?php echo $rf_d ?> in
                                 </span>
-                                <span class="diff" style="color:<?php echo $color_rf_m ?>">
+                                <span style="color:<?php echo $color_rf_m ?>">
                                     <!--<?php echo $stat_rf_d;
                                     echo $dif_d ?>%-->
                                     <?php echo $dif_d ?>%
@@ -872,7 +872,7 @@
                                 <span class="value" style="vertical-align:middle;">
                                     <?php echo $mean_t_d ?>&degF
                                 </span>
-                                <span class="diff">
+                                <span>
                                     <?php echo $dif_t_d ?> &degF
                                 </span>
                             </div>

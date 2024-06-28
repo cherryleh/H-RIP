@@ -412,12 +412,8 @@
                                 <span style="vertical-align:middle;font-size: 25px;">
                                     <?php echo $rf_d ?> in
                                 </span>
-                                <span style="color:<?php echo $color_rf_m ?>;">
-                                    <!--<?php echo $stat_rf_d;
-                                    echo $dif_d ?>%-->
-                                    <?php echo $dif_d ?>%
-                                    </p>
-                                    </p>
+                                <span style="color:<?php echo $color_rf_m ?>">
+                                            <?php printf("%+.1f", $dif_m); ?>%
                                 </span>
                             </div>
                     </div>
