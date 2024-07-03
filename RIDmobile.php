@@ -405,22 +405,22 @@
                 <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding-left: 15px; padding-right: 15px;">
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
                             <div style="text-align: center;padding-top: 10px;">
-                                <p style="font-size:16px;">Daily Rainfall</p>
+                                <p style="font-size:15px;">Yesterday's Rainfall</p>
                             </div>
 
                             <div style="text-align:center; padding-top: 10px;">
-                                <span style="vertical-align:middle;font-size: 25px;">
+                                <span style="vertical-align:middle;font-size: 30px;">
                                     <?php echo $rf_d ?> in
                                 </span>
                                 <span style="color:<?php echo $color_rf_m ?>">
-                                            <?php printf("%+.1f", $dif_m); ?>%
+                                            <?php printf("%+.1f", $dif_d); ?>%
                                 </span>
                             </div>
                     </div>
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px; padding: 10px;">
-                            <div style="text-align: center; padding-top: 10px;">
-                                <p>Daily Temperature</p>
-                                <span style="vertical-align:middle; line-height: 2em; font-size: 25px;">
+                            <div style="font-size: 15px; text-align: center; padding-top: 10px;">
+                                <p>Yesterday's Temperature</p>
+                                <span style="vertical-align:middle; line-height: 2em; font-size: 30px;">
                                    <?php echo $mean_t_d ?>&degF
                                 </span>
                                 <span>
@@ -433,12 +433,12 @@
                 <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
                             <div style="text-align: center;padding-top: 10px;">
-                                <p style="font-size:16px;">Monthly Rainfall</p>
+                                <p style="font-size:15px;">Last Month's Rainfall</p>
                             </div>
 
                             <div style="text-align:center; padding-top: 10px;">
-                                <span style="vertical-align:middle;font-size: 25px;">
-                                    <?php echo $rf_d ?> in
+                                <span style="vertical-align:middle;font-size: 30px;">
+                                    <?php echo $rf_m ?> in
                                 </span>
                                 <span style="color:<?php echo $color_rf_m ?>">
                                             <?php printf("%+.1f", $dif_m); ?>%
@@ -447,12 +447,12 @@
                     </div>
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px; padding: 10px;">
                             <div style="text-align: center; padding-top: 10px;">
-                                <p>Monthly Temperature</p>
-                                <span style="vertical-align:middle; line-height: 2em; font-size: 25px;">
-                                   <?php echo $mean_t_d ?>&degF
+                                <p style="font-size: 15px;">Last Month's Temperature</p>
+                                <span style="vertical-align:middle; line-height: 2em; font-size: 30px;">
+                                   <?php echo $mean_t_m ?>&degF
                                 </span>
                                 <span>
-                                <?php echo $dif_t_d ?> &degF
+                                <?php echo $dif_t_m ?> &degF
                                </span>
                             </div>
                         </div>
@@ -462,7 +462,7 @@
                         <div id="spi">
                             <p class="spi">Current Drought Severity</p>
                         </div>
-                        <div style="text-align: center; font-size: 30px; line-height: 2em">
+                        <div style="text-align: center; font-size: 30px; line-height: 1.2em">
                                 <i <?php echo $icon_spi ?>></i>
                                 <p style="display:inline-block; vertical-align:middle;">
                                     <?php echo $drought_status; ?>
@@ -787,7 +787,7 @@
                     <div class="name" style="padding: 10px;">
                         <p>Drought History (SPI-3)</p>
                     </div>
-                    <div id="SPI-div" class="hist" style="margin-bottom: 25px; margin-left: 15px; margin-right: 15px;"></div>
+                    <div id="SPI-div" class="hist" style="margin-left: 15px; margin-right: 15px;"></div>
 
                     <br>
                     <br>
