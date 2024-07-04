@@ -52,11 +52,26 @@
     
     } else {
         echo "Error";
-    }
-    ;
+    };
 
     //Daily Rainfall
-    $rf_d = 'TBD';
+    $file_rf_d = file('./RID/' . $RID . '/' . $RID . '_rf_daily_this_month.csv');
+    
+    if (!empty($file_rf_d)) {
+        $fields_rf_d = str_getcsv($file_rf_d[count($file_rf_d) - 1]); // Parse csv string into an array, get fields from last line
+        $rf_d = (round($fields_rf_d[count($fields_rf_d) - 1], 3)); //RF value from last row of csv file
+        $monthDate_rf_d = $fields_rf_d[count($fields_rf_d) - 2]; //Date
+        $monthNum_rf_d = $fields_rf_d[count($fields_rf_d) - 3];//Month of last row (should be last month)
+        $year_rf_d = (round($fields_rf_d[count($fields_rf_d) - 4], 0)); //Year of last row
+        echo $fields_rf_d[count($fields_rf_d) - 2];
+    } else {
+        echo "Error";
+    };
+
+    $dateObj_rf_d = DateTime::createFromFormat('!m', intval($monthNum_rf_d));
+    $monthName_rf_d = $dateObj_rf_d->format('F');
+    $date_rf = $monthName_rf_d . ' ' . $monthDate_rf_d . ', ' . $year_rf_d;
+
     //Date reformat
     $dateObj_rf = DateTime::createFromFormat('!m', intval($monthNum_rf));
     $monthName_rf = $dateObj_rf->format('F');
@@ -74,11 +89,6 @@
     }
     fclose($csv_rf);
 
-    //CHANGE THIS WHEN DAILY RF IS RELEASED
-    $date = 'Date';
-
-
-
     if ($rf_m > $avg_rf) {
         $status_rf_m = 'Above Average';
         $icon_rf_m = 'class="bi bi-check-circle-fill fs-3" style="color:green; display:inline-block;vertical-align: middle"';
@@ -93,7 +103,31 @@
 
     //Percent difference monthly (m) and daily (d)
     $dif_m = ($rf_m - $avg_rf) / $avg_rf * 100;
-    $dif_d = 'TBD';
+    $dif_d = ($rf_d - $avg_rf) / $avg_rf * 100;
+
+    $file_consec_dry_days = file('./RID/' . $RID . '/' . $RID . '_consec_dry_days.txt');
+    $consec_dry_days = $file_consec_dry_days[0];
+
+    $rf_daily_month = './RID/' . $RID . '/' . $RID . '_rf_daily_last_month.csv';
+
+    // Open the CSV file
+    if (($handle = fopen($rf_daily_month, "r")) !== FALSE) {
+        $total_dry_days = 0;
+        //$header = fgetcsv($handle); // Read the header row
+        // Loop through each row of the CSV
+        while (($data = fgetcsv($handle)) !== FALSE) {
+            // Check if the value in the target column is less than 1
+            if (isset($data[4]) && is_numeric($data[4]) && $data[4] < 0.03937) {
+                $total_dry_days++;
+            }
+        }
+        // Close the CSV file
+        fclose($handle);
+
+    } else {
+        $total_dry_days = 'Error';
+    }
+
 
     //Temperature
     
@@ -263,9 +297,6 @@
     $array_spi = [];
 
     while ($data = fgetcsv($csv_spi)) {
-        //array_push($array_spi, floatval($data[2]));
-        //$num = count($data);
-    
         if ($data[0] >= $min && $data[0] <= $max) {
             array_push($array_spi, floatval($data[3]));
         }
@@ -435,24 +466,24 @@
                                             <p><span class="bold">Consecutive dry days:</span> Number of days where
                                                 rainfall
                                                 has
-                                                been consecutively under x inches in region</p>
+                                                been consecutively under 0.04 inches in region</p>
                                         </div>
                                     </div>
                                 </i>
                                 <p class="date">
-                                    <?php echo $date ?>
+                                    <?php echo $date_rf ?>
 
                                 </p>
                                 <div class="box rel">
                                     <div class="data">
                                         <p class="index1">
-                                            <?php echo $dif_d ?>
+                                            <?php echo $rf_d ?>
                                         </p>
                                         <p>Total Rainfall</p>
                                     </div>
                                     <div class="data" style="">
                                         <p class="index1">
-                                            <?php echo $dif_d ?>
+                                            <?php echo $consec_dry_days ?>
                                         </p>
                                         <p> Consecutive Dry Days </p>
                                     </div>
@@ -494,7 +525,7 @@
                                         </p>
                                         <br>
 
-                                        <p style="font-size:0.8vw;"> TBD total dry days </p>
+                                        <p style="font-size:0.8vw;"> <?php echo $total_dry_days ?> total dry days </p>
                                     </div>
                                 </div>
 
@@ -814,7 +845,7 @@
                                 </p>
 
                             </div>
-                            <div> 29 total dry days</div>
+                            <div> <?php echo $total_dry_days ?> total dry days</div>
                             <div style="text-align: center;margin-top:2%; ">
                                 <p style="font-style:italic; color: #696969">
                                     <?php echo $thisMonth_rf ?>
@@ -829,8 +860,8 @@
                                 </span>
                                 <span style="color:<?php echo $color_rf_m ?>">
                                     <!--<?php echo $stat_rf_d;
-                                    echo $dif_d ?>%-->
-                                    <?php echo $dif_d ?>%
+                                    echo $dif_d ?>%
+                                    <?php echo printf("%+.1f", $dif_d) ?>%-->
                                     </p>
                                     </p>
                                 </span>
@@ -842,7 +873,7 @@
                                 </p>
 
                             </div>
-                            <div> X consec. dry days</div>
+                            <div> <?php echo $consec_dry_days?> consec. dry days</div>
                             <div style="text-align: center;margin-top:2%;">
 
                                 <p style="font-style:italic; color: #696969">
