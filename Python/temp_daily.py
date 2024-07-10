@@ -18,7 +18,7 @@ import numpy as np
 
 
 yest_year, yest_mon, yest_day = int((datetime.today() + relativedelta(days=-1)).strftime("%Y")),int((datetime.today() + relativedelta(days=-1)).strftime("%m")),int((datetime.today() + relativedelta(days=-1)).strftime("%d"))
-lastMonthYr = (datetime.today() + relativedelta(months=-1)).strftime("%Y")
+#lastMonthYr = (datetime.today() + relativedelta(months=-1)).strftime("%Y")
 
 #yest_year, yest_mon, yest_day = (datetime.today() + relativedelta(days=-1)).strftime("%Y"),(datetime.today() + relativedelta(days=-1)).strftime("%m"),(datetime.today() + relativedelta(days=-1)).strftime("%d")
 #lastMonthYr = (datetime.today() + relativedelta(months=-1)).strftime("%Y")

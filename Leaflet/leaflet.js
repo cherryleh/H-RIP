@@ -16,9 +16,20 @@ var ranches = L.geoJSON(ranchSquares, {
         var ranchName = feature.properties.Polygon;
         var href = window.location.pathname;
         var dir = href.substring(0, href.lastIndexOf('/')) + "/";
-        var url = dir + 'RID.php?ranch=' + ranchName;
-        layer.bindPopup('<a href="' + url+'" target="_blank">'+ranchName+'</a>');
-        layer.on('click', function () { layer.openPopup(); });
+
+
+        if (screen.width <= 699) 
+        {
+            var url = dir + 'RIDmobile.php?ranch=' + ranchName;
+            layer.bindPopup('<a href="' + url+'" target="_blank">'+ranchName+'</a>');
+            layer.on('click', function () { layer.openPopup(); });
+        }
+        else
+        {
+            var url = dir + 'RID.php?ranch=' + ranchName;
+            layer.bindPopup('<a href="' + url+'" target="_blank">'+ranchName+'</a>');
+            layer.on('click', function () { layer.openPopup(); });
+        }
     }
 }
 );
