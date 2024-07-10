@@ -444,7 +444,7 @@
                 <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding-left: 15px; padding-right: 15px;">
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
                             <div style="text-align: center;padding-top: 10px;">
-                                <p style="font-size:15px;"> Rainfall</p>
+                                <p style="font-size:15px;">Daily Rainfall</p>
                             </div>
 
                             <div style="text-align:center; padding-top: 10px;">
@@ -457,7 +457,7 @@
                     </div>
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px; padding: 10px;">
                             <div style="font-size: 15px; text-align: center; padding-top: 10px;">
-                                <p>Temperature</p>
+                                <p>Daily Temperature</p>
                                 <span style="vertical-align:middle; line-height: 2em; font-size: 30px;">
                                    <?php echo $mean_t_d ?>&degF
                                 </span>
@@ -473,7 +473,7 @@
                 <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
                             <div style="text-align: center;padding-top: 10px;">
-                                <p style="font-size:15px;">Last Month's Rainfall</p>
+                                <p style="font-size:15px;">Monthly Rainfall</p>
                             </div>
 
                             <div style="text-align:center; padding-top: 10px;">
@@ -490,7 +490,7 @@
                     </div>
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px; padding: 10px;">
                             <div style="text-align: center; padding-top: 10px;">
-                                <p style="font-size: 15px;">Last Month's Temperature</p>
+                                <p style="font-size: 15px;">Monthly Temperature</p>
                                 <span style="vertical-align:middle; line-height: 2em; font-size: 30px;">
                                    <?php echo $mean_t_m ?>&degF
                                 </span>
