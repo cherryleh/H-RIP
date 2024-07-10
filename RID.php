@@ -310,7 +310,7 @@
     //Count how many months in last year is in drought (<0)
     $d = 0;
     foreach ($array_spi as $value) {
-        if ($value < 0) {
+        if ($value < -0.5) {
             $d++;
         }
     }
