@@ -632,7 +632,7 @@
                     <div class="name">
                         <p>Rainfall</p>
                     </div>
-                    <div style=" margin-left: 15px; margin-right: 15px; height:5%;" id="RF-div" class="card"></div>
+                    <div style=" margin-left: 15px; margin-right: 15px; height: 250px" id="RF-div" class="card"></div>
                         
                         <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
                         <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
@@ -692,7 +692,7 @@
                     <div class="name" style="padding: 10px;">
                         <p>Temperature</p>
                     </div>
-                    <div style=" margin-left: 15px; margin-right: 15px; height:5%;" id="temp-div" class="card"></div>
+                    <div style=" margin-left: 15px; margin-right: 15px; height: 250px;" id="temp-div" class="card"></div>
                     <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
                     <div style="text-align: center; padding-top: 25px; vertical-align: text-top;">
@@ -734,7 +734,7 @@
                         <p>Evapotranspiration</p>
                     </div>
                     <div class="card-margin">
-                        <div style="margin-bottom: 15px; height:5%;" id="ET-div" class="card"></div>
+                        <div style="margin-bottom: 15px; height: 250px;" id="ET-div" class="card"></div>
                         <div style="margin-bottom: 15px;" class="card">
                             <div style="text-align: center; margin-top: 2%;">
                                 <p>Monthly Average Evapotranspiration</p>
@@ -781,7 +781,7 @@
                         <p>Normalized Difference Vegetation Index (NDVI)</p>
                     </div>
                     <div class="card-margin">
-                        <div style="margin-bottom: 15px; height:5%;" id="NDVI-div" class="card"></div>
+                        <div style="margin-bottom: 15px; height: 250px;" id="NDVI-div" class="card"></div>
 
                         <div style="margin-bottom: 15px;" class="card">
                             <div style="text-align: center; margin-top: 2%;">
