@@ -508,11 +508,11 @@
                                     <?php echo $thisMonth_rf ?>
                                 </p>
                                 <div class="box data big">
-                                    <div style="text-align: center;">
-                                        <span style=" font-size:2vw;">
+                                    <div style="line-height: 2em; text-align:center;">
+                                        <span style=" font-size:2vw; vertical-align: middle;">
                                             <?php echo $rf_m ?> in
                                         </span>
-                                        <span style="color:<?php echo $color_rf_m ?>; float: right; ">
+                                        <span style="color:<?php echo $color_rf_m ?>;">
                                                 <?php printf("%+.1f", $dif_m); ?>%
                                         </span>
                                     </div>

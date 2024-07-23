@@ -15,9 +15,9 @@ ranch = sys.argv[1]
 grasstype = sys.argv[2]
 condition = sys.argv[3]
 
-'''ranch = "RID084"
+ranch = "RID084"
 grasstype = "Signal"
-condition = "Unimproved"'''
+condition = "Unimproved"
 
 ranch = int(float(ranch[4:]))
 
