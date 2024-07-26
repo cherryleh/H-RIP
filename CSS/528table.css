@@ -137,6 +137,11 @@ tr:first-child th:not(:first-child){
     overflow-x: scroll;
 }
 
+@media (min-width: 60em)
+{
+    
+}
+
 /*
 #output-table,th{
     font-size: 16px;

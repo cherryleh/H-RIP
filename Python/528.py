@@ -11,9 +11,9 @@ import numpy as np
 import geopandas as gpd
 
 
-ranch = sys.argv[1]
+'''ranch = sys.argv[1]
 grasstype = sys.argv[2]
-condition = sys.argv[3]
+condition = sys.argv[3]'''
 
 ranch = "RID084"
 grasstype = "Signal"

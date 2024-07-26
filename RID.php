@@ -877,7 +877,7 @@
                             <div style="text-align: center;margin-top:2%;">
 
                                 <p style="font-style:italic; color: #696969">
-                                    <?php echo $date ?>
+                                    <?php echo $date_rf ?>
                                 </p>
                                 <p style="font-size:12px;color: #696969">Daily Rainfall</p>
                             </div>
