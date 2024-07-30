@@ -25,7 +25,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="./CSS/form.css">
-    <link rel="stylesheet" type="text/css" href="./CSS/528table.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/528tableMobile.css">
     <link rel="stylesheet" type="text/css" href="./CSS/header.css">
     <link rel="stylesheet" type="text/css" href="./CSS/dashboard.css">
     <link rel="stylesheet" href="./CSS/ranchpagemobile.css">
@@ -598,7 +598,7 @@
 
 
 
-                    <div id="results" style="width: 100px">
+                    <div id="results" style="">
                     <div id="output">
     <div class="tabs">
         <input type="radio" name="tabs" id="tabone" checked="checked">
