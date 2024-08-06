@@ -43,7 +43,6 @@
 
 .tabs .tab {
     order: 99; 
-    flex-grow: 1;
     width: auto;
     display: none;
     padding: 1rem;
@@ -70,7 +69,11 @@
 
 @media (max-width: 45em) {
 
-    .tabs .tab,
+    .tabs .tab
+    {
+        order: initial;
+        max-width: 87vw;
+    }
     .tabs label {
         order: initial;
     }
@@ -108,12 +111,12 @@ table {
 #three-month td:not(:first-child) {
     font-size: 3em;
     text-align: center;
+    
 }
 
 .six-month td:not(:first-child) {
     font-size: 2.5em;
     text-align: center;
-    width:auto;
 }
 
 tr:first-child th:not(:first-child){
