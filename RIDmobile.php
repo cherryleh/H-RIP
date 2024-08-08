@@ -599,7 +599,7 @@
 
 
                     <div id="results" style="">
-                    <div id="output">
+                    <!--<div id="output">
     <div class="tabs">
         <input type="radio" name="tabs" id="tabone" checked="checked">
         <label for="tabone">3-Month Outlook</label>
@@ -769,7 +769,7 @@
     </div>
 
 
-</div>
+</div>-->
                     </div>
 
                     <div class="anchor" id="rf"></div>
