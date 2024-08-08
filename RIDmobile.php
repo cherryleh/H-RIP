@@ -18,14 +18,14 @@
 
     <script>
         $(function () {
-            $("#header").load("./header.html");
+            $("#header").load("./headerMobile.html");
             $("#footer").load("./footer.html");
         });
     </script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="./CSS/form.css">
-    <link rel="stylesheet" type="text/css" href="./CSS/528table.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/528tableMobile.css">
     <link rel="stylesheet" type="text/css" href="./CSS/header.css">
     <link rel="stylesheet" type="text/css" href="./CSS/dashboard.css">
     <link rel="stylesheet" href="./CSS/ranchpagemobile.css">
@@ -397,39 +397,10 @@
     <div class="grid-container">
         <header class="header" id="header">
         </header>
-        <aside id="sidebar" class="animated bounceInDown">
-            <p style="padding-left: 1%;font-size:1.5em"> Menu </p>
-            <ul style="padding-left:5px">
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#rainOutlook">Rainfall Outlook</a></li>
-                <li><a href="#tool">Decision Support Tool</a></li>
-                <li class='sub-menu'><a href='#settings'>Average Climate Conditions<div class='fa fa-caret-down right'>
-                        </div></a>
-                    <ul>
-                        <li><a href="#rf">Rainfall</a></li>
-                        <li><a href="#temperature">Temperature</a></li>
-                        <li><a href="#et">Evapotranspiration</a></li>
-                        <li><a href="#ndvi">NDVI</a></li>
-                        <li><a href="#drought">Drought</a></li>
-                    </ul>
-                </li>
-                <!--<li><a href="#data">Historical Data</a></li>-->
-            </ul>
-
-        </aside>
-
-        <script>
-            $('.sub-menu ul').hide();
-            $(".sub-menu a").click(function () {
-                $(this).parent(".sub-menu").children("ul").slideToggle("100");
-                $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
-            });
-        </script>
 
 
-        <div class="anchor" id="dashboard"></div>
         <main class="main">
-
+            <div class="anchor" id="dash"></div>
             <div id="ranchname">
                 <?php echo $RID ?> - Ranch Page
             </div>
@@ -440,11 +411,11 @@
 
             <div class="for-mobile">
                 <div class="subtitleB" style="padding-top: 5px; margin-bottom: 15px;">Dashboard</div>
-
+                <div style="text-align: center; margin-top: 5px; margin-bottom: 15px;">Mobile version is in development</div>
                 <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding-left: 15px; padding-right: 15px;">
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
                             <div style="text-align: center;padding-top: 10px;">
-                                <p style="font-size:15px;"> Rainfall</p>
+                                <p style="font-size:15px;">Daily Rainfall</p>
                             </div>
 
                             <div style="text-align:center; padding-top: 10px;">
@@ -457,7 +428,7 @@
                     </div>
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px; padding: 10px;">
                             <div style="font-size: 15px; text-align: center; padding-top: 10px;">
-                                <p>Temperature</p>
+                                <p>Daily Temperature</p>
                                 <span style="vertical-align:middle; line-height: 2em; font-size: 30px;">
                                    <?php echo $mean_t_d ?>&degF
                                 </span>
@@ -473,7 +444,7 @@
                 <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
                             <div style="text-align: center;padding-top: 10px;">
-                                <p style="font-size:15px;">Last Month's Rainfall</p>
+                                <p style="font-size:15px;">Monthly Rainfall</p>
                             </div>
 
                             <div style="text-align:center; padding-top: 10px;">
@@ -490,7 +461,7 @@
                     </div>
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px; padding: 10px;">
                             <div style="text-align: center; padding-top: 10px;">
-                                <p style="font-size: 15px;">Last Month's Temperature</p>
+                                <p style="font-size: 15px;">Monthly Temperature</p>
                                 <span style="vertical-align:middle; line-height: 2em; font-size: 30px;">
                                    <?php echo $mean_t_m ?>&degF
                                 </span>
@@ -624,7 +595,181 @@
                             <input type="button" id="submit" onclick=" showDiv(); SubmitFormData();" value="Submit" />
                         </form>
                     </div>
-                    <div id="results" style="display:none;height:auto">
+
+
+
+                    <div id="results" style="">
+                    <!--<div id="output">
+    <div class="tabs">
+        <input type="radio" name="tabs" id="tabone" checked="checked">
+        <label for="tabone">3-Month Outlook</label>
+        <div class="tab" id="three-month">
+            <h3 class="" style="margin:0"> Estimated Forage Production: 3-Month Outlook</h3> 
+            <div class="" style="margin-left:40px"><b>Grass Type:</b> Signal<span style="margin-left:20px"></span><b>Conditions:</b> Unimproved<span style="margin-left:20px"><b>ENSO Phase:</b> Neutral</div>
+            <br>
+            <table class="output-table">
+                <colgroup>
+                    <col>
+                    <col class="outlined-3">
+                    <col class="outlined-3">
+                    <col class="outlined-3">
+                </colgroup>
+                <tr>
+                    <th></th>
+                    <th>Jul</th>
+                    <th>Aug</th>
+                    <th>Sep</th>
+
+                </tr>
+                <tr>
+                    <td>Average Production</td>
+                    <td>140 <br> <span class="change"> lbs/acre </span> </td>
+                    <td>135 <br> <span class="change"> lbs/acre </span>  </td>
+                    <td>102 <br> <span class="change"> lbs/acre </span>  </td>
+
+                </tr>
+                <tr>
+                    <td>Estimated Average Production</td>
+                    <td style="color:green">&#x2191;14% <br> <span class="change">+19 lbs/acre </span> </td>
+                    <td style="color:red">&#x2193;-7% <br> <span class="change">-9 lbs/acre </span> </td>
+                    <td style="color:green">&#x2191;1.0% <br> <span class="change">+1 lbs/acre </span> </td>
+                </tr>
+                <tr>
+                    <td>Estimated Minimum Production</td>
+                    <td style="color:red"> &#x2193;-36% <br> <span class="change">-50 lbs/acre </span></td>
+                    <td style="color:red"> &#x2193;-29% <br> <span class="change">-39 lbs/acre </span></td>
+                    <td style="color:red"> &#x2193;-25% <br> <span class="change">-26 lbs/acre </span></td>
+                </tr>
+
+            </table>
+
+        </div>
+
+        <input type="radio" name="tabs" id="tabtwo">
+        <label for="tabtwo">6-Month Outlook</label>
+        <div class="tab six-month">
+            <h3 style="margin:0"> Estimated Forage Production: 6-Month Outlook</h3>
+            <div class="" style="margin-left:40px"><b>Grass Type:</b> Signal<span style="margin-left:20px"></span><b>Conditions:</b> Unimproved<span style="margin-left:20px"><b>ENSO Phase:</b>Neutral</div>
+            <br>
+            <div class="scroll">
+                <table class="output-table">
+                    <colgroup>
+                        <col>
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                    </colgroup>
+                    <tr>
+                        <th></th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+                        <th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+                        <th>Dec</th>
+
+                    </tr>
+                    <tr>
+                        <td>Average Production</td>
+                        <td>140 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>135 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>102 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>118 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>250 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>332 <br> <span class="change"> lbs/acre </span> </td>
+
+                    </tr>
+                    <tr>
+                        <td>Average Production Outlook</td>
+                        <td style="color:green">&#x2191;14% <br> <span class="change">+19 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-7% <br> <span class="change">-9 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;1.0% <br> <span class="change">+1 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;1.5% <br> <span class="change">+2 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;17% <br> <span class="change">+44 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;0.5% <br> <span class="change">+2 lbs/acre </span> </td>
+
+                    </tr>
+                    <tr>
+                        <td>Minimum Production Outlook</td>
+                        <td style="color:red">&#x2193;-36% <br> <span class="change">-50 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-29% <br> <span class="change">-39 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-25% <br> <span class="change">-26 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-54% <br> <span class="change">-64 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-57% <br> <span class="change">-143 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-40% <br> <span class="change">-134 lbs/acre </span> </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+        <input type="radio" name="tabs" id="tabthree">
+        <label for="tabthree">Prior Months</label>
+        <div class="tab six-month">
+            <h3 style="margin:0"> Estimated Forage Production: Prior Months</h3>
+            <div class="" style="margin-left:40px"><b>Grass Type:</b> Signal<span style="margin-left:20px"></span><b>Conditions:</b> Unimproved<span style="margin-left:20px"><b>ENSO Phase:</b>Neutral</div>
+            <br>
+            <div class="scroll">
+                <table class="output-table">
+                    <colgroup>
+                        <col>
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                    </colgroup>
+                    <tr>
+                        <th></th>
+                        <th>Jun</th>
+                        <th>May</th>
+                        <th>Apr</th>
+                        <th>Mar</th>
+                        <th>Feb</th>
+                        <th>Jan</th>
+
+                    </tr>
+                    <tr>
+                        <td>Average Production</td>
+                        <td>144 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>217 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>353 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>398 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>235 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>278 <br> <span class="change"> lbs/acre </span> </td>
+
+                    </tr>
+                    <tr>
+                        <td>Average Production Outlook</td>
+                        <td style="color:green">&#x2191;2.7% <br> <span class="change">+4 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;3.4% <br> <span class="change">+7 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-3% <br> <span class="change">-10 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;3.5% <br> <span class="change">+14 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;8.8% <br> <span class="change">+21 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;8.0% <br> <span class="change">+22 lbs/acre </span> </td>
+
+                    </tr>
+                    <tr>
+                        <td>Minimum Production Outlook</td>
+                        <td style="color:red">&#x2193;-47% <br> <span class="change">-67 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-51% <br> <span class="change">-111 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-55% <br> <span class="change">-193 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-36% <br> <span class="change">-143 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-49% <br> <span class="change">-115 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-44% <br> <span class="change">-123 lbs/acre </span> </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>-->
                     </div>
 
                     <div class="anchor" id="rf"></div>
@@ -632,7 +777,7 @@
                     <div class="name">
                         <p>Rainfall</p>
                     </div>
-                    <div style=" margin-left: 15px; margin-right: 15px; height:5%;" id="RF-div" class="card"></div>
+                    <div style=" margin-left: 15px; margin-right: 15px; height: 250px" id="RF-div" class="card"></div>
                         
                         <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
                         <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
@@ -692,7 +837,7 @@
                     <div class="name" style="padding: 10px;">
                         <p>Temperature</p>
                     </div>
-                    <div style=" margin-left: 15px; margin-right: 15px; height:5%;" id="temp-div" class="card"></div>
+                    <div style=" margin-left: 15px; margin-right: 15px; height: 250px;" id="temp-div" class="card"></div>
                     <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
                     <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
                     <div style="text-align: center; padding-top: 25px; vertical-align: text-top;">
@@ -734,7 +879,7 @@
                         <p>Evapotranspiration</p>
                     </div>
                     <div class="card-margin">
-                        <div style="margin-bottom: 15px; height:5%;" id="ET-div" class="card"></div>
+                        <div style="margin-bottom: 15px; height: 250px;" id="ET-div" class="card"></div>
                         <div style="margin-bottom: 15px;" class="card">
                             <div style="text-align: center; margin-top: 2%;">
                                 <p>Monthly Average Evapotranspiration</p>
@@ -781,7 +926,7 @@
                         <p>Normalized Difference Vegetation Index (NDVI)</p>
                     </div>
                     <div class="card-margin">
-                        <div style="margin-bottom: 15px; height:5%;" id="NDVI-div" class="card"></div>
+                        <div style="margin-bottom: 15px; height: 250px;" id="NDVI-div" class="card"></div>
 
                         <div style="margin-bottom: 15px;" class="card">
                             <div style="text-align: center; margin-top: 2%;">

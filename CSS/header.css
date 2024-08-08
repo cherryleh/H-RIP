@@ -116,7 +116,7 @@ body {
   }
   
   .header .menu-btn:checked ~ .menu {
-    max-height: 240px;
+    max-height: max-content;
   }
   
   .header .menu-btn:checked ~ .menu-icon .navicon {
@@ -175,7 +175,7 @@ body {
     .header .menu {
       clear: none;
       float: right;
-      max-height: fit-content;
+      max-height: 100%;
           
       vertical-align: middle;
       display: table-cell;

@@ -477,11 +477,11 @@
 
                                 </p>
                                 <div class="box rel">
-                                    <div class="data">
-                                        <p class="index1">
+                                    <div class="data" style="margin-bottom: 7px;">
+                                        <p class="index1" style="text-align: center;">
                                             <?php echo $rf_d ?>
                                         </p>
-                                        <p>Total Rainfall</p>
+                                        <p style="font-size: 15px;">Total Rainfall</p>
                                     </div>
                                     <div class="data" style="">
                                         <p class="index1">
@@ -510,16 +510,16 @@
                                     <?php echo $thisMonth_rf ?>
                                 </p>
                                 <div class="box data big">
-                                    <div style="text-align: center;">
-                                        <span class="value" style="vertical-align:middle; font-size:2vw;">
+                                    <div style="line-height: 2em; text-align:center;">
+                                        <span style=" font-size:2vw; vertical-align: middle;">
                                             <?php echo $rf_m ?> in
                                         </span>
-                                        <span style="color:<?php echo $color_rf_m ?>">
-                                            <?php printf("%+.1f", $dif_m); ?>%
-                                            </p>
+                                        <span style="color:<?php echo $color_rf_m ?>;">
+                                                <?php printf("%+.1f", $dif_m); ?>%
                                         </span>
                                     </div>
-                                    <p style="font-size:0.7vw;">Total Rainfall</p>
+
+                                    <div style="font-size:0.9vw; text-align:center;">Total Rainfall</div>
                                     <div class="status" style="text-align:center;">
                                         <i <?php echo $icon_rf_m ?>></i>
                                         <p style="display:inline-block; vertical-align:middle;font-size:0.8vw;">
@@ -879,7 +879,7 @@
                             <div style="text-align: center;margin-top:2%;">
 
                                 <p style="font-style:italic; color: #696969">
-                                    <?php echo $date ?>
+                                    <?php echo $date_rf ?>
                                 </p>
                                 <p style="font-size:12px;color: #696969">Daily Rainfall</p>
                             </div>
