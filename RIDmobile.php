@@ -546,9 +546,9 @@
                 <div class="anchor" id="rainOutlook"></div>
 
                 <div style="margin-bottom: 15px; margin-left: 15px;  margin-right: 15px; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%); border-radius: 5px; padding: 10px;background-color: #fff" id="rainOutlook-content">
-                    <p class="subtitleB">Rainfall Outlook</p>
+                    <!--<p class="subtitleB">Rainfall Outlook</p>
                     <img id="gauge" src="./gauge/gauge.png"
-                        style="width: 100%; display: flex; margin-left: auto; margin-right: auto; margin-bottom: 25px; margin-top: 25px;">
+                        style="width: 100%; display: flex; margin-left: auto; margin-right: auto; margin-bottom: 25px; margin-top: 25px;">-->
                     <div id="rainProj">
                         <p style="font-size: 20px; margin-bottom: 25px;">ENSO Almanac: 3-Month Rainfall Outlook</p>
                         <a href="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_rainfall.png"

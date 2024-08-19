@@ -391,12 +391,17 @@
         <header class="header" id="header">
         </header>
         <aside id="sidebar" class="animated bounceInDown">
-            <p style="padding-left: 1%;font-size:1.5em"> Menu </p>
-            <ul style="padding-left:5px">
+            <p style="padding-left: 5%; padding-top: 5%; font-size:1.5em"> Menu </p>
+            <ul style="padding-left:5%">
                 <li><a href="#dashboard">Dashboard</a></li>
                 <li><a href="#rainOutlook">Rainfall Outlook</a></li>
                 <li><a href="#tool">Decision Support Tool</a></li>
-                <li class='sub-menu'><a href='#settings'>Average Climate Conditions<div class='fa fa-caret-down right'>
+                <li><a href="#rf">Rainfall</a></li>
+                <li><a href="#temperature">Temperature</a></li>
+                <li><a href="#et">Evapotranspiration</a></li>
+                <li><a href="#ndvi">NDVI</a></li>
+                <li><a href="#drought">Drought</a></li>
+                <!--<li class='sub-menu'><a href='#settings'>Average Climate Conditions<div class='fa fa-caret-down right'>
                         </div></a>
                     <ul>
                         <li><a href="#rf">Rainfall</a></li>
@@ -405,7 +410,7 @@
                         <li><a href="#ndvi">NDVI</a></li>
                         <li><a href="#drought">Drought</a></li>
                     </ul>
-                </li>
+                </li>-->
                 <!--<li><a href="#data">Historical Data</a></li>-->
             </ul>
 
@@ -725,7 +730,9 @@
                             <div style="text-align:center; ">
                                 <img style="width: 80%;height:auto;" src="./gauge/gauge.png">
                                 <p>
-                                    <?php echo ($monthName) ?> ENSO Conditions:
+                                    <?php echo ($monthName) ?> ENSO 
+                                    <br>
+                                    (El Niño–Southern Oscillation) Conditions:
                                     <br>
                                     <span style="font-weight: 800">
                                         <?php echo ($phase_name) ?>
@@ -767,11 +774,11 @@
                 </div>
                 <div class="anchor" id="rainOutlook"></div>
                 <div id="rainOutlook-content">
-                    <p class="subtitleB">Rainfall Outlook</p>
+                    <!--<p class="subtitleB">Rainfall Outlook</p>
                     <img id="gauge" src="./gauge/gauge.png"
-                        style="width: 30%; display: block; margin-left: auto;margin-right: auto;">
+                        style="width: 30%; display: block; margin-left: auto;margin-right: auto;">-->
                     <div id="rainProj">
-                        <p style="font-size: 20px">ENSO Almanac: 3-Month Rainfall Outlook</p>
+                        <p style="font-size: 1.6em; padding-bottom: 25px;" >ENSO Almanac: 3-Month Rainfall Outlook</p>
                         <a href="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_rainfall.png"
                             style="color:inherit" target="_blank">
                             <img class="shadow" style=""
@@ -780,7 +787,7 @@
                 </div>
                 <div class="anchor" id="tool"></div>
                 <div id="tool-content">
-                    <p class="subtitleB">Forage Production Decision Support Tool</p>
+                    <p class="subtitleB" style="font-size: 1.6em; margin-bottom: 25px;">Forage Production Decision Support Tool</p>
                     <div id="input">
 
                         <form id="toolForm" method="post">
@@ -820,8 +827,8 @@
                     </div>
 
                     <div class="anchor" id="rf"></div>
-                    <p class="subtitleB">Average Climate Conditions</p>
-                    <div class="name">
+                    <p class="subtitleB" style="font-size: 2em"> Average Climate Conditions</p>
+                    <div class="name" style="font-size: 1.8em;">
                         <p>Rainfall</p>
                     </div>
                     <div class="main_cards card-margin">
@@ -893,7 +900,7 @@
                     </div>
                     <div class="hist" id="RF-hist"></div>
                     <div class="anchor" id="temperature"></div>
-                    <div class="name">
+                    <div class="name" style="font-size: 1.6em;">
                         <p>Temperature</p>
                     </div>
                     <div class="main_cards card-margin">
@@ -913,6 +920,7 @@
                             </div>
                             <div style="text-align: center; padding-top: 10px;">
                                 <p>Daily Average Temperature</p>
+                                <br>
                                 <p style="font-style:italic; color: #696969;">
                                     <?php echo $date_t ?>
                                 </p>
@@ -940,7 +948,7 @@
                     </div>
 
                     <div class="anchor" id="et"></div>
-                    <div class="name">
+                    <div class="name" style="font-size: 1.6em;">
                         <p>Evapotranspiration</p>
                     </div>
                     <div class="et_cards card-margin">
@@ -955,7 +963,8 @@
                             </div>
                             <div style="text-align: center; margin-top: 2%;">
                                 <p>Monthly Average Evapotranspiration</p>
-                                <p style="font-style:italic; color: #696969">
+                                <br>
+                                <p style="font-style:italic; color: #696969;">
                                     <?php echo $monthName_et . ', ' . $year_et ?>
                                 </p>
                             </div>
@@ -986,7 +995,7 @@
                     </div>
 
                     <div class="anchor" id="ndvi"></div>
-                    <div class="name">
+                    <div class="name" style="font-size: 1.6em;">
                         <p>Normalized Difference Vegetation Index (NDVI)</p>
                     </div>
                     <div class="et_cards card-margin">
@@ -1005,6 +1014,7 @@
                             </div>
                             <div style="text-align: center; margin-top: 2%;">
                                 <p>Monthly Average NDVI</p>
+                                <br>
                                 <p style="font-style:italic; color: #696969">
                                     <?php echo $monthName_ndvi . ', ' . $year_ndvi ?>
                                 </p>
@@ -1029,8 +1039,11 @@
                     </div>
                     <div class="hist" id="NDVI-hist"></div>
                     <div class="anchor" id="drought"></div>
-                    <div class="name">
-                        <p>Drought History (SPI-3)</p>
+                    <div class="name" style="font-size: 1.6em; margin-bottom: 10px;">
+                        <p>Drought History</p>
+                    </div>
+                    <div style="font-size: 1em; text-align: center; margin-bottom: 25px;">
+                        <p>(Standardized Precipitation Index-3)</p>
                     </div>
                     <div id="SPI-div" class="hist"></div>
 
