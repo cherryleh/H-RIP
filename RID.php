@@ -824,6 +824,177 @@
                         </form>
                     </div>
                     <div id="results" style="display:none;height:auto">
+                        <!--<div id="output">
+    <div class="tabs">
+        <input type="radio" name="tabs" id="tabone" checked="checked">
+        <label for="tabone">3-Month Outlook</label>
+        <div class="tab" id="three-month">
+            <h3 class="" style="margin:0"> Estimated Forage Production: 3-Month Outlook</h3> 
+            <div class="" style="margin-left:40px"><b>Grass Type:</b> Signal<span style="margin-left:20px"></span><b>Conditions:</b> Unimproved<span style="margin-left:20px"><b>ENSO Phase:</b> Neutral</div>
+            <br>
+            <table class="output-table">
+                <colgroup>
+                    <col>
+                    <col class="outlined-3">
+                    <col class="outlined-3">
+                    <col class="outlined-3">
+                </colgroup>
+                <tr>
+                    <th></th>
+                    <th>Jul</th>
+                    <th>Aug</th>
+                    <th>Sep</th>
+
+                </tr>
+                <tr>
+                    <td>Average Production</td>
+                    <td>140 <br> <span class="change"> lbs/acre </span> </td>
+                    <td>135 <br> <span class="change"> lbs/acre </span>  </td>
+                    <td>102 <br> <span class="change"> lbs/acre </span>  </td>
+
+                </tr>
+                <tr>
+                    <td>Estimated Average Production</td>
+                    <td style="color:green">&#x2191;14% <br> <span class="change">+19 lbs/acre </span> </td>
+                    <td style="color:red">&#x2193;-7% <br> <span class="change">-9 lbs/acre </span> </td>
+                    <td style="color:green">&#x2191;1.0% <br> <span class="change">+1 lbs/acre </span> </td>
+                </tr>
+                <tr>
+                    <td>Estimated Minimum Production</td>
+                    <td style="color:red"> &#x2193;-36% <br> <span class="change">-50 lbs/acre </span></td>
+                    <td style="color:red"> &#x2193;-29% <br> <span class="change">-39 lbs/acre </span></td>
+                    <td style="color:red"> &#x2193;-25% <br> <span class="change">-26 lbs/acre </span></td>
+                </tr>
+
+            </table>
+
+        </div>
+
+        <input type="radio" name="tabs" id="tabtwo">
+        <label for="tabtwo">6-Month Outlook</label>
+        <div class="tab six-month">
+            <h3 style="margin:0"> Estimated Forage Production: 6-Month Outlook</h3>
+            <div class="" style="margin-left:40px"><b>Grass Type:</b> Signal<span style="margin-left:20px"></span><b>Conditions:</b> Unimproved<span style="margin-left:20px"><b>ENSO Phase:</b>Neutral</div>
+            <br>
+            <div class="scroll">
+                <table class="output-table">
+                    <colgroup>
+                        <col>
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                    </colgroup>
+                    <tr>
+                        <th></th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+                        <th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+                        <th>Dec</th>
+
+                    </tr>
+                    <tr>
+                        <td>Average Production</td>
+                        <td>140 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>135 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>102 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>118 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>250 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>332 <br> <span class="change"> lbs/acre </span> </td>
+
+                    </tr>
+                    <tr>
+                        <td>Average Production Outlook</td>
+                        <td style="color:green">&#x2191;14% <br> <span class="change">+19 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-7% <br> <span class="change">-9 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;1.0% <br> <span class="change">+1 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;1.5% <br> <span class="change">+2 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;17% <br> <span class="change">+44 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;0.5% <br> <span class="change">+2 lbs/acre </span> </td>
+
+                    </tr>
+                    <tr>
+                        <td>Minimum Production Outlook</td>
+                        <td style="color:red">&#x2193;-36% <br> <span class="change">-50 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-29% <br> <span class="change">-39 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-25% <br> <span class="change">-26 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-54% <br> <span class="change">-64 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-57% <br> <span class="change">-143 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-40% <br> <span class="change">-134 lbs/acre </span> </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+        <input type="radio" name="tabs" id="tabthree">
+        <label for="tabthree">Prior Months</label>
+        <div class="tab six-month">
+            <h3 style="margin:0"> Estimated Forage Production: Prior Months</h3>
+            <div class="" style="margin-left:40px"><b>Grass Type:</b> Signal<span style="margin-left:20px"></span><b>Conditions:</b> Unimproved<span style="margin-left:20px"><b>ENSO Phase:</b>Neutral</div>
+            <br>
+            <div class="scroll">
+                <table class="output-table">
+                    <colgroup>
+                        <col>
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                        <col class="outlined-6">
+                    </colgroup>
+                    <tr>
+                        <th></th>
+                        <th>Jun</th>
+                        <th>May</th>
+                        <th>Apr</th>
+                        <th>Mar</th>
+                        <th>Feb</th>
+                        <th>Jan</th>
+
+                    </tr>
+                    <tr>
+                        <td>Average Production</td>
+                        <td>144 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>217 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>353 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>398 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>235 <br> <span class="change"> lbs/acre </span> </td>
+                        <td>278 <br> <span class="change"> lbs/acre </span> </td>
+
+                    </tr>
+                    <tr>
+                        <td>Average Production Outlook</td>
+                        <td style="color:green">&#x2191;2.7% <br> <span class="change">+4 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;3.4% <br> <span class="change">+7 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-3% <br> <span class="change">-10 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;3.5% <br> <span class="change">+14 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;8.8% <br> <span class="change">+21 lbs/acre </span> </td>
+                        <td style="color:green">&#x2191;8.0% <br> <span class="change">+22 lbs/acre </span> </td>
+
+                    </tr>
+                    <tr>
+                        <td>Minimum Production Outlook</td>
+                        <td style="color:red">&#x2193;-47% <br> <span class="change">-67 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-51% <br> <span class="change">-111 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-55% <br> <span class="change">-193 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-36% <br> <span class="change">-143 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-49% <br> <span class="change">-115 lbs/acre </span> </td>
+                        <td style="color:red">&#x2193;-44% <br> <span class="change">-123 lbs/acre </span> </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>-->
                     </div>
 
                     <div class="anchor" id="rf"></div>
