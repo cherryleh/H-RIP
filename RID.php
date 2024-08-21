@@ -111,7 +111,7 @@
     $rf_daily_month = './RID/' . $RID . '/' . $RID . '_rf_daily_last_month.csv';
 
     // Open the CSV file
-    if (($handle = fopen($rf_daily_month, "r")) !== FALSE) {
+/*    if (($handle = fopen($rf_daily_month, "r")) !== FALSE) {
         $total_dry_days = 0;
         //$header = fgetcsv($handle); // Read the header row
         // Loop through each row of the CSV
@@ -126,7 +126,9 @@
 
     } else {
         $total_dry_days = 'Error';
-    }
+    }*/
+
+    $total_dry_day = 'X';
 
 
     //Temperature
@@ -308,7 +310,7 @@
     //Count how many months in last year is in drought (<0)
     $d = 0;
     foreach ($array_spi as $value) {
-        if ($value < 0) {
+        if ($value < -0.5) {
             $d++;
         }
     }

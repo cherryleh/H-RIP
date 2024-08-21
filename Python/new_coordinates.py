@@ -69,6 +69,10 @@ RID089 -155.915857220744	19.5064142062338
 RID090 -155.933211721583	19.5235631522107
 RID091 -155.946759847527	19.5190590350399
 RID094 -155.390944      19.968048
+RID095 -155.351864      20.029628
+RID096 -156.653649      20.881851 
+RID097 -155.653645      19.864262
+RID098 -156.359329      20.794674
 '''
 
 
@@ -88,14 +92,15 @@ for path in os.listdir(dir_path):
 
 ranch_id='RID'+f"{count+1:03}"
 ranch_name = ''
-island='BI'
+#Island names: BI, Ma, Oa, Ka, La, Ko, Mo
+island='Ma'
 
 #if coordinates are in convert degree minute second format, convert to decimals below
 #lat=dms2dec('''19°45ʻ17.00"N''') # converts to dec
 #lon=dms2dec('''155°52ʻ12.32"W''') # converts to dec
 
-lat = 19.968048
-lon = -155.390944
+lat = 20.794674
+lon = -156.359329 
 
 
 # In[225]:
