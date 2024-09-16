@@ -126,3 +126,51 @@ Traceback (most recent call last):
   File "/var/www/html/Python/rainfall_daily.py", line 34, in <module>
     os.removea(f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_last_month.csv')
 AttributeError: module 'os' has no attribute 'removea'. Did you mean: 'remove'?
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './rain_daily_maps/2024_09_14.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/rainfall_daily.py", line 43, in <module>
+    with rasterio.open(f'./rain_daily_maps/{yest_year}_{yest_mon:02d}_{yest_day:02d}.tif') as src:
+  File "/home/cherryle/.local/lib/python3.10/site-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+  File "/home/cherryle/.local/lib/python3.10/site-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './rain_daily_maps/2024_09_14.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/rainfall_daily.py", line 64, in <module>
+    csv=pd.concat([rf_df, new_row],ignore_index=True)
+NameError: name 'rf_df' is not defined
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './rain_daily_maps/2024_09_15.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/rainfall_daily.py", line 43, in <module>
+    with rasterio.open(f'./rain_daily_maps/{yest_year}_{yest_mon:02d}_{yest_day:02d}.tif') as src:
+  File "/home/cherryle/.local/lib/python3.10/site-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+  File "/home/cherryle/.local/lib/python3.10/site-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './rain_daily_maps/2024_09_15.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/rainfall_daily.py", line 64, in <module>
+    csv=pd.concat([rf_df, new_row],ignore_index=True)
+NameError: name 'rf_df' is not defined

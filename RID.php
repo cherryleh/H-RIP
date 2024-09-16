@@ -484,13 +484,13 @@
                                 <div class="box rel">
                                     <div class="data" style="margin-bottom: 7px;">
                                         <p class="index1" style="text-align: center;">
-                                            <?php echo $rf_d ?>
+                                            <?php echo $rf_d ?> in
                                         </p>
                                         <p style="font-size: 15px;">Total Rainfall</p>
                                     </div>
                                     <div class="data" style="">
                                         <p class="index1">
-                                            <?php echo $consec_dry_days ?>
+                                            <?php echo $consec_dry_days ?> 
                                         </p>
                                         <p> Consecutive Dry Days </p>
                                     </div>
