@@ -47,43 +47,37 @@
     if (!empty($file_rf)) {
         $fields_rf = str_getcsv($file_rf[count($file_rf) - 1]); // Parse csv string into an array, get fields from last line
         $rf_m = (round($fields_rf[count($fields_rf) - 2], 2)); //RF value from last row of csv file
-        $monthNum_rf = $fields_rf[count($fields_rf) - 4]; //Month of last row (should be last month)
-        $year_rf = (round($fields_rf[count($fields_rf) - 5], 0)); //Year of last row
+        $monthNum_rf_m = $fields_rf[count($fields_rf) - 4]; //Month of last row (should be last month)
+        $year_rf_m = (round($fields_rf[count($fields_rf) - 5], 0)); //Year of last row
     
     } else {
         echo "Error";
     };
-
-    //Daily Rainfall
-    $file_rf_d = file('./RID/' . $RID . '/' . $RID . '_rf_daily_this_month.csv');
-    
-    if (!empty($file_rf_d)) {
-        $fields_rf_d = str_getcsv($file_rf_d[count($file_rf_d) - 1]); // Parse csv string into an array, get fields from last line
-        $rf_d = (round($fields_rf_d[count($fields_rf_d) - 1], 3)); //RF value from last row of csv file
-        $monthDate_rf_d = $fields_rf_d[count($fields_rf_d) - 2]; //Date
-        $monthNum_rf_d = $fields_rf_d[count($fields_rf_d) - 3];//Month of last row (should be last month)
-        $year_rf_d = (round($fields_rf_d[count($fields_rf_d) - 4], 0)); //Year of last row
-        echo $fields_rf_d[count($fields_rf_d) - 2];
-    } else {
-        echo "Error";
-    };
-
-    $dateObj_rf_d = DateTime::createFromFormat('!m', intval($monthNum_rf_d));
-    $monthName_rf_d = $dateObj_rf_d->format('F');
-    $date_rf = $monthName_rf_d . ' ' . $monthDate_rf_d . ', ' . $year_rf_d;
 
     //Date reformat
-    $dateObj_rf = DateTime::createFromFormat('!m', intval($monthNum_rf));
-    $monthName_rf = $dateObj_rf->format('F');
+    $dateObj_rf = DateTime::createFromFormat('!m', $monthNum_rf_m);
+    $monthName_rf_m = $dateObj_rf->format('F'); // March
+    $date_rf_m = $monthName_rf_m . ' , ' . $year_rf_m;
+
+    //Daily Rainfall
+    $file_rf_d = file('./RID/' . $RID . '/' . $RID . '_rf_d.txt');
+    $rf_d = round($file_rf_d[0], 0);
+    $year_rf = $file_rf_d[1];
+    $monthNum_rf_d = intval($file_rf_d[2]);
+
+    //Date reformat
+    $dateObj_rf = DateTime::createFromFormat('!m', $monthNum_rf_d);
+    $monthName_rf_d = $dateObj_rf->format('F'); // March
+    $date_rf_d = $monthName_rf_d . ' ' . $file_rf_d[3] . ', ' . $file_rf_d[1];
 
     //Format: e.g. December, 2022
-    $thisMonth_rf = $monthName_rf . ', ' . $year_rf;
+    //$thisMonth_rf = $monthName_rf . ', ' . $year_rf;
     //Open monthly averages file to get average for this month
     $csv_rf = fopen('./RID/' . $RID . '/' . $RID . '_rf_month.csv', 'r');
 
     // Keep looping as long as we get a new $row
     while ($row_rf = fgetcsv($csv_rf)) {
-        if ($row_rf[3] == $monthName_rf) {
+        if ($row_rf[3] == $monthName_rf_m) {
             $avg_rf = (round($row_rf[count($row_rf) - 1], 2));
         }
     }
@@ -111,7 +105,7 @@
     $rf_daily_month = './RID/' . $RID . '/' . $RID . '_rf_daily_last_month.csv';
 
     // Open the CSV file
-/*    if (($handle = fopen($rf_daily_month, "r")) !== FALSE) {
+    if (($handle = fopen($rf_daily_month, "r")) !== FALSE) {
         $total_dry_days = 0;
         //$header = fgetcsv($handle); // Read the header row
         // Loop through each row of the CSV
@@ -126,9 +120,8 @@
 
     } else {
         $total_dry_days = 'Error';
-    }*/
+    }
 
-    $total_dry_day = 'X';
 
 
     //Temperature
@@ -478,7 +471,7 @@
                                     </div>
                                 </i>
                                 <p class="date">
-                                    <?php echo $date_rf ?>
+                                    <?php echo $date_rf_d ?>
 
                                 </p>
                                 <div class="box rel">
@@ -512,7 +505,7 @@
                                     </div>
                                 </i>
                                 <p class="date">
-                                    <?php echo $thisMonth_rf ?>
+                                    <?php echo $date_rf_m ?>
                                 </p>
                                 <div class="box data big">
                                     <div style="line-height: 2em; text-align:center;">
@@ -1028,7 +1021,7 @@
                             <div> <?php echo $total_dry_days ?> total dry days</div>
                             <div style="text-align: center;margin-top:2%; ">
                                 <p style="font-style:italic; color: #696969">
-                                    <?php echo $thisMonth_rf ?>
+                                    <?php echo $date_rf_m?>
                                 </p>
                                 <p style="font-size:12px;color: #696969">Monthly Rainfall</p>
                             </div>
@@ -1057,7 +1050,7 @@
                             <div style="text-align: center;margin-top:2%;">
 
                                 <p style="font-style:italic; color: #696969">
-                                    <?php echo $date_rf ?>
+                                    <?php echo $date_rf_m ?>
                                 </p>
                                 <p style="font-size:12px;color: #696969">Daily Rainfall</p>
                             </div>
