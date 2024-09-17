@@ -61,7 +61,7 @@
 
     //Daily Rainfall
     $file_rf_d = file('./RID/' . $RID . '/' . $RID . '_rf_d.txt');
-    $rf_d = round($file_rf_d[0], 0);
+    $rf_d = round($file_rf_d[0], 2);
     $year_rf = $file_rf_d[1];
     $monthNum_rf_d = intval($file_rf_d[2]);
 

@@ -30,6 +30,16 @@ file=f'./rain_daily_maps/{yest_year}_{yest_mon:02d}_{yest_day:02d}.tif'
 open(file, 'wb').write(r.content)
 
 for r in np.arange(1,count+1):
+    ranchshp = gpd.read_file('./shapefiles/RID.shp',rows=slice(r-1, r))
+    with rasterio.open(f'./rain_daily_maps/{yest_year}_{yest_mon:02d}_{yest_day:02d}.tif') as src:
+        affine = src.transform
+        array = src.read(1)
+        df_zonal_stats = pd.DataFrame(zonal_stats(ranchshp, array, affine=affine,nodata=src.nodata,stats = ['mean']))
+    rf = (df_zonal_stats['mean'].iloc[0])/25.4
+    with open(f'../RID/RID{r:03d}/RID{r:03d}_rf_d.txt', 'w') as f:
+        f.write(str(rf)+f'\n{yest_year}\n{yest_mon}\n{yest_day}') 
+
+for r in np.arange(1,count+1):
     if yest_day == 1:
         os.remove(f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_last_month.csv')
         os.rename(f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_this_month.csv',f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_last_month.csv')
@@ -49,7 +59,6 @@ for r in np.arange(1,count+1):
         new_row = pd.DataFrame({'Year':yest_year,'Month':yest_mon,'Day':yest_day,'RF_in':rf},index=[0])
         csv=pd.concat([rf_df, new_row],ignore_index=True)
         csv.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_this_month.csv',index=False)
-
         with open(f'../RID/RID{r:03d}/RID{r:03d}_consec_dry_days.txt', 'r') as f:
             consec_days = int(f.read())
         if rf<0.0393701:
