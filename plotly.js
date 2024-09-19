@@ -274,6 +274,7 @@ function makeETPlotly(trace, divName) {
 
 function makeTempPlotly(trace, divName) {
   var data = [trace];
+  console.log(trace);
 
   var layout = {
     margin: {
@@ -358,7 +359,7 @@ function makeSPIPlotly(trace, divName) {
 
 function makeSPI_12m(trace, divName,axis) {
     var data = [trace];
-    console.log(trace);
+    
     var layout = {
         xaxis: {
             dtick:'M1',
