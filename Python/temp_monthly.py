@@ -42,7 +42,7 @@ ranches = np.arange(1,count+1)
 for r in ranches:
     ranchshp = gpd.read_file('./shapefiles/RID.shp',rows=slice(r-1, r))
     ranch = ranchshp['Polygon'].iloc[0]
-    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv',index_col=[0])
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
     with rasterio.open(file) as src:
         affine = src.transform
         array = src.read(1)
@@ -53,7 +53,7 @@ for r in ranches:
     new_row = pd.DataFrame({'Year':int(lastMonthYr),'Month':int(lastMonth),'Temp':temp_f},index=[0])
     csv=pd.concat([csv, new_row],ignore_index=True)
     csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
-    csv.to_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+    csv.to_csv('../RID/'+ranch+'/'+ranch+'_temp.csv', index=False)
 
 
 def temp_avg(arr):
@@ -71,7 +71,7 @@ def temp_12m(arr):
     return tdf12m
 
 for r in ranches:
-    temp = pd.read_csv(f"../RID/RID{r:03d}/RID{r:03d}_temp.csv",index_col=0)    
+    temp = pd.read_csv(f"../RID/RID{r:03d}/RID{r:03d}_temp.csv")    
     tdf=temp_avg(temp)
     tdf12m=temp_12m(temp)
     tdf12m=tdf12m.drop(['Year','datetime'],axis=1)

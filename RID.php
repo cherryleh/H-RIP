@@ -55,7 +55,7 @@
     };
 
     //Date reformat
-    $dateObj_rf = DateTime::createFromFormat('!m', $monthNum_rf_m);
+    $dateObj_rf = DateTime::createFromFormat('!m', intval($monthNum_rf_m));
     $monthName_rf_m = $dateObj_rf->format('F'); // March
     $date_rf_m = $monthName_rf_m . ' , ' . $year_rf_m;
 
@@ -77,7 +77,7 @@
 
     // Keep looping as long as we get a new $row
     while ($row_rf = fgetcsv($csv_rf)) {
-        if ($row_rf[3] == $monthName_rf_m) {
+        if ($row_rf[2] == $monthName_rf_m) {
             $avg_rf = (round($row_rf[count($row_rf) - 1], 2));
         }
     }
@@ -181,7 +181,7 @@
     //Temperature monthly averages
     $csv_t = fopen('./RID/' . $RID . '/' . $RID . '_t_month.csv', 'r');
     while ($row_t = fgetcsv($csv_t)) {
-        if ($row_t[3] == $monthName_t_d) {
+        if ($row_t[2] == $monthName_t_m) {
             $avg_t = (round($row_t[count($row_t) - 1], 2));
         }
     }
