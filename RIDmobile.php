@@ -38,7 +38,6 @@
 
 <body>
     <?php
-    //rainfall
     $RID = $_GET["ranch"];
     $file_rf = file('./RID/' . $RID . '/' . $RID . '_rf.csv');
     // Get last row of monthly rainfall file
@@ -46,52 +45,41 @@
     if (!empty($file_rf)) {
         $fields_rf = str_getcsv($file_rf[count($file_rf) - 1]); // Parse csv string into an array, get fields from last line
         $rf_m = (round($fields_rf[count($fields_rf) - 2], 2)); //RF value from last row of csv file
-        $monthNum_rf = $fields_rf[count($fields_rf) - 4]; //Month of last row (should be last month)
-        $year_rf = (round($fields_rf[count($fields_rf) - 5], 0)); //Year of last row
+        $monthNum_rf_m = $fields_rf[count($fields_rf) - 4]; //Month of last row (should be last month)
+        $year_rf_m = (round($fields_rf[count($fields_rf) - 5], 0)); //Year of last row
     
-    } else {
-        echo "Error";
-    }
-    ;
-
-    //Daily Rainfall
-    $file_rf_d = file('./RID/' . $RID . '/' . $RID . '_rf_daily_this_month.csv');
-    
-    if (!empty($file_rf_d)) {
-        $fields_rf_d = str_getcsv($file_rf_d[count($file_rf_d) - 1]); // Parse csv string into an array, get fields from last line
-        $rf_d = (round($fields_rf_d[count($fields_rf_d) - 1], 3)); //RF value from last row of csv file
-        $monthDate_rf_d = $fields_rf_d[count($fields_rf_d) - 2]; //Date
-        $monthNum_rf_d = $fields_rf_d[count($fields_rf_d) - 3];//Month of last row (should be last month)
-        $year_rf_d = (round($fields_rf_d[count($fields_rf_d) - 4], 0)); //Year of last row
-        echo $fields_rf_d[count($fields_rf_d) - 2];
     } else {
         echo "Error";
     };
 
-    $dateObj_rf_d = DateTime::createFromFormat('!m', intval($monthNum_rf_d));
-    $monthName_rf_d = $dateObj_rf_d->format('F');
-    $date_rf = $monthName_rf_d . ' ' . $monthDate_rf_d . ', ' . $year_rf_d;
     //Date reformat
-    $dateObj_rf = DateTime::createFromFormat('!m', intval($monthNum_rf));
-    $monthName_rf = $dateObj_rf->format('F');
+    $dateObj_rf = DateTime::createFromFormat('!m', intval($monthNum_rf_m));
+    $monthName_rf_m = $dateObj_rf->format('F'); // March
+    $date_rf_m = $monthName_rf_m . ' , ' . $year_rf_m;
+
+    //Daily Rainfall
+    $file_rf_d = file('./RID/' . $RID . '/' . $RID . '_rf_d.txt');
+    $rf_d = round($file_rf_d[0], 2);
+    $year_rf = $file_rf_d[1];
+    $monthNum_rf_d = intval($file_rf_d[2]);
+
+    //Date reformat
+    $dateObj_rf = DateTime::createFromFormat('!m', $monthNum_rf_d);
+    $monthName_rf_d = $dateObj_rf->format('F'); // March
+    $date_rf_d = $monthName_rf_d . ' ' . $file_rf_d[3] . ', ' . $file_rf_d[1];
 
     //Format: e.g. December, 2022
-    $thisMonth_rf = $monthName_rf . ', ' . $year_rf;
+    //$thisMonth_rf = $monthName_rf . ', ' . $year_rf;
     //Open monthly averages file to get average for this month
     $csv_rf = fopen('./RID/' . $RID . '/' . $RID . '_rf_month.csv', 'r');
 
     // Keep looping as long as we get a new $row
     while ($row_rf = fgetcsv($csv_rf)) {
-        if ($row_rf[3] == $monthName_rf) {
+        if ($row_rf[2] == $monthName_rf_m) {
             $avg_rf = (round($row_rf[count($row_rf) - 1], 2));
         }
     }
     fclose($csv_rf);
-
-    //CHANGE THIS WHEN DAILY RF IS RELEASED
-    $date = 'Date';
-
-
 
     if ($rf_m > $avg_rf) {
         $status_rf_m = 'Above Average';
@@ -131,6 +119,7 @@
     } else {
         $total_dry_days = 'Error';
     }
+
 
 
     //Temperature
@@ -190,7 +179,7 @@
     //Temperature monthly averages
     $csv_t = fopen('./RID/' . $RID . '/' . $RID . '_t_month.csv', 'r');
     while ($row_t = fgetcsv($csv_t)) {
-        if ($row_t[3] == $monthName_t_d) {
+        if ($row_t[2] == $monthName_t_m) {
             $avg_t = (round($row_t[count($row_t) - 1], 2));
         }
     }
@@ -301,9 +290,6 @@
     $array_spi = [];
 
     while ($data = fgetcsv($csv_spi)) {
-        //array_push($array_spi, floatval($data[2]));
-        //$num = count($data);
-    
         if ($data[0] >= $min && $data[0] <= $max) {
             array_push($array_spi, floatval($data[3]));
         }
@@ -315,7 +301,7 @@
     //Count how many months in last year is in drought (<0)
     $d = 0;
     foreach ($array_spi as $value) {
-        if ($value < 0) {
+        if ($value < -0.5) {
             $d++;
         }
     }
