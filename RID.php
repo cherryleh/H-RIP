@@ -181,7 +181,7 @@
     //Temperature monthly averages
     $csv_t = fopen('./RID/' . $RID . '/' . $RID . '_t_month.csv', 'r');
     while ($row_t = fgetcsv($csv_t)) {
-        if ($row_t[2] == $monthName_t_m) {
+        if ($row_t[3] == $monthName_t_m) {
             $avg_t = (round($row_t[count($row_t) - 1], 2));
         }
     }
