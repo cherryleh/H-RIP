@@ -57,7 +57,7 @@ for r in ranches:
     spi_3=[]
     spi_3 = spi_rain.calculate(csv, 'datetime', 'RF_in', freq="M", scale=3, fit_type="lmom", dist_type="gam")
     spi_3=spi_3.rename(columns={"RF_in_scale_3_calculated_index": "SPI-3"})
-    spi_3.to_csv(f'../RID/'+ranch+'/'+ranch+'_spi.csv',index=False)
+    spi_3.to_csv(f'../RID/'+ranch+'/'+ranch+'_spi.csv')
 
     '''spi_pos=spi_3
     spi_pos['SPI-3'] = spi_pos['SPI-3'].clip(lower=0)
