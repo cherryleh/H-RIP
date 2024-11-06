@@ -2,42 +2,59 @@
     <?php
     //Temperature monthly averages
     $RID = "RID066";
-    $file_t = file('./RID/' . $RID . '/' . $RID . '_temp.csv');
-    if (!empty($file_t)) {
-        $fields_t = str_getcsv($file_t[count($file_t) - 1]); // Parse csv string into an array, get fields from last line
-        $mean_t_m = (round(floatval($fields_t[count($fields_t) - 2])));
-        $monthNum_t_m = $fields_t[count($fields_t) - 3];
-        $year_t_m = (round($fields_t[count($fields_t) - 4], 0));
-
-    } else {
-        echo "Error";
-    }
-    ;
-
-    $dateObj_t_m = DateTime::createFromFormat('!m', intval($monthNum_t_m));
-    $monthName_t_m = $dateObj_t_m->format('F');
-
-    $csv_t = fopen('./RID/' . $RID . '/' . $RID . '_t_month.csv', 'r');
-    while ($row_t = fgetcsv($csv_t)) {
-        if ($row_t[3] == $monthName_t_m) {
-            echo($row_t);
-            $avg_t = (round($row_t[count($row_t) - 1], 2));
+    
+    //SPI
+    $file_spi = "./RID/" . $RID . "/" . $RID . "_spi.csv";
+    $max = count(file($file_spi, FILE_SKIP_EMPTY_LINES));
+    $min = $max - 13;
+    
+    $csv_spi = fopen($file_spi, "r");
+    
+    $array_spi = [];
+    
+    while ($data = fgetcsv($csv_spi)) {
+        if ($data[0] >= $min && $data[0] <= $max) {
+            array_push($array_spi, floatval($data[2]));
         }
     }
 
-    fclose($csv_t);
-
-    //Above/below average style formatting
-    if ($mean_t_d > $avg_t) {
-        $status_t = 'above';
-        $style_t = 'style="vertical-align:middle;position:absolute;color:orange;"';
-        $stat_t = '+';
-    } else {
-        $status_t = 'below';
-        $style_t = 'style="vertical-align:middle;position:absolute;color:green;" ';
-        $stat_t = '';
-    }
-    //Temperature difference
     
-    //$dif_t_m = sprintf("%+.2f", ($mean_t_m - $avg_t));
+    echo $min;
+    echo $max;
+    //Count how many months in last year is in drought (<0)
+    $d = 0;
+    foreach ($array_spi as $value) {
+        if ($value < -0.5) {
+            $d++;
+        }
+    }
+    
+    $spi = end($array_spi);
+
+    fclose($csv_spi);
+    
+    //Drought status
+    if ($spi <= -2) {
+        $drought_status = "Exceptional Drought";
+        $icon_spi = 'class="bi bi-exclamation-circle-fill fs-3" style="color:red; display:inline-block; vertical-align: middle"';
+    } elseif ($spi <= -1.6 && $spi > -2) {
+        $drought_status = "Extreme Drought";
+        $icon_spi = 'class="bi bi-exclamation-circle-fill fs-3" style="color:red; display:inline-block; vertical-align: middle"';
+    } elseif ($spi <= -1.3 && $spi > -1.6) {
+        $drought_status = "Severe Drought";
+        $icon_spi = 'class="bi bi-exclamation-circle-fill fs-3" style="color:darkorange; display:inline-block; vertical-align: middle"';
+    } elseif ($spi <= -0.8 && $spi > -1.3) {
+        $drought_status = "Moderate Drought";
+        $icon_spi = 'class="bi bi-exclamation-circle-fill fs-3" style="color:orange; display:inline-block; vertical-align: middle"';
+    } elseif ($spi <= -0.5 && $spi > -0.8) {
+        $drought_status = "Abnormally Dry";
+        $icon_spi = 'class="bi bi-exclamation-circle-fill fs-3" style="color:orange; display:inline-block; vertical-align: middle"';
+    } else {
+        $drought_status = "No Drought";
+        $icon_spi = 'class="bi bi-check-circle-fill fs-3" style="color:green; display:inline-block;vertical-align: middle"';
+    }
+
+
+    
+    
     ?>
