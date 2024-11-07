@@ -1158,7 +1158,7 @@
                         </div>
                     </div> -->
                     <!-- <div class="hist" id="ET-hist">
-                    </div>
+                    </div> -->
 
                     <div class="anchor" id="ndvi"></div>
                     <div class="name" style="font-size: 1.6em;">
@@ -1203,7 +1203,7 @@
                                 0.9) suggest dense vegetation such as crops at their peak growth.</p>
                         </div>
                     </div>
-                    <div class="hist" id="NDVI-hist"></div> -->
+                    <div class="hist" id="NDVI-hist"></div>
                     <div class="anchor" id="drought"></div>
                     <div class="name" style="font-size: 1.6em; margin-bottom: 10px;">
                         <p>Drought History</p>
