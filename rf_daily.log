@@ -558,3 +558,20 @@ NameError: name 'rf_df' is not defined
   csv=pd.concat([rf_df, new_row],ignore_index=True)
 /var/www/html/Python/rainfall_daily.py:60: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
   csv=pd.concat([rf_df, new_row],ignore_index=True)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './rain_daily_maps/2024_11_06.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/rainfall_daily.py", line 34, in <module>
+    with rasterio.open(f'./rain_daily_maps/{yest_year}_{yest_mon:02d}_{yest_day:02d}.tif') as src:
+  File "/home/cherryle/.local/lib/python3.10/site-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+  File "/home/cherryle/.local/lib/python3.10/site-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './rain_daily_maps/2024_11_06.tif' not recognized as a supported file format.
