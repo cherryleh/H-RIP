@@ -57,7 +57,7 @@
     //Date reformat
     $dateObj_rf = DateTime::createFromFormat('!m', intval($monthNum_rf_m));
     $monthName_rf_m = $dateObj_rf->format('F'); // March
-    $date_rf_m = $monthName_rf_m . ' , ' . $year_rf_m;
+    $date_rf_m = $monthName_rf_m . ', ' . $year_rf_m;
 
     //Daily Rainfall
     $file_rf_d = file('./RID/' . $RID . '/' . $RID . '_rf_d.txt');
@@ -1159,11 +1159,12 @@
                     </div> -->
                     <!-- <div class="hist" id="ET-hist">
                     </div> -->
-
+<br>
                     <div class="anchor" id="ndvi"></div>
                     <div class="name" style="font-size: 1.6em;">
                         <p>Normalized Difference Vegetation Index (NDVI)</p>
                     </div>
+                    <p style="text-align:center">NOTE: NDVI data is currently not updating in real time. We are working on developing a quality real-time product that will be online very soon.</p>
                     <div class="et_cards card-margin">
                         <div class="card1" id="NDVI-div"></div>
 

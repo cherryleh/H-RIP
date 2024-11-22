@@ -55,7 +55,7 @@
     //Date reformat
     $dateObj_rf = DateTime::createFromFormat('!m', intval($monthNum_rf_m));
     $monthName_rf_m = $dateObj_rf->format('F'); // March
-    $date_rf_m = $monthName_rf_m . ' , ' . $year_rf_m;
+    $date_rf_m = $monthName_rf_m . ', ' . $year_rf_m;
 
     //Daily Rainfall
     $file_rf_d = file('./RID/' . $RID . '/' . $RID . '_rf_d.txt');
@@ -179,7 +179,7 @@
     //Temperature monthly averages
     $csv_t = fopen('./RID/' . $RID . '/' . $RID . '_t_month.csv', 'r');
     while ($row_t = fgetcsv($csv_t)) {
-        if ($row_t[2] == $monthName_t_m) {
+        if ($row_t[3] == $monthName_t_m) {
             $avg_t = (round($row_t[count($row_t) - 1], 2));
         }
     }
@@ -390,148 +390,161 @@
             <div id="ranchname">
                 <?php echo $RID ?> - Ranch Page
             </div>
-            
+
             <!--<div class="mobile-msg">
                 <p> H-RIP is currently only available on desktop. The mobile version is coming soon.</p>
             </div>-->
 
             <div class="for-mobile">
                 <div class="subtitleB" style="padding-top: 5px; margin-bottom: 15px;">Dashboard</div>
-                <div style="text-align: center; margin-top: 5px; margin-bottom: 15px;">Mobile version is in development</div>
-                <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding-left: 15px; padding-right: 15px;">
-                    <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
-                            <div style="text-align: center;padding-top: 10px;">
-                                <p style="font-size:15px;">Daily Rainfall</p>
-                            </div>
+                <div style="text-align: center; margin-top: 5px; margin-bottom: 15px;">Mobile version is in development
+                </div>
+                <div
+                    style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding-left: 15px; padding-right: 15px;">
+                    <div
+                        style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
+                        <div style="text-align: center;padding-top: 10px;">
+                            <p style="font-size:15px;">Daily Rainfall</p>
+                        </div>
 
-                            <div style="text-align:center; padding-top: 10px;">
-                                <span style="vertical-align:middle;font-size: 30px;">
-                                    <?php echo $rf_d ?> in
-                                </span>
-                            </div>
+                        <div style="text-align:center; padding-top: 10px;">
+                            <span style="vertical-align:middle;font-size: 30px;">
+                                <?php echo $rf_d ?> in
+                            </span>
+                        </div>
 
-                            <div style="text-align: center;  margin-top: 15px;"><?php echo $date_rf ?></div>
+                        <div style="text-align: center;  margin-top: 15px;"><?php echo $date_rf_d ?></div>
                     </div>
-                    <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px; padding: 10px;">
-                            <div style="font-size: 15px; text-align: center; padding-top: 10px;">
-                                <p>Daily Temperature</p>
-                                <span style="vertical-align:middle; line-height: 2em; font-size: 30px;">
-                                   <?php echo $mean_t_d ?>&degF
-                                </span>
-                                <span>
+                    <div
+                        style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px; padding: 10px;">
+                        <div style="font-size: 15px; text-align: center; padding-top: 10px;">
+                            <p>Daily Temperature</p>
+                            <span style="vertical-align:middle; line-height: 2em; font-size: 30px;">
+                                <?php echo $mean_t_d ?>&degF
+                            </span>
+                            <span>
                                 <?php echo $dif_t_d ?> &degF
-                               </span>
-                            </div>
-
-                            <div style="text-align: center;"><?php echo $date_t; ?></div>
-
+                            </span>
                         </div>
-                </div>
-                <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
-                    <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
-                            <div style="text-align: center;padding-top: 10px;">
-                                <p style="font-size:15px;">Monthly Rainfall</p>
-                            </div>
 
-                            <div style="text-align:center; padding-top: 10px;">
-                                <span style="vertical-align:middle;font-size: 30px;">
-                                    <?php echo $rf_m ?> in
-                                </span>
-                                <span style="color:<?php echo $color_rf_m ?>">
-                                            <?php printf("%+.1f", $dif_m); ?>%
-                                </span>
-                            </div>
-
-                            <div style="text-align: center;  margin-top: 15px;"><?php echo $thisMonth_rf ?></div>
+                        <div style="text-align: center;"><?php echo $date_t; ?></div>
 
                     </div>
-                    <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px; padding: 10px;">
-                            <div style="text-align: center; padding-top: 10px;">
-                                <p style="font-size: 15px;">Monthly Temperature</p>
-                                <span style="vertical-align:middle; line-height: 2em; font-size: 30px;">
-                                   <?php echo $mean_t_m ?>&degF
-                                </span>
-                                <span>
+                </div>
+                <div
+                    style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
+                    <div
+                        style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
+                        <div style="text-align: center;padding-top: 10px;">
+                            <p style="font-size:15px;">Monthly Rainfall</p>
+                        </div>
+
+                        <div style="text-align:center; padding-top: 10px;">
+                            <span style="vertical-align:middle;font-size: 30px;">
+                                <?php echo $rf_m ?> in
+                            </span>
+                            <span style="color:<?php echo $color_rf_m ?>">
+                                <?php printf("%+.1f", $dif_m); ?>%
+                            </span>
+                        </div>
+
+                        <div style="text-align: center;  margin-top: 15px;"><?php echo $date_rf_m ?></div>
+
+                    </div>
+                    <div
+                        style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px; padding: 10px;">
+                        <div style="text-align: center; padding-top: 10px;">
+                            <p style="font-size: 15px;">Monthly Temperature</p>
+                            <span style="vertical-align:middle; line-height: 2em; font-size: 30px;">
+                                <?php echo $mean_t_m ?>&degF
+                            </span>
+                            <span>
                                 <?php echo $dif_t_m ?> &degF
-                               </span>
-                            </div>
-                            <div style="text-align: center; ">  <?php echo $thisMonth_t_m ?></div>
+                            </span>
                         </div>
+                        <div style="text-align: center; "> <?php echo $thisMonth_t_m ?></div>
+                    </div>
                 </div>
 
-                <div style="margin-bottom: 15px; margin-left: 15px;  margin-right: 15px; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%); border-radius: 5px; padding: 10px;background-color: #fff">
-                        <div id="spi">
-                            <p class="spi">Current Drought Severity</p>
-                        </div>
-                        <div style="text-align: center; font-size: 30px; line-height: 1.2em">
-                                <i <?php echo $icon_spi ?>></i>
-                                <p style="display:inline-block; vertical-align:middle;">
-                                    <?php echo $drought_status; ?>
-                                </p>
-                        </div>
+                <div
+                    style="margin-bottom: 15px; margin-left: 15px;  margin-right: 15px; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%); border-radius: 5px; padding: 10px;background-color: #fff">
+                    <div id="spi">
+                        <p class="spi">Current Drought Severity</p>
                     </div>
+                    <div style="text-align: center; font-size: 30px; line-height: 1.2em">
+                        <i <?php echo $icon_spi ?>></i>
+                        <p style="display:inline-block; vertical-align:middle;">
+                            <?php echo $drought_status; ?>
+                        </p>
+                    </div>
+                </div>
 
-                <div style="margin-bottom: 15px; margin-left: 15px;  margin-right: 15px; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%); border-radius: 5px; background-color: #fff">
-                        <div style="font-size:20px; text-align:center;">
-                            <p>12-Month Drought History
+                <div
+                    style="margin-bottom: 15px; margin-left: 15px;  margin-right: 15px; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%); border-radius: 5px; background-color: #fff">
+                    <div style="font-size:20px; text-align:center;">
+                        <p>12-Month Drought History
                             <br>
-                                <span style="color: #696969; font-size: 15px;"> <?php echo $d; ?> out of 12 months in drought </span>
-                            </p>
-                        </div>
-                        <div id="SPI-12m" style="height: 250px; margin-bottom: 15px; margin-left: 15px;  margin-right: 15px;"></div>
+                            <span style="color: #696969; font-size: 15px;"> <?php echo $d; ?> out of 12 months in
+                                drought </span>
+                        </p>
                     </div>
-                    
+                    <div id="SPI-12m"
+                        style="height: 250px; margin-bottom: 15px; margin-left: 15px;  margin-right: 15px;"></div>
+                </div>
 
-                    <div style="margin-bottom: 15px; margin-left: 15px;  margin-right: 15px; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%); border-radius: 5px; padding: 10px; background-color: #fff">
-                        <div class="table rel">
-                           
-                            <div style="text-align:center; ">
-                                <img style="width: 80%; height:auto;" src="./gauge/gauge.png">
-                                <p>
-                                    <?php echo ($monthName) ?> ENSO Conditions:
-                                    <br>
-                                    <span style="font-weight: 800">
-                                        <?php echo ($phase_name) ?>
-                                    </span>
-                                    <br>
-                                <p style="margin-top: 5%;">Monthly Rainfall</p>
-                                <table id="oni-table" style="">
-                                    <colgroup>
-                                        <col span="1" style="width: 65%;">
-                                        <col span="1" style="width: 35%;">
-                                    </colgroup>
-                                    <tr>
-                                        <td>Historical Avg</td>
-                                        <td>
-                                            <?php echo $MRF; ?> in.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <?php echo $monthName_abbrev . ' ' . $phase_name; ?> Avg
-                                        </td>
-                                        <td>
-                                            <?php echo $MeRF; ?> in.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <?php echo $monthName_abbrev . ' ' . $phase_name; ?> Min
-                                        </td>
-                                        <td>
-                                            <?php echo $MnRF; ?> in.
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
 
+                <div
+                    style="margin-bottom: 15px; margin-left: 15px;  margin-right: 15px; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%); border-radius: 5px; padding: 10px; background-color: #fff">
+                    <div class="table rel">
+
+                        <div style="text-align:center; ">
+                            <img style="width: 80%; height:auto;" src="./gauge/gauge.png">
+                            <p>
+                                <?php echo ($monthName) ?> ENSO Conditions:
+                                <br>
+                                <span style="font-weight: 800">
+                                    <?php echo ($phase_name) ?>
+                                </span>
+                                <br>
+                            <p style="margin-top: 5%;">Monthly Rainfall</p>
+                            <table id="oni-table" style="">
+                                <colgroup>
+                                    <col span="1" style="width: 65%;">
+                                    <col span="1" style="width: 35%;">
+                                </colgroup>
+                                <tr>
+                                    <td>Historical Avg</td>
+                                    <td>
+                                        <?php echo $MRF; ?> in.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <?php echo $monthName_abbrev . ' ' . $phase_name; ?> Avg
+                                    </td>
+                                    <td>
+                                        <?php echo $MeRF; ?> in.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <?php echo $monthName_abbrev . ' ' . $phase_name; ?> Min
+                                    </td>
+                                    <td>
+                                        <?php echo $MnRF; ?> in.
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
+
                     </div>
-                
+                </div>
+
 
                 <div class="anchor" id="rainOutlook"></div>
 
-                <div style="margin-bottom: 15px; margin-left: 15px;  margin-right: 15px; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%); border-radius: 5px; padding: 10px;background-color: #fff" id="rainOutlook-content">
+                <div style="margin-bottom: 15px; margin-left: 15px;  margin-right: 15px; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%); border-radius: 5px; padding: 10px;background-color: #fff"
+                    id="rainOutlook-content">
                     <!--<p class="subtitleB">Rainfall Outlook</p>
                     <img id="gauge" src="./gauge/gauge.png"
                         style="width: 100%; display: flex; margin-left: auto; margin-right: auto; margin-bottom: 25px; margin-top: 25px;">-->
@@ -545,7 +558,9 @@
                 </div>
                 <div class="anchor" id="tool"></div>
                 <div id="tool-content">
-                    <p class="subtitleB" style="display: flex; margin-left: 15px; margin-right: 15px; text-align: center; margin-bottom: 25px;">Forage Production Decision Support Tool</p>
+                    <p class="subtitleB"
+                        style="display: flex; margin-left: 15px; margin-right: 15px; text-align: center; margin-bottom: 25px;">
+                        Forage Production Decision Support Tool</p>
                     <div id="input" style="margin-bottom: 15px;">
 
                         <form id="toolForm" method="post">
@@ -585,7 +600,7 @@
 
 
                     <div id="results" style="">
-                    <!--<div id="output">
+                        <!--<div id="output">
     <div class="tabs">
         <input type="radio" name="tabs" id="tabone" checked="checked">
         <label for="tabone">3-Month Outlook</label>
@@ -764,69 +779,76 @@
                         <p>Rainfall</p>
                     </div>
                     <div style=" margin-left: 15px; margin-right: 15px; height: 250px" id="RF-div" class="card"></div>
-                        
-                        <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
-                        <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
-                        <div style="text-align: center;margin-top:2%;">
-                            <p style="font-size: 16px;">Monthly Rainfall</p>
-                            <p style="font-style:italic; color: #696969">
-                                <?php echo $thisMonth_rf ?>
-                            </p>
-                        </div>
 
-                        <div style="line-height: 2em; text-align:center;">
-                            <span style="vertical-align: middle; font-size: 25px;">
-                                <?php echo $rf_m ?> in
-                            </span>
-                            <span style="color:<?php echo $color_rf_m ?>">
-                                <?php //echo $stat_rf_m;
-                                printf("%+.1f", $dif_m) ?>%
+                    <div
+                        style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
+                        <div
+                            style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
+                            <div style="text-align: center;margin-top:2%;">
+                                <p style="font-size: 16px;">Monthly Rainfall</p>
+                                <p style="font-style:italic; color: #696969">
+                                    <?php echo $thisMonth_rf ?>
                                 </p>
-                            </span>
-                        </div>
+                            </div>
 
-                        <div style="text-align: center;">
-                            <a <?php echo $icon_rf_m ?>></a>
-                            <p style="display:inline-block; vertical-align:middle"> <?php echo $status_rf_m ?> </p>
-                        </div>
-                        <div style="text-align: center;">  <?php echo $total_dry_days ?> total dry days</div>
-                         </div>
-                        <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
-                        <div style="text-align: center;margin-top:2%;">
-                            <p style="font-size:16px;">Daily Rainfall</p>
-                            <p style="font-style:italic; color: #696969">
-                                <?php echo $date_rf ?>
-                            </p>
-                        </div>
+                            <div style="line-height: 2em; text-align:center;">
+                                <span style="vertical-align: middle; font-size: 25px;">
+                                    <?php echo $rf_m ?> in
+                                </span>
+                                <span style="color:<?php echo $color_rf_m ?>">
+                                    <?php //echo $stat_rf_m;
+                                    printf("%+.1f", $dif_m) ?>%
+                                    </p>
+                                </span>
+                            </div>
 
-                        <div style="line-height:2em; text-align:center;">
-                            <span style="vertical-align:middle;font-size: 25px;">
-                                <?php echo $rf_d ?> in
-                            </span>
+                            <div style="text-align: center;">
+                                <a <?php echo $icon_rf_m ?>></a>
+                                <p style="display:inline-block; vertical-align:middle"> <?php echo $status_rf_m ?> </p>
+                            </div>
+                            <div style="text-align: center;"> <?php echo $total_dry_days ?> total dry days</div>
                         </div>
-                        <div style="text-align: center;">
-                            <i <?php echo $icon_rf_m ?>></i>
-                            <p style="display:inline-block; vertical-align:middle">
-                                <?php echo $status_rf_m ?>
-                            </p>
+                        <div
+                            style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
+                            <div style="text-align: center;margin-top:2%;">
+                                <p style="font-size:16px;">Daily Rainfall</p>
+                                <p style="font-style:italic; color: #696969">
+                                    <?php echo $date_rf ?>
+                                </p>
+                            </div>
 
-                        </div>
-                        <div style="text-align:center"><?php echo $consec_dry_days ?> consec. dry days</div>
+                            <div style="line-height:2em; text-align:center;">
+                                <span style="vertical-align:middle;font-size: 25px;">
+                                    <?php echo $rf_d ?> in
+                                </span>
+                            </div>
+                            <div style="text-align: center;">
+                                <i <?php echo $icon_rf_m ?>></i>
+                                <p style="display:inline-block; vertical-align:middle">
+                                    <?php echo $status_rf_m ?>
+                                </p>
+
+                            </div>
+                            <div style="text-align:center"><?php echo $consec_dry_days ?> consec. dry days</div>
                         </div>
                     </div>
-           
+
                     <div class="card" style="margin-bottom: 15px; margin-left: 10px; margin-right: 10px; width: 90%;">
-                                <img style="" src="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_rf.png">
+                        <img style="" src="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_rf.png">
                     </div>
-                    <div class="hist" id="RF-hist" style="margin-bottom: 15px; margin-left: 15px; margin-right: 15px;"></div>
+                    <div class="hist" id="RF-hist" style="margin-bottom: 15px; margin-left: 15px; margin-right: 15px;">
+                    </div>
                     <div class="anchor" id="temperature"></div>
                     <div class="name" style="padding: 10px;">
                         <p>Temperature</p>
                     </div>
-                    <div style=" margin-left: 15px; margin-right: 15px; height: 250px;" id="temp-div" class="card"></div>
-                    <div style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
-                    <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
-                    <div style="text-align: center; padding-top: 25px; vertical-align: text-top;">
+                    <div style=" margin-left: 15px; margin-right: 15px; height: 250px;" id="temp-div" class="card">
+                    </div>
+                    <div
+                        style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding: 15px;">
+                        <div
+                            style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
+                            <div style="text-align: center; padding-top: 25px; vertical-align: text-top;">
                                 <p>Daily Average Temperature: </p>
                                 <span style="vertical-align:middle; line-height: 2em; font-size: 25px;">
                                     <?php echo $mean_t_d ?>&degF
@@ -838,28 +860,30 @@
                                     <?php echo $date_t ?>
                                 </p>
                             </div>
-                    </div>
-                    <div style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
+                        </div>
+                        <div
+                            style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px;padding: 10px;">
                             <div style="text-align: center; padding-top: 10px;">
-                            <p style="text-align:center; line-height: 2em;"> Max temperature: <span style="font-size: 25px;">
-                                    <?php echo $max_t_d . '&degF'; ?>
-                                </span><br> Min temperature: <span style="font-size: 25px;">
-                                    <?php echo $min_t_d . '&degF'; ?>
-                                </span><br>
-                                <span style="font-style:italic; color: #696969">
-                                    <?php echo $date_t ?>
-                                </span>
-                            </p>
+                                <p style="text-align:center; line-height: 2em;"> Max temperature: <span
+                                        style="font-size: 25px;">
+                                        <?php echo $max_t_d . '&degF'; ?>
+                                    </span><br> Min temperature: <span style="font-size: 25px;">
+                                        <?php echo $min_t_d . '&degF'; ?>
+                                    </span><br>
+                                    <span style="font-style:italic; color: #696969">
+                                        <?php echo $date_t ?>
+                                    </span>
+                                </p>
                             </div>
                         </div>
-                </div>
+                    </div>
                     <div class="card" style="margin-bottom: 15px; margin-right: 15px; margin-left:15px;">
-                            <a class="map-img"
-                                href="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_temp.png"
-                                style="color:inherit" target="_blank">
-                                <img style=""
-                                    src="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_temp.png"></a>
-                        </div>
+                        <a class="map-img"
+                            href="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_temp.png"
+                            style="color:inherit" target="_blank">
+                            <img style=""
+                                src="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_temp.png"></a>
+                    </div>
                     <div class="anchor" id="et"></div>
                     <div class="name" style="padding: 10px;">
                         <p>Evapotranspiration</p>
@@ -880,7 +904,7 @@
                                 <p><span <?php echo $style_et . '>' . $dif_et . '%</span> ' . $status_et ?> monthly
                                         average </p>
                             </div>
-       
+
                         </div>
 
                         <div style="margin-bottom: 15px;" class="card">
@@ -904,7 +928,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="hist"  style="margin-bottom: 15px; margin-left: 15px; margin-right: 15px;" id="ET-hist">
+                    <div class="hist" style="margin-bottom: 15px; margin-left: 15px; margin-right: 15px;" id="ET-hist">
                     </div>
 
                     <div class="anchor" style="margin-bottom: 15px;" id="ndvi"></div>
@@ -950,7 +974,8 @@
                                 0.9) suggest dense vegetation such as crops at their peak growth.</p>
                         </div>
                     </div>
-                    <div class="hist" id="NDVI-hist" style="margin-bottom: 15px; margin-left: 15px; margin-right: 15px;"></div>
+                    <div class="hist" id="NDVI-hist"
+                        style="margin-bottom: 15px; margin-left: 15px; margin-right: 15px;"></div>
                     <div class="anchor" id="drought"></div>
                     <div class="name" style="padding: 10px;">
                         <p>Drought History (SPI-3)</p>
@@ -999,9 +1024,9 @@
                     </script>
                 </div>
                 <div class="anchor" id="data"></div>
-                </div>
+            </div>
 
-                <!--<div id="data-content">
+            <!--<div id="data-content">
                 <p class="subtitleB">Historical Data</p>
                 <p style="text-align: center"> Drought History (Standard Precipitation Index-3 months)</p>
                 <div id="SPI-div" class="shadow" style="width: 80%;margin: 5% auto;"></div>
@@ -1009,13 +1034,13 @@
                     <div id="rainHist" class="graphHist">
                         <p class="dataTitles">Average Rainfall and Temperature</p>
                         <img class="shadow"
-                            src=" ./fromRyan/<?php //echo $_GET["ranch"]?>/<?php echo $_GET["ranch"] ?>_Climograph.png">
+                            src=" ./fromRyan/<?php //echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_Climograph.png">
                     </div>
                     <span></span>
                     <div id="droughtHist" class="graphHist">
                         <p class="dataTitles">100-year Rainfall Trends</p>
                         <img class="shadow"
-                            src="./fromRyan/<?php //echo $_GET["ranch"]?>/<?php echo $_GET["ranch"] ?>_RF_Trend.png">
+                            src="./fromRyan/<?php //echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_RF_Trend.png">
                     </div>
                 </div>
 
@@ -1023,36 +1048,36 @@
             </div>-->
 
 
-                <script>
-                    document.addEventListener("DOMContentLoaded", function () {
-                        document.querySelectorAll('.sidebar .nav-link').forEach(function (element) {
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    document.querySelectorAll('.sidebar .nav-link').forEach(function (element) {
 
-                            element.addEventListener('click', function (e) {
+                        element.addEventListener('click', function (e) {
 
-                                let nextEl = element.nextElementSibling;
-                                let parentEl = element.parentElement;
+                            let nextEl = element.nextElementSibling;
+                            let parentEl = element.parentElement;
 
-                                if (nextEl) {
-                                    e.preventDefault();
-                                    let mycollapse = new bootstrap.Collapse(nextEl);
+                            if (nextEl) {
+                                e.preventDefault();
+                                let mycollapse = new bootstrap.Collapse(nextEl);
 
-                                    if (nextEl.classList.contains('show')) {
-                                        mycollapse.hide();
-                                    } else {
-                                        mycollapse.show();
-                                        // find other submenus with class=show
-                                        var opened_submenu = parentEl.parentElement.querySelector(
-                                            '.submenu.show');
-                                        // if it exists, then close all of them
-                                        if (opened_submenu) {
-                                            new bootstrap.Collapse(opened_submenu);
-                                        }
+                                if (nextEl.classList.contains('show')) {
+                                    mycollapse.hide();
+                                } else {
+                                    mycollapse.show();
+                                    // find other submenus with class=show
+                                    var opened_submenu = parentEl.parentElement.querySelector(
+                                        '.submenu.show');
+                                    // if it exists, then close all of them
+                                    if (opened_submenu) {
+                                        new bootstrap.Collapse(opened_submenu);
                                     }
                                 }
-                            }); // addEventListener
-                        }) // forEach
-                    });
-                </script>
+                            }
+                        }); // addEventListener
+                    }) // forEach
+                });
+            </script>
 
 
         </main>
