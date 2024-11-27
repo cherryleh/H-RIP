@@ -46,15 +46,15 @@ var selectorOptions = {
 
 //Multi = stacked bar+line graph, Single = historical, one-line time series
 function makeplot() {
-  Plotly.d3.csv(url1, function (data) { processData(data, 'trace1', 'Month', 'RF', 'RF-div', 'multi', 'Rainfall (mm)') });
-  Plotly.d3.csv(url2, function (data) { processData(data, 'trace2', 'Month', 'RF', 'RF-div', 'multi', 'Rainfall (mm)') });
+  Plotly.d3.csv(url1, function (data) { processData(data, 'trace1', 'Month', 'RF', 'RF-div', 'multi', 'Rainfall (in)') });
+  Plotly.d3.csv(url2, function (data) { processData(data, 'trace2', 'Month', 'RF', 'RF-div', 'multi', 'Rainfall (in)') });
   Plotly.d3.csv(url3, function (data) { processData(data, 'trace3', 'Month', 'NDVI', 'NDVI-div', 'multi', 'NDVI') });
   Plotly.d3.csv(url4, function (data) { processData(data, 'trace4', 'Month', 'NDVI', 'NDVI-div', 'multi', 'NDVI') });
   Plotly.d3.csv(url7, function (data) { processData(data, 'trace5', 'Month', 'ET', 'ET-div', 'multi', 'Evapotranspiration (mm/day)') });
   Plotly.d3.csv(url8, function (data) { processData(data, 'trace6', 'Month', 'ET', 'ET-div', 'multi','Evapotranspiration (mm/day)') });
   Plotly.d3.csv(url5, function (data) { processData(data, 'trace7', 'datetime', 'ET', 'ET-hist', 'single','Evapotranspiration (mm/day)') });
   Plotly.d3.csv(url6, function (data) { processData(data, 'trace8', 'datetime', 'NDVI', 'NDVI-hist', 'single', 'NDVI') });
-  Plotly.d3.csv(url9, function (data) { processData(data, 'trace9', 'datetime', 'RF_in', 'RF-hist', 'single','Rainfall (mm)') });
+  Plotly.d3.csv(url9, function (data) { processData(data, 'trace9', 'datetime', 'RF_in', 'RF-hist', 'single','Rainfall (in.)') });
   Plotly.d3.csv(url11, function (data) { processData(data, 'trace11', 'Month', 'Temp', 'temp-div', 'multi','Temperature (F)') });
   Plotly.d3.csv(url12, function (data) { processData(data, 'trace12', 'Month', 'Temp', 'temp-div', 'multi','Temperature (F)') });
   Plotly.d3.csv(url13, function (data) { processData(data, 'trace13', 'datetime', 'SPI-3', 'SPI-12m', 'etc','SPI') });
