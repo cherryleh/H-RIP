@@ -155,7 +155,7 @@
     $file_t_max = file('./RID/' . $RID . '/' . $RID . '_temp_max.csv');
     if (!empty($file_t_max)) {
         $fields_t_max = str_getcsv($file_t_max[count($file_t_max) - 1]); // Parse csv string into an array, get fields from last line
-        $max_t_m = (round(floatval($fields_t_max[count($fields_t_max) - 3]))); //RF value from last row of csv file
+        $max_t_m = (round(floatval($fields_t_max[count($fields_t_max) - 1]))); //RF value from last row of csv file
     
     } else {
         echo "Error";
@@ -165,7 +165,7 @@
     $file_t_min = file('./RID/' . $RID . '/' . $RID . '_temp_min.csv');
     if (!empty($file_t_min)) {
         $fields_t_min = str_getcsv($file_t_min[count($file_t_min) - 1]); // Parse csv string into an array, get fields from last line
-        $min_t_m = (round(floatval($fields_t_min[count($fields_t_min) - 3]))); //RF value from last row of csv file
+        $min_t_m = (round(floatval($fields_t_min[count($fields_t_min) - 1]))); //RF value from last row of csv file
     
     } else {
         echo "Error";
@@ -202,85 +202,85 @@
     $dif_t_d = sprintf("%+.2f", ($mean_t_d - $avg_t));
     $dif_t_m = sprintf("%+.2f", ($mean_t_m - $avg_t));
 
-    $file_et = file('./RID/' . $RID . '/' . $RID . '_et.csv');
-    if (!empty($file_et)) {
-        $fields_et = str_getcsv($file_et[count($file_et) - 1]); // Parse csv string into an array, get fields from last line
-        $et = (round($fields_et[count($fields_et) - 2], 2)); // print last field
-        $monthNum_et = round($fields_et[count($fields_et) - 3], 0);
-        $year_et = (round($fields_et[count($fields_et) - 4], 0));
+    // $file_et = file('./RID/' . $RID . '/' . $RID . '_et.csv');
+    // if (!empty($file_et)) {
+    //     $fields_et = str_getcsv($file_et[count($file_et) - 1]); // Parse csv string into an array, get fields from last line
+    //     $et = (round($fields_et[count($fields_et) - 2], 2)); // print last field
+    //     $monthNum_et = round($fields_et[count($fields_et) - 3], 0);
+    //     $year_et = (round($fields_et[count($fields_et) - 4], 0));
 
-    } else {
-        echo "Error";
-    }
-    ;
+    // } else {
+    //     echo "Error";
+    // }
+    // ;
 
 
-    $dateObj_et = DateTime::createFromFormat('!m', $monthNum_et);
-    $monthName_et = $dateObj_et->format('F'); // March
+    // $dateObj_et = DateTime::createFromFormat('!m', $monthNum_et);
+    // $monthName_et = $dateObj_et->format('F'); // March
     
 
-    $csv_et = fopen('./RID/' . $RID . '/' . $RID . '_et_month.csv', 'r');
+    // $csv_et = fopen('./RID/' . $RID . '/' . $RID . '_et_month.csv', 'r');
 
-    // Keep looping as long as we get a new $row
-    while ($row_et = fgetcsv($csv_et)) {
-        if ($row_et[3] == $monthName_et) {
-            $avg_et = (round($row_et[count($row_et) - 1], 2));
-        }
-    }
+    // // Keep looping as long as we get a new $row
+    // while ($row_et = fgetcsv($csv_et)) {
+    //     if ($row_et[3] == $monthName_et) {
+    //         $avg_et = (round($row_et[count($row_et) - 1], 2));
+    //     }
+    // }
 
-    // Don't forget to close the file!
-    fclose($csv_et);
+    // // Don't forget to close the file!
+    // fclose($csv_et);
 
-    if ($et >= $avg_et) {
-        $status_et = 'above';
-        $style_et = 'style="color:orange;"';
-    } else {
-        $status_et = 'below';
-        $style_et = 'style="color:green;"';
-    }
+    // if ($et >= $avg_et) {
+    //     $status_et = 'above';
+    //     $style_et = 'style="color:orange;"';
+    // } else {
+    //     $status_et = 'below';
+    //     $style_et = 'style="color:green;"';
+    // }
 
-    $dif_et = sprintf("%+.2f", ($et - $avg_et) / $avg_et * 100, 2);
-
-
-    $file_ndvi = file('./RID/' . $RID . '/' . $RID . '_ndvi.csv');
-    if (!empty($file_ndvi)) {
-        $fields_ndvi = str_getcsv($file_ndvi[count($file_ndvi) - 1]); // Parse csv string into an array, get fields from last line
-        $ndvi = (round($fields_ndvi[count($fields_ndvi) - 2], 2)); // print last field
-        $monthNum_ndvi = round($fields_ndvi[count($fields_ndvi) - 3], 0);
-        $year_ndvi = (round($fields_ndvi[count($fields_ndvi) - 4], 0));
-
-    } else {
-        echo "Error";
-    }
-    ;
+    // $dif_et = sprintf("%+.2f", ($et - $avg_et) / $avg_et * 100, 2);
 
 
-    $dateObj_ndvi = DateTime::createFromFormat('!m', intval($monthNum_ndvi));
-    $monthName_ndvi = $dateObj_ndvi->format('F'); // March
+    // $file_ndvi = file('./RID/' . $RID . '/' . $RID . '_ndvi.csv');
+    // if (!empty($file_ndvi)) {
+    //     $fields_ndvi = str_getcsv($file_ndvi[count($file_ndvi) - 1]); // Parse csv string into an array, get fields from last line
+    //     $ndvi = (round($fields_ndvi[count($fields_ndvi) - 2], 2)); // print last field
+    //     $monthNum_ndvi = round($fields_ndvi[count($fields_ndvi) - 3], 0);
+    //     $year_ndvi = (round($fields_ndvi[count($fields_ndvi) - 4], 0));
+
+    // } else {
+    //     echo "Error";
+    // }
+    // ;
+
+
+    // $dateObj_ndvi = DateTime::createFromFormat('!m', intval($monthNum_ndvi));
+    // $monthName_ndvi = $dateObj_ndvi->format('F'); // March
     
 
-    $csv_ndvi = fopen('./RID/' . $RID . '/' . $RID . '_ndvi_month.csv', 'r');
+    // $csv_ndvi = fopen('./RID/' . $RID . '/' . $RID . '_ndvi_month.csv', 'r');
 
-    // Keep looping as long as we get a new $row
-    $avg_ndvi = 0;
-    while ($row_ndvi = fgetcsv($csv_ndvi)) {
-        if ($row_ndvi[3] == $monthName_ndvi) {
-            $avg_ndvi = (round($row_ndvi[count($row_ndvi) - 1], 2));
-        }
-    }
+    // // Keep looping as long as we get a new $row
+    // $avg_ndvi = 0;
+    // while ($row_ndvi = fgetcsv($csv_ndvi)) {
+    //     if ($row_ndvi[3] == $monthName_ndvi) {
+    //         $avg_ndvi = (round($row_ndvi[count($row_ndvi) - 1], 2));
+    //     }
+    // }
 
-    // Don't forget to close the file!
-    fclose($csv_ndvi);
+    // // Don't forget to close the file!
+    // fclose($csv_ndvi);
 
-    if ($ndvi >= $avg_ndvi) {
-        $status_ndvi = 'above';
-        $style_ndvi = 'style="color:green;"';
-    } else {
-        $status_ndvi = 'below';
-        $style_ndvi = 'style="color:orange;"';
-    }
+    // if ($ndvi >= $avg_ndvi) {
+    //     $status_ndvi = 'above';
+    //     $style_ndvi = 'style="color:green;"';
+    // } else {
+    //     $status_ndvi = 'below';
+    //     $style_ndvi = 'style="color:orange;"';
+    // }
 
-    $dif_ndvi = sprintf("%+.2f", ($ndvi - $avg_ndvi), 2);
+    // $dif_ndvi = sprintf("%+.2f", ($ndvi - $avg_ndvi), 2);
 
     //SPI
     $file_spi = "./RID/" . $RID . "/" . $RID . "_spi.csv";
@@ -644,7 +644,7 @@
                                             drought.
                                         </p>
 
-                                        <p>If <span class="bold">SPI&lt; 0</span>, the area is in drought. The lower the
+                                        <p>If <span class="bold">SPI&lt;-1</span>, the area is in drought. The lower the
                                             number, the higher the drought intensity.</p>
                                         <p>Mouse over the chart to view specific values.</p>
                                     </div>
@@ -1160,12 +1160,12 @@
                     <!-- <div class="hist" id="ET-hist">
                     </div> -->
 <br>
-                    <div class="anchor" id="ndvi"></div>
+                     <div class="anchor" id="ndvi"></div>
                     <div class="name" style="font-size: 1.6em;">
                         <p>Normalized Difference Vegetation Index (NDVI)</p>
                     </div>
                     <p style="text-align:center">NOTE: NDVI data is currently not updating in real time. We are working on developing a quality real-time product that will be online very soon.</p>
-                    <div class="et_cards card-margin">
+                        <!--<div class="et_cards card-margin">
                         <div class="card1" id="NDVI-div"></div>
 
                         <div class="card1 center">
@@ -1204,7 +1204,7 @@
                                 0.9) suggest dense vegetation such as crops at their peak growth.</p>
                         </div>
                     </div>
-                    <div class="hist" id="NDVI-hist"></div>
+                    <div class="hist" id="NDVI-hist"></div> -->
                     <div class="anchor" id="drought"></div>
                     <div class="name" style="font-size: 1.6em; margin-bottom: 10px;">
                         <p>Drought History</p>

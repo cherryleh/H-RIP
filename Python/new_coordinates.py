@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+
 # coding: utf-8
 
 # In[218]:
@@ -9,11 +9,11 @@ import os
 os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
 #os.chdir('./Python')
 
-import ee
-service_account = 'my-service-account@...gserviceaccount.com'
-#Key goes here
-credentials = ee.ServiceAccountCredentials(service_account, '/Users/cherryleheu/Python/cheu-361201-8e8573aa9c7a.json')
-ee.Initialize(credentials)
+# import ee
+# service_account = 'my-service-account@...gserviceaccount.com'
+# #Key goes here
+# credentials = ee.ServiceAccountCredentials(service_account, '/Users/cherryleheu/Python/cheu-361201-8e8573aa9c7a.json')
+# ee.Initialize(credentials)
 
 
 
@@ -403,117 +403,117 @@ temp.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_temp_max.csv',index=False)'''
 # In[241]:
 
 
-#ET
-lastM='10/1/2023'
+# #ET
+# lastM='10/1/2023'
 
-ranchshp = gpd.read_file('./shapefiles/RID.shp')
-ranch = ranchshp.loc[ranchshp['Polygon']==f"RID{r:03d}"]
-et = pd.DataFrame({'Year': [],'Month':[],'ET': []})
-for i in np.arange(2001,int(thisYear)+1):
-    for j in np.arange(1,13):
-        if int(i) == int(thisYear) and int(j)>(int(thisMonth)-1):
-            break
-        else:
-            with rasterio.open(f'./ETmaps/{i}_{j:02d}_et.tif') as src:
-                affine = src.transform
-                array = src.read(1)
-                nodata = src.nodata
-                df_zonal_stats = pd.DataFrame(zonal_stats(ranch, array, affine=affine,nodata=nodata,stats = ['mean']))
-            ET= df_zonal_stats['mean'].iloc[0]
-            et=et.append({'Year':i,'Month':j,'ET':ET},ignore_index=True)
+# ranchshp = gpd.read_file('./shapefiles/RID.shp')
+# ranch = ranchshp.loc[ranchshp['Polygon']==f"RID{r:03d}"]
+# et = pd.DataFrame({'Year': [],'Month':[],'ET': []})
+# for i in np.arange(2001,int(thisYear)+1):
+#     for j in np.arange(1,13):
+#         if int(i) == int(thisYear) and int(j)>(int(thisMonth)-1):
+#             break
+#         else:
+#             with rasterio.open(f'./ETmaps/{i}_{j:02d}_et.tif') as src:
+#                 affine = src.transform
+#                 array = src.read(1)
+#                 nodata = src.nodata
+#                 df_zonal_stats = pd.DataFrame(zonal_stats(ranch, array, affine=affine,nodata=nodata,stats = ['mean']))
+#             ET= df_zonal_stats['mean'].iloc[0]
+#             et=et.append({'Year':i,'Month':j,'ET':ET},ignore_index=True)
 
-et['ET'].replace(0, np.nan, inplace=True)
-et['datetime']=pd.date_range('1/1/2001',lastM,freq='MS')
-et['ET']=et['ET']/8
-et.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_et.csv')
-
-
-# In[242]:
+# et['ET'].replace(0, np.nan, inplace=True)
+# et['datetime']=pd.date_range('1/1/2001',lastM,freq='MS')
+# et['ET']=et['ET']/8
+# et.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_et.csv')
 
 
-#average monthly
-def et_avg(arr):
-    etdf = arr.groupby(['Month'],as_index=False).mean()
-    etdf['Month'] = etdf['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x])
-    etdf['rolledMonth'] = np.roll(etdf.Month, -a)
-    etdf['rolledET'] = np.roll(etdf.ET, -a)
-    etdf = etdf.rename(columns={"ET": "oldET", "rolledET": "ET","Month":"oldMonth","rolledMonth":"Month"})
-    return etdf
-
-#last 12 months
-def et_12m(arr):
-    et12m = arr.tail(12)
-    et12m['Month'] = et12m['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x]) 
-    return et12m
+# # In[242]:
 
 
-# In[243]:
+# #average monthly
+# def et_avg(arr):
+#     etdf = arr.groupby(['Month'],as_index=False).mean()
+#     etdf['Month'] = etdf['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x])
+#     etdf['rolledMonth'] = np.roll(etdf.Month, -a)
+#     etdf['rolledET'] = np.roll(etdf.ET, -a)
+#     etdf = etdf.rename(columns={"ET": "oldET", "rolledET": "ET","Month":"oldMonth","rolledMonth":"Month"})
+#     return etdf
+
+# #last 12 months
+# def et_12m(arr):
+#     et12m = arr.tail(12)
+#     et12m['Month'] = et12m['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x]) 
+#     return et12m
 
 
-et = pd.read_csv(f'../RID/RID{r:03d}/RID{r:03d}_et.csv')
-a = int(et['Month'].iloc[-1])
-etdf=et_avg(et)
-#etdf=etdf.drop(['Year'],axis=1)
-et12m=et_12m(et)
-etdf.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_et_month.csv',index=False) 
-et12m.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_et_12m.csv',index=False)
+# # In[243]:
 
 
-# In[244]:
+# et = pd.read_csv(f'../RID/RID{r:03d}/RID{r:03d}_et.csv')
+# a = int(et['Month'].iloc[-1])
+# etdf=et_avg(et)
+# #etdf=etdf.drop(['Year'],axis=1)
+# et12m=et_12m(et)
+# etdf.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_et_month.csv',index=False) 
+# et12m.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_et_12m.csv',index=False)
 
 
-ranchshp = gpd.read_file('./shapefiles/RID.shp')
-ranch = ranchshp.loc[ranchshp['Polygon']==f"RID{r:03d}"]
-ndvi = pd.DataFrame({'Year': [],'Month':[],'NDVI': []})
-for i in np.arange(2000,int(thisYear)+1):
-    if i == 2000:
-        range = np.arange(2,13)
-    else:
-        range=np.arange(1,13)
-    for j in range:
-        if int(i) == int(thisYear) and int(j)>(int(thisMonth)-2):
-            break
-        with rasterio.open(f'./NDVImaps/{i}_{j:02d}_NDVI.tif') as src:
-            affine = src.transform
-            array = src.read(1)
-            nodata = src.nodata
-            df_zonal_stats = pd.DataFrame(zonal_stats(ranch, array, affine=affine,nodata=nodata,stats = ['mean']))
-        NDVI= df_zonal_stats['mean'].iloc[0]
-        ndvi=ndvi.append({'Year':i,'Month':j,'NDVI':NDVI},ignore_index=True)
-ndvi['NDVI'].replace(0, np.nan, inplace=True)
-ndvi['datetime']=pd.date_range('2/1/2000',lastM,freq='MS')
-ndvi.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi.csv')
+# # In[244]:
 
 
-# In[245]:
+# ranchshp = gpd.read_file('./shapefiles/RID.shp')
+# ranch = ranchshp.loc[ranchshp['Polygon']==f"RID{r:03d}"]
+# ndvi = pd.DataFrame({'Year': [],'Month':[],'NDVI': []})
+# for i in np.arange(2000,int(thisYear)+1):
+#     if i == 2000:
+#         range = np.arange(2,13)
+#     else:
+#         range=np.arange(1,13)
+#     for j in range:
+#         if int(i) == int(thisYear) and int(j)>(int(thisMonth)-2):
+#             break
+#         with rasterio.open(f'./NDVImaps/{i}_{j:02d}_NDVI.tif') as src:
+#             affine = src.transform
+#             array = src.read(1)
+#             nodata = src.nodata
+#             df_zonal_stats = pd.DataFrame(zonal_stats(ranch, array, affine=affine,nodata=nodata,stats = ['mean']))
+#         NDVI= df_zonal_stats['mean'].iloc[0]
+#         ndvi=ndvi.append({'Year':i,'Month':j,'NDVI':NDVI},ignore_index=True)
+# ndvi['NDVI'].replace(0, np.nan, inplace=True)
+# ndvi['datetime']=pd.date_range('2/1/2000',lastM,freq='MS')
+# ndvi.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi.csv')
 
 
-#average monthly
-def ndvi_avg(arr):
-    ndvidf = arr.groupby(['Month'],as_index=False).mean()
-    ndvidf['Month'] = ndvidf['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x])
-    ndvidf['rolledMonth'] = np.roll(ndvidf.Month, -a)
-    ndvidf['rolledNDVI'] = np.roll(ndvidf.NDVI, -a)
-    ndvidf = ndvidf.rename(columns={"NDVI": "oldNDVI", "rolledNDVI": "NDVI","Month":"oldMonth","rolledMonth":"Month"})
-    return ndvidf
-
-#last 12 months
-def ndvi_12m(arr):
-    ndvi12m = arr.tail(12)
-    ndvi12m['Month'] = ndvi12m['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x]) 
-    return ndvi12m
+# # In[245]:
 
 
-# In[246]:
+# #average monthly
+# def ndvi_avg(arr):
+#     ndvidf = arr.groupby(['Month'],as_index=False).mean()
+#     ndvidf['Month'] = ndvidf['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x])
+#     ndvidf['rolledMonth'] = np.roll(ndvidf.Month, -a)
+#     ndvidf['rolledNDVI'] = np.roll(ndvidf.NDVI, -a)
+#     ndvidf = ndvidf.rename(columns={"NDVI": "oldNDVI", "rolledNDVI": "NDVI","Month":"oldMonth","rolledMonth":"Month"})
+#     return ndvidf
+
+# #last 12 months
+# def ndvi_12m(arr):
+#     ndvi12m = arr.tail(12)
+#     ndvi12m['Month'] = ndvi12m['Month'].astype(np.uint8).apply(lambda x: calendar.month_name[x]) 
+#     return ndvi12m
 
 
-ndvi = pd.read_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi.csv',index_col=0)
-a = int(ndvi['Month'].iloc[-1])
-ndvidf=ndvi_avg(ndvi)
-ndvidf=ndvidf.drop(['Year'],axis=1)
-ndvi12m=ndvi_12m(ndvi)
-ndvidf.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi_month.csv',index=False) 
-ndvi12m.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi_12m.csv',index=False)
+# # In[246]:
+
+
+# ndvi = pd.read_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi.csv',index_col=0)
+# a = int(ndvi['Month'].iloc[-1])
+# ndvidf=ndvi_avg(ndvi)
+# ndvidf=ndvidf.drop(['Year'],axis=1)
+# ndvi12m=ndvi_12m(ndvi)
+# ndvidf.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi_month.csv',index=False) 
+# ndvi12m.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_ndvi_12m.csv',index=False)
 
 
 # In[247]:
