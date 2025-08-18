@@ -353,8 +353,7 @@
                 <li><a href="#tool">Decision Support Tool</a></li>
                 <li><a href="#rf">Rainfall</a></li>
                 <li><a href="#temperature">Temperature</a></li>
-                <!-- <li><a href="#et">Evapotranspiration</a></li> -->
-                <!-- <li><a href="#ndvi">NDVI</a></li> -->
+                <li><a href="#ndvi">NDVI</a></li>
                 <li><a href="#drought">Drought</a></li>
                 <!--<li class='sub-menu'><a href='#settings'>Average Climate Conditions<div class='fa fa-caret-down right'>
                         </div></a>

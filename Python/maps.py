@@ -103,12 +103,8 @@ for r in np.arange(1, count+1):
     plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_temp.png',bbox_inches="tight")
 
 
-#datetime variables
-ndvi= pd.read_csv(f"../RID/RID001/RID001_ndvi.csv", index_col=0)
-lastMonth = ndvi['Month'].iloc[-1]
-lastMonthYr = ndvi['Year'].iloc[-1]
 
-url = f'./NDVIMaps/{int(lastMonthYr)}_{int(lastMonth):02d}_ndvi.tif'
+url = f'./NDVI_maps/NDVI_{int(lastMonthYr)}_{int(lastMonth):02d}.tif'
 with rasterio.open(url) as src:
     ndvi = src.read(1, masked=True)
     noData = src.nodata
