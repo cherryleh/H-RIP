@@ -102,46 +102,6 @@ for r in np.arange(1, count+1):
     plt.title(f'Average Temperature (F) - {monthName}, {lastMonthYr}')
     plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_temp.png',bbox_inches="tight")
 
-et = pd.read_csv(f"../RID/RID001/RID001_et.csv", index_col=0)
-lastMonth = et['Month'].iloc[-1]
-lastMonthYr = et['Year'].iloc[-1]
-
-url = f'./ETMaps/{int(lastMonthYr)}_{int(lastMonth):02d}_et.tif'
-with rasterio.open(url) as src:
-    et_8 = src.read(1, masked=True)
-    et = et_8/8
-    noData = src.nodata
-    with rasterio.open('output_raster_et.tif', 'w', **src.profile) as dst:
-        dst.write(et, 1)
-    
-et = rasterio.open('output_raster_et.tif',noData=noData)
-
-
-# In[11]:
-
-
-vmin = 0  
-vmax = 5
-
-for r in np.arange(1, count+1):
-    print(f"RID{r:03d}")
-    y = ranches[ranches.Polygon == f"RID{r:03d}"]
-    island = y['IS'].values[0]
-    fig, ax = plt.subplots(figsize=(15, 10), dpi=80)
-    coastline.plot(ax=ax, facecolor='none', edgecolor='black')
-    ranches.plot(ax=ax, facecolor='none',edgecolor='orange',linewidth=2)
-    y.plot(ax=ax, facecolor='none',edgecolor='red',linewidth=3)
-    rasterio.plot.show(et, ax=ax,vmin=vmin, vmax=vmax,cmap='YlGn_r')
-    plt.rcParams['font.size'] = '20'
-    ax.set_ylim(island_lats[island]['ylim'])
-    ax.set_xlim(island_lats[island]['xlim'])
-    raster = rasterio.plot.show(et, ax=ax,cmap='YlGn_r')
-    im=raster.get_images()[0]
-    cbar = fig.colorbar(im,ax=ax)
-    cbar.ax.tick_params(labelsize=20) 
-    monthName = calendar.month_name[int(lastMonth)]
-    plt.title(f'Average Evapotranspiration (mm/day) - {monthName}, {int(lastMonthYr)}')
-    plt.savefig(f'../RID/RID{r:03d}/RID{r:03d}_et.png',bbox_inches="tight")
 
 #datetime variables
 ndvi= pd.read_csv(f"../RID/RID001/RID001_ndvi.csv", index_col=0)
