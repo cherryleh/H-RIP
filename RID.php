@@ -1071,6 +1071,7 @@
                                     src="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_temp.png"></a>
                         </div>
                     </div>
+                    <div class="hist" id="temp-hist"></div>
 
                     <!-- <div class="anchor" id="et"></div> -->
                     <!-- <div class="name" style="font-size: 1.6em;">

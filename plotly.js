@@ -11,6 +11,7 @@ var url9 = `./RID/${RID}/${RID}_rf.csv`;
 var url11 = `./RID/${RID}/${RID}_t_month.csv`;
 var url12 = `./RID/${RID}/${RID}_t_12m.csv`;
 var url13 = `./RID/${RID}/${RID}_spi.csv`;
+var url14 = `./RID/${RID}/${RID}_tmean.csv`;
 
 var selectorOptions = {
   buttons: [{
@@ -59,6 +60,7 @@ function makeplot() {
   Plotly.d3.csv(url12, function (data) { processData(data, 'trace12', 'Month', 'Temp', 'temp-div', 'multi','Temperature (F)') });
   Plotly.d3.csv(url13, function (data) { processData(data, 'trace13', 'datetime', 'SPI-3', 'SPI-12m', 'etc','SPI') });
   Plotly.d3.csv(url13, function (data) { processData(data, 'trace10', 'datetime', 'SPI-3', 'SPI-div', 'single','Drought Index (SPI-3)') });
+  Plotly.d3.csv(url14, function (data) { processData(data, 'trace11', 'datetime', 'tmean_f', 'temp-hist', 'single','Temperature (F)') });
 };
 //Process CSV
 function processData(allRows, traceName, xFieldName, yFieldName, divName, mode, label) {
@@ -140,8 +142,8 @@ function makeSinglePlot(x, y, yTraceName, divName, label) {
     marker: {
       color: '#007ea7'
     },
-
   }];
+  // console.log(traces);
   var layout = {
     xaxis: {
       rangeselector: selectorOptions,
@@ -274,7 +276,7 @@ function makeETPlotly(trace, divName) {
 
 function makeTempPlotly(trace, divName) {
   var data = [trace];
-  console.log(trace);
+  
 
   var layout = {
     margin: {
