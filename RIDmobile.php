@@ -884,7 +884,7 @@
                             <img style=""
                                 src="./RID/<?php echo $_GET["ranch"] ?>/<?php echo $_GET["ranch"] ?>_temp.png"></a>
                     </div>
-                    <div class="anchor" id="et"></div>
+                    <!-- <div class="anchor" id="et"></div>
                     <div class="name" style="padding: 10px;">
                         <p>Evapotranspiration</p>
                     </div>
@@ -929,7 +929,7 @@
                         </div>
                     </div>
                     <div class="hist" style="margin-bottom: 15px; margin-left: 15px; margin-right: 15px;" id="ET-hist">
-                    </div>
+                    </div> -->
 
                     <div class="anchor" style="margin-bottom: 15px;" id="ndvi"></div>
                     <div class="name" style="padding: 10px;">
