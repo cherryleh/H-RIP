@@ -113,15 +113,15 @@ for r in np.arange(1,count+1):
     #p_min_prob = int(ENSO['E_ProbMn'][0]*100)
 
     fig, ax = plt.subplots(figsize=(12,10))
-    line1 = ENSO.plot(ax=ax,x='MonthName',y=['MRF','MeRF','MnRF'],kind="bar",legend=False,color=['#004c6d','#6996b3','#c1e7ff'])
-
+    line1 = ENSO.plot(ax=ax,x='MonthName',y=['MRF','MeRF','MnRF'],kind="bar",legend=False,color=['#004c6d','#377eb8','#9ecae1'])
+    ax.grid(axis="y", linestyle="--", linewidth=0.6, alpha=0.45)
     ax.set_ylabel("Monthly rainfall (inches)",fontsize=20)
     plt.tick_params(axis='x', labelsize=20)
     plt.tick_params(axis='y', labelsize=20)
     first_legend = ax.legend(['Mean', '%s Mean' % title, '%s Minimum'% title],fontsize=20,bbox_to_anchor=(1,1),edgecolor="black", loc='upper left')
 
 
-    second_legend = ax.legend([f"Mean                                    {mean:.2f} in\n{title} Mean             {p_mean:.2f} in\n{title} Minimum       {p_min:.2f} in"], loc='center left', 
+    second_legend = ax.legend([f"Mean                         {mean:.2f} in\n{title} Mean             {p_mean:.2f} in\n{title} Minimum       {p_min:.2f} in"], loc='center left', 
                             handlelength=0, handletextpad=0,bbox_to_anchor=(1, 0.7), title=f'RID{r:03d} {thisMonth} Rainfall',fontsize=20)
     second_legend.get_title().set_fontsize('20') 
     ax.add_artist(first_legend)
