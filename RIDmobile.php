@@ -397,8 +397,6 @@
 
             <div class="for-mobile">
                 <div class="subtitleB" style="padding-top: 5px; margin-bottom: 15px;">Dashboard</div>
-                <div style="text-align: center; margin-top: 5px; margin-bottom: 15px;">Mobile version is in development
-                </div>
                 <div
                     style=" column-gap: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) ; padding-left: 15px; padding-right: 15px;">
                     <div
@@ -412,8 +410,8 @@
                                 <?php echo $rf_d ?> in
                             </span>
                         </div>
-
-                        <div style="text-align: center;  margin-top: 15px;"><?php echo $date_rf_d ?></div>
+                        <div style="text-align: center; margin-top: 5px;"><?php echo $consec_dry_days ?> Consecutive Dry Days</div>  
+                        <div style="text-align: center; margin-top: 5px;"><?php echo $date_rf_d ?></div>
                     </div>
                     <div
                         style=" background-color: white; box-shadow: 2px 2px 5px 0px rgb(0 0 0 / 25%);    border-radius: 5px; padding: 10px;">
