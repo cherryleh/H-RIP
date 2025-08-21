@@ -135,7 +135,7 @@
     $monthNum_t = intval($file_t_d[4]);
 
     //Read monthly temp avg file
-    $file_t = file('./RID/' . $RID . '/' . $RID . '_temp.csv');
+    $file_t = file('./RID/' . $RID . '/' . $RID . '_tmean.csv');
     if (!empty($file_t)) {
         $fields_t = str_getcsv($file_t[count($file_t) - 1]); // Parse csv string into an array, get fields from last line
         $mean_t_m = (round(floatval($fields_t[count($fields_t) - 2])));
@@ -152,20 +152,20 @@
 
     $thisMonth_t_m = $monthName_t_m . ', ' . $year_t_m;
 
-    $file_t_max = file('./RID/' . $RID . '/' . $RID . '_temp_max.csv');
+    $file_t_max = file('./RID/' . $RID . '/' . $RID . '_tmax.csv');
     if (!empty($file_t_max)) {
-        $fields_t_max = str_getcsv($file_t_max[count($file_t_max) - 1]); // Parse csv string into an array, get fields from last line
-        $max_t_m = (round(floatval($fields_t_max[count($fields_t_max) - 1]))); //RF value from last row of csv file
+        $fields_t_max = str_getcsv($file_t_max[count($file_t_max) - 2]); // Parse csv string into an array, get fields from last line
+        $max_t_m = (round(floatval($fields_t_max[count($fields_t_max) - 2]))); //RF value from last row of csv file
     
     } else {
         echo "Error";
     }
     ;
 
-    $file_t_min = file('./RID/' . $RID . '/' . $RID . '_temp_min.csv');
+    $file_t_min = file('./RID/' . $RID . '/' . $RID . '_tmin.csv');
     if (!empty($file_t_min)) {
-        $fields_t_min = str_getcsv($file_t_min[count($file_t_min) - 1]); // Parse csv string into an array, get fields from last line
-        $min_t_m = (round(floatval($fields_t_min[count($fields_t_min) - 1]))); //RF value from last row of csv file
+        $fields_t_min = str_getcsv($file_t_min[count($file_t_min) - 2]); // Parse csv string into an array, get fields from last line
+        $min_t_m = (round(floatval($fields_t_min[count($fields_t_min) - 2]))); //RF value from last row of csv file
     
     } else {
         echo "Error";
