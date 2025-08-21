@@ -86,3 +86,17 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
     raise ValueError(
 ValueError: Length of values (1267) does not match length of index (1268)
+Traceback (most recent call last):
+  File "/var/www/html/Python/rainfall_monthly.py", line 53, in <module>
+    csv['datetime']=pd.date_range('1/1/1920',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (1267) does not match length of index (1268)
