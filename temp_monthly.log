@@ -102,3 +102,23 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
     raise ValueError(
 ValueError: Length of values (427) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_07.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_07.tif' not recognized as a supported file format.
