@@ -284,7 +284,7 @@ for day in np.arange(1,lastMonthDays+1):
 df = pd.DataFrame(lastMonthDailyRF)
 df.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_last_month.csv',index=False)
 
-
+print(f"Yesterday's date is yestDay")
 for day in np.arange(1,yestDay+1):
     ranchshp = gpd.read_file('./shapefiles/RID.shp',rows=slice(r-1, r))
     with rasterio.open(f'./rain_daily_maps/{yestYr}_{yestMonth:02d}_{day:02d}.tif') as src:
