@@ -153,9 +153,12 @@ months = np.arange(1,13,1)
 legacyYears = np.arange(1920,1990)
 newYears=np.arange(1990,2020)
 
-thisYear=(datetime.today().strftime("%Y"))
-thisMonth=int((datetime.today().strftime("%m")))
-yestYr, yestMonth, yestDay = int((datetime.today() + relativedelta(days=-1)).strftime("%Y")),int((datetime.today() + relativedelta(days=-1)).strftime("%m")),int((datetime.today() + relativedelta(days=-1)).strftime("%d"))
+from zoneinfo import ZoneInfo
+now_hst = datetime.now(ZoneInfo("Pacific/Honolulu"))
+thisYear = now_hst.year
+thisMonth = now_hst.month
+yesterday = now_hst - relativedelta(days=1)
+yestYr, yestMonth, yestDay = yesterday.year, yesterday.month, yesterday.day
 
 lastMonth = int((datetime.today() + relativedelta(months=-1)).strftime("%m"))
 lastMonthYr = (datetime.today() + relativedelta(months=-1)).strftime("%Y")
@@ -281,6 +284,7 @@ for day in np.arange(1,lastMonthDays+1):
 df = pd.DataFrame(lastMonthDailyRF)
 df.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_last_month.csv',index=False)
 
+
 for day in np.arange(1,yestDay+1):
     ranchshp = gpd.read_file('./shapefiles/RID.shp',rows=slice(r-1, r))
     with rasterio.open(f'./rain_daily_maps/{yestYr}_{yestMonth:02d}_{day:02d}.tif') as src:
@@ -320,6 +324,7 @@ if consec_dry == len(rfdf):
             break
 with open(f'../RID/RID{r:03d}/RID{r:03d}_consec_dry_days.txt', 'w') as f:
     f.write(str(consec_dry))
+print("Finished daily rainfall")
 
 temp = pd.DataFrame({'Year': [],'Month':[],'tmean_f': []})
 for i in np.arange(1990,int(thisYear)+1):
