@@ -217,3 +217,45 @@ Traceback (most recent call last):
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
 rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_07.tif' not recognized as a supported file format.
+/usr/lib/python3/dist-packages/matplotlib/colors.py:719: RuntimeWarning: overflow encountered in multiply
+  xa *= self.N
+/usr/lib/python3/dist-packages/matplotlib/colors.py:719: RuntimeWarning: overflow encountered in multiply
+  xa *= self.N
+/var/www/html/Python/maps.py:60: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig, ax = plt.subplots(figsize=(15, 10), dpi=80)
+/usr/lib/python3/dist-packages/matplotlib/colors.py:719: RuntimeWarning: overflow encountered in multiply
+  xa *= self.N
+/usr/lib/python3/dist-packages/matplotlib/colors.py:719: RuntimeWarning: overflow encountered in multiply
+  xa *= self.N
+/usr/lib/python3/dist-packages/matplotlib/colors.py:719: RuntimeWarning: overflow encountered in multiply
+  xa *= self.N
+/usr/lib/python3/dist-packages/matplotlib/colors.py:719: RuntimeWarning: overflow encountered in multiply
+  xa *= self.N
+/usr/lib/python3/dist-packages/matplotlib/colors.py:719: RuntimeWarning: overflow encountered in multiply
+  xa *= self.N
+/usr/lib/python3/dist-packages/matplotlib/colors.py:719: RuntimeWarning: overflow encountered in multiply
+  xa *= self.N
+/usr/lib/python3/dist-packages/matplotlib/colors.py:719: RuntimeWarning: overflow encountered in multiply
+  xa *= self.N
+/usr/lib/python3/dist-packages/matplotlib/colors.py:719: RuntimeWarning: overflow encountered in multiply
+  xa *= self.N
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: ./NDVI_maps/NDVI_2025_08.tif: No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/maps.py", line 108, in <module>
+    with rasterio.open(url) as src:
+         ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: ./NDVI_maps/NDVI_2025_08.tif: No such file or directory
