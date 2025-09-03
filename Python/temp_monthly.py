@@ -50,7 +50,7 @@ for r in ranches:
         df_zonal_stats = pd.DataFrame(zonal_stats(ranchshp, array, affine=affine,nodata=noData,stats = ['mean']))
     temp_c= df_zonal_stats['mean'].iloc[0]
     temp_f = 9/5*temp_c+32
-    new_row = pd.DataFrame({'Year':int(lastMonthYr),'Month':int(lastMonth),'tmean_f':temp_f},index=[0])
+    new_row = pd.DataFrame({'Year':int(lastMonthYr),'Month':int(lastMonth),'Temp':temp_f},index=[0])
     csv=pd.concat([csv, new_row],ignore_index=True)
     csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
     csv.to_csv('../RID/'+ranch+'/'+ranch+'_tmean.csv', index=False)
