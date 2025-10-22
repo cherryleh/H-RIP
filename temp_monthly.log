@@ -142,3 +142,951 @@ Traceback (most recent call last):
     handle = open(
              ^^^^^
 FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_08.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 45, in <module>
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../RID/RID111/RID111_temp.csv'
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
