@@ -9,15 +9,15 @@ import collections
 from datetime import datetime
 import numpy as np
 import geopandas as gpd
+from io import StringIO
 
+# ranch = sys.argv[1]
+# grasstype = sys.argv[2]
+# condition = sys.argv[3]
 
-ranch = sys.argv[1]
-grasstype = sys.argv[2]
-condition = sys.argv[3]
-
-'''ranch = "RID084"
+ranch = "RID084"
 grasstype = "Signal"
-condition = "Unimproved"'''
+condition = "Unimproved"
 
 ranch = int(float(ranch[4:]))
 
@@ -25,9 +25,35 @@ ranch = int(float(ranch[4:]))
 ranchshp = gpd.read_file('./shapefiles/RID.shp',rows=slice(ranch-1, ranch))
 
 
-ONI=pd.read_csv("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt",delim_whitespace=True)
-ANOM = ONI.iloc[-1]['ANOM']
+# ONI=pd.read_csv("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt",delim_whitespace=True)
+# ANOM = ONI.iloc[-1]['ANOM']
 
+url = "https://psl.noaa.gov/data/correlation/nina34.anom.data"
+txt = requests.get(url).text
+
+lines = [ln for ln in txt.strip().splitlines() if ln.strip()[:4].isdigit()]
+
+df = pd.read_csv(
+    StringIO("\n".join(lines)),
+    delim_whitespace=True,
+    header=None,
+    names=["Year", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    na_values=[-99.99]
+)
+
+df_long = df.melt(id_vars="Year", var_name="Month", value_name="Anomaly")
+
+month_map = {"Jan":1, "Feb":2, "Mar":3, "Apr":4, "May":5, "Jun":6,
+             "Jul":7, "Aug":8, "Sep":9, "Oct":10, "Nov":11, "Dec":12}
+df_long["MonthNum"] = df_long["Month"].map(month_map)
+df_long["Date"] = pd.to_datetime(dict(year=df_long["Year"], month=df_long["MonthNum"], day=1))
+
+df_long = df_long.dropna(subset=["Anomaly"]).sort_values("Date")
+
+last_row = df_long.iloc[-1]
+
+ANOM = last_row['Anomaly']
 
 if ANOM > 1.1: 
     phase = 'SEL'
@@ -552,20 +578,20 @@ f'''
 
                 </tr>
                 <tr>
-                    <td>Average Production</td>
+                    <td>Historical Average Production</td>
                     <td>{round(forage_avg['Average'].iloc[0])} <br> <span class="change"> lbs/acre </span> </td>
                     <td>{round(forage_avg['Average'].iloc[1])} <br> <span class="change"> lbs/acre </span>  </td>
                     <td>{round(forage_avg['Average'].iloc[2])} <br> <span class="change"> lbs/acre </span>  </td>
 
                 </tr>
                 <tr>
-                    <td>Estimated Average Production</td>
+                    <td>Average Production during ENSO-{phase_name} Years</td>
                     <td style="color:{forage_phase['Color'].iloc[0]}">{forage_phase['Arrow'].iloc[0]}{forage_phase['Percent Change'].iloc[0]}% <br> <span class="change">{forage_phase['Difference'].iloc[0]} lbs/acre </span> </td>
                     <td style="color:{forage_phase['Color'].iloc[1]}">{forage_phase['Arrow'].iloc[1]}{forage_phase['Percent Change'].iloc[1]}% <br> <span class="change">{forage_phase['Difference'].iloc[1]} lbs/acre </span> </td>
                     <td style="color:{forage_phase['Color'].iloc[2]}">{forage_phase['Arrow'].iloc[2]}{forage_phase['Percent Change'].iloc[2]}% <br> <span class="change">{forage_phase['Difference'].iloc[2]} lbs/acre </span> </td>
                 </tr>
                 <tr>
-                    <td>Estimated Minimum Production</td>
+                    <td>Minimum Production during ENSO-{phase_name} Years</td>
                     <td style="color:{forage_min['Color'].iloc[0]}"> {forage_min['Arrow'].iloc[0]}{forage_min['Percent Change'].iloc[0]}% <br> <span class="change">{forage_min['Difference'].iloc[0]} lbs/acre </span></td>
                     <td style="color:{forage_min['Color'].iloc[1]}"> {forage_min['Arrow'].iloc[1]}{forage_min['Percent Change'].iloc[1]}% <br> <span class="change">{forage_min['Difference'].iloc[1]} lbs/acre </span></td>
                     <td style="color:{forage_min['Color'].iloc[2]}"> {forage_min['Arrow'].iloc[2]}{forage_min['Percent Change'].iloc[2]}% <br> <span class="change">{forage_min['Difference'].iloc[2] } lbs/acre </span></td>

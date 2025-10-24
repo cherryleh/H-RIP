@@ -63,20 +63,20 @@
 
                     </tr>
                     <tr>
-                        <td>Average Production</td>
+                        <td>Historical Average Production</td>
                         <td>516 <br> <span class="change"> lbs/acre </span> </td>
                         <td>523 <br> <span class="change"> lbs/acre </span>  </td>
                         <td>381 <br> <span class="change"> lbs/acre </span>  </td>
 
                     </tr>
                     <tr>
-                        <td>Estimated Average Production</td>
+                        <td>Average Production during ENSO-Neutral Years</td>
                         <td style="color:red">&#x2193;-1% <br> <span class="change">-3 lbs/acre </span> </td>
                         <td style="color:red">&#x2193;-3% <br> <span class="change">-18 lbs/acre </span> </td>
                         <td style="color:red">&#x2193;-1% <br> <span class="change">-2 lbs/acre </span> </td>
                     </tr>
                     <tr>
-                        <td>Estimated Minimum Production</td>
+                        <td>Minimum Production during ENSO-Neutral Years</td>
                         <td style="color:red"> &#x2193;-9% <br> <span class="change">-48 lbs/acre </span></td>
                         <td style="color:red"> &#x2193;-5% <br> <span class="change">-28 lbs/acre </span></td>
                         <td style="color:red"> &#x2193;-76% <br> <span class="change">-290 lbs/acre </span></td>

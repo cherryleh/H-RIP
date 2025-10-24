@@ -63,7 +63,7 @@
 
                     </tr>
                     <tr>
-                        <td>Average Production</td>
+                        <td>Historical Average Production</td>
                         <td>516 <br> <span class="change"> lbs/acre </span> </td>
                         <td>523 <br> <span class="change"> lbs/acre </span>  </td>
                         <td>381 <br> <span class="change"> lbs/acre </span>  </td>
