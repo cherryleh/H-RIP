@@ -1,75 +1,77 @@
-<?php 
+<?php
+// --- Get form inputs ---
+$grasstype = $_POST["grasstype"] ?? "";
+$condition = $_POST["condition"] ?? "";
+$ranch     = $_POST["ranch"] ?? "";
 
-#echo $_POST['grasstype'];
-#echo $_POST['drymatter'];
-#echo $_POST['animalunits'];
-#echo $_POST['acres'];
-// define variables and set to empty values
-$grasstype = $condition  = "";
-$grasstype=($_POST["grasstype"]);
-$condition=($_POST["condition"]);
-$ranch = ($_POST["ranch"]);
+// --- Date setup ---
+date_default_timezone_set('Pacific/Honolulu');
+$date = new DateTime();
 
-$date = new DateTime("now", new DateTimeZone('Pacific/Honolulu') );
+$thismonth     = strtoupper($date->format('M'));
+$thismonthnum  = (int)$date->format('m');
+$thisyear      = (int)$date->format('Y');
+$thisdate      = (int)$date->format('d');
+$numberdays    = cal_days_in_month(CAL_GREGORIAN, $thismonthnum, $thisyear);
 
-$thismonth = strtoupper($date->format('M'));
-$thismonthnum = ($date->format('m'));
-$thisyear = ($date->format('Y'));
-$thisdate = ($date->format('d'));
-//Number of days this month
-$numberdays = cal_days_in_month(CAL_GREGORIAN, $thismonthnum, $thisyear);
+$currentmonth  = date('F');
+$lastmonth     = date('F', strtotime($currentmonth . " last month"));
+$monthtitle    = ($thisdate < 8) ? $lastmonth : $currentmonth;
 
-$currentmonth = date('F');
-$lastmonth = date('F', strtotime($currentmonth . " last month"));
+// --- Read Niño 3.4 data file ---
+$url  = "https://psl.noaa.gov/data/correlation/nina34.anom.data";
+$file = @file($url, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
-
-if ($thisdate < 8){
-    $monthtitle = $lastmonth;}
-else{
-    $monthtitle = $currentmonth;
+if (!$file) {
+    die("Failed to read Nino3.4 data file.");
 }
 
+// --- Parse: keep only numeric lines that start with a 4-digit year ---
+$data = [];
+foreach ($file as $line) {
+    $trim = trim($line);
+    if (preg_match('/^\d{4}/', $trim)) {
+        // Split by whitespace, filter out empty parts
+        $parts = preg_split('/\s+/', $trim);
+        $year = array_shift($parts);
+        foreach ($parts as $v) {
+            if (is_numeric($v) && $v != -99.99) {
+                $data[] = (float)$v;
+            }
+        }
+    }
+}
 
+// --- Get last valid anomaly value ---
+if (empty($data)) {
+    die("No valid Nino3.4 data found.");
+}
+$oni = end($data);
 
-//Return next month in all caps 3 letters
-//$nm = new DateTime( "now", new DateTimeZone('Pacific/Honolulu') );
-//$nm->modify( 'next month' );
-//$nextmonth = strtoupper($nm->format( 'M' ));
-
-
-$file = file("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt");
-$explode = explode(" ",end($file));
-$oni = end($explode);
-
-//Determine current ENSO state
+// --- Determine ENSO category ---
 if ($oni > 1.1) {
     $ENSO = "SEL";
     $cond = "Strong El Ni&#241;o";
-} elseif (1.1 >= $oni && $oni>= 0.5){
+} elseif ($oni >= 0.5) {
     $ENSO = "WEL";
     $cond = "Weak El Ni&#241;o";
-} elseif (0.5>=$oni&&$oni>=-0.5){
+} elseif ($oni >= -0.5) {
     $ENSO = "NUT";
     $cond = "Neutral";
-} elseif (-0.5>$oni && $oni>=-1.1){
-    $ENSO="WLA";
+} elseif ($oni >= -1.1) {
+    $ENSO = "WLA";
     $cond = "Weak La Ni&#241;a";
-} elseif ($oni < -1.1){
-    $ENSO="SLA";
-    $cond = "Strong La Ni&#241;a";
 } else {
-    echo "Error";
+    $ENSO = "SLA";
+    $cond = "Strong La Ni&#241;a";
 }
 
-
-$arg = [$ranch, $grasstype, $condition];
-
-$command = escapeshellcmd('python3 Python/528.py '.$ranch.' '.$grasstype.' '.$condition );
-
+// --- Call your Python ranch script (if needed) ---
+$command = escapeshellcmd("python3 Python/528.py $ranch $grasstype $condition");
 $a = shell_exec($command);
 
-echo($a);
-
-
-
+// --- Output ---
+echo "Latest Niño 3.4 anomaly: $oni<br>";
+echo "ENSO Phase: $cond ($ENSO)<br>";
+echo "<pre>$a</pre>";
 ?>

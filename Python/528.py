@@ -12,13 +12,13 @@ import geopandas as gpd
 from io import StringIO
 import requests 
 
-# ranch = sys.argv[1]
-# grasstype = sys.argv[2]
-# condition = sys.argv[3]
+ranch = sys.argv[1]
+grasstype = sys.argv[2]
+condition = sys.argv[3]
 
-ranch = "RID084"
-grasstype = "Signal"
-condition = "Unimproved"
+# ranch = "RID084"
+# grasstype = "Signal"
+# condition = "Unimproved"
 
 ranch = int(float(ranch[4:]))
 
