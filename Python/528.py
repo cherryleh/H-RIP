@@ -10,6 +10,7 @@ from datetime import datetime
 import numpy as np
 import geopandas as gpd
 from io import StringIO
+import requests 
 
 # ranch = sys.argv[1]
 # grasstype = sys.argv[2]
