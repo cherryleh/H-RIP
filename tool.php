@@ -70,8 +70,4 @@ if ($oni > 1.1) {
 $command = escapeshellcmd("python3 Python/528.py $ranch $grasstype $condition");
 $a = shell_exec($command);
 
-// --- Output ---
-echo "Latest Niño 3.4 anomaly: $oni<br>";
-echo "ENSO Phase: $cond ($ENSO)<br>";
-echo "<pre>$a</pre>";
 ?>
