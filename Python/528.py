@@ -12,13 +12,13 @@ import geopandas as gpd
 from io import StringIO
 import requests 
 
-ranch = sys.argv[1]
-grasstype = sys.argv[2]
-condition = sys.argv[3]
+# ranch = sys.argv[1]
+# grasstype = sys.argv[2]
+# condition = sys.argv[3]
 
-# ranch = "RID084"
-# grasstype = "Signal"
-# condition = "Unimproved"
+ranch = "RID084"
+grasstype = "Signal"
+condition = "Unimproved"
 
 ranch = int(float(ranch[4:]))
 
@@ -564,7 +564,7 @@ f'''
             <h3 class="" style="margin:0"> Estimated Forage Production: 3-Month Outlook</h3> 
             <div class="" style="margin-left:40px"><b>Grass Type:</b> {grasstype}<span style="margin-left:20px"></span><b>Conditions:</b> {condition}<span style="margin-left:20px"><b>ENSO Phase:</b> {phase_name}</div>
             <br>
-            <table class="output-table">
+            <table id="output-table">
                 <colgroup>
                     <col>
                     <col class="outlined-3">
@@ -609,7 +609,7 @@ f'''
             <div class="" style="margin-left:40px"><b>Grass Type:</b> {grasstype}<span style="margin-left:20px"></span><b>Conditions:</b> {condition}<span style="margin-left:20px"><b>ENSO Phase:</b>{phase_name}</div>
             <br>
             <div class="scroll">
-                <table class="output-table">
+                <table id="output-table">
                     <colgroup>
                         <col>
                         <col class="outlined-6">
@@ -630,7 +630,7 @@ f'''
 
                     </tr>
                     <tr>
-                        <td>Average Production</td>
+                        <td>Historical Average Production</td>
                         <td>{round(forage_avg['Average'].iloc[0])} <br> <span class="change"> lbs/acre </span> </td>
                         <td>{round(forage_avg['Average'].iloc[1])} <br> <span class="change"> lbs/acre </span> </td>
                         <td>{round(forage_avg['Average'].iloc[2])} <br> <span class="change"> lbs/acre </span> </td>
@@ -640,7 +640,7 @@ f'''
 
                     </tr>
                     <tr>
-                        <td>Average Production Outlook</td>
+                        <td>Average Production during ENSO-{phase_name} Years</td>
                         <td style="color:{forage_phase['Color'].iloc[0]}">{forage_phase['Arrow'].iloc[0]}{forage_phase['Percent Change'].iloc[0]}% <br> <span class="change">{forage_phase['Difference'].iloc[0]} lbs/acre </span> </td>
                         <td style="color:{forage_phase['Color'].iloc[1]}">{forage_phase['Arrow'].iloc[1]}{forage_phase['Percent Change'].iloc[1]}% <br> <span class="change">{forage_phase['Difference'].iloc[1]} lbs/acre </span> </td>
                         <td style="color:{forage_phase['Color'].iloc[2]}">{forage_phase['Arrow'].iloc[2]}{forage_phase['Percent Change'].iloc[2]}% <br> <span class="change">{forage_phase['Difference'].iloc[2]} lbs/acre </span> </td>
@@ -650,7 +650,7 @@ f'''
 
                     </tr>
                     <tr>
-                        <td>Minimum Production Outlook</td>
+                        <td>Minimum Production during ENSO-{phase_name} Years</td>
                         <td style="color:{forage_min['Color'].iloc[0]}">{forage_min['Arrow'].iloc[0]}{forage_min['Percent Change'].iloc[0]}% <br> <span class="change">{forage_min['Difference'].iloc[0]} lbs/acre </span> </td>
                         <td style="color:{forage_min['Color'].iloc[1]}">{forage_min['Arrow'].iloc[1]}{forage_min['Percent Change'].iloc[1]}% <br> <span class="change">{forage_min['Difference'].iloc[1]} lbs/acre </span> </td>
                         <td style="color:{forage_min['Color'].iloc[2]}">{forage_min['Arrow'].iloc[2]}{forage_min['Percent Change'].iloc[2]}% <br> <span class="change">{forage_min['Difference'].iloc[2]} lbs/acre </span> </td>
@@ -670,7 +670,7 @@ f'''
             <div class="" style="margin-left:40px"><b>Grass Type:</b> {grasstype}<span style="margin-left:20px"></span><b>Conditions:</b> {condition}<span style="margin-left:20px"><b>ENSO Phase:</b>{phase_name}</div>
             <br>
             <div class="scroll">
-                <table class="output-table">
+                <table id="output-table">
                     <colgroup>
                         <col>
                         <col class="outlined-6">
@@ -691,7 +691,7 @@ f'''
 
                     </tr>
                     <tr>
-                        <td>Average Production</td>
+                        <td>Historical Average Production</td>
                         <td>{round(forage_avg['Average'].iloc[-1])} <br> <span class="change"> lbs/acre </span> </td>
                         <td>{round(forage_avg['Average'].iloc[-2])} <br> <span class="change"> lbs/acre </span> </td>
                         <td>{round(forage_avg['Average'].iloc[-3])} <br> <span class="change"> lbs/acre </span> </td>
@@ -701,7 +701,7 @@ f'''
 
                     </tr>
                     <tr>
-                        <td>Average Production Outlook</td>
+                        <td>Average Production during ENSO-{phase_name} Years</td>
                         <td style="color:{forage_phase['Color'].iloc[-1]}">{forage_phase['Arrow'].iloc[-1]}{forage_phase['Percent Change'].iloc[-1]}% <br> <span class="change">{forage_phase['Difference'].iloc[-1]} lbs/acre </span> </td>
                         <td style="color:{forage_phase['Color'].iloc[-2]}">{forage_phase['Arrow'].iloc[-2]}{forage_phase['Percent Change'].iloc[-2]}% <br> <span class="change">{forage_phase['Difference'].iloc[-2]} lbs/acre </span> </td>
                         <td style="color:{forage_phase['Color'].iloc[-3]}">{forage_phase['Arrow'].iloc[-3]}{forage_phase['Percent Change'].iloc[-3]}% <br> <span class="change">{forage_phase['Difference'].iloc[-3]} lbs/acre </span> </td>
@@ -711,7 +711,7 @@ f'''
 
                     </tr>
                     <tr>
-                        <td>Minimum Production Outlook</td>
+                        <td>Minimum Production during ENSO-{phase_name} Years</td>
                         <td style="color:{forage_min['Color'].iloc[-1]}">{forage_min['Arrow'].iloc[-1]}{forage_min['Percent Change'].iloc[-1]}% <br> <span class="change">{forage_min['Difference'].iloc[-1]} lbs/acre </span> </td>
                         <td style="color:{forage_min['Color'].iloc[-2]}">{forage_min['Arrow'].iloc[-2]}{forage_min['Percent Change'].iloc[-2]}% <br> <span class="change">{forage_min['Difference'].iloc[-2]} lbs/acre </span> </td>
                         <td style="color:{forage_min['Color'].iloc[-3]}">{forage_min['Arrow'].iloc[-3]}{forage_min['Percent Change'].iloc[-3]}% <br> <span class="change">{forage_min['Difference'].iloc[-3]} lbs/acre </span> </td>
