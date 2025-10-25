@@ -110,57 +110,50 @@
 
   </div>
 
-  <div>
-    <h3 id="subcategory">Statewide Conditions - <span class="month"></span>, <span class="year"></span>
+  <section class="statewide-section">
+    <h3 id="subcategory">
+      Statewide Conditions - <span class="month"></span>, <span class="year"></span>
     </h3>
 
-    <div id="oni">
-      <div class="gauge"><img src="./gauge/gauge.png">
-        <p class="mobile-hide"><span>Last updated </span><span class="month"></span> <span> 8, </span><span class="year"></span>
-          <!--<span class="month"></span>8, <span class="year"></span>-->
-        </p>
-      </div>
-      <div class="gauge-i tool mobile-hide">&#9432;
-        <span class="tooltext">
-          This gauge displays current El Ni&#241;o-Southern Oscillation (ENSO) conditions based on the monthly Oceanic
-          Ni&#241;o Index (ONI) value released by the National Weather Service Climate Prediction Center. This gauge is
-          updated on the 8th of every month. For more info on ENSO and ONI click <a target="_blank"
-            href="https://www.climate.gov/news-features/understanding-climate/climate-variability-oceanic-nino-index">
-            here</a>.
-        </span>
+    <div class="enso-card">
+      <div class="card-header enso-header">
+        <h4>ENSO Gauge</h4>
+        <div class="gauge-i tool">&#9432;
+          <span class="tooltext">
+            This gauge shows current El Niño - Southern Oscillation (ENSO) conditions from the NOAA Climate Prediction Center’s Oceanic Niño Index (ONI). Updated monthly. Learn more <a target="_blank"
+              href="https://www.climate.gov/news-features/understanding-climate/climate-variability-oceanic-nino-index">here</a>.
+          </span>
+        </div>
       </div>
 
+      <div class="gauge">
+        <img src="./gauge/gauge.png" alt="ENSO Gauge">
+        <p class="updated-date"><em>Last updated <span class="month"></span> 8, <span class="year"></span></em></p>
+      </div>
     </div>
 
-  </div>
-
-
-  <div class="content">
-
-    <div class="flex-container">
-
-      <div class="flex-child" id="windy">
-        <iframe title="windy.com" id="windy" width="450" height="250"
-          style="" cellspacing="0"
-          src="https://embed.windy.com/embed2.html?lat=20.689&lon=-157.843&detailLat=20.589&detailLon=-159.173&width=450&height=250&zoom=6&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=12&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
-          frameborder="0"></iframe>
+    <!-- Windy + Drought Monitor (Bottom Row) -->
+    <div class="conditions-row">
+      <div class="condition-card">
+        <div class="card-header"><h4>Wind Conditions</h4></div>
+        <iframe
+          title="windy.com"
+          src="https://embed.windy.com/embed2.html?lat=20.689&lon=-157.843&zoom=6&level=surface&overlay=wind&product=ecmwf"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
       </div>
 
-      <div class="flex-child" id="droughtMonitor" style="margin-left: 5%;">
-        <a href="http://droughtmonitor.unl.edu/data/png/current/current_hi_trd.png" style="color:inherit"
-          target="_blank">
-          <img
-            style=""
-            src="http://droughtmonitor.unl.edu/data/png/current/current_hi_trd.png"></a>
-        <p style="text-align: left;"> Source: <a id="NDMC" href="https://droughtmonitor.unl.edu/"
-            target="_blank">National Drought
-            Mitigation Center (NDMC)</a></p>
+      <div class="condition-card">
+        <div class="card-header"><h4>Drought Conditions</h4></div>
+        <a href="http://droughtmonitor.unl.edu/data/png/current/current_hi_trd.png" target="_blank">
+          <img src="http://droughtmonitor.unl.edu/data/png/current/current_hi_trd.png" alt="Hawaii Drought Monitor">
+        </a>
+        <p>Source: <a id="NDMC" href="https://droughtmonitor.unl.edu/" target="_blank">National Drought Mitigation Center (NDMC)</a></p>
       </div>
-
     </div>
+  </section>
 
-
-  </div>
 
   <div id="footer">Footer</div>
   <script>
