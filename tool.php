@@ -69,5 +69,6 @@ if ($oni > 1.1) {
 // --- Call your Python ranch script (if needed) ---
 $command = escapeshellcmd("python3 Python/528.py $ranch $grasstype $condition");
 $a = shell_exec($command);
-echo "<pre>$a</pre>";
+echo $a;
+
 ?>
