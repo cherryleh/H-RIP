@@ -1090,3 +1090,1147 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
     raise ValueError(
 ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_09.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (429) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (430) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_10.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [Errno 113] No route to host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7ed95b174770>: Failed to establish a new connection: [Errno 113] No route to host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='ikeauth.its.hawaii.edu', port=443): Max retries exceeded with url: /files/v2/download/public/system/ikewai-annotated-data/HCDP/production/temperature/mean/month/statewide/data_map/2025/temperature_mean_month_statewide_data_map_2025_11.tif (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7ed95b174770>: Failed to establish a new connection: [Errno 113] No route to host'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 30, in <module>
+    r = requests.get(url)
+        ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='ikeauth.its.hawaii.edu', port=443): Max retries exceeded with url: /files/v2/download/public/system/ikewai-annotated-data/HCDP/production/temperature/mean/month/statewide/data_map/2025/temperature_mean_month_statewide_data_map_2025_11.tif (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7ed95b174770>: Failed to establish a new connection: [Errno 113] No route to host'))
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "rasterio/_base.pyx", line 310, in rasterio._base.DatasetBase.__init__
+  File "rasterio/_base.pyx", line 221, in rasterio._base.open_dataset
+  File "rasterio/_err.pyx", line 221, in rasterio._err.exc_wrap_pointer
+rasterio._err.CPLE_OpenFailedError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 46, in <module>
+    with rasterio.open(file) as src:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/env.py", line 451, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/rasterio/__init__.py", line 304, in open
+    dataset = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "rasterio/_base.pyx", line 312, in rasterio._base.DatasetBase.__init__
+rasterio.errors.RasterioIOError: './temp_monthly_maps/mean/t_month_mean_2025_11.tif' not recognized as a supported file format.
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
+Traceback (most recent call last):
+  File "/var/www/html/Python/temp_monthly.py", line 55, in <module>
+    csv['datetime']=pd.date_range('1/1/1990',lastMonth+'/01/'+lastMonthYr,freq='MS')
+    ~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4091, in __setitem__
+    self._set_item(key, value)
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 4300, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pandas/core/frame.py", line 5039, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/usr/lib/python3/dist-packages/pandas/core/common.py", line 561, in require_length_match
+    raise ValueError(
+ValueError: Length of values (431) does not match length of index (428)
