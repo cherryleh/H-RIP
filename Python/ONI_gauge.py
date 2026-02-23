@@ -13,8 +13,8 @@ import sys
 from subprocess import run
 from PIL import Image, ImageFont, ImageDraw 
 
-ONI=pd.read_csv("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt",delim_whitespace=True)
-ANOM = ONI.iloc[-1]['ANOM']
+# ONI=pd.read_csv("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt",delim_whitespace=True)
+ANOM = -0.6
 
 if ANOM > 1.1: 
     inputgauge = '../gauge/gauge-7.png'

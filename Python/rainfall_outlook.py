@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import calendar
 import os
-#os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
-os.chdir('./Python')
+os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
+# os.chdir('./Python')
 path = os.getcwd()
 
 from datetime import datetime
@@ -17,8 +17,8 @@ now = datetime.now()
 
 thisMonth = (now).strftime("%B")
 
-ONI=pd.read_csv("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt",delim_whitespace=True)
-ANOM = ONI.iloc[-1]['ANOM']
+# ONI=pd.read_csv("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt",delim_whitespace=True)
+ANOM = -0.6
 
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
