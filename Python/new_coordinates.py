@@ -811,8 +811,8 @@ def filter(rf_df,mode):
 # In[259]:
 
 
-ONI=pd.read_csv("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt",delim_whitespace=True)
-ANOM = ONI.iloc[-1]['ANOM']
+RONI=pd.read_csv("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt",delim_whitespace=True)
+ANOM = RONI.iloc[-1]['ANOM']
 
 now = datetime.now()
 

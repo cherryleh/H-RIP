@@ -29,32 +29,35 @@ ranchshp = gpd.read_file('./shapefiles/RID.shp',rows=slice(ranch-1, ranch))
 # ONI=pd.read_csv("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt",delim_whitespace=True)
 # ANOM = ONI.iloc[-1]['ANOM']
 
-url = "https://psl.noaa.gov/data/correlation/nina34.anom.data"
-txt = requests.get(url).text
+# url = "https://psl.noaa.gov/data/correlation/nina34.anom.data"
+# txt = requests.get(url).text
 
-lines = [ln for ln in txt.strip().splitlines() if ln.strip()[:4].isdigit()]
+# lines = [ln for ln in txt.strip().splitlines() if ln.strip()[:4].isdigit()]
 
-df = pd.read_csv(
-    StringIO("\n".join(lines)),
-    delim_whitespace=True,
-    header=None,
-    names=["Year", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    na_values=[-99.99]
-)
+# df = pd.read_csv(
+#     StringIO("\n".join(lines)),
+#     delim_whitespace=True,
+#     header=None,
+#     names=["Year", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+#            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+#     na_values=[-99.99]
+# )
 
-df_long = df.melt(id_vars="Year", var_name="Month", value_name="Anomaly")
+# df_long = df.melt(id_vars="Year", var_name="Month", value_name="Anomaly")
 
-month_map = {"Jan":1, "Feb":2, "Mar":3, "Apr":4, "May":5, "Jun":6,
-             "Jul":7, "Aug":8, "Sep":9, "Oct":10, "Nov":11, "Dec":12}
-df_long["MonthNum"] = df_long["Month"].map(month_map)
-df_long["Date"] = pd.to_datetime(dict(year=df_long["Year"], month=df_long["MonthNum"], day=1))
+# month_map = {"Jan":1, "Feb":2, "Mar":3, "Apr":4, "May":5, "Jun":6,
+#              "Jul":7, "Aug":8, "Sep":9, "Oct":10, "Nov":11, "Dec":12}
+# df_long["MonthNum"] = df_long["Month"].map(month_map)
+# df_long["Date"] = pd.to_datetime(dict(year=df_long["Year"], month=df_long["MonthNum"], day=1))
 
-df_long = df_long.dropna(subset=["Anomaly"]).sort_values("Date")
+# df_long = df_long.dropna(subset=["Anomaly"]).sort_values("Date")
 
-last_row = df_long.iloc[-1]
+# last_row = df_long.iloc[-1]
 
-ANOM = last_row['Anomaly']
+# ANOM = last_row['Anomaly']
+
+RONI=pd.read_csv("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt",delim_whitespace=True)
+ANOM = RONI.iloc[-1]['ANOM']
 
 if ANOM > 1.1: 
     phase = 'SEL'
