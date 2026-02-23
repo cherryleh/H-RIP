@@ -17,7 +17,7 @@ now = datetime.now()
 
 thisMonth = (now).strftime("%B")
 
-RONI=pd.read_csv("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt",delim_whitespace=True)
+RONI=pd.read_csv("https://www.cpc.ncep.noaa.gov/data/indices/Rnino34.ascii.txt",delim_whitespace=True)
 ANOM = RONI.iloc[-1]['ANOM']
 
 from datetime import datetime
