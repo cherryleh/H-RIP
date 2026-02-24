@@ -1,8 +1,6 @@
 
 # coding: utf-8
 
-# In[218]:
-
 
 import os
 #Directory here
