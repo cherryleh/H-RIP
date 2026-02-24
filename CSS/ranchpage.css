@@ -296,7 +296,10 @@ aside {
 
 /* Layout for main-cards section // below main_overview */
 .main_cards {
-    height: 65vh;
+    /* height: 65vh; */
+    height:auto;
+    min-height: 500px;
+    overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr 4fr;
     grid-template-rows: 2fr 5.5fr;
@@ -349,15 +352,20 @@ aside {
 .card .map-img{
 }
 
-.et_cards {
-    display: grid;
-    height: 80vh;
-    grid-template-columns: 1fr 1fr 4fr;
-    grid-template-rows: 2fr 2.5fr 2fr;
-    grid-template-areas:
-        'card2 card2 card1'
-        'card3 card3 card1'
-        'card4 card4 card1';
+.et_cards{
+  display: grid;
+  height: auto;
+min-height: 0;
+  grid-template-columns: 1fr 1fr 4fr;
+
+  grid-template-rows: auto 1fr auto;
+
+  grid-template-areas:
+    "card2 card2 card1"
+    "card3 card3 card1"
+    "card4 card4 card1";
+
+  gap: 20px; 
 }
 
 .card1 {
