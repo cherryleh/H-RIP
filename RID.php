@@ -273,11 +273,11 @@
 
 
     //ONI
-    // $oni_f = file("https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt");
-    // $line = $oni_f[count($oni_f) - 1];
-    // $values = preg_split('/\s+/', trim($line));
-    // $oni = end($values);
-    $oni = -0.5;
+    $oni_f = file("https://www.cpc.ncep.noaa.gov/data/indices/Rnino34.ascii.txt");
+    $line = $oni_f[count($oni_f) - 1];
+    $values = preg_split('/\s+/', trim($line));
+    $oni = end($values);
+
     if ($oni > 1.1) {
         $phase = 'SEL';
         $phase_name = 'Strong El Ni&#xf1;o';
