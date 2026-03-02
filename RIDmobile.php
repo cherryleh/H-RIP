@@ -396,7 +396,7 @@
                                 <?php printf("%+.1f", $dif_m); ?>%
                             </span>
                         </div>
-
+                        <div style="text-align: center; margin-top: 5px;"><?php echo $total_dry_days ?> total dry days</div>  
                         <div style="text-align: center;  margin-top: 15px;"><?php echo $date_rf_m ?></div>
 
                     </div>

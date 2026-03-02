@@ -16,8 +16,11 @@ import geopandas as gpd
 import time
 import numpy as np
 
-yest_year, yest_mon, yest_day = int((datetime.today() + relativedelta(days=-1)).strftime("%Y")),int((datetime.today() + relativedelta(days=-1)).strftime("%m")),int((datetime.today() + relativedelta(days=-1)).strftime("%d"))
+today = datetime.today()
+yesterday = today + relativedelta(days=-1)
 
+yest_year, yest_mon, yest_day = int(yesterday.strftime("%Y")), int(yesterday.strftime("%m")), int(yesterday.strftime("%d"))
+do_rollover = (yesterday.month != today.month)
 dir_path = '../RID'
 count = 0
 for path in os.listdir(dir_path):
@@ -39,36 +42,57 @@ for r in np.arange(1,count+1):
     with open(f'../RID/RID{r:03d}/RID{r:03d}_rf_d.txt', 'w') as f:
         f.write(str(rf)+f'\n{yest_year}\n{yest_mon}\n{yest_day}') 
 
-for r in np.arange(1,count+1):
-    if yest_day == 1:
-        os.remove(f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_last_month.csv')
-        os.rename(f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_this_month.csv',f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_last_month.csv')
-        columns = ['Year','Month','Day','RF_in']
-        df = pd.DataFrame(columns=columns)
-        df.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_this_month.csv',index=False)
 
-for r in np.arange(1,count+1):
+
+for r in np.arange(1, count + 1):
+    if do_rollover:
+        last_path = f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_last_month.csv'
+        this_path = f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_this_month.csv'
+
+        # remove old "last month" if it exists
+        if os.path.exists(last_path):
+            os.remove(last_path)
+
+        # move "this month" -> "last month" if it exists
+        if os.path.exists(this_path):
+            os.rename(this_path, last_path)
+
+        # create fresh "this month"
+        columns = ['Year', 'Month', 'Day', 'RF_in']
+        pd.DataFrame(columns=columns).to_csv(this_path, index=False)
+
+for r in np.arange(1, count + 1):
+    this_path = f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_this_month.csv'
+
+    # load (or initialize) monthly df
+    if os.path.exists(this_path):
+        try:
+            rf_df = pd.read_csv(this_path)
+        except Exception:
+            rf_df = pd.DataFrame(columns=['Year','Month','Day','RF_in'])
+    else:
+        rf_df = pd.DataFrame(columns=['Year','Month','Day','RF_in'])
+
     try:
-        rf_df = pd.read_csv(f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_this_month.csv')
-        ranchshp = gpd.read_file('./shapefiles/RID.shp',rows=slice(r-1, r))
+        ranchshp = gpd.read_file('./shapefiles/RID.shp', rows=slice(r-1, r))
         with rasterio.open(f'./rain_daily_maps/{yest_year}_{yest_mon:02d}_{yest_day:02d}.tif') as src:
-            affine = src.transform
-            array = src.read(1)
-            df_zonal_stats = pd.DataFrame(zonal_stats(ranchshp, array, affine=affine,nodata=src.nodata,stats = ['mean']))
-        rf = (df_zonal_stats['mean'].iloc[0])/25.4
-        new_row = pd.DataFrame({'Year':yest_year,'Month':yest_mon,'Day':yest_day,'RF_in':rf},index=[0])
-        csv=pd.concat([rf_df, new_row],ignore_index=True)
-        csv.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_this_month.csv',index=False)
-        with open(f'../RID/RID{r:03d}/RID{r:03d}_consec_dry_days.txt', 'r') as f:
-            consec_days = int(f.read())
-        if rf<0.0393701:
-            consec_days+=1
-        else:
-            consec_days = 0
-        with open(f'../RID/RID{r:03d}/RID{r:03d}_consec_dry_days.txt', 'w') as f:
-            f.write(str(consec_days))
-    #If there is an error, mark the day's data as Nan. At the end of the month, the value will be filled
-    except Exception as e:
-        new_row = pd.DataFrame({'Year':yest_year,'Month':yest_mon,'Day':yest_day,'RF_in':np.nan},index=[0])
-        csv=pd.concat([rf_df, new_row],ignore_index=True)
-        csv.to_csv(f'../RID/RID{r:03d}/RID{r:03d}_rf_daily_this_month.csv',index=False)
+            df_zonal_stats = pd.DataFrame(
+                zonal_stats(ranchshp, src.read(1), affine=src.transform, nodata=src.nodata, stats=['mean'])
+            )
+        rf = (df_zonal_stats['mean'].iloc[0]) / 25.4
+    except Exception:
+        rf = np.nan
+
+    # remove any existing row for the same date (prevents duplicate stacking on reruns)
+    if len(rf_df) > 0:
+        mask_same_day = (
+            (rf_df['Year'] == yest_year) &
+            (rf_df['Month'] == yest_mon) &
+            (rf_df['Day'] == yest_day)
+        )
+        rf_df = rf_df.loc[~mask_same_day].copy()
+
+    # append new row + save
+    new_row = pd.DataFrame({'Year': yest_year, 'Month': yest_mon, 'Day': yest_day, 'RF_in': rf}, index=[0])
+    out = pd.concat([rf_df, new_row], ignore_index=True)
+    out.to_csv(this_path, index=False)
