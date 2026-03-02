@@ -42,7 +42,7 @@ ranches = np.arange(1,count+1)
 for r in ranches:
     ranchshp = gpd.read_file('./shapefiles/RID.shp',rows=slice(r-1, r))
     ranch = ranchshp['Polygon'].iloc[0]
-    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_temp.csv')
+    csv = pd.read_csv('../RID/'+ranch+'/'+ranch+'_tmean.csv')
     with rasterio.open(file) as src:
         affine = src.transform
         array = src.read(1)
