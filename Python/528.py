@@ -221,153 +221,308 @@ else:
     soilOMYieldFactor = 1
 
 #Reference table
-ecoCropTable = pd.read_csv('./528/ecocropTable.csv')
-a = {}
-
-#Multiply soilOM by lbs/acre/year
-for column in ecoCropTable.columns:
-    if column == 'Parameter':
-        a[column]='OM Adjusted - lbs/acre/year'
-        continue
-    a[column] = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'lbs/acre/year', column].iloc[0])*soilOMYieldFactor
-        
-#ecoCropTable = ecoCropTable.append(a, ignore_index=True)
-df_a = pd.DataFrame([a])
-ecoCropTable = pd.concat([ecoCropTable, df_a], ignore_index=True)
-
-#Index if grasstype = ceci
-ceci = [0.058,0.064,0.076,0.091,0.104,0.115,0.119,0.112,0.093,0.058,0.075,0.038]
-#Get grass code
-grassLookup = pd.read_csv('./528/GrassCodes.csv')
-grassCode = grassLookup.loc[grassLookup['Forage'] == grasstype, 'Symbol'].iloc[0]
-ecoMaxYield = {'Month':['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']}
-ecoMaxYield['Max Yield']=[]
-
-for i in range(12):
-    if grassCode=='CECI':
-        #ecoMaxYield['CECI'].append(float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'OM Adjusted - lbs/acre/year', 'CECI'].iloc[0])*ceci[i])
-        ecoMaxYield['Max Yield'].append(float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'OM Adjusted - lbs/acre/year', 'CECI'].iloc[0])*ceci[i])
-        continue
-    ecoMaxYield['Max Yield'] = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'OM Adjusted - lbs/acre/year', grassCode].iloc[0])*1/12
-
-ecoMaxYield = pd.DataFrame(ecoMaxYield)
-
-eco_t_avg =[]
-eco_rf_avg = []
-
-minTemp = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Temp (minF)', grassCode].iloc[0])
-maxTemp = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Temp (maxF)', grassCode].iloc[0])
-optMinTemp = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Optimum Temp (minF)', grassCode].iloc[0])
-optMaxTemp = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Optimum Temp (maxF)', grassCode].iloc[0])
-
-minRF = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Rain (minin)', grassCode].iloc[0])
-maxRF = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Rain (maxin)', grassCode].iloc[0])
-optMinRF = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Optimum Rain (minin)', grassCode].iloc[0])
-optMaxRF = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Optimum Rain (maxin)', grassCode].iloc[0])
-
-for i in range(12):
-    meanTemp = query.loc[(query['Month'] == i+1)]['MT'].iloc[0]
-    if meanTemp <= minTemp:
-        eco_t_avg.append(0)
-    elif meanTemp <= optMinTemp:
-        eco_t_avg.append((meanTemp-minTemp)/(optMinTemp-minTemp))
-    elif meanTemp <= optMaxTemp:
-        eco_t_avg.append(1)
-    elif meanTemp <= maxTemp:
-        eco_t_avg.append(1 - (meanTemp-optMaxTemp)/(maxTemp-optMaxTemp))
-    else:
-        eco_t_avg.append(0)
-
-for i in range(12):
-    meanRF = query.loc[(query['Month'] == i+1)]['MRF'].iloc[0]
-    if meanRF <= minRF:
-        eco_rf_avg.append(0)
-    elif meanRF <= optMinRF:
-        eco_rf_avg.append((meanRF-minRF)/(optMinRF-minRF))
-    elif meanRF <= optMaxRF:
-        eco_rf_avg.append(1)
-    elif meanRF <= maxRF:
-        eco_rf_avg.append((1 - (meanRF-optMaxRF)/(maxRF-optMaxRF)))
-    else:
-        eco_rf_avg.append(0)
-
-eco_yield_avg = []
-for i in range(0, len(eco_t_avg)):
-    eco_yield_avg.append(eco_t_avg[i] * eco_rf_avg[i]*ecoMaxYield['Max Yield'].iloc[i])
+# Check if musym (soilType) is not 'na'
+if str(soilType).lower() != 'na':
     
-eco_t_phase =[]
-eco_rf_phase = []
-for i in range(12):
-    meanTempPhase = query.loc[(query['Month'] == i+1)&(query['Phase']==phase)]['MeT'].iloc[0]
-    if meanTempPhase <= minTemp:
-        eco_t_phase.append(0)
-    elif meanTempPhase <= optMinTemp:
-        eco_t_phase.append((meanTempPhase-minTemp)/(optMinTemp-minTemp))
-    elif meanTempPhase <= optMaxTemp:
-        eco_t_phase.append(1)
-    elif meanTempPhase <= maxTemp:
-        eco_t_phase.append(1 - (meanTempPhase-optMaxTemp)/(maxTemp-optMaxTemp))
-    else:
-        eco_t_phase.append(0)
+    #Reference table
+    ecoCropTable = pd.read_csv('./528/ecocropTable.csv')
+    a = {}
 
-for i in range(12):
-    meanRFPhase = query.loc[(query['Month'] == i+1)&(query['Phase']==phase)]['MeRF'].iloc[0]
-    if meanRFPhase <= minRF:
-        eco_rf_phase.append(0)
-    elif meanRFPhase <= optMinRF:
-        eco_rf_phase.append((meanRFPhase-minRF)/(optMinRF-minRF))
-    elif meanRFPhase <= optMaxRF:
-        eco_rf_phase.append(1)
-    elif meanRFPhase <= maxRF:
-        eco_rf_phase.append((1 - (meanRFPhase-optMaxRF)/(maxRF-optMaxRF)))
-    else:
-        eco_rf_phase.append(0)
+    #Multiply soilOM by lbs/acre/year
+    for column in ecoCropTable.columns:
+        if column == 'Parameter':
+            a[column]='OM Adjusted - lbs/acre/year'
+            continue
+        a[column] = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'lbs/acre/year', column].iloc[0])*soilOMYieldFactor
+            
+    df_a = pd.DataFrame([a])
+    ecoCropTable = pd.concat([ecoCropTable, df_a], ignore_index=True)
 
-eco_yield_phase = []
-for i in range(0, len(eco_t_phase)):
-    eco_yield_phase.append(eco_t_phase[i] * eco_rf_phase[i]*ecoMaxYield['Max Yield'].iloc[i])
+    #Index if grasstype = ceci
+    ceci = [0.058,0.064,0.076,0.091,0.104,0.115,0.119,0.112,0.093,0.058,0.075,0.038]
+    #Get grass code
+    grassLookup = pd.read_csv('./528/GrassCodes.csv')
+    grassCode = grassLookup.loc[grassLookup['Forage'] == grasstype, 'Symbol'].iloc[0]
+    ecoMaxYield = {'Month':['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']}
+    ecoMaxYield['Max Yield']=[]
 
-eco_t_min =[]
-eco_rf_min = []
-for i in range(12):
-    minTempPhase = query.loc[(query['Month'] == i+1)&(query['Phase']==phase)]['MnT'].iloc[0]
-    if minTempPhase <= minTemp:
-        eco_t_min.append(0)
-    elif minTempPhase <= optMinTemp:
-        eco_t_min.append((minTempPhase-minTemp)/(optMinTemp-minTemp))
-    elif minTempPhase <= optMaxTemp:
-        eco_t_min.append(1)
-    elif minTempPhase <= maxTemp:
-        eco_t_min.append(1 - (minTempPhase-optMaxTemp)/(maxTemp-optMaxTemp))
-    else:
-        eco_t_min.append(0)
+    for i in range(12):
+        if grassCode=='CECI':
+            ecoMaxYield['Max Yield'].append(float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'OM Adjusted - lbs/acre/year', 'CECI'].iloc[0])*ceci[i])
+            continue
+        ecoMaxYield['Max Yield'] = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'OM Adjusted - lbs/acre/year', grassCode].iloc[0])*1/12
+
+    ecoMaxYield = pd.DataFrame(ecoMaxYield)
+
+    eco_t_avg =[]
+    eco_rf_avg = []
+
+    minTemp = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Temp (minF)', grassCode].iloc[0])
+    maxTemp = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Temp (maxF)', grassCode].iloc[0])
+    optMinTemp = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Optimum Temp (minF)', grassCode].iloc[0])
+    optMaxTemp = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Optimum Temp (maxF)', grassCode].iloc[0])
+
+    minRF = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Rain (minin)', grassCode].iloc[0])
+    maxRF = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Rain (maxin)', grassCode].iloc[0])
+    optMinRF = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Optimum Rain (minin)', grassCode].iloc[0])
+    optMaxRF = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Optimum Rain (maxin)', grassCode].iloc[0])
+
+    for i in range(12):
+        meanTemp = query.loc[(query['Month'] == i+1)]['MT'].iloc[0]
+        if meanTemp <= minTemp:
+            eco_t_avg.append(0)
+        elif meanTemp <= optMinTemp:
+            eco_t_avg.append((meanTemp-minTemp)/(optMinTemp-minTemp))
+        elif meanTemp <= optMaxTemp:
+            eco_t_avg.append(1)
+        elif meanTemp <= maxTemp:
+            eco_t_avg.append(1 - (meanTemp-optMaxTemp)/(maxTemp-optMaxTemp))
+        else:
+            eco_t_avg.append(0)
+
+    for i in range(12):
+        meanRF = query.loc[(query['Month'] == i+1)]['MRF'].iloc[0]
+        if meanRF <= minRF:
+            eco_rf_avg.append(0)
+        elif meanRF <= optMinRF:
+            eco_rf_avg.append((meanRF-minRF)/(optMinRF-minRF))
+        elif meanRF <= optMaxRF:
+            eco_rf_avg.append(1)
+        elif meanRF <= maxRF:
+            eco_rf_avg.append((1 - (meanRF-optMaxRF)/(maxRF-optMaxRF)))
+        else:
+            eco_rf_avg.append(0)
+
+    eco_yield_avg = []
+    for i in range(0, len(eco_t_avg)):
+        eco_yield_avg.append(eco_t_avg[i] * eco_rf_avg[i]*ecoMaxYield['Max Yield'].iloc[i])
+        
+    eco_t_phase =[]
+    eco_rf_phase = []
+    for i in range(12):
+        meanTempPhase = query.loc[(query['Month'] == i+1)&(query['Phase']==phase)]['MeT'].iloc[0]
+        if meanTempPhase <= minTemp:
+            eco_t_phase.append(0)
+        elif meanTempPhase <= optMinTemp:
+            eco_t_phase.append((meanTempPhase-minTemp)/(optMinTemp-minTemp))
+        elif meanTempPhase <= optMaxTemp:
+            eco_t_phase.append(1)
+        elif meanTempPhase <= maxTemp:
+            eco_t_phase.append(1 - (meanTempPhase-optMaxTemp)/(maxTemp-optMaxTemp))
+        else:
+            eco_t_phase.append(0)
+
+    for i in range(12):
+        meanRFPhase = query.loc[(query['Month'] == i+1)&(query['Phase']==phase)]['MeRF'].iloc[0]
+        if meanRFPhase <= minRF:
+            eco_rf_phase.append(0)
+        elif meanRFPhase <= optMinRF:
+            eco_rf_phase.append((meanRFPhase-minRF)/(optMinRF-minRF))
+        elif meanRFPhase <= optMaxRF:
+            eco_rf_phase.append(1)
+        elif meanRFPhase <= maxRF:
+            eco_rf_phase.append((1 - (meanRFPhase-optMaxRF)/(maxRF-optMaxRF)))
+        else:
+            eco_rf_phase.append(0)
+
+    eco_yield_phase = []
+    for i in range(0, len(eco_t_phase)):
+        eco_yield_phase.append(eco_t_phase[i] * eco_rf_phase[i]*ecoMaxYield['Max Yield'].iloc[i])
+
+    eco_t_min =[]
+    eco_rf_min = []
+    for i in range(12):
+        minTempPhase = query.loc[(query['Month'] == i+1)&(query['Phase']==phase)]['MnT'].iloc[0]
+        if minTempPhase <= minTemp:
+            eco_t_min.append(0)
+        elif minTempPhase <= optMinTemp:
+            eco_t_min.append((minTempPhase-minTemp)/(optMinTemp-minTemp))
+        elif minTempPhase <= optMaxTemp:
+            eco_t_min.append(1)
+        elif minTempPhase <= maxTemp:
+            eco_t_min.append(1 - (minTempPhase-optMaxTemp)/(maxTemp-optMaxTemp))
+        else:
+            eco_t_min.append(0)
+            
+
+    for i in range(12):
+        minRFPhase = query.loc[(query['Month'] == i+1)&(query['Phase']==phase)]['MnRF'].iloc[0]
+        if minRFPhase <= minRF:
+            eco_rf_min.append(0)
+        elif minRFPhase <= optMinRF:
+            eco_rf_min.append((minRFPhase-minRF)/(optMinRF-minRF))
+        elif minRFPhase <= optMaxRF:
+            eco_rf_min.append(1)
+        elif minRFPhase <= maxRF:
+            eco_rf_min.append((1 - (minRFPhase-optMaxRF)/(maxRF-optMaxRF)))
+        else:
+            eco_rf_min.append(0)
+
+
+    eco_yield_min = []
+    for i in range(0, len(eco_t_min)):
+        eco_yield_min.append(eco_t_min[i] * eco_rf_min[i]*ecoMaxYield['Max Yield'].iloc[i])
+
+    eco_yield_avg = [value * 1.1 for value in eco_yield_avg]
+    eco_yield_phase = [value * 1.1 for value in eco_yield_phase]
+    eco_yield_min = [value * 1.1 for value in eco_yield_min]
+
+    forage_avg['ecocrop']=eco_yield_avg
+    forage_phase['ecocrop']=eco_yield_phase
+    forage_min['ecocrop']=eco_yield_min
+else:
+    print("musym is 'na', skipping EcoCrop calculations.")
+
+#Pasture Groups
+# ... (rest of your code continues normally here)
+
+# ecoCropTable = pd.read_csv('./528/ecocropTable.csv')
+# a = {}
+
+# #Multiply soilOM by lbs/acre/year
+# for column in ecoCropTable.columns:
+#     if column == 'Parameter':
+#         a[column]='OM Adjusted - lbs/acre/year'
+#         continue
+#     a[column] = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'lbs/acre/year', column].iloc[0])*soilOMYieldFactor
+        
+# #ecoCropTable = ecoCropTable.append(a, ignore_index=True)
+# df_a = pd.DataFrame([a])
+# ecoCropTable = pd.concat([ecoCropTable, df_a], ignore_index=True)
+
+# #Index if grasstype = ceci
+# ceci = [0.058,0.064,0.076,0.091,0.104,0.115,0.119,0.112,0.093,0.058,0.075,0.038]
+# #Get grass code
+# grassLookup = pd.read_csv('./528/GrassCodes.csv')
+# grassCode = grassLookup.loc[grassLookup['Forage'] == grasstype, 'Symbol'].iloc[0]
+# ecoMaxYield = {'Month':['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']}
+# ecoMaxYield['Max Yield']=[]
+
+# for i in range(12):
+#     if grassCode=='CECI':
+#         #ecoMaxYield['CECI'].append(float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'OM Adjusted - lbs/acre/year', 'CECI'].iloc[0])*ceci[i])
+#         ecoMaxYield['Max Yield'].append(float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'OM Adjusted - lbs/acre/year', 'CECI'].iloc[0])*ceci[i])
+#         continue
+#     ecoMaxYield['Max Yield'] = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'OM Adjusted - lbs/acre/year', grassCode].iloc[0])*1/12
+
+# ecoMaxYield = pd.DataFrame(ecoMaxYield)
+
+# eco_t_avg =[]
+# eco_rf_avg = []
+
+# minTemp = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Temp (minF)', grassCode].iloc[0])
+# maxTemp = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Temp (maxF)', grassCode].iloc[0])
+# optMinTemp = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Optimum Temp (minF)', grassCode].iloc[0])
+# optMaxTemp = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Optimum Temp (maxF)', grassCode].iloc[0])
+
+# minRF = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Rain (minin)', grassCode].iloc[0])
+# maxRF = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Rain (maxin)', grassCode].iloc[0])
+# optMinRF = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Optimum Rain (minin)', grassCode].iloc[0])
+# optMaxRF = float(ecoCropTable.loc[ecoCropTable['Parameter'] == 'Optimum Rain (maxin)', grassCode].iloc[0])
+
+# for i in range(12):
+#     meanTemp = query.loc[(query['Month'] == i+1)]['MT'].iloc[0]
+#     if meanTemp <= minTemp:
+#         eco_t_avg.append(0)
+#     elif meanTemp <= optMinTemp:
+#         eco_t_avg.append((meanTemp-minTemp)/(optMinTemp-minTemp))
+#     elif meanTemp <= optMaxTemp:
+#         eco_t_avg.append(1)
+#     elif meanTemp <= maxTemp:
+#         eco_t_avg.append(1 - (meanTemp-optMaxTemp)/(maxTemp-optMaxTemp))
+#     else:
+#         eco_t_avg.append(0)
+
+# for i in range(12):
+#     meanRF = query.loc[(query['Month'] == i+1)]['MRF'].iloc[0]
+#     if meanRF <= minRF:
+#         eco_rf_avg.append(0)
+#     elif meanRF <= optMinRF:
+#         eco_rf_avg.append((meanRF-minRF)/(optMinRF-minRF))
+#     elif meanRF <= optMaxRF:
+#         eco_rf_avg.append(1)
+#     elif meanRF <= maxRF:
+#         eco_rf_avg.append((1 - (meanRF-optMaxRF)/(maxRF-optMaxRF)))
+#     else:
+#         eco_rf_avg.append(0)
+
+# eco_yield_avg = []
+# for i in range(0, len(eco_t_avg)):
+#     eco_yield_avg.append(eco_t_avg[i] * eco_rf_avg[i]*ecoMaxYield['Max Yield'].iloc[i])
+    
+# eco_t_phase =[]
+# eco_rf_phase = []
+# for i in range(12):
+#     meanTempPhase = query.loc[(query['Month'] == i+1)&(query['Phase']==phase)]['MeT'].iloc[0]
+#     if meanTempPhase <= minTemp:
+#         eco_t_phase.append(0)
+#     elif meanTempPhase <= optMinTemp:
+#         eco_t_phase.append((meanTempPhase-minTemp)/(optMinTemp-minTemp))
+#     elif meanTempPhase <= optMaxTemp:
+#         eco_t_phase.append(1)
+#     elif meanTempPhase <= maxTemp:
+#         eco_t_phase.append(1 - (meanTempPhase-optMaxTemp)/(maxTemp-optMaxTemp))
+#     else:
+#         eco_t_phase.append(0)
+
+# for i in range(12):
+#     meanRFPhase = query.loc[(query['Month'] == i+1)&(query['Phase']==phase)]['MeRF'].iloc[0]
+#     if meanRFPhase <= minRF:
+#         eco_rf_phase.append(0)
+#     elif meanRFPhase <= optMinRF:
+#         eco_rf_phase.append((meanRFPhase-minRF)/(optMinRF-minRF))
+#     elif meanRFPhase <= optMaxRF:
+#         eco_rf_phase.append(1)
+#     elif meanRFPhase <= maxRF:
+#         eco_rf_phase.append((1 - (meanRFPhase-optMaxRF)/(maxRF-optMaxRF)))
+#     else:
+#         eco_rf_phase.append(0)
+
+# eco_yield_phase = []
+# for i in range(0, len(eco_t_phase)):
+#     eco_yield_phase.append(eco_t_phase[i] * eco_rf_phase[i]*ecoMaxYield['Max Yield'].iloc[i])
+
+# eco_t_min =[]
+# eco_rf_min = []
+# for i in range(12):
+#     minTempPhase = query.loc[(query['Month'] == i+1)&(query['Phase']==phase)]['MnT'].iloc[0]
+#     if minTempPhase <= minTemp:
+#         eco_t_min.append(0)
+#     elif minTempPhase <= optMinTemp:
+#         eco_t_min.append((minTempPhase-minTemp)/(optMinTemp-minTemp))
+#     elif minTempPhase <= optMaxTemp:
+#         eco_t_min.append(1)
+#     elif minTempPhase <= maxTemp:
+#         eco_t_min.append(1 - (minTempPhase-optMaxTemp)/(maxTemp-optMaxTemp))
+#     else:
+#         eco_t_min.append(0)
         
 
-for i in range(12):
-    minRFPhase = query.loc[(query['Month'] == i+1)&(query['Phase']==phase)]['MnRF'].iloc[0]
-    if minRFPhase <= minRF:
-        eco_rf_min.append(0)
-    elif minRFPhase <= optMinRF:
-        eco_rf_min.append((minRFPhase-minRF)/(optMinRF-minRF))
-    elif minRFPhase <= optMaxRF:
-        eco_rf_min.append(1)
-    elif minRFPhase <= maxRF:
-        eco_rf_min.append((1 - (minRFPhase-optMaxRF)/(maxRF-optMaxRF)))
-    else:
-        eco_rf_min.append(0)
+# for i in range(12):
+#     minRFPhase = query.loc[(query['Month'] == i+1)&(query['Phase']==phase)]['MnRF'].iloc[0]
+#     if minRFPhase <= minRF:
+#         eco_rf_min.append(0)
+#     elif minRFPhase <= optMinRF:
+#         eco_rf_min.append((minRFPhase-minRF)/(optMinRF-minRF))
+#     elif minRFPhase <= optMaxRF:
+#         eco_rf_min.append(1)
+#     elif minRFPhase <= maxRF:
+#         eco_rf_min.append((1 - (minRFPhase-optMaxRF)/(maxRF-optMaxRF)))
+#     else:
+#         eco_rf_min.append(0)
 
 
-eco_yield_min = []
-for i in range(0, len(eco_t_min)):
-    eco_yield_min.append(eco_t_min[i] * eco_rf_min[i]*ecoMaxYield['Max Yield'].iloc[i])
+# eco_yield_min = []
+# for i in range(0, len(eco_t_min)):
+#     eco_yield_min.append(eco_t_min[i] * eco_rf_min[i]*ecoMaxYield['Max Yield'].iloc[i])
 
-eco_yield_avg = [value * 1.1 for value in eco_yield_avg]
-eco_yield_phase = [value * 1.1 for value in eco_yield_phase]
-eco_yield_min = [value * 1.1 for value in eco_yield_min]
+# eco_yield_avg = [value * 1.1 for value in eco_yield_avg]
+# eco_yield_phase = [value * 1.1 for value in eco_yield_phase]
+# eco_yield_min = [value * 1.1 for value in eco_yield_min]
 
-forage_avg['ecocrop']=eco_yield_avg
-forage_phase['ecocrop']=eco_yield_phase
-forage_min['ecocrop']=eco_yield_min
+# forage_avg['ecocrop']=eco_yield_avg
+# forage_phase['ecocrop']=eco_yield_phase
+# forage_min['ecocrop']=eco_yield_min
 
 #Pasture Groups
 #Get site's pasture group
