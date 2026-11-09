@@ -56,7 +56,7 @@ ranchshp = gpd.read_file('./shapefiles/RID.shp',rows=slice(ranch-1, ranch))
 
 # ANOM = last_row['Anomaly']
 
-RONI=pd.read_csv("https://www.cpc.ncep.noaa.gov/data/indices/Rnino34.ascii.txt",delim_whitespace=True)
+RONI = pd.read_csv("https://www.cpc.ncep.noaa.gov/data/indices/Rnino34.ascii.txt", sep=r'\s+')
 ANOM = RONI.iloc[-1]['ANOM']
 
 if ANOM > 1.1: 
@@ -700,7 +700,7 @@ for i in range(len(forage_avg)):
     forage_min.loc[i,'Arrow'] = arrow
 
 
-if today.day < 8:
+if today.day < 5:
     subtr = 2
 else:
     subtr = 1

@@ -1,68 +1,69 @@
 #!/usr/bin/env python
 # coding: utf-8
+#
+# Picks the ENSO gauge image from the latest monthly RONI value and writes
+# gauge/gauge.json so web pages can show the current phase and update date.
+# Run from the H-RIP folder: python Python/ONI_gauge.py
 
+import json
+import os
+import shutil
+from datetime import date
 
 import pandas as pd
-#import plotly.graph_objects as go
-import matplotlib.pyplot as plt
-from numpy import radians, cos, sin, pi
-import os
-#os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
-os.chdir('./Python')
-import sys
-from subprocess import run
-from PIL import Image, ImageFont, ImageDraw 
 
-RONI=pd.read_csv("https://www.cpc.ncep.noaa.gov/data/indices/Rnino34.ascii.txt",delim_whitespace=True)
-ANOM = RONI.iloc[-1]['ANOM']
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-if ANOM > 1.1: 
+RONI = pd.read_csv("https://www.cpc.ncep.noaa.gov/data/indices/Rnino34.ascii.txt", sep=r"\s+")
+latest = RONI.iloc[-1]
+ANOM = float(latest['ANOM'])
+
+if ANOM > 1.1:
     inputgauge = '../gauge/gauge-7.png'
-elif 1.1 >= ANOM >0.5:
+elif 1.1 >= ANOM > 0.5:
     inputgauge = '../gauge/gauge-6.png'
-elif 0.5>=ANOM>0:
+elif 0.5 >= ANOM > 0:
     inputgauge = '../gauge/gauge-5.png'
-elif ANOM==0:
+elif ANOM == 0:
     inputgauge = '../gauge/gauge-4.png'
-elif 0>ANOM>=-0.5:
+elif 0 > ANOM >= -0.5:
     inputgauge = '../gauge/gauge-3.png'
-elif -0.5> ANOM >= -1.1:
+elif -0.5 > ANOM >= -1.1:
     inputgauge = '../gauge/gauge-2.png'
-elif ANOM < -1.1:
-    inputgauge = '../gauge/gauge-1.png'
 else:
-    print("Error")
+    inputgauge = '../gauge/gauge-1.png'
 
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
+shutil.copyfile(inputgauge, '../gauge/gauge.png')
 
-now = datetime.now()
+# Phase uses the ±0.5 °C threshold; strength uses NOAA CPC's categories.
+if ANOM >= 0.5:
+    phase = 'El Niño'
+elif ANOM <= -0.5:
+    phase = 'La Niña'
+else:
+    phase = 'Neutral'
 
-lastMonth = (now+relativedelta(months=-1)).strftime("%B")
+mag = abs(ANOM)
+if phase == 'Neutral':
+    strength = ''
+elif mag >= 2.0:
+    strength = 'Very strong'
+elif mag >= 1.5:
+    strength = 'Strong'
+elif mag >= 1.0:
+    strength = 'Moderate'
+else:
+    strength = 'Weak'
 
-run(['cp',inputgauge,'../gauge/gauge.png'])
+info = {
+    'value': round(ANOM, 2),
+    'year': int(latest['YR']),
+    'month': int(latest['MTH']),
+    'phase': phase,
+    'strength': strength,
+    'updated': date.today().isoformat(),
+}
+with open('../gauge/gauge.json', 'w') as f:
+    json.dump(info, f, ensure_ascii=False, indent=2)
 
-oni_image = Image.open('../gauge/gauge.png')
-
-myFont = ImageFont.truetype('../Lato/Lato-Light.ttf', 65)
-
-from PIL import Image, ImageDraw, ImageFont
-import textwrap
-
-astr = f"Last updated: {lastMonth}"
-para = textwrap.wrap(astr)
-
-MAX_W, MAX_H = 1500,650
-im = Image.new('RGB', (MAX_W, MAX_H), (0, 0, 0, 0))
-draw = ImageDraw.Draw(im)
-
-oni_image = Image.open('../gauge/gauge.png')
-gauge = ImageDraw.Draw(oni_image)
-current_h, pad = 900, 10
-for line in para:
-    w, h = draw.textsize(line, font=myFont)
-    gauge.text(((MAX_W - w) / 2, current_h), line, font=myFont,fill='#000')
-    current_h += h + pad
-
-oni_image.save('../gauge/gauge.png')
-
+print(f"RONI {ANOM:+.2f} ({info['year']}-{info['month']:02d}) -> {strength} {phase}".strip(), '|', inputgauge)
