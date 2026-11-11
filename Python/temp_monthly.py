@@ -10,6 +10,7 @@
 #   RIDxxx_tmean.csv    Year, Month, tmean_f, datetime
 #   RIDxxx_t_month.csv  (index), oldMonth, OldTemp, Month, Temp   - monthly averages, current month first
 #   RIDxxx_t_12m.csv    (index), Month, Temp                      - last 12 months
+#   RIDxxx_temp_m.txt   mean, max, min (°F), year, month, one per line - the latest month, for the dashboard
 #
 # It catches up on its own: every month after a ranch's last row, up to the last complete month,
 # is filled in. A month HCDP hasn't published yet is skipped and picked up on the next run.
@@ -36,9 +37,9 @@ import requests
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 MONTHLY_URL = ('https://ikeauth.its.hawaii.edu/files/v2/download/public/system/ikewai-annotated-data/'
-               'HCDP/production/temperature/mean/month/statewide/data_map/{y}/'
-               'temperature_mean_month_statewide_data_map_{y}_{m:02d}.tif')
-MAPS = './temp_monthly_maps/mean'
+               'HCDP/production/temperature/{kind}/month/statewide/data_map/{y}/'
+               'temperature_{kind}_month_statewide_data_map_{y}_{m:02d}.tif')
+MAPS = './temp_monthly_maps/{kind}'
 
 
 def month_iter(start, end):
@@ -52,14 +53,16 @@ def next_month(y, m):
     return (y + 1, 1) if m == 12 else (y, m + 1)
 
 
-def get_map(y, m, force=False):
-    """Download the month's mean temperature map (°C). Returns the path, or None if not published yet."""
-    out = f'{MAPS}/t_month_mean_{y}_{m:02d}.tif'
+def get_map(y, m, kind='mean', force=False):
+    """Download the month's mean/min/max temperature map (°C). Returns the path, or None if not published yet."""
+    folder = MAPS.format(kind=kind)
+    os.makedirs(folder, exist_ok=True)
+    out = f'{folder}/t_month_{kind}_{y}_{m:02d}.tif'
     if os.path.exists(out) and os.path.getsize(out) > 10000 and not force:
         return out
-    r = requests.get(MONTHLY_URL.format(y=y, m=m), timeout=180)
+    r = requests.get(MONTHLY_URL.format(kind=kind, y=y, m=m), timeout=180)
     if r.status_code != 200 or len(r.content) < 10000:
-        print(f'  {y}-{m:02d}: monthly map not published yet, skipping')
+        print(f'  {y}-{m:02d}: monthly {kind} map not published yet, skipping')
         return None
     with open(out + '.part', 'wb') as f:
         f.write(r.content)
@@ -144,6 +147,18 @@ def main():
         t.to_csv(f'../RID/{p}/{p}_tmean.csv', index=False)
         temp_avg(t).to_csv(f'../RID/{p}/{p}_t_month.csv')
         temp_12m(t).to_csv(f'../RID/{p}/{p}_t_12m.csv')
+
+    # Dashboard tile: mean, max and min for the newest month every ranch has
+    y, m = min((int(t.Year.iloc[-1]), int(t.Month.iloc[-1])) for t in tables.values())
+    paths = {k: get_map(y, m, k) for k in ('mean', 'max', 'min')}
+    if all(paths.values()):
+        vals = {k: ranch_means_f(path, shapes) for k, path in paths.items()}
+        for p in tables:
+            with open(f'../RID/{p}/{p}_temp_m.txt', 'w') as f:
+                f.write(f"{vals['mean'][p]}\n{vals['max'][p]}\n{vals['min'][p]}\n{y}\n{m}")
+        print(f'Wrote dashboard min/max ({y}-{m:02d}) for {len(tables)} ranches.')
+    else:
+        print(f'Min/max maps for {y}-{m:02d} not published yet; dashboard tile left as is.')
 
     ends = pd.Series({p: f'{int(t.Year.iloc[-1])}-{int(t.Month.iloc[-1]):02d}' for p, t in tables.items()})
     print(f'Updated {len(tables)} ranches; latest month: ' + ', '.join(f'{k} ({v})' for k, v in ends.value_counts().items()))

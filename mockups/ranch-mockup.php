@@ -81,7 +81,8 @@
 
     /* ---------- Dashboard: original layout, one panel ---------- */
     .dash { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); }
-    .dash-head { padding: 14px 22px; border-bottom: 1px solid var(--line); }
+    .dash-head { padding: 12px 22px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .dash-head .seg button { font-size: 13.5px; padding: 6px 16px; }
     .dash-head h2 { font-size: 19px; }
     .dash-grid { display: grid; grid-template-columns: repeat(12, 1fr); }
     .cell { position: relative; padding: 20px 22px; min-width: 0; display: flex; flex-direction: column; }
@@ -95,10 +96,13 @@
     .m-id .name { font-weight: 700; font-size: 16px; }
     .m-icon { width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
     .m-icon svg { width: 26px; height: 26px; }
-    .m-body { min-width: 0; padding-right: 30px; }
+    .m-body { min-width: 0; padding-right: 30px; grid-column: 2; grid-row: 1; align-self: stretch; display: flex; flex-direction: column; }
+    /* Daily and Monthly share one grid cell, so the tile keeps the taller view's height when toggled */
+    .mcell > .m-body[hidden] { display: flex !important; visibility: hidden; }
+    .m-vals { flex: 1; }
     .m-date { font-size: 13px; font-weight: 700; color: var(--ink-3); margin-bottom: 8px; }
     .m-vals { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .m-val { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; text-align: center; }
+    .m-val { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; text-align: center; display: flex; flex-direction: column; justify-content: center; }
     .m-val .v { font-size: 26px; font-weight: 900; line-height: 1.15; font-variant-numeric: tabular-nums; }
     .m-val .v small { font-size: 15px; font-weight: 700; color: var(--ink-2); margin-left: 2px; }
     .m-val .v .d { font-size: 14px; font-weight: 700; margin-left: 6px; }
@@ -236,8 +240,7 @@
       .mcell { grid-template-columns: 1fr; gap: 12px; }
       .m-id { flex-direction: row; text-align: left; padding-right: 44px; }
       .m-icon { width: 38px; height: 38px; } .m-icon svg { width: 20px; height: 20px; }
-      .m-id .seg { margin-left: auto; }
-      .m-body { padding-right: 0; }
+      .m-body { padding-right: 0; grid-column: 1; grid-row: 2; }
       .m-val .v { font-size: 22px; }
       .c-side { grid-template-columns: 1fr; }
       .c-side .cell + .cell { border-left: 0; border-top: 1px solid var(--line); }
@@ -290,12 +293,12 @@
     <!-- ================= Dashboard ================= -->
     <section class="block" id="dashboard" style="padding-top:24px">
       <div class="dash">
-        <div class="dash-head"><h2>Dashboard</h2></div>
+        <div class="dash-head"><h2>Dashboard</h2><div class="seg" id="dashPeriod" role="group" aria-label="Rainfall and temperature period"><button aria-pressed="true" data-v="d">Daily</button><button aria-pressed="false" data-v="m">Monthly</button></div></div>
         <div class="dash-grid">
           <!-- Rainfall -->
           <div class="cell c-half">
             <div class="mcell">
-              <div class="m-id"><div class="m-icon" style="background:#3d89f7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 14a4.5 4.5 0 0 0-1-8.9A6 6 0 0 0 5 7.5 3.5 3.5 0 0 0 6 14.5"/><path d="M8 17l-1 2.5M12 16l-1 3M16 17l-1 2.5"/></svg></div><div class="name">Rainfall</div><div class="seg" role="group" aria-label="Rainfall period"><button aria-pressed="true" data-v="d">Daily</button><button aria-pressed="false" data-v="m">Monthly</button></div></div>
+              <div class="m-id"><div class="m-icon" style="background:#3d89f7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 14a4.5 4.5 0 0 0-1-8.9A6 6 0 0 0 5 7.5 3.5 3.5 0 0 0 6 14.5"/><path d="M8 17l-1 2.5M12 16l-1 3M16 17l-1 2.5"/></svg></div><div class="name">Rainfall</div></div>
               <div class="m-body" data-v="d">
                 <div class="m-date" id="rfDDate">—</div>
                 <div class="m-vals">
@@ -316,19 +319,19 @@
           <!-- Temperature -->
           <div class="cell c-half">
             <div class="mcell">
-              <div class="m-id"><div class="m-icon" style="background:#f03737"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/><path d="M12 9v8"/></svg></div><div class="name">Temperature</div><div class="seg" role="group" aria-label="Temperature period"><button aria-pressed="true" data-v="d">Daily</button><button aria-pressed="false" data-v="m">Monthly</button></div></div>
+              <div class="m-id"><div class="m-icon" style="background:#f03737"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/><path d="M12 9v8"/></svg></div><div class="name">Temperature</div></div>
               <div class="m-body" data-v="d">
                 <div class="m-date" id="tDDate">—</div>
                 <div class="m-vals">
-                  <div class="m-val"><div class="v"><span id="tD">—</span><small>°F</small><span class="d" id="tDDelta"></span></div><div class="k">Daily Temperature</div></div>
-                  <div class="m-val"><div class="v" style="font-size:20px">Max <span id="tDMax">—</span></div><div class="v" style="font-size:20px">Min <span id="tDMin">—</span></div></div>
+                  <div class="m-val"><div class="v"><span id="tD">—</span><small>°F</small><span class="d" id="tDDelta"></span></div><div class="k">Average Daily Temperature</div></div>
+                  <div class="m-val"><div class="v" style="font-size:20px;font-weight:400">Max <span id="tDMax">—</span></div><div class="v" style="font-size:20px;font-weight:400">Min <span id="tDMin">—</span></div></div>
                 </div>
               </div>
               <div class="m-body" data-v="m" hidden>
                 <div class="m-date" id="tMDate">—</div>
                 <div class="m-vals">
-                  <div class="m-val"><div class="v"><span id="tM">—</span><small>°F</small><span class="d" id="tMDelta"></span></div><div class="k">Monthly Temperature</div></div>
-                  <div class="m-val"><div class="v" style="font-size:20px">Max <span id="tMMax">—</span></div><div class="v" style="font-size:20px">Min <span id="tMMin">—</span></div></div>
+                  <div class="m-val"><div class="v"><span id="tM">—</span><small>°F</small><span class="d" id="tMDelta"></span></div><div class="k">Average Monthly Temperature</div></div>
+                  <div class="m-val"><div class="v" style="font-size:20px;font-weight:400">Max <span id="tMMax">—</span></div><div class="v" style="font-size:20px;font-weight:400">Min <span id="tMMin">—</span></div></div>
                 </div>
               </div>
             </div>
@@ -749,11 +752,12 @@
 
     // ---------- Interactions ----------
     // Each dashboard card has its own Daily/Monthly switch, as on the live page
-    document.querySelectorAll('.seg').forEach(seg => seg.addEventListener('click', e => {
+    // One Daily/Monthly switch for the whole dashboard (rainfall and temperature tiles)
+    $('dashPeriod').addEventListener('click', e => {
       const b = e.target.closest('button'); if (!b) return;
-      seg.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
-      seg.closest('.cell').querySelectorAll('.m-body').forEach(d => d.hidden = d.dataset.v !== b.dataset.v);
-    }));
+      $('dashPeriod').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+      document.querySelectorAll('#dashboard .m-body').forEach(d => d.hidden = d.dataset.v !== b.dataset.v);
+    });
     const closeAll = () => document.querySelectorAll('.popover.open').forEach(p => { p.classList.remove('open'); p.previousElementSibling.setAttribute('aria-expanded', false); });
     document.querySelectorAll('.info').forEach(btn => btn.addEventListener('click', e => {
       e.stopPropagation(); const pop = btn.nextElementSibling, open = !pop.classList.contains('open');
