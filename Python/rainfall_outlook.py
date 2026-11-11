@@ -1,134 +1,94 @@
 #!/usr/bin/env python
 # coding: utf-8
+#
+# Draws each ranch's 3-month ENSO rainfall outlook (RIDxxx_rainfall.png) from its query table
+# (RIDxxx_query.csv, made by query_update.py): the all-years mean, and the mean and minimum in
+# years with the current ENSO phase, for this month and the next two. The phase comes from the
+# latest monthly value of NOAA CPC's relative Niño-3.4 index (RONI).
+#
+# Usage (from the H-RIP folder or the Python folder):
+#   python Python/rainfall_outlook.py
+#   python Python/rainfall_outlook.py --ranch RID118     # only these ranches (repeatable)
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
+import argparse
 import calendar
 import os
-# os.chdir('/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/Python')
-os.chdir('./Python')
-path = os.getcwd()
-
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
 
-now = datetime.now()
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import pandas as pd
 
-thisMonth = (now).strftime("%B")
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-RONI=pd.read_csv("https://www.cpc.ncep.noaa.gov/data/indices/Rnino34.ascii.txt",delim_whitespace=True)
-ANOM = RONI.iloc[-1]['ANOM']
-
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
+RONI_URL = 'https://www.cpc.ncep.noaa.gov/data/indices/Rnino34.ascii.txt'
+TITLES = {'SEL': 'Strong El Nino', 'WEL': 'Weak El Nino', 'NUT': 'Neutral',
+          'WLA': r'Weak La Ni$\tilde{n}a$', 'SLA': r'Strong La Ni$\tilde{n}a$'}
 
 
-now = datetime.now()
-month = now.strftime("%b")
+def phase_of(anom):
+    if anom > 1.1:
+        return 'SEL'
+    if anom > 0.5:
+        return 'WEL'
+    if anom >= -0.5:
+        return 'NUT'
+    if anom >= -1.1:
+        return 'WLA'
+    return 'SLA'
 
-a = int((now+relativedelta(months=+0)).strftime("%m"))
-b = int((now+relativedelta(months=+2)).strftime("%m"))
 
-#Get the number of ranches in HRIP
-dir_path = '../RID'
-count = 0
-for path in os.listdir(dir_path):
-    if os.path.isdir(os.path.join(dir_path, path)):
-        count += 1
-        
-def filter(rf_df,mode):
-    if mode == 1:
-        ENSO = []
-        if ANOM > 1.1: 
-            ENSO= rf_df[(rf_df['Month']>=a)&(rf_df['Month']<=b)].loc[rf_df['Phase'] == 'SEL']
-            title="Strong El Nino"
-        elif 1.1 >= ANOM >0.5:
-            ENSO= rf_df[(rf_df['Month']>=a)&(rf_df['Month']<=b)].loc[rf_df['Phase'] == 'WEL']
-            title="Weak El Nino"
-        elif 0.5>=ANOM>=-0.5:
-            ENSO= rf_df[(rf_df['Month']>=a)&(rf_df['Month']<=b)].loc[rf_df['Phase'] == 'NUT']
-            title="Neutral"
-        elif -0.5> ANOM >= -1.1:
-            ENSO= rf_df[(rf_df['Month']>=a)&(rf_df['Month']<=b)].loc[rf_df['Phase'] == 'WLA']
-            title=r'Weak La Ni$\tilde{n}a$'
-        elif ANOM < -1.1:
-            ENSO= rf_df[(rf_df['Month']>=a)&(rf_df['Month']<=b)].loc[rf_df['Phase'] == 'SLA']
-            title=r'Strong La Ni$\tilde{n}a$'
-        else:
-            print("Error")
-        return ENSO, title
-    if mode == 2:
-        ENSO = []
-        if ANOM > 1.1: 
-            ENSO= rf_df[(rf_df['Month']>=a)|(rf_df['Month']<=b)].loc[rf_df['Phase'] == 'SEL']
-            title="Strong El Nino"
-        elif 1.1 >= ANOM >0.5:
-            ENSO= rf_df[(rf_df['Month']>=a)&(rf_df['Month']<=b)].loc[rf_df['Phase'] == 'WEL']
-            title="Weak El Nino"
-        elif 0.5>=ANOM>=-0.5:
-            ENSO= rf_df[(rf_df['Month']>=a)&(rf_df['Month']<=b)].loc[rf_df['Phase'] == 'NUT']
-            title="Neutral"
-        elif -0.5> ANOM >= -1.1:
-            ENSO= rf_df[(rf_df['Month']>=a)&(rf_df['Month']<=b)].loc[rf_df['Phase'] == 'WLA']
-            title=r'Weak La Ni$\tilde{n}a$'
-        elif ANOM < -1.1:
-            ENSO= rf_df[(rf_df['Month']>=a)&(rf_df['Month']<=b)].loc[rf_df['Phase'] == 'SLA']
-            title=r'Strong La Ni$\tilde{n}a$'
-        else:
-            print("Error")
-        return ENSO, title
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--ranch', action='append', help='only draw this ranch, e.g. RID118 (repeatable)')
+    args = ap.parse_args()
 
-for r in np.arange(1,count+1):
-    #table=pd.read_csv(f"/Users/cherryleheu/Codes/NIDIS-Codes/H-RIP/RID/RID{r:03d}/RID{r:03d}_query.csv",index_col=0)
-    table=pd.read_csv(f"../RID/RID{r:03d}/RID{r:03d}_query.csv",index_col=0)
-    rf_df=pd.DataFrame({'A' : []})
+    roni = pd.read_csv(RONI_URL, sep=r'\s+')
+    roni['ANOM'] = pd.to_numeric(roni['ANOM'], errors='coerce')
+    roni = roni[roni.ANOM > -90].dropna(subset=['ANOM'])
+    latest = roni.iloc[-1]  # file is in date order; the last row is the newest month
+    phase = phase_of(latest.ANOM)
+    title = TITLES[phase]
+
     now = datetime.now()
-    thisMonth = (now).strftime("%B")
+    this_month = now.strftime('%B')
+    months = [(now.month - 1 + k) % 12 + 1 for k in range(3)]  # this month and the next two, wrapping at December
+    print(f"RONI {int(latest.YR)}-{int(latest.MTH):02d} {latest.ANOM:+.2f} -> {phase}; months {months}")
 
-    if a == 11 or a == 12:
-        #creates a table that is from March to Feb
-        rf_df=table.append(table.loc[:9])
-        N=10
-        rf_df=rf_df.iloc[N:,:]
-        mode = 2
-    else:
-        rf_df=table
-        mode = 1
+    ranches = sorted(d for d in os.listdir('../RID') if d.startswith('RID') and os.path.isdir(f'../RID/{d}'))
+    if args.ranch:
+        ranches = [r for r in ranches if r in args.ranch]
 
-    ENSO = filter(rf_df,mode)[0]
-    title=filter(rf_df,mode)[1]
-    ENSO['MonthName']= ENSO['Month'].astype(np.uint8).apply(lambda x: calendar.month_abbr[x])
+    done = 0
+    for p in ranches:
+        try:
+            table = pd.read_csv(f'../RID/{p}/{p}_query.csv', index_col=0)
+        except FileNotFoundError:
+            print(f'  {p}: skipped, no query table')
+            continue
+        enso = table[table.Phase == phase].set_index('Month').loc[months].reset_index()
+        enso['MonthName'] = enso['Month'].apply(lambda x: calendar.month_abbr[int(x)])
+        mean, p_mean, p_min = enso['MRF'].iloc[0], enso['MeRF'].iloc[0], enso['MnRF'].iloc[0]
 
-    #all mean
-    mean=ENSO['MRF'].iloc[0]
-    #phase mean
-    p_mean = ENSO['MeRF'].iloc[0]
-    #phase min
-    p_min = ENSO['MnRF'].iloc[0]
-
-    #probability
-    #mean_prob = int(ENSO['A_ProbMe'][0]*100)
-    #p_mean_prob = int(ENSO['E_ProbMe'][0]*100)
-    #p_min_prob = int(ENSO['E_ProbMn'][0]*100)
-
-    fig, ax = plt.subplots(figsize=(12,10))
-    line1 = ENSO.plot(ax=ax,x='MonthName',y=['MRF','MeRF','MnRF'],kind="bar",legend=False,color=['#004c6d','#377eb8','#9ecae1'])
-    ax.grid(axis="y", linestyle="--", linewidth=0.6, alpha=0.45)
-    ax.set_ylabel("Monthly rainfall (inches)",fontsize=20)
-    plt.tick_params(axis='x', labelsize=20)
-    plt.tick_params(axis='y', labelsize=20)
-    first_legend = ax.legend(['Mean', '%s Mean' % title, '%s Minimum'% title],fontsize=20,bbox_to_anchor=(1,1),edgecolor="black", loc='upper left')
+        fig, ax = plt.subplots(figsize=(12, 10))
+        enso.plot(ax=ax, x='MonthName', y=['MRF', 'MeRF', 'MnRF'], kind='bar', legend=False, color=['#004c6d', '#377eb8', '#9ecae1'])
+        ax.grid(axis='y', linestyle='--', linewidth=0.6, alpha=0.45)
+        ax.set_ylabel('Monthly rainfall (inches)', fontsize=20)
+        ax.tick_params(axis='x', labelsize=20)
+        ax.tick_params(axis='y', labelsize=20)
+        first_legend = ax.legend(['Mean', f'{title} Mean', f'{title} Minimum'], fontsize=20, bbox_to_anchor=(1, 1), edgecolor='black', loc='upper left')
+        second_legend = ax.legend([f"Mean                         {mean:.2f} in\n{title} Mean             {p_mean:.2f} in\n{title} Minimum       {p_min:.2f} in"],
+                                  loc='center left', handlelength=0, handletextpad=0, bbox_to_anchor=(1, 0.7),
+                                  title=f'{p} {this_month} Rainfall', fontsize=20)
+        second_legend.get_title().set_fontsize('20')
+        ax.add_artist(first_legend)
+        ax.set(xlabel=None)
+        fig.savefig(f'../RID/{p}/{p}_rainfall.png', bbox_inches='tight')
+        plt.close(fig)
+        done += 1
+    print(f'Drew rainfall outlooks for {done} ranches.')
 
 
-    second_legend = ax.legend([f"Mean                         {mean:.2f} in\n{title} Mean             {p_mean:.2f} in\n{title} Minimum       {p_min:.2f} in"], loc='center left', 
-                            handlelength=0, handletextpad=0,bbox_to_anchor=(1, 0.7), title=f'RID{r:03d} {thisMonth} Rainfall',fontsize=20)
-    second_legend.get_title().set_fontsize('20') 
-    ax.add_artist(first_legend)
-        
-    #ax.add_artist(second_legend)
-    ax.set(xlabel=None)
-    plt.savefig(f"../RID/RID{r:03d}/RID{r:03d}_rainfall.png",bbox_inches="tight")
-    #plt.show()
-    
-
+if __name__ == '__main__':
+    main()

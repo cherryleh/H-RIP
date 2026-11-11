@@ -180,6 +180,24 @@
     #toolResults table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
     #toolResults th, #toolResults td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: center; }
     #toolResults .msg { color: var(--ink-2); background: var(--surface-2); padding: 12px 14px; border-radius: 10px; font-size: 14px; }
+    /* tool.php returns three radio-button tabs (3-month, 6-month, prior months); show one at a time */
+    #toolResults .tabs { display: flex; flex-wrap: wrap; gap: 3px; background: var(--surface-2); padding: 3px; border-radius: 12px; }
+    #toolResults .tabs > input { position: absolute; opacity: 0; pointer-events: none; }
+    #toolResults .tabs > label { order: 1; font-size: 13.5px; font-weight: 700; color: var(--ink-2); padding: 7px 14px; border-radius: 9px; cursor: pointer; }
+    #toolResults .tabs > label:hover { color: var(--ink); }
+    #toolResults .tabs > input:checked + label { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.1); }
+    #toolResults .tabs > input:focus-visible + label { outline: 2px solid var(--brand-2); outline-offset: 1px; }
+    #toolResults .tabs > .tab { order: 99; width: 100%; display: none; background: var(--surface); border-radius: 10px; padding: 16px; margin-top: 3px; }
+    #toolResults .tabs > input:checked + label + .tab { display: block; }
+    #toolResults .tab h3 { font-size: 17px; margin: 0 0 4px !important; }
+    #toolResults .tab > div[style] { margin-left: 0 !important; font-size: 13.5px; color: var(--ink-2); }
+    #toolResults .tab > div[style] b { color: var(--ink); }
+    #toolResults .tab > br { display: none; }
+    #toolResults .tab table { margin-top: 12px; }
+    #toolResults .tab th { font-size: 13px; color: var(--ink-2); }
+    #toolResults .tab td { font-size: 22px; font-weight: 700; line-height: 1.2; }
+    #toolResults .tab td:first-child { font-size: 13.5px; font-weight: 400; color: var(--ink-2); text-align: left; max-width: 220px; }
+    #toolResults .tab .change { font-size: 12px; font-weight: 400; color: var(--ink-3); }
 
     /* Footer */
     footer { margin-top: 72px; background: #14231b; color: #c9d3cd; padding: 44px 0 26px; }
