@@ -53,7 +53,6 @@
     .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
     .brand-text { line-height: 1.15; font-weight: 600; font-size: 15px; }
-    .brand-text small { display: block; font-weight: 500; font-size: 11px; opacity: .7; letter-spacing: .06em; text-transform: uppercase; }
     .beta { font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 99px; border: 1px solid currentColor; opacity: .7; margin-left: 4px; vertical-align: 2px; }
     .nav-links { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
     .nav-links a {
@@ -232,9 +231,19 @@
       .nav-links li:not(:last-child) { display: none; }
       .nav-links a { white-space: nowrap; padding: 8px 12px; font-size: 13.5px; }
       .brand-text { font-size: 13.5px; }
-      .brand-text small { display: none; }
       .partners { grid-template-columns: repeat(2, 1fr); }
       .hero { min-height: 70vh; }
+      /* Ranch finder: one swipeable row of islands so the map stays near the top */
+      .finder-side { padding: 16px; gap: 12px; }
+      .finder-side .label { margin-bottom: 8px; }
+      .island-list { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px 2px; scroll-snap-type: x proximity; }
+      .island-list::-webkit-scrollbar { display: none; }
+      .island { flex: none; padding: 9px 12px; background: var(--surface-2); scroll-snap-align: start; }
+      .note { padding: 10px 12px; font-size: 13px; }
+      #map { height: 420px; }
+      /* Bigger tap targets */
+      .info { width: 36px; height: 36px; font-size: 15px; }
+      .outlook-table summary { padding: 8px 0; }
     }
   </style>
 </head>
@@ -243,8 +252,7 @@
   <header class="site-header" id="hdr">
     <div class="wrap nav">
       <a class="brand" href="#">
-        <span class="brand-text">Hawaiʻi Rangeland Information Portal <span class="beta">BETA</span>
-          <small>NOAA · NIDIS · UH Mānoa</small></span>
+        <span class="brand-text">Hawaiʻi Rangeland Information Portal <span class="beta">BETA</span></span>
       </a>
       <ul class="nav-links">
         <li><a href="#conditions">Conditions</a></li>
@@ -505,7 +513,7 @@
     document.querySelectorAll('.year').forEach(e => e.textContent = yr);
 
     // Map
-    const map = L.map('map', { zoomControl: true, scrollWheelZoom: false }).setView([20.45, -157.4], 7);
+    const map = L.map('map', { zoomControl: true, scrollWheelZoom: false, zoomSnap: 0.25 });
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
       attribution: 'Tiles &copy; Esri', maxZoom: 18
     }).addTo(map);
@@ -521,13 +529,17 @@
       onEachFeature: (f, layer) => {
         const id = f.properties.Polygon, isle = isleNames[f.properties.IS];
         counts[isle] = (counts[isle] || 0) + 1;
-        const url = '../' + (isMobile ? 'RIDmobile.php' : 'RID.php') + '?ranch=' + id;
+        const url = 'ranch-mockup.php?ranch=' + id;  // live site: '../RID.php?ranch=' + id
         layer.bindTooltip(id, { direction: 'top', sticky: true });
         layer.bindPopup(`<div class="popup-title">${id}</div><div class="popup-meta">${display[isle]}</div><a class="popup-btn" href="${url}" target="_blank">Open dashboard →</a>`);
         layer.on('mouseover', () => layer.setStyle({ fillOpacity: .65, color: '#c9822f', weight: 2 }));
         layer.on('mouseout', () => ranches.resetStyle(layer));
       }
     }).addTo(map);
+
+    // Fit every ranch on screen, whatever the screen width
+    const allBounds = ranches.getBounds();
+    map.fitBounds(allBounds, { padding: [16, 16] });
 
     // Island list
     const centers = {};
@@ -541,7 +553,7 @@
       b.onclick = () => {
         list.querySelectorAll('.island').forEach(x => x.classList.remove('active'));
         b.classList.add('active');
-        if (isle === 'All') map.flyTo([20.45, -157.4], 7, { duration: .8 });
+        if (isle === 'All') map.flyToBounds(allBounds, { padding: [16, 16], duration: .8 });
         else map.flyTo([centers[isle].lat, centers[isle].lon], zooms[isle] || 10, { duration: .8 });
       };
       list.appendChild(b);

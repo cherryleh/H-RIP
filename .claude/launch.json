@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8765"],
       "port": 8765
+    },
+    {
+      "name": "php",
+      "runtimeExecutable": "php",
+      "runtimeArgs": ["-d", "display_errors=0", "-S", "localhost:8766"],
+      "port": 8766
     }
   ]
 }
