@@ -1,201 +1,564 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <title>Hawai&#x02BB;i Rangeland Informational Portal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="./CSS/index.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/header.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/footer.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-  <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" crossorigin="" />
-  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" crossorigin=""></script>
-
-  <script src="./Leaflet/ranches.js"></script>
-  <script src="./Leaflet/coastline.js"></script>
-
-
-  <script>
-    $(function () {
-      $("#header").load("./header.html");
-      $("#footer").load("./footer.html");
-    });
-
-  </script>
-</head>
-
-<body>
-  <script>
-    $(document).ready(function () {
-      $('#island-select').on('change', function () {
-        var islvalue = $(this).val();
-        window.currentIsl = islvalue;
-        $("div.myDiv").hide();
-        $("#show" + islvalue).show();
-
-        console.log($("#form-no-data"))
-        $("#form-no-data").trigger('click');
-      });
-    });
-
-    /*Radio buttons to display different raster data on island*/
-    $(document).ready(function () {
-      $("input[name$='bn']").click(function () {
-        var radio_value = $(this).val();
-        var isl_value = $('#island-select option:selected')[0].value;
-        console.log(isl_value)
-        if (radio_value == '0') {
-          $("#nodata" + isl_value).show();
-          $("#rainfall" + isl_value).hide();
-          $("#evapotranspiration" + isl_value).hide();
-        }
-        else if (radio_value == '1') {
-          $("#nodata" + isl_value).hide();
-          $("#rainfall" + isl_value).show();
-          $("#evapotranspiration" + isl_value).hide();
-        }
-        else if (radio_value == '2') {
-          $("#nodata" + isl_value).hide();
-          $("#rainfall" + isl_value).hide();
-          $("#evapotranspiration" + isl_value).show();
-        }
-      });
-      $('[name="bn"]:checked').trigger('click');
-    });
-
-    function popupFunction() {
-      var popup = document.getElementById("myPopup");
-      popup.classList.toggle("show");
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hawaiʻi Rangeland Information Portal (H-RIP)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="Leaflet/ranches.js"></script>
+  <script src="Leaflet/coastline.js"></script>
+  <style>
+    :root {
+      --bg: #f6f5f0;
+      --surface: #ffffff;
+      --surface-2: #eef1ea;
+      --ink: #1c2420;
+      --ink-2: #4f5b54;
+      --ink-3: #7c8781;
+      --line: #e1e4dd;
+      --brand: #1f5b3f;
+      --brand-2: #2f7a55;
+      --brand-soft: #e3efe7;
+      --accent: #c9822f;
+      --radius: 16px;
+      --shadow: 0 1px 2px rgba(20,30,25,.05), 0 8px 24px rgba(20,30,25,.06);
+      --maxw: 1200px;
     }
-  </script>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font: 16px/1.6 'Lato', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--brand-2); }
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    h1, h2, h3 { font-family: 'Lato', sans-serif; font-weight: 700; margin: 0; }
+    .brand-text { font-family: 'Montserrat', sans-serif; }
 
+    /* ---------- Header ---------- */
+    .site-header {
+      position: fixed; inset: 0 0 auto 0; z-index: 1000;
+      transition: background .25s, box-shadow .25s, color .25s;
+      color: #fff;
+    }
+    .site-header.scrolled {
+      background: rgba(255,255,255,.88); backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--line); color: var(--ink);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+    .brand-text { line-height: 1.15; font-weight: 600; font-size: 15px; }
+    .beta { font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 99px; border: 1px solid currentColor; opacity: .7; margin-left: 4px; vertical-align: 2px; }
+    .nav-links { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+    .nav-links a {
+      color: inherit; text-decoration: none; font-weight: 500; font-size: 14.5px;
+      padding: 8px 14px; border-radius: 99px; transition: background .2s;
+    }
+    .nav-links a:hover { background: rgba(127,127,127,.15); }
+    .nav-links .cta { background: #fff; color: var(--brand); }
+    .scrolled .nav-links .cta { background: var(--brand); color: #fff; }
 
-  <div id="header">Header</div>
-  <div class="headerimg">
-    <img src="https://media02.stockfood.com/largepreviews/MjE4NjA4MDkwOQ==/70518739-Hawaii-Oahu-Kualoa-Ranch-Horseback-Riders-In-An-Open-Field-Editorial-Use-Only.jpg" alt="Placeholder-Image">
-    <div class="imgtext">
-      <h1 class="siteName">Welcome to the <br class="mobile-hide"> Hawai&#x02BB;i Rangeland Information Portal <br class="mobile-hide">(H-RIP)</h1>
-      <a class="mobile-hide" href="http://hrip.manoa.hawaii.edu/about.html"> Learn more</a>
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative; min-height: 78vh; display: flex; align-items: flex-end;
+      color: #fff; padding: 140px 0 72px;
+      background: url("https://media02.stockfood.com/largepreviews/MjE4NjA4MDkwOQ==/70518739-Hawaii-Oahu-Kualoa-Ranch-Horseback-Riders-In-An-Open-Field-Editorial-Use-Only.jpg") center / cover no-repeat;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,25,18,.45) 0%, rgba(10,25,18,.15) 35%, rgba(10,25,18,.7) 100%);
+    }
+    .hero .wrap { position: relative; width: 100%; }
+    .hero h1 { font-size: clamp(34px, 5vw, 60px); line-height: 1.08; max-width: 16ch; margin-bottom: 24px; }
+    .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+      padding: 13px 22px; border-radius: 99px; font-weight: 600; font-size: 15px; transition: transform .15s, background .2s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: #fff; color: var(--brand); }
+    .btn-ghost { color: #fff; border: 1px solid rgba(255,255,255,.6); }
+    .btn-ghost:hover { background: rgba(255,255,255,.12); }
+
+    /* ---------- Sections ---------- */
+    section.block { padding: 88px 0 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; flex-wrap: wrap; }
+    .section-head h2 { font-size: clamp(28px, 3vw, 38px); }
+    .section-head p { color: var(--ink-2); margin: 8px 0 0; max-width: 60ch; }
+    .kicker { color: var(--accent); font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+
+    /* ---------- Ranch finder ---------- */
+    .finder {
+      display: grid; grid-template-columns: 320px 1fr; gap: 0;
+      background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
+    }
+    .finder-side { padding: 24px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 22px; }
+    .label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); margin-bottom: 10px; }
+    .island-list { display: flex; flex-direction: column; gap: 4px; }
+    .island {
+      display: flex; justify-content: space-between; align-items: center; width: 100%;
+      font: inherit; font-size: 15px; text-align: left; cursor: pointer;
+      padding: 10px 12px; border: 0; border-radius: 10px; background: transparent; color: var(--ink);
+      transition: background .15s;
+    }
+    .island:hover { background: var(--surface-2); }
+    .island.active { background: var(--brand-soft); color: var(--brand); font-weight: 600; }
+    .count { font-size: 12.5px; font-weight: 600; color: var(--ink-3); background: var(--surface-2); padding: 2px 9px; border-radius: 99px; }
+    .island.active .count { background: var(--brand); color: #fff; }
+    .note { font-size: 13.5px; color: var(--ink-2); background: var(--surface-2); padding: 14px; border-radius: 12px; margin-top: auto; }
+    .note a { font-weight: 600; }
+    #map { height: 560px; background: #dfe7e3; }
+    .leaflet-popup-content-wrapper { border-radius: 12px; font-family: 'Lato', sans-serif; }
+    .popup-title { font-weight: 700; font-size: 15px; margin-bottom: 2px; }
+    .popup-meta { color: var(--ink-3); font-size: 12.5px; margin-bottom: 10px; }
+    .popup-btn { display: inline-block; background: var(--brand); color: #fff !important; padding: 7px 14px; border-radius: 99px; text-decoration: none; font-weight: 600; font-size: 13px; }
+
+    /* ---------- Conditions ---------- */
+    .cards { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+    .card {
+      background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 22px; display: flex; flex-direction: column;
+    }
+    .card-head { display: flex; justify-content: space-between; align-items: start; gap: 12px; margin-bottom: 14px; }
+    .card h3 { font-family: 'Lato', sans-serif; font-size: 16px; font-weight: 600; }
+    .card .sub { font-size: 13px; color: var(--ink-3); }
+    .chip { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: #e8eefb; color: #2f5fb3; white-space: nowrap; }
+    .info { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); background: none; color: var(--ink-3); cursor: pointer; font-weight: 700; font-size: 13px; flex: none; font-family: Georgia, serif; font-style: italic; }
+    .info:hover, .info[aria-expanded="true"] { background: var(--brand-soft); color: var(--brand); border-color: var(--brand-soft); }
+    .info-wrap { position: relative; flex: none; }
+    .popover {
+      display: none; position: absolute; right: 0; top: calc(100% + 8px); z-index: 20; width: 270px;
+      background: var(--ink); color: #fff; font-size: 13px; line-height: 1.5; padding: 12px 14px; border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+    }
+    .popover.open { display: block; }
+    .popover a { display: block; margin-top: 8px; color: #9fd8b8; font-weight: 600; }
+    .span-4 { grid-column: span 4; } .span-8 { grid-column: span 8; } .span-6 { grid-column: span 6; } .span-12 { grid-column: span 12; }
+    .gauge-wrap { margin: auto 0; }
+    .gauge-img { padding: 6px 4px 0; }
+    .phase { text-align: center; margin-top: 6px; }
+    .phase-name { display: inline-flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 700; }
+    .phase-name i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+    .card-foot { font-size: 12.5px; color: var(--ink-3); margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    .card-foot a { color: var(--ink-2); }
+    .embed { border-radius: 12px; overflow: hidden; flex: 1; min-height: 340px; background: var(--surface-2); }
+    .embed iframe { width: 100%; height: 100%; min-height: 340px; border: 0; display: block; }
+    .embed img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+    .wind-card .embed { position: relative; min-height: 400px; }
+    .wind-card iframe { position: absolute; inset: 0; min-height: 0; height: 100%; }
+    .dm-embed { min-height: 0; display: flex; align-items: center; background: #fff; }
+    .dm-embed img { height: auto; max-height: 100%; }
+    .expand-btn {
+      display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 12.5px; font-weight: 700;
+      padding: 5px 11px; border-radius: 99px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); cursor: pointer;
+    }
+    .expand-btn:hover { background: var(--brand-soft); color: var(--brand); border-color: var(--brand-soft); }
+    .close-btn {
+      display: none; position: absolute; top: 12px; left: 12px; z-index: 2; width: 38px; height: 38px; border-radius: 50%;
+      border: 0; background: rgba(20,30,25,.85); color: #fff; font-size: 16px; cursor: pointer;
+    }
+    .wind-card .embed.expanded {
+      position: fixed; inset: 32px; z-index: 2001; min-height: 0; border-radius: var(--radius);
+      box-shadow: 0 24px 64px rgba(0,0,0,.35);
+    }
+    .embed.expanded .close-btn { display: block; }
+    .backdrop { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(10,20,15,.6); }
+    .backdrop.show { display: block; }
+    body.no-scroll { overflow: hidden; }
+    @media (max-width: 680px) { .wind-card .embed.expanded { inset: 12px; } .wind-card .embed { min-height: 300px; } }
+    :root { --enso-nina: #2f5fa8; --enso-neutral: #9aa19d; --enso-nino: #b8343f; }
+    .outlook { position: relative; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .outlook-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+    .outlook-title { font-weight: 700; font-size: 14px; }
+    .outlook-src { font-size: 12px; color: var(--ink-3); }
+    .outlook-summary { margin: 4px 0 12px; font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+    .outlook-chart { display: grid; grid-template-columns: repeat(9, 1fr); gap: 4px; }
+    .ob { display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: default; outline: none; }
+    .ob-stack { width: 100%; max-width: 26px; height: 84px; display: flex; flex-direction: column; gap: 2px; border-radius: 4px; overflow: hidden; }
+    .ob-stack div { min-height: 0; }
+    .ob-lab { font-size: 10.5px; font-weight: 600; color: var(--ink-3); letter-spacing: .02em; }
+    .ob:hover .ob-lab, .ob:focus-visible .ob-lab { color: var(--ink); }
+    .ob:hover .ob-stack, .ob:focus-visible .ob-stack { box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--ink-3); }
+    .outlook-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-size: 12.5px; color: var(--ink-2); }
+    .outlook-legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .outlook-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+    .outlook-table { margin-top: 8px; font-size: 12.5px; }
+    .outlook-table summary { cursor: pointer; color: var(--brand-2); font-weight: 600; }
+    .outlook-table table { width: 100%; border-collapse: collapse; margin-top: 8px; font-variant-numeric: tabular-nums; }
+    .outlook-table th, .outlook-table td { padding: 4px 6px; text-align: right; border-bottom: 1px solid var(--line); }
+    .outlook-table th:first-child, .outlook-table td:first-child { text-align: left; }
+    .outlook-table th { color: var(--ink-3); font-weight: 600; }
+    .outlook-tip {
+      position: absolute; z-index: 15; pointer-events: none; opacity: 0; transition: opacity .12s;
+      background: var(--ink); color: #fff; font-size: 12px; line-height: 1.5; padding: 8px 10px; border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.18); white-space: nowrap; transform: translate(-50%, calc(-100% - 8px));
+    }
+    .outlook-tip.show { opacity: 1; }
+    .outlook-tip b { display: block; margin-bottom: 2px; }
+    .outlook-tip i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 6px; }
+    .outlook-tip .v { float: right; margin-left: 14px; font-variant-numeric: tabular-nums; }
+
+    /* ---------- Footer ---------- */
+    footer { margin-top: 96px; background: #14231b; color: #c9d3cd; padding: 56px 0 28px; }
+    .foot-grid { display: grid; grid-template-columns: 1.2fr 2fr; gap: 48px; }
+    footer h4 { color: #fff; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 14px; font-weight: 600; }
+    footer a { color: #fff; }
+    footer p { margin: 0 0 10px; font-size: 14.5px; }
+    .partners { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .partners div { background: #fff; border-radius: 12px; height: 76px; display: grid; place-items: center; padding: 12px; }
+    .partners img { max-height: 52px; width: auto; object-fit: contain; }
+    .legal { margin-top: 44px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.1); font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; color: #8fa097; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .finder { grid-template-columns: minmax(0, 1fr); }
+      .finder-side { border-right: 0; border-bottom: 1px solid var(--line); }
+      .island-list { flex-direction: row; flex-wrap: wrap; }
+      .island { width: auto; gap: 8px; }
+      .note { margin-top: 0; }
+      .span-4, .span-8, .span-6 { grid-column: span 12; }
+      .foot-grid { grid-template-columns: 1fr; }
+      #map { height: 440px; }
+    }
+    @media (max-width: 680px) {
+      .wrap { padding: 0 16px; }
+      .nav-links li:not(:last-child) { display: none; }
+      .nav-links a { white-space: nowrap; padding: 8px 12px; font-size: 13.5px; }
+      .brand-text { font-size: 13.5px; }
+      .partners { grid-template-columns: repeat(2, 1fr); }
+      .hero { min-height: 70vh; }
+      /* Ranch finder: one swipeable row of islands so the map stays near the top */
+      .finder-side { padding: 16px; gap: 12px; }
+      .finder-side .label { margin-bottom: 8px; }
+      .island-list { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px 2px; scroll-snap-type: x proximity; }
+      .island-list::-webkit-scrollbar { display: none; }
+      .island { flex: none; padding: 9px 12px; background: var(--surface-2); scroll-snap-align: start; }
+      .note { padding: 10px 12px; font-size: 13px; }
+      #map { height: 420px; }
+      /* Bigger tap targets */
+      .info { width: 36px; height: 36px; font-size: 15px; }
+      .outlook-table summary { padding: 8px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="hdr">
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <span class="brand-text">Hawaiʻi Rangeland Information Portal <span class="beta">BETA</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#conditions">Conditions</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="cta" href="#ranch">Find a ranch</a></li>
+      </ul>
     </div>
-  </div>
+  </header>
 
-  <div class="sitespecific" id="ranch">
-    <h3 id="subcategory">Ranch Selection</h3>
-
-    <p style="text-align: center;">Select an island from the dropdown below.</p>
-    <p style="text-align: center; font-size: 18px;">If you do not see your area of interest, you can add it by submitting your site using <a target="_blank" href="https://survey123.arcgis.com/share/d76c065bfb3040598096ee2a7f087974">this form.</a></p>
-    <br>
-    <select id='zoombox' onchange="zoomToIsl()">
-
-      <option>Select island</option>
-
-      <option value="Hawaii">Hawai&#x02BB;i</option>
-      <option value="Lanai">L&#x0101;na&#x02BB;i</option>
-      <option value="Kahoolawe">Kaho&#x02BB;olawe</option>
-      <option value="Kauai">Kaua&#x02BB;i</option>
-      <option value="Maui">Maui</option>
-      <option value="Molokai">Moloka&#x02BB;i</option>
-      <option value="Oahu">O&#x02BB;ahu</option>
-      
-      
-      
-      
-
-    </select>
-    <div id='mapDIV'></div>
-    <script src="./Leaflet/leaflet.js"></script>
-    
-
-  </div>
-
-  <section class="statewide-section">
-    <h3 id="subcategory">
-      Statewide Conditions - <span class="month"></span>, <span class="year"></span>
-    </h3>
-
-    <div class="enso-card">
-      <div class="card-header enso-header">
-        <h4>ENSO Gauge</h4>
-        <div class="gauge-i tool">&#9432;
-          <span class="tooltext">
-            This gauge shows current El Niño - Southern Oscillation (ENSO) conditions from the NOAA Climate Prediction Center’s Oceanic Niño Index (ONI). Updated monthly. Learn more <a target="_blank"
-              href="https://www.climate.gov/news-features/understanding-climate/climate-variability-oceanic-nino-index">here</a>.
-          </span>
-        </div>
-      </div>
-
-      <div class="gauge">
-        <img src="./gauge/gauge.png" alt="ENSO Gauge">
-        <p class="updated-date"><em>Last updated <span class="month"></span> 8, <span class="year"></span></em></p>
-      </div>
-    </div>
-
-    <!-- Windy + Drought Monitor (Bottom Row) -->
-    <div class="conditions-row">
-      <div class="condition-card">
-        <div class="card-header"><h4>Wind Conditions</h4></div>
-        <iframe
-          title="windy.com"
-          src="https://embed.windy.com/embed2.html?lat=20.689&lon=-157.843&zoom=6&level=surface&overlay=wind&product=ecmwf"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
-      </div>
-
-      <div class="condition-card">
-        <div class="card-header"><h4>Drought Conditions</h4></div>
-        <a href="http://droughtmonitor.unl.edu/data/png/current/current_hi_trd.png" target="_blank">
-          <img src="http://droughtmonitor.unl.edu/data/png/current/current_hi_trd.png" alt="Hawaii Drought Monitor">
-        </a>
-        <p>Source: <a id="NDMC" href="https://droughtmonitor.unl.edu/" target="_blank">National Drought Mitigation Center (NDMC)</a></p>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Hawaiʻi Rangeland Information Portal</h1>
+      <div class="btns">
+        <a class="btn btn-ghost" href="about.html">Learn more</a>
       </div>
     </div>
   </section>
 
+  <!-- Ranch finder -->
+  <section class="block" id="ranch">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Ranch selection</div>
+          <h2>Find your ranch</h2>
+          <p>Pick an island, then click a site on the map to open its dashboard.</p>
+        </div>
+      </div>
 
-  <div id="footer">Footer</div>
+      <div class="finder">
+        <aside class="finder-side">
+          <div>
+            <div class="label">Islands</div>
+            <div class="island-list" id="islandList"></div>
+          </div>
+          <div class="note">Don't see your area of interest? <a target="_blank" href="https://survey123.arcgis.com/share/d76c065bfb3040598096ee2a7f087974">Submit your site →</a></div>
+        </aside>
+        <div id="map"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statewide conditions -->
+  <section class="block" id="conditions">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Statewide conditions</div>
+          <h2><span class="month"></span> <span class="year"></span> outlook</h2>
+          <p>A snapshot of the large-scale climate signals affecting rangelands statewide.</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card span-4">
+          <div class="card-head">
+            <div><h3>ENSO Gauge</h3><div class="sub">Relative Oceanic Niño Index · NOAA CPC</div></div>
+            <div class="info-wrap">
+              <button class="info" type="button" aria-expanded="false" aria-controls="ensoInfo" aria-label="About the ENSO gauge">i</button>
+              <div class="popover" id="ensoInfo" role="tooltip">
+                This gauge shows current El Niño–Southern Oscillation (ENSO) conditions from the NOAA Climate Prediction Center's Relative Oceanic Niño Index (RONI). Updated monthly.
+                <a target="_blank" href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni">Learn more about RONI →</a>
+              </div>
+            </div>
+          </div>
+          <div class="gauge-wrap">
+            <img class="gauge-img" src="gauge/gauge.png" alt="ENSO gauge">
+            <div class="phase" id="ensoPhase" hidden>
+              <div class="phase-name"><i id="phaseDot"></i><span id="phaseName"></span></div>
+            </div>
+          </div>
+          <div class="outlook">
+            <div class="outlook-head">
+              <span class="outlook-title">Outlook</span>
+              <span class="outlook-src">CPC · issued <span id="outlookIssued"></span></span>
+            </div>
+            <p class="outlook-summary" id="outlookSummary"></p>
+            <div class="outlook-chart" id="outlookChart" role="img" aria-label="ENSO probability outlook by season"></div>
+            <div class="outlook-legend">
+              <span><i style="background:var(--enso-nina)"></i>La Niña</span>
+              <span><i style="background:var(--enso-neutral)"></i>Neutral</span>
+              <span><i style="background:var(--enso-nino)"></i>El Niño</span>
+            </div>
+            <details class="outlook-table">
+              <summary>View as table</summary>
+              <table id="outlookTable"><thead><tr><th>Season</th><th>La Niña</th><th>Neutral</th><th>El Niño</th></tr></thead><tbody></tbody></table>
+            </details>
+            <div class="outlook-tip" id="outlookTip" role="tooltip"></div>
+          </div>
+          <div class="card-foot"><span id="gaugeUpdated">Gauge updated monthly</span><a target="_blank" href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/probabilities.php">CPC outlook</a></div>
+        </article>
+
+        <article class="card span-8">
+          <div class="card-head">
+            <div><h3>Drought Conditions</h3><div class="sub">U.S. Drought Monitor · Hawaiʻi</div></div>
+            <span class="chip">Weekly</span>
+          </div>
+          <a class="embed dm-embed" href="https://droughtmonitor.unl.edu/data/png/current/current_hi_trd.png" target="_blank">
+            <img src="https://droughtmonitor.unl.edu/data/png/current/current_hi_trd.png" alt="Hawaiʻi Drought Monitor map">
+          </a>
+          <div class="card-foot"><span>Source: <a href="https://droughtmonitor.unl.edu/" target="_blank">National Drought Mitigation Center</a></span><span>Click map to enlarge</span></div>
+        </article>
+
+        <article class="card wind-card span-12">
+          <div class="card-head">
+            <div><h3>Wind Conditions</h3><div class="sub">ECMWF forecast · Windy.com</div></div>
+            <button class="expand-btn" type="button" id="windExpand" aria-label="Expand wind map">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              Expand
+            </button>
+          </div>
+          <div class="embed" id="windEmbed">
+            <button class="close-btn" type="button" id="windClose" aria-label="Close expanded wind map">✕</button>
+            <iframe title="windy.com" loading="lazy" src="https://embed.windy.com/embed2.html?lat=20.689&lon=-157.843&zoom=6&level=surface&overlay=wind&product=ecmwf"></iframe>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="backdrop" id="windBackdrop"></div>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <h4>Hawaiʻi Rangeland Information Portal</h4>
+          <p>Funded by the <a href="https://www.drought.gov/" target="_blank">National Integrated Drought Information System (NIDIS)</a>.</p>
+          <p style="margin-top:20px"><span style="color:#8fa097">Contact</span><br><a href="mailto:hcdp@hawaii.edu">hcdp@hawaii.edu</a></p>
+        </div>
+        <div>
+          <h4>Partners</h4>
+          <div class="partners">
+            <div><img src="logos/NOAA.png" alt="NOAA"></div>
+            <div><img src="logos/NIDIS.jpeg" alt="NIDIS"></div>
+            <div><img src="logos/UHM.png" alt="University of Hawaiʻi at Mānoa"></div>
+            <div><img src="logos/EWC.png" alt="East-West Center"></div>
+            <div><img src="logos/PDKE.png" alt="PDKE"></div>
+            <div><img src="logos/HCC.png" alt="HCC"></div>
+            <div><img src="logos/NRCS.png" alt="NRCS"></div>
+          </div>
+        </div>
+      </div>
+      <div class="legal"><span>© <span class="year"></span> University of Hawaiʻi at Mānoa</span><span>hrip.manoa.hawaii.edu</span></div>
+    </div>
+  </footer>
+
   <script>
+    // Header turns solid on scroll
+    const hdr = document.getElementById('hdr');
+    const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', onScroll); onScroll();
+
+    // Expandable wind map (resizes in place so the iframe doesn't reload)
+    const windEmbed = document.getElementById('windEmbed');
+    const windBackdrop = document.getElementById('windBackdrop');
+    const setWind = open => {
+      windEmbed.classList.toggle('expanded', open);
+      windBackdrop.classList.toggle('show', open);
+      document.body.classList.toggle('no-scroll', open);
+      if (!open) document.getElementById('windExpand').focus();
+    };
+    document.getElementById('windExpand').addEventListener('click', () => setWind(true));
+    document.getElementById('windClose').addEventListener('click', () => setWind(false));
+    windBackdrop.addEventListener('click', () => setWind(false));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && windEmbed.classList.contains('expanded')) setWind(false); });
+
+    // ENSO outlook — official NOAA CPC probabilities (verified with RONI).
+    // Update monthly from https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/probabilities.php
+    // (CPC updates on the 2nd Thursday of each month.)
+    const ENSO_OUTLOOK = {
+      issued: 'Oct 2026',
+      seasons: [ // [season, La Niña, Neutral, El Niño]
+        ['SON', 0, 0, 100], ['OND', 0, 0, 100], ['NDJ', 0, 0, 100], ['DJF', 0, 0, 100], ['JFM', 0, 0, 100],
+        ['FMA', 0, 2, 98], ['MAM', 0, 15, 85], ['AMJ', 1, 54, 45], ['MJJ', 13, 70, 17]
+      ]
+    };
+    (() => {
+      const M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      const L = 'JFMAMJJASOND';
+      const spell = code => { // "DJF" -> "Dec–Feb"
+        for (let i = 0; i < 12; i++) if (L[i] === code[0] && L[(i+1)%12] === code[1] && L[(i+2)%12] === code[2]) return M[i] + '–' + M[(i+2)%12];
+        return code;
+      };
+      const cats = [['La Niña','--enso-nina'], ['Neutral','--enso-neutral'], ['El Niño','--enso-nino']];
+      const rows = ENSO_OUTLOOK.seasons;
+      document.getElementById('outlookIssued').textContent = ENSO_OUTLOOK.issued;
+
+      // Plain-language summary from the most likely outcome per season
+      const top = r => { const v = r.slice(1); const i = v.indexOf(Math.max(...v)); return [cats[i][0], v[i]]; };
+      const runs = [];
+      rows.forEach(r => { const [c] = top(r); if (!runs.length || runs.at(-1).cat !== c) runs.push({ cat: c, from: r[0], to: r[0] }); else runs.at(-1).to = r[0]; });
+      const phrase = run => `${run.cat} favored ${run.from === run.to ? 'in ' + spell(run.from) : 'through ' + spell(run.to)}`;
+      document.getElementById('outlookSummary').textContent =
+        runs.slice(0, 2).map((r, i) => i ? phrase(r).replace(' favored', ' then favored').replace('through', 'by') : phrase(r)).join(', ') + '.';
+
+      // Bars: El Niño on top, La Niña at the bottom
+      const chart = document.getElementById('outlookChart');
+      const tip = document.getElementById('outlookTip');
+      const box = chart.parentElement;
+      rows.forEach(r => {
+        const col = document.createElement('div');
+        col.className = 'ob'; col.tabIndex = 0;
+        col.setAttribute('aria-label', `${spell(r[0])}: La Niña ${r[1]}%, Neutral ${r[2]}%, El Niño ${r[3]}%`);
+        const stack = [3, 2, 1].filter(k => r[k] > 0)
+          .map(k => `<div style="flex:${r[k]};background:var(${cats[k-1][1]})"></div>`).join('');
+        col.innerHTML = `<div class="ob-stack">${stack}</div><span class="ob-lab">${r[0]}</span>`;
+        const show = () => {
+          tip.innerHTML = `<b>${spell(r[0])}</b>` + [3, 2, 1].map(k =>
+            `<div><i style="background:var(${cats[k-1][1]})"></i>${cats[k-1][0]}<span class="v">${r[k]}%</span></div>`).join('');
+          const cb = col.getBoundingClientRect(), bb = box.getBoundingClientRect();
+          let x = cb.left + cb.width / 2 - bb.left;
+          tip.style.left = '0px'; tip.classList.add('show');
+          const half = tip.offsetWidth / 2;
+          x = Math.max(half, Math.min(bb.width - half, x));
+          tip.style.left = x + 'px';
+          tip.style.top = (cb.top - bb.top) + 'px';
+        };
+        const hide = () => tip.classList.remove('show');
+        col.addEventListener('mouseenter', show); col.addEventListener('focus', show);
+        col.addEventListener('mouseleave', hide); col.addEventListener('blur', hide);
+        chart.appendChild(col);
+        document.querySelector('#outlookTable tbody').insertAdjacentHTML('beforeend',
+          `<tr><td>${r[0]} <span style="color:var(--ink-3)">${spell(r[0])}</span></td><td>${r[1]}%</td><td>${r[2]}%</td><td>${r[3]}%</td></tr>`);
+      });
+    })();
+
+    // Info popovers (click to toggle, click outside or Esc to close)
+    document.querySelectorAll('.info').forEach(btn => {
+      const pop = document.getElementById(btn.getAttribute('aria-controls'));
+      const set = open => { pop.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); };
+      btn.addEventListener('click', e => { e.stopPropagation(); set(!pop.classList.contains('open')); });
+      document.addEventListener('click', e => { if (!pop.contains(e.target)) set(false); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
+    });
+
+    // Current ENSO phase, written by Python/ONI_gauge.py alongside gauge.png
+    fetch('gauge/gauge.json', { cache: 'no-cache' })
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(g => {
+        const colors = { 'El Niño': 'var(--enso-nino)', 'La Niña': 'var(--enso-nina)', 'Neutral': 'var(--enso-neutral)' };
+        document.getElementById('phaseName').textContent = g.phase === 'Neutral' ? 'ENSO-Neutral' : `${g.strength} ${g.phase}`;
+        document.getElementById('phaseDot').style.background = colors[g.phase];
+        document.getElementById('ensoPhase').hidden = false;
+        // Bust the browser cache so a newly generated gauge.png always shows
+        document.querySelector('.gauge-img').src = 'gauge/gauge.png?v=' + g.updated;
+        const u = new Date(g.updated + 'T00:00:00');
+        document.getElementById('gaugeUpdated').textContent = 'Updated ' + u.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      })
+      .catch(() => {});
+
+    // Month/year (same rule as current site: before the 8th, show previous month)
+    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     const d = new Date();
-    const month = new Array();
-    month[0] = "January";
-    month[1] = "February";
-    month[2] = "March";
-    month[3] = "April";
-    month[4] = "May";
-    month[5] = "June";
-    month[6] = "July";
-    month[7] = "August";
-    month[8] = "September";
-    month[9] = "October";
-    month[10] = "November";
-    month[11] = "December";
+    const mIdx = d.getDate() < 8 ? (d.getMonth() + 11) % 12 : d.getMonth();
+    const yr = d.getDate() < 8 && d.getMonth() === 0 ? d.getFullYear() - 1 : d.getFullYear();
+    document.querySelectorAll('.month').forEach(e => e.textContent = months[mIdx]);
+    document.querySelectorAll('.year').forEach(e => e.textContent = yr);
 
-    let year = d.getFullYear();
-    let classYear = document.getElementsByClassName("year");
+    // Map
+    const map = L.map('map', { zoomControl: true, scrollWheelZoom: false, zoomSnap: 0.25 });
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri', maxZoom: 18
+    }).addTo(map);
 
-    var dd = (d.getDate());
+    const isleNames = { BI: 'Hawaii', MA: 'Maui', OA: 'Oahu', MO: 'Molokai', KA: 'Kauai', LA: 'Lanai', KO: 'Kahoolawe' };
+    const display = { Hawaii: 'Hawaiʻi', Maui: 'Maui', Oahu: 'Oʻahu', Molokai: 'Molokaʻi', Kauai: 'Kauaʻi', Lanai: 'Lānaʻi', Kahoolawe: 'Kahoʻolawe' };
+    const zooms = { Hawaii: 9, Lanai: 11 };
+    const counts = {};
+    const isMobile = window.matchMedia('(max-width: 699px)').matches;
 
-    if (dd < 8) {
-      name = month[d.getMonth()-1];
-    } else {
-      name = month[d.getMonth()];
-    }
-    
-    console.log(name)
+    const ranches = L.geoJSON(ranchSquares, {
+      style: { color: '#1f5b3f', weight: 1.5, fillColor: '#2f7a55', fillOpacity: .35 },
+      onEachFeature: (f, layer) => {
+        const id = f.properties.Polygon, isle = isleNames[f.properties.IS];
+        counts[isle] = (counts[isle] || 0) + 1;
+        const url = 'RID.php?ranch=' + id;
+        layer.bindTooltip(id, { direction: 'top', sticky: true });
+        layer.bindPopup(`<div class="popup-title">${id}</div><div class="popup-meta">${display[isle]}</div><a class="popup-btn" href="${url}" target="_blank">Open dashboard →</a>`);
+        layer.on('mouseover', () => layer.setStyle({ fillOpacity: .65, color: '#c9822f', weight: 2 }));
+        layer.on('mouseout', () => ranches.resetStyle(layer));
+      }
+    }).addTo(map);
 
-    let classMonth = document.getElementsByClassName("month");
+    // Fit every ranch on screen, whatever the screen width
+    const allBounds = ranches.getBounds();
+    map.fitBounds(allBounds, { padding: [16, 16] });
 
-    for (i = 0; i < classYear.length; i++) {
-      classYear[i].innerHTML = year;
-    }
+    // Island list
+    const centers = {};
+    coastline.features.forEach(f => centers[f.properties.isle] = f.properties);
+    const order = ['All', 'Hawaii', 'Maui', 'Oahu', 'Molokai', 'Kauai', 'Lanai', 'Kahoolawe'];
+    const list = document.getElementById('islandList');
+    order.forEach(isle => {
+      const b = document.createElement('button');
+      b.className = 'island' + (isle === 'All' ? ' active' : '');
+      b.innerHTML = `<span>${isle === 'All' ? 'All islands' : display[isle]}</span><span class="count">${isle === 'All' ? ranchSquares.features.length : (counts[isle] || 0)}</span>`;
+      b.onclick = () => {
+        list.querySelectorAll('.island').forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        if (isle === 'All') map.flyToBounds(allBounds, { padding: [16, 16], duration: .8 });
+        else map.flyTo([centers[isle].lat, centers[isle].lon], zooms[isle] || 10, { duration: .8 });
+      };
+      list.appendChild(b);
+    });
 
-    for (i = 0; i < classMonth.length; i++) {
-      classMonth[i].innerHTML = name;
-    }
   </script>
-
 </body>
-
 </html>
